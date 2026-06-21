@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { services, stats, testimonials } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'About — Earthlink Real Estate',
@@ -22,36 +23,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== HOW WE WORK ===== */}
-      <section id="how-we-work">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span className="eyebrow">How We Work</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Three commitments, every deal</h2>
-          </div>
-          <div className="grid g-3">
-            <div className="glass card reveal">
-              <div className="ic">01</div>
-              <h3>Clear numbers</h3>
-              <p>We track pricing, supply, and yield by community, and keep it current as the market moves.</p>
-            </div>
-            <div className="glass card reveal">
-              <div className="ic">02</div>
-              <h3>Honest advice</h3>
-              <p>You hear the full picture on every option, the upside and the trade-offs, before you commit.</p>
-            </div>
-            <div className="glass card reveal">
-              <div className="ic">03</div>
-              <h3>Long-term care</h3>
-              <p>Our work runs on through management and aftersales, so the asset keeps performing well past handover.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== BACKED BY ERE ===== */}
-      <section id="ere">
+      {/* ===== STORY + STATS ===== */}
+      <section id="story" style={{ paddingTop: 40 }}>
         <div className="wrap about-grid">
+          <div className="about-img reveal">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
+              alt="Earthlink team at work"
+            />
+          </div>
           <div className="reveal">
             <span className="eyebrow">Backed by ERE</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>The strength behind every deal</h2>
@@ -61,13 +42,62 @@ export default function AboutPage() {
               sales, leasing, and management together rather than apart. For you, it means one partner for
               the whole journey.
             </p>
+            <div className="stats">
+              {stats.map((s) => (
+                <div className="glass stat" key={s.lbl}>
+                  <div className="big">{s.big}</div>
+                  <div className="lbl">{s.lbl}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="about-img reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
-              alt="Dubai skyline"
-            />
+        </div>
+      </section>
+
+      {/* ===== HOW WE WORK ===== */}
+      <section id="how-we-work">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="eyebrow">How We Work</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Four services, one standard of care</h2>
+          </div>
+          <div className="grid g-4">
+            {services.map((s) => (
+              <div className="glass card reveal" key={s.n}>
+                <div className="ic">
+                  <svg viewBox="0 0 24 24">
+                    <path d={s.icon} />
+                  </svg>
+                </div>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIALS ===== */}
+      <section id="testimonials">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span className="eyebrow">Client Voices</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Trusted on every deal</h2>
+          </div>
+          <div className="grid tgrid">
+            {testimonials.map((t) => (
+              <div className="glass tcard reveal" key={t.name}>
+                <div className="stars">★★★★★</div>
+                <p>&ldquo;{t.quote}&rdquo;</p>
+                <div className="who">
+                  <div className="av">{t.initials}</div>
+                  <div>
+                    <div className="nm">{t.name}</div>
+                    <div className="rl">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

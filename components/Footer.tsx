@@ -47,6 +47,7 @@ export default function Footer() {
 
         <div className="fbot">
           <span>© 2026 Earthlink Real Estate. Backed by ERE. Dubai, UAE.</span>
+          <span>RERA ORN 00000 · DED License 000000 (placeholder)</span>
           <span>Privacy · Terms</span>
         </div>
       </div>

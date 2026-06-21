@@ -1,22 +1,17 @@
 import type { Metadata } from 'next';
-import { Sora, Plus_Jakarta_Sans } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollReveal from '@/components/ScrollReveal';
 
-const sora = Sora({
+// Single typeface across the whole site.
+const montserrat = Montserrat({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-sora',
-  display: 'swap',
-});
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600'],
-  variable: '--font-jakarta',
+  style: ['normal', 'italic'],
+  variable: '--font-main',
   display: 'swap',
 });
 
@@ -28,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sora.variable} ${jakarta.variable}`}>
+    <html lang="en" className={montserrat.variable}>
       <body>
         <Header />
         <main>{children}</main>
