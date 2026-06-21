@@ -1,29 +1,37 @@
 import Link from 'next/link';
 import { services, stats, properties, communities, testimonials } from '@/lib/data';
-import SearchBar from '@/components/SearchBar';
 
 export default function HomePage() {
   return (
     <>
       {/* ===== HERO ===== */}
       <section className="hero" id="home">
-        <div className="wrap">
-          <span className="pill reveal">
-            <span className="dot"></span> Dubai Brokerage · Backed by ERE
-          </span>
-          <h1 className="reveal">
-            Dubai real estate,<br />
-            <span className="grad">made clear.</span>
-          </h1>
-          <p className="reveal">
-            Buy, lease, or invest with advice you can trust. Ten years of local deals, and a team that
-            reads the market street by street.
-          </p>
-          <div className="hero-btns reveal">
-            <Link href="/projects" className="btn btn-gold">Explore Properties</Link>
-            <Link href="/contact" className="btn btn-glass">Talk to an Advisor</Link>
+        <div className="wrap hero-grid">
+          <div className="hero-copy">
+            <span className="pill reveal">
+              <span className="dot"></span> Dubai Brokerage · Backed by ERE
+            </span>
+            <h1 className="reveal">
+              Dubai real estate,<br />
+              <span className="grad">made clear.</span>
+            </h1>
+            <p className="reveal">
+              Buy, lease, or invest with advice you can trust. Ten years of local deals, and a team that
+              reads the market street by street.
+            </p>
+            <div className="hero-btns reveal">
+              <Link href="/projects" className="btn btn-gold">Explore Properties</Link>
+              <Link href="/contact" className="btn btn-glass">Talk to an Advisor</Link>
+            </div>
           </div>
-          <SearchBar />
+          <div className="hero-media reveal">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=80"
+              alt="Dubai residential architecture"
+            />
+            <span className="cap">Dubai · Est. 2015</span>
+          </div>
         </div>
       </section>
 
@@ -95,29 +103,21 @@ export default function HomePage() {
               communities. The list updates weekly.
             </p>
           </div>
-          <div className="grid g-3">
-            {properties.slice(0, 3).map((p) => (
-              <div className="glass prop reveal" key={p.name}>
-                <div className="img">
-                  <span className="tag">{p.tag}</span>
+          <div className="index">
+            {properties.slice(0, 3).map((p, i) => (
+              <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
+                <span className="num">{String(i + 1).padStart(2, '0')}</span>
+                <span className="thumb">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.img} alt={p.name} />
-                </div>
-                <div className="bd">
-                  <h3>{p.name}</h3>
-                  <div className="loc">{p.location}</div>
-                  <dl className="spec">
-                    <div><dt>Type</dt><dd>{p.type}</dd></div>
-                    <div><dt>Beds</dt><dd>{p.beds}</dd></div>
-                    <div><dt>Area</dt><dd>{p.area}</dd></div>
-                    <div><dt>From</dt><dd className="price">{p.price}</dd></div>
-                  </dl>
-                  <div className="ref">
-                    <span>REF · {p.ref}</span>
-                    <span>DLD · {p.permit}</span>
-                  </div>
-                </div>
-              </div>
+                </span>
+                <span className="info">
+                  <span className="nm">{p.name}</span>
+                  <span className="place">{p.location} · {p.type}</span>
+                </span>
+                <span className="price">{p.price}</span>
+                <span className="go" aria-hidden="true">→</span>
+              </Link>
             ))}
           </div>
           <div className="reveal" style={{ textAlign: 'center', marginTop: 44 }}>
