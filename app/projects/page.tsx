@@ -25,35 +25,24 @@ export default function ProjectsPage() {
       {/* ===== CURRENT SELECTION ===== */}
       <section id="selection" style={{ paddingTop: 40 }}>
         <div className="wrap">
-          <div className="grid g-3">
-            {properties.map((p) => (
-              <div className="glass prop reveal" key={p.name}>
-                <div className="img">
-                  <span className="tag">{p.tag}</span>
+          <div className="index">
+            {properties.map((p, i) => (
+              <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
+                <span className="num">{String(i + 1).padStart(2, '0')}</span>
+                <span className="thumb">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={p.img} alt={p.name} />
-                </div>
-                <div className="bd">
-                  <h3>{p.name}</h3>
-                  <div className="loc">{p.location}</div>
-                  <dl className="spec">
-                    <div><dt>Type</dt><dd>{p.type}</dd></div>
-                    <div><dt>Beds</dt><dd>{p.beds}</dd></div>
-                    <div><dt>Area</dt><dd>{p.area}</dd></div>
-                    <div><dt>From</dt><dd className="price">{p.price}</dd></div>
-                  </dl>
-                  <div className="ref">
-                    <span>REF · {p.ref}</span>
-                    <span>DLD · {p.permit}</span>
-                  </div>
-                </div>
-              </div>
+                </span>
+                <span className="info">
+                  <span className="nm">{p.name}</span>
+                  <span className="place">{p.location} · {p.type}</span>
+                </span>
+                <span className="price">{p.price}</span>
+                <span className="go" aria-hidden="true">→</span>
+              </Link>
             ))}
           </div>
-          <p className="table-note reveal">
-            The list updates weekly. Ask us what fits. Reference and DLD permit numbers shown are
-            illustrative placeholders.
-          </p>
+          <p className="table-note reveal">The selection updates weekly. Ask us what fits.</p>
         </div>
       </section>
 

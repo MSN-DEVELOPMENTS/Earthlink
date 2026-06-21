@@ -96,6 +96,7 @@ export const offers = [
    ref / permit numbers below are illustrative PLACEHOLDERS — replace with
    real Earthlink listing references and DLD Trakheesi permit numbers. */
 export type Property = {
+  slug: string;
   name: string;
   tag: string;
   location: string;
@@ -106,10 +107,12 @@ export type Property = {
   ref: string;
   permit: string;
   img: string;
+  description: string[];
 };
 
 export const properties: Property[] = [
   {
+    slug: 'the-autograph',
     name: 'The Autograph',
     tag: 'Off-Plan',
     location: 'Jumeirah Village Circle',
@@ -119,9 +122,14 @@ export const properties: Property[] = [
     price: 'AED 950K',
     ref: 'ERE-1042',
     permit: '7116548',
-    img: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'A boutique off-plan address in the heart of Jumeirah Village Circle, built for owners who want a strong entry price without giving up finish or community.',
+      'One- to three-bedroom layouts open onto landscaped courtyards, with a pool deck, gym, and retail at podium level. Handover is scheduled with a flexible payment plan across construction.',
+    ],
   },
   {
+    slug: 'seacrest-by-damac',
     name: 'SeaCrest by DAMAC',
     tag: 'Resort',
     location: 'Dubai Maritime City',
@@ -131,9 +139,14 @@ export const properties: Property[] = [
     price: 'AED 1.4M',
     ref: 'ERE-1067',
     permit: '6620913',
-    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'Resort-style living on the water at Dubai Maritime City, a short drive from both Downtown and the beach.',
+      'Studios through three-bedroom residences come with sea-facing balconies, a beach club, and concierge service — a strong fit for both end-users and short-let investors.',
+    ],
   },
   {
+    slug: 'marina-waterfront',
     name: 'Marina Waterfront',
     tag: 'Apt & Villas',
     location: 'Dubai Marina',
@@ -143,9 +156,14 @@ export const properties: Property[] = [
     price: 'AED 1.8M',
     ref: 'ERE-1088',
     permit: '7104382',
-    img: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'Promenade-front apartments and duplexes in one of Dubai’s most rented postcodes, with steady tenant demand year-round.',
+      'Floor-to-ceiling glass frames the marina, and residents share a pool, gym, and direct walkway access to the Walk and the beach.',
+    ],
   },
   {
+    slug: 'sky-residences',
     name: 'Sky Residences',
     tag: 'Penthouse',
     location: 'Downtown Dubai',
@@ -155,9 +173,14 @@ export const properties: Property[] = [
     price: 'AED 3.2M',
     ref: 'ERE-1101',
     permit: '7129640',
-    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'Upper-floor residences and penthouses with Burj Khalifa and fountain views, in the centre of Downtown Dubai.',
+      'Generous two- to four-bedroom layouts, private lift lobbies on select floors, and a five-star amenity deck — a trophy address that holds its value.',
+    ],
   },
   {
+    slug: 'the-address-villas',
     name: 'The Address Villas',
     tag: 'Villa',
     location: 'Arabian Ranches',
@@ -167,9 +190,14 @@ export const properties: Property[] = [
     price: 'AED 4.5M',
     ref: 'ERE-1123',
     permit: '6655471',
-    img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'Family villas in the established, green community of Arabian Ranches, with schools, parks, and golf within the gates.',
+      'Three- to five-bedroom homes sit on private plots with gardens and maids’ rooms — turnkey ready, ideal for owner-occupiers.',
+    ],
   },
   {
+    slug: 'palm-signature',
     name: 'Palm Signature',
     tag: 'Beachfront',
     location: 'Palm Jumeirah',
@@ -179,7 +207,11 @@ export const properties: Property[] = [
     price: 'AED 6.9M',
     ref: 'ERE-1150',
     permit: '7142208',
-    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1100&q=80',
+    description: [
+      'Beachfront signature residences on Palm Jumeirah, with private beach access and uninterrupted sea views.',
+      'Two- to five-bedroom homes feature wraparound terraces, a residents’ beach club, and direct access to the Palm’s dining and marina scene.',
+    ],
   },
 ];
 
