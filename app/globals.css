@@ -153,7 +153,7 @@ section {
   align-items: center;
   gap: 10px;
   padding: 15px 28px;
-  border-radius: 4px;
+  border-radius: 9px;
   font-family: var(--body);
   font-weight: 600;
   font-size: .9rem;
@@ -235,7 +235,7 @@ header.nav.scrolled .nav-inner {
 .logo .mark {
   width: 34px;
   height: 34px;
-  border-radius: 3px;
+  border-radius: 9px;
   background: var(--slate);
   display: grid;
   place-items: center;
@@ -546,12 +546,13 @@ nav.links a.active::after {
 .card {
   padding: 34px;
   position: relative;
+  border-radius: 12px;
 }
 
 .card .ic {
   width: 48px;
   height: 48px;
-  border-radius: 3px;
+  border-radius: 9px;
   border: 1px solid var(--champagne);
   display: grid;
   place-items: center;
@@ -616,14 +617,20 @@ nav.links a.active::after {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
+  gap: 14px;
   margin-top: 38px;
-  border-top: 1px solid var(--line-2);
 }
 
 .stat {
-  padding: 22px 20px 4px 0;
+  padding: 24px 22px;
   text-align: left;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(21, 35, 43, .05);
+}
+
+/* Lift + deepen the shadow on hover — matches the other cards. */
+.stat:hover {
+  box-shadow: 0 24px 50px rgba(21, 35, 43, .12);
 }
 
 .stat .big {
@@ -646,13 +653,19 @@ nav.links a.active::after {
 .steps {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 24px;
 }
 
 .step {
-  padding: 30px 26px 30px 0;
-  border-top: 2px solid var(--champagne);
-  margin-right: 24px;
+  padding: 32px 28px;
+  border-top: 3px solid var(--champagne);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(21, 35, 43, .05);
+}
+
+/* Lift + deepen the shadow on hover — same motion as the service cards. */
+.step:hover {
+  box-shadow: 0 24px 50px rgba(21, 35, 43, .12);
 }
 
 .step .n {
@@ -815,7 +828,13 @@ nav.links a.active::after {
   padding: 34px 30px;
   border-left: 2px solid var(--champagne);
   background: var(--white);
-  border-radius: 0;
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(21, 35, 43, .05);
+}
+
+/* Lift + deepen the shadow on hover — matches the other cards. */
+.tcard:hover {
+  box-shadow: 0 24px 50px rgba(21, 35, 43, .12);
 }
 
 .tcard .stars {
@@ -842,7 +861,7 @@ nav.links a.active::after {
 .tcard .av {
   width: 42px;
   height: 42px;
-  border-radius: 3px;
+  border-radius: 9px;
   background: var(--slate);
   display: grid;
   place-items: center;
@@ -1145,6 +1164,18 @@ footer ul a:hover {
   .contact-forms {
     grid-template-columns: 1fr;
   }
+
+  /* Touch devices (phones + tablets/iPad): stop the floating "bob" so the
+     page reads as solid and stable. A single static shadow keeps the depth. */
+  .hero-media,
+  .about-img,
+  .comm,
+  .bcard,
+  .detail-media {
+    animation: none !important;
+    transform: none !important;
+    box-shadow: 0 16px 36px rgba(21, 35, 43, .14);
+  }
 }
 
 @media (max-width: 860px) {
@@ -1243,13 +1274,8 @@ footer ul a:hover {
     grid-template-columns: 1fr;
   }
 
-  .stats {
-    border-top: 0;
-  }
-
   .stat {
-    padding: 16px 0;
-    border-top: 1px solid var(--line-2);
+    padding: 22px;
   }
 
   /* Index reflows: drop the thumbnail and arrow, keep number / name / price */
@@ -1311,6 +1337,67 @@ footer ul a:hover {
 
   .index .row {
     padding: 18px 4px;
+  }
+
+  /* ---- Full-bleed, large imagery on phones (edge-to-edge for impact) ---- */
+  .hero-media,
+  .about-img {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    border-radius: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  /* ---- Communities: stop the side-scroll; stack full-width so no card is
+     ever cut off. Each tile goes edge-to-edge and large. ---- */
+  #communities .comm-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    overflow: visible;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 4px 0 0;
+    scroll-snap-type: none;
+  }
+
+  #communities .comm {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    scroll-snap-align: none;
+  }
+
+  /* ---- WhatsApp button: smaller + tucked into the corner so it stops
+     covering headings and text. ---- */
+  .wa {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+    border: 2px solid var(--paper);
+  }
+
+  .wa svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  /* ---- Footer: stack the 4 cramped columns so link text never clips.
+     Brand sits full-width on top, then the link columns pair up. ---- */
+  .foot {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+
+  .foot > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .fbot {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 
