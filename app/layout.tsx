@@ -25,6 +25,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={montserrat.variable}>
       <body>
+        {/* Enables scroll-reveal only when JS runs; failsafe shows everything
+            after 1.8s so content can never stay hidden on a slow connection. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{document.documentElement.classList.add('reveal-ready');" +
+              "window.__revealFailsafe=setTimeout(function(){if(!window.__revealActive){" +
+              "var e=document.querySelectorAll('.reveal');for(var i=0;i<e.length;i++){e[i].classList.add('in');}}},1800);" +
+              "}catch(_){}})();",
+          }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />

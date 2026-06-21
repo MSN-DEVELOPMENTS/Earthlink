@@ -11,6 +11,11 @@ export default function ScrollReveal() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Tell the inline failsafe (in layout.tsx) that the real animation is live.
+    const w = window as unknown as { __revealActive?: boolean; __revealFailsafe?: number };
+    w.__revealActive = true;
+    if (w.__revealFailsafe) clearTimeout(w.__revealFailsafe);
+
     const elements = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
 
     const observer = new IntersectionObserver(
