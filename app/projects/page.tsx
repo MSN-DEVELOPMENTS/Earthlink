@@ -77,7 +77,7 @@ export default function ProjectsPage() {
             {matchSteps.map((s) => (
               <div className="glass step reveal" key={s.n}>
                 <div className="n">{s.n}</div>
-                <h4>{s.title}</h4>
+                <h3>{s.title}</h3>
                 <p>{s.text}</p>
               </div>
             ))}

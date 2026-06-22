@@ -27,14 +27,15 @@
   --white: #ffffff;
   --line: #e4ddcf;
   --line-2: #d3c9b5;
-  --muted: #6b757b;
+  --muted: #5f686d; /* AA contrast (~5:1) on paper background */
 
-  --display: var(--font-main), 'Montserrat', system-ui, sans-serif;
-  --body: var(--font-main), 'Montserrat', system-ui, sans-serif;
-  --mono: var(--font-main), 'Montserrat', system-ui, sans-serif;
+  --display: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
+  --body: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
+  --mono: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
+  --accent: var(--font-accent), 'Fraunces', Georgia, 'Times New Roman', serif;
 
   --radius: 4px;
-  --maxw: 1200px;
+  --maxw: 1440px;
 }
 
 /* 2. Base / reset / focus ------------------------------------------------ */
@@ -147,11 +148,13 @@ section {
   margin-top: 18px;
 }
 
-/* Accent word — champagne italic */
+/* Accent word — Fraunces serif italic, the one type flourish */
 .grad {
+  font-family: var(--accent);
   color: var(--champagne-ink);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
+  letter-spacing: 0;
 }
 
 /* 4. Buttons ------------------------------------------------------------- */
@@ -347,7 +350,7 @@ nav.links a.active::after {
 .hero h1 .grad {
   color: var(--champagne-ink);
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .hero p {
@@ -684,7 +687,7 @@ nav.links a.active::after {
   font-variant-numeric: tabular-nums;
 }
 
-.step h4 {
+.step h3 {
   font-size: 1.2rem;
   margin-bottom: 8px;
 }
@@ -750,7 +753,7 @@ nav.links a.active::after {
   padding: 24px;
 }
 
-.comm h4 {
+.comm h3 {
   font-size: 1.35rem;
   color: var(--white);
 }
@@ -852,10 +855,12 @@ nav.links a.active::after {
 }
 
 .tcard p {
+  font-family: var(--accent);
   color: var(--ink);
-  font-size: 1.12rem;
+  font-size: 1.2rem;
   font-style: italic;
-  line-height: 1.5;
+  font-weight: 400;
+  line-height: 1.55;
 }
 
 .tcard .who {
@@ -1025,6 +1030,11 @@ footer {
   margin-bottom: 52px;
 }
 
+/* .muted is tuned for light backgrounds; lighten it on the dark footer. */
+footer .muted {
+  color: #aeb8bd;
+}
+
 footer .logo {
   color: var(--white);
 }
@@ -1034,7 +1044,7 @@ footer .logo .mark {
   color: var(--slate);
 }
 
-footer h5 {
+footer h2 {
   font-size: .72rem;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -1065,7 +1075,7 @@ footer ul a:hover {
   padding-top: 26px;
   display: flex;
   justify-content: space-between;
-  color: #88959b;
+  color: #9ba7ac;
   font-size: .76rem;
   letter-spacing: .03em;
   flex-wrap: wrap;

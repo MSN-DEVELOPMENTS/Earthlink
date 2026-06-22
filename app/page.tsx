@@ -149,7 +149,7 @@ export default function HomePage() {
                   style={{ objectFit: 'cover' }}
                 />
                 <div className="ov">
-                  <h4>{c.name}</h4>
+                  <h3>{c.name}</h3>
                   <span>{c.note}</span>
                 </div>
               </div>

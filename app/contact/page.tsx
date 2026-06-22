@@ -46,6 +46,14 @@ export default function ContactPage() {
                 <div className="l">Connect</div>
                 <p className="muted" style={{ fontSize: '.95rem' }}>{contact.socials.join(' · ')}</p>
               </div>
+              <div className="ib">
+                <div className="l">Licensed</div>
+                <p className="muted" style={{ fontSize: '.95rem' }}>
+                  {contact.licence.regulator}
+                  <br />
+                  {contact.licence.orn} · {contact.licence.ded}
+                </p>
+              </div>
             </div>
 
             {/* Forms */}

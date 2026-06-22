@@ -1,17 +1,24 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
+import { Hanken_Grotesk, Fraunces } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollReveal from '@/components/ScrollReveal';
 
-// Single typeface across the whole site.
-const montserrat = Montserrat({
+// System face: a crisp modern grotesque — architectural and clear, the page's thesis.
+const hanken = Hanken_Grotesk({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-main',
+  display: 'swap',
+});
+
+// Accent face: a soft serif italic, used only on emphasis words — the one flourish.
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  style: ['italic'],
+  variable: '--font-accent',
   display: 'swap',
 });
 
@@ -78,7 +85,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={montserrat.variable}>
+    <html lang="en" className={`${hanken.variable} ${fraunces.variable}`} suppressHydrationWarning>
       <body>
         <script
           type="application/ld+json"

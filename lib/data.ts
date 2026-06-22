@@ -20,6 +20,12 @@ export const contact = {
   email: 'info@earthlink.ae',
   location: 'Dubai, United Arab Emirates',
   socials: ['LinkedIn', 'Facebook', 'YouTube', 'Instagram'],
+  // Regulatory credentials — replace the placeholder numbers with the real ones.
+  licence: {
+    regulator: 'Licensed by the Dubai Land Department · RERA',
+    orn: 'RERA ORN 00000', // ← real Office Registration Number
+    ded: 'DED Licence 000000', // ← real DED trade licence
+  },
 };
 
 /* ----- Hero search bar options ------------------------------------------ */

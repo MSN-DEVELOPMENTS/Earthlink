@@ -16,7 +16,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5>Explore</h5>
+            <h2>Explore</h2>
             <ul>
               <li><Link href="/about">About</Link></li>
               <li><Link href="/projects">Projects</Link></li>
@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5>Services</h5>
+            <h2>Services</h2>
             <ul>
               <li><Link href="/#services">Buy &amp; Sell</Link></li>
               <li><Link href="/#services">Lease &amp; Rent</Link></li>
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h5>Contact</h5>
+            <h2>Contact</h2>
             <ul>
               <li><a href={contact.phoneHref}>{contact.phone}</a></li>
               <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
@@ -47,7 +47,7 @@ export default function Footer() {
 
         <div className="fbot">
           <span>© 2026 Earthlink Real Estate. Backed by ERE. Dubai, UAE.</span>
-          <span>RERA ORN 00000 · DED License 000000 (placeholder)</span>
+          <span>{contact.licence.regulator} · {contact.licence.orn} · {contact.licence.ded}</span>
           <span>Privacy · Terms</span>
         </div>
       </div>
