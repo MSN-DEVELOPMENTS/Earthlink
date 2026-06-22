@@ -91,14 +91,14 @@ export const whyEarthlink = [
   'Honest advice at every step',
 ];
 
-/* ----- Projects: What We Offer (3) -------------------------------------- */
+/* ----- Properties: What We Offer (3) ------------------------------------ */
 export const offers = [
   { title: 'Off-Plan', text: 'Early access from Emaar, Sobha, Binghatti, and DAMAC.' },
   { title: 'Ready Homes', text: 'Completed apartments and villas in settled communities.' },
   { title: 'Commercial', text: 'Offices and retail in the right districts.' },
 ];
 
-/* ----- Projects: Current Selection (property cards) ---------------------
+/* ----- Properties: Current Selection (property cards) -------------------
    ref / permit numbers below are illustrative PLACEHOLDERS — replace with
    real Earthlink listing references and DLD Trakheesi permit numbers. */
 export type Property = {
@@ -221,7 +221,7 @@ export const properties: Property[] = [
   },
 ];
 
-/* ----- Projects: How We Match You (4 steps) ----------------------------- */
+/* ----- Properties: How We Match You (4 steps) --------------------------- */
 export const matchSteps = [
   { n: '1', title: 'Discovery', text: 'We learn your budget and goals.' },
   { n: '2', title: 'Shortlist', text: 'A few strong options, backed by numbers.' },

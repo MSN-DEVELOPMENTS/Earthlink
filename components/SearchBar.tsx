@@ -5,7 +5,7 @@ import { searchOptions } from '@/lib/data';
 
 /**
  * Glass search bar shown in the hero. There is no listings backend yet, so a
- * search simply routes the visitor to the Projects page where the current
+ * search simply routes the visitor to the Properties page where the current
  * selection lives. The selected filters travel along as query params for when
  * a real search is wired up later.
  */

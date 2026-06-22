@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { services, stats, testimonials } from '@/lib/data';
+import { services, stats } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -76,31 +76,6 @@ export default function AboutPage() {
                 </div>
                 <h3>{s.title}</h3>
                 <p>{s.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ===== TESTIMONIALS ===== */}
-      <section id="testimonials">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span className="eyebrow">Client Voices</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Trusted on every deal</h2>
-          </div>
-          <div className="grid tgrid">
-            {testimonials.map((t) => (
-              <div className="glass tcard reveal" key={t.name}>
-                <div className="stars">★★★★★</div>
-                <p>&ldquo;{t.quote}&rdquo;</p>
-                <div className="who">
-                  <div className="av">{t.initials}</div>
-                  <div>
-                    <div className="nm">{t.name}</div>
-                    <div className="rl">{t.role}</div>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
