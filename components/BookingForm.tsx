@@ -2,15 +2,25 @@
 
 import { useState } from 'react';
 import { serviceTypes, consultants } from '@/lib/data';
+import { submitToWeb3Forms } from '@/lib/web3forms';
+
+type Status = 'idle' | 'sending' | 'ok' | 'err';
 
 export default function BookingForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>('idle');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // No backend yet — show a friendly confirmation.
-    setSent(true);
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    setStatus('sending');
+    try {
+      await submitToWeb3Forms(data, `New consultation booking — ${data.service_type || ''}`);
+      setStatus('ok');
+      form.reset();
+    } catch {
+      setStatus('err');
+    }
   };
 
   return (
@@ -47,14 +57,21 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <button type="submit" className="btn btn-gold" style={{ width: '100%', justifyContent: 'center' }}>
-        Confirm Booking
+      <button
+        type="submit"
+        className="btn btn-gold"
+        style={{ width: '100%', justifyContent: 'center' }}
+        disabled={status === 'sending'}
+      >
+        {status === 'sending' ? 'Confirming…' : 'Confirm Booking'}
       </button>
 
-      <p className={`form-msg${sent ? ' ok' : ''}`}>
-        {sent
+      <p className={`form-msg${status === 'ok' ? ' ok' : ''}${status === 'err' ? ' err' : ''}`}>
+        {status === 'ok'
           ? 'Thank you — your consultation request is in. We confirm within one business day.'
-          : 'Pick a service and a time, and meet the consultant who fits your goal.'}
+          : status === 'err'
+            ? 'Something went wrong. Please try again or email info@earthlink.ae.'
+            : 'Pick a service and a time, and meet the consultant who fits your goal.'}
       </p>
     </form>
   );

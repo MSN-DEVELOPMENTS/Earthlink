@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { offers, properties, matchSteps } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Projects — Earthlink Real Estate',
+  title: 'Projects',
+  alternates: { canonical: '/projects' },
   description: 'Curated Dubai property: off-plan launches, ready homes, and commercial. New launches arrive often.',
 };
 
@@ -30,8 +32,7 @@ export default function ProjectsPage() {
               <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
                 <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="thumb">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.img} alt={p.name} />
+                  <Image src={p.img} alt={p.name} fill sizes="78px" style={{ objectFit: 'cover' }} />
                 </span>
                 <span className="info">
                   <span className="nm">{p.name}</span>

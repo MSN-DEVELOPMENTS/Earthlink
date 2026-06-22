@@ -4,7 +4,8 @@ import InquiryForm from '@/components/InquiryForm';
 import BookingForm from '@/components/BookingForm';
 
 export const metadata: Metadata = {
-  title: 'Contact — Earthlink Real Estate',
+  title: 'Contact',
+  alternates: { canonical: '/contact' },
   description: 'Get in touch with Earthlink. Send a message or book a consultation with a Dubai property consultant.',
 };
 

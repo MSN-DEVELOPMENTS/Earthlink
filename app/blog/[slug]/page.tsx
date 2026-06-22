@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { posts } from '@/lib/data';
@@ -9,8 +10,12 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = posts.find((p) => p.slug === params.slug);
-  if (!post) return { title: 'Post — Earthlink Real Estate' };
-  return { title: `${post.title} — Earthlink Real Estate`, description: post.excerpt };
+  if (!post) return { title: 'Post' };
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: `/blog/${post.slug}` },
+  };
 }
 
 export default function PostPage({ params }: { params: { slug: string } }) {
@@ -30,8 +35,14 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         <div className="wrap">
           <Link href="/blog" className="back-link">← Back to the journal</Link>
           <div className="about-img reveal" style={{ aspectRatio: '16 / 8', marginBottom: 36 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={post.img} alt={post.title} />
+            <Image
+              src={post.img}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 800px) 100vw, 760px"
+              style={{ objectFit: 'cover' }}
+            />
           </div>
           <div className="post-body reveal">
             {post.body.map((paragraph, i) => (

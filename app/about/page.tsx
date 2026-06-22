@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { services, stats, testimonials } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'About — Earthlink Real Estate',
+  title: 'About',
+  alternates: { canonical: '/about' },
   description: 'Built around you. A Dubai brokerage backed by ERE, with sales, leasing, and management under one roof.',
 };
 
@@ -27,10 +29,13 @@ export default function AboutPage() {
       <section id="story" style={{ paddingTop: 40 }}>
         <div className="wrap about-grid">
           <div className="about-img reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
               alt="Earthlink team at work"
+              fill
+              priority
+              sizes="(max-width: 860px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
             />
           </div>
           <div className="reveal">

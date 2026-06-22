@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { services, stats, properties, communities, testimonials } from '@/lib/data';
 
 export default function HomePage() {
@@ -25,10 +26,13 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-media reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=80"
               alt="Dubai residential architecture"
+              fill
+              priority
+              sizes="(max-width: 860px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
             />
             <span className="cap">Dubai · Est. 2015</span>
           </div>
@@ -62,10 +66,12 @@ export default function HomePage() {
       <section id="about">
         <div className="wrap about-grid">
           <div className="about-img reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
               alt="Earthlink advisor with clients"
+              fill
+              sizes="(max-width: 860px) 100vw, 45vw"
+              style={{ objectFit: 'cover' }}
             />
           </div>
           <div className="reveal">
@@ -108,8 +114,7 @@ export default function HomePage() {
               <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
                 <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="thumb">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.img} alt={p.name} />
+                  <Image src={p.img} alt={p.name} fill sizes="78px" style={{ objectFit: 'cover' }} />
                 </span>
                 <span className="info">
                   <span className="nm">{p.name}</span>
@@ -136,8 +141,13 @@ export default function HomePage() {
           <div className="comm-grid">
             {communities.slice(0, 6).map((c) => (
               <div className="comm reveal" key={c.name}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={c.img} alt={c.name} />
+                <Image
+                  src={c.img}
+                  alt={c.name}
+                  fill
+                  sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  style={{ objectFit: 'cover' }}
+                />
                 <div className="ov">
                   <h4>{c.name}</h4>
                   <span>{c.note}</span>

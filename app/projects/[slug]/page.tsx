@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { properties } from '@/lib/data';
@@ -9,10 +10,11 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const property = properties.find((p) => p.slug === params.slug);
-  if (!property) return { title: 'Property — Earthlink Real Estate' };
+  if (!property) return { title: 'Property' };
   return {
-    title: `${property.name} — Earthlink Real Estate`,
+    title: property.name,
     description: `${property.name} in ${property.location}. ${property.type}, from ${property.price}.`,
+    alternates: { canonical: `/projects/${property.slug}` },
   };
 }
 
@@ -39,8 +41,14 @@ export default function PropertyPage({ params }: { params: { slug: string } }) {
 
           <div className="property-detail">
             <div className="detail-media reveal">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={property.img} alt={property.name} />
+              <Image
+                src={property.img}
+                alt={property.name}
+                fill
+                priority
+                sizes="(max-width: 860px) 100vw, 50vw"
+                style={{ objectFit: 'cover' }}
+              />
             </div>
 
             <div className="reveal">

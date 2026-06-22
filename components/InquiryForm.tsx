@@ -2,15 +2,25 @@
 
 import { useState } from 'react';
 import { inquiryTypes } from '@/lib/data';
+import { submitToWeb3Forms } from '@/lib/web3forms';
+
+type Status = 'idle' | 'sending' | 'ok' | 'err';
 
 export default function InquiryForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<Status>('idle');
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // No backend yet — show a friendly confirmation.
-    setSent(true);
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+    setStatus('sending');
+    try {
+      await submitToWeb3Forms(data, `New website enquiry — ${data.name || 'Unknown'}`);
+      setStatus('ok');
+      form.reset();
+    } catch {
+      setStatus('err');
+    }
   };
 
   return (
@@ -48,14 +58,21 @@ export default function InquiryForm() {
         <textarea name="message" placeholder="Tell us your goal, and we map the route from there." />
       </div>
 
-      <button type="submit" className="btn btn-gold" style={{ width: '100%', justifyContent: 'center' }}>
-        Send Message
+      <button
+        type="submit"
+        className="btn btn-gold"
+        style={{ width: '100%', justifyContent: 'center' }}
+        disabled={status === 'sending'}
+      >
+        {status === 'sending' ? 'Sending…' : 'Send Message'}
       </button>
 
-      <p className={`form-msg${sent ? ' ok' : ''}`}>
-        {sent
+      <p className={`form-msg${status === 'ok' ? ' ok' : ''}${status === 'err' ? ' err' : ''}`}>
+        {status === 'ok'
           ? 'Thank you — a consultant will reply within one business day.'
-          : 'We come back within one business day.'}
+          : status === 'err'
+            ? 'Something went wrong. Please try again or email info@earthlink.ae.'
+            : 'We come back within one business day.'}
       </p>
     </form>
   );

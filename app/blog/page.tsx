@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { blogCategories, posts } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Blog — Earthlink Real Estate',
+  title: 'Blog',
+  alternates: { canonical: '/blog' },
   description: 'Clear market insight on Dubai real estate: prices, yields, neighbourhood guides, and investor notes.',
 };
 
@@ -49,8 +51,13 @@ export default function BlogPage() {
             {posts.map((post) => (
               <Link href={`/blog/${post.slug}`} className="glass bcard reveal" key={post.slug}>
                 <div className="img">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={post.img} alt={post.title} />
+                  <Image
+                    src={post.img}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
                 </div>
                 <div className="bd">
                   <span className="cat">{post.category}</span>
