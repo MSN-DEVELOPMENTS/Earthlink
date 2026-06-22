@@ -1,24 +1,13 @@
 import type { Metadata } from 'next';
-import { Hanken_Grotesk, Fraunces } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-import WhatsAppButton from '@/components/WhatsAppButton';
-import ScrollReveal from '@/components/ScrollReveal';
 
-// System face: a crisp modern grotesque — architectural and clear, the page's thesis.
-const hanken = Hanken_Grotesk({
+// Single typeface across the site — Inter, the same clean grotesque MSN uses.
+const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
   variable: '--font-main',
-  display: 'swap',
-});
-
-// Accent face: a soft serif italic, used only on emphasis words — the one flourish.
-const fraunces = Fraunces({
-  subsets: ['latin'],
-  style: ['italic'],
-  variable: '--font-accent',
   display: 'swap',
 });
 
@@ -66,48 +55,10 @@ export const metadata: Metadata = {
   },
 };
 
-// Structured data so Google can show Earthlink as a real-estate business.
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'RealEstateAgent',
-  name: 'Earthlink Real Estate',
-  description: 'Dubai real estate brokerage — buying, leasing, and investing, backed by ERE.',
-  url: siteUrl,
-  telephone: '+971528701177',
-  email: 'info@earthlink.ae',
-  areaServed: 'Dubai, United Arab Emirates',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Dubai',
-    addressCountry: 'AE',
-  },
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${hanken.variable} ${fraunces.variable}`} suppressHydrationWarning>
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {/* Enables scroll-reveal only when JS runs; failsafe shows everything
-            after 1.8s so content can never stay hidden on a slow connection. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              "(function(){try{document.documentElement.classList.add('reveal-ready');" +
-              "window.__revealFailsafe=setTimeout(function(){if(!window.__revealActive){" +
-              "var e=document.querySelectorAll('.reveal');for(var i=0;i<e.length;i++){e[i].classList.add('in');}}},1800);" +
-              "}catch(_){}})();",
-          }}
-        />
-        <Header />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <ScrollReveal />
-      </body>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
+      <body>{children}</body>
     </html>
   );
 }

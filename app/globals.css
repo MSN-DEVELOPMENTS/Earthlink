@@ -29,10 +29,9 @@
   --line-2: #d3c9b5;
   --muted: #5f686d; /* AA contrast (~5:1) on paper background */
 
-  --display: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
-  --body: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
-  --mono: var(--font-main), 'Hanken Grotesk', system-ui, sans-serif;
-  --accent: var(--font-accent), 'Fraunces', Georgia, 'Times New Roman', serif;
+  --display: var(--font-main), 'Inter', system-ui, sans-serif;
+  --body: var(--font-main), 'Inter', system-ui, sans-serif;
+  --mono: var(--font-main), 'Inter', system-ui, sans-serif;
 
   --radius: 4px;
   --maxw: 1440px;
@@ -131,7 +130,9 @@ section {
   font-size: clamp(2.2rem, 4.6vw, 3.5rem);
   font-weight: 700;
   letter-spacing: -.03em;
-  max-width: 20ch;
+  /* No hard character cap — titles flow on one line on desktop and wrap
+     only when the viewport is actually too narrow. */
+  text-wrap: balance;
 }
 
 /* In centered headers, the constrained title needs auto side-margins so the
@@ -148,13 +149,10 @@ section {
   margin-top: 18px;
 }
 
-/* Accent word — Fraunces serif italic, the one type flourish */
+/* Accent word — champagne colour, same Inter face as the heading */
 .grad {
-  font-family: var(--accent);
   color: var(--champagne-ink);
-  font-style: italic;
-  font-weight: 500;
-  letter-spacing: 0;
+  font-style: normal;
 }
 
 /* 4. Buttons ------------------------------------------------------------- */
@@ -349,8 +347,7 @@ nav.links a.active::after {
 
 .hero h1 .grad {
   color: var(--champagne-ink);
-  font-style: italic;
-  font-weight: 500;
+  font-style: normal;
 }
 
 .hero p {
@@ -855,12 +852,10 @@ nav.links a.active::after {
 }
 
 .tcard p {
-  font-family: var(--accent);
   color: var(--ink);
-  font-size: 1.2rem;
-  font-style: italic;
+  font-size: 1.12rem;
   font-weight: 400;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .tcard .who {
@@ -1144,7 +1139,7 @@ footer ul a:hover {
 
 .page-head .grad {
   color: var(--champagne-ink);
-  font-style: italic;
+  font-style: normal;
 }
 
 .page-head p {

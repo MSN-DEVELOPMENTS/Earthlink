@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { offers, properties, matchSteps } from '@/lib/data';
+import { offers, matchSteps } from '@/lib/data';
+import { getProperties } from '@/lib/properties';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -9,7 +10,8 @@ export const metadata: Metadata = {
   description: 'Curated Dubai property: off-plan launches, ready homes, and commercial. New launches arrive often.',
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const properties = await getProperties();
   return (
     <>
       {/* ===== HEADER ===== */}

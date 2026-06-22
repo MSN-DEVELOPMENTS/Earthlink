@@ -2,14 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { properties } from '@/lib/data';
+import { getPropertyBySlug, getPropertySlugs } from '@/lib/properties';
 
-export function generateStaticParams() {
-  return properties.map((property) => ({ slug: property.slug }));
+export async function generateStaticParams() {
+  const slugs = await getPropertySlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const property = properties.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const property = await getPropertyBySlug(params.slug);
   if (!property) return { title: 'Property' };
   return {
     title: property.name,
@@ -18,8 +19,8 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function PropertyPage({ params }: { params: { slug: string } }) {
-  const property = properties.find((p) => p.slug === params.slug);
+export default async function PropertyPage({ params }: { params: { slug: string } }) {
+  const property = await getPropertyBySlug(params.slug);
   if (!property) notFound();
 
   return (

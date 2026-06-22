@@ -348,6 +348,6 @@ export const faqs = [
 ];
 
 /* ----- Form options ----------------------------------------------------- */
-export const inquiryTypes = ['Buy', 'Sell', 'Lease', 'Manage', 'Invest'];
+export const inquiryTypes = ['Buy', 'Sell', 'Lease', 'Manage', 'Invest', 'Book a consultation'];
 export const serviceTypes = ['Buy & Sell', 'Lease & Rent', 'Property Management', 'Invest'];
 export const consultants = ['No preference', 'Sales Consultant', 'Leasing Consultant', 'Investment Advisor'];

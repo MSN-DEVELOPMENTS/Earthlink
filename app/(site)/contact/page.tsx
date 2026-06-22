@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { contact, faqs } from '@/lib/data';
 import InquiryForm from '@/components/InquiryForm';
-import BookingForm from '@/components/BookingForm';
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -56,12 +55,9 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Forms */}
+            {/* Form */}
             <div className="reveal">
-              <div className="contact-forms" style={{ marginTop: 0 }}>
-                <InquiryForm />
-                <BookingForm />
-              </div>
+              <InquiryForm />
             </div>
           </div>
         </div>

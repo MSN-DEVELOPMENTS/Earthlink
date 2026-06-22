@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { services, stats, properties, communities, testimonials } from '@/lib/data';
+import { services, stats, communities, testimonials } from '@/lib/data';
+import { getProperties } from '@/lib/properties';
 
-export default function HomePage() {
+export default async function HomePage() {
+  const properties = await getProperties();
   return (
     <>
       {/* ===== HERO ===== */}
@@ -42,7 +44,7 @@ export default function HomePage() {
       {/* ===== WHAT WE DO ===== */}
       <section id="services">
         <div className="wrap">
-          <div className="reveal" style={{ marginBottom: 44, maxWidth: 560 }}>
+          <div className="reveal" style={{ marginBottom: 44 }}>
             <span className="eyebrow">What We Do</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Four services, one standard of care</h2>
           </div>
@@ -134,7 +136,7 @@ export default function HomePage() {
       {/* ===== COMMUNITIES ===== */}
       <section id="communities">
         <div className="wrap">
-          <div className="reveal" style={{ marginBottom: 44, maxWidth: 560 }}>
+          <div className="reveal" style={{ marginBottom: 44 }}>
             <span className="eyebrow">Communities</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s best-known addresses</h2>
           </div>
