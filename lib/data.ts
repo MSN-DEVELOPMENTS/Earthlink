@@ -7,7 +7,7 @@
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/properties', label: 'Properties' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -17,7 +17,7 @@ export const contact = {
   phone: '+971 52 870 1177',
   phoneHref: 'tel:+971528701177',
   whatsapp: 'https://wa.me/971528701177',
-  email: 'info@earthlink.ae',
+  email: 'info@eregroup.ae',
   location: 'Dubai, United Arab Emirates',
   socials: ['LinkedIn', 'Facebook', 'YouTube', 'Instagram'],
   // Regulatory credentials — replace the placeholder numbers with the real ones.

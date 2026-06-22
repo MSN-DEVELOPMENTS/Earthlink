@@ -11,7 +11,7 @@ const jsonLd = {
   description: 'Dubai real estate brokerage — buying, leasing, and investing, backed by ERE.',
   url: 'https://earthlink.ae',
   telephone: '+971528701177',
-  email: 'info@earthlink.ae',
+  email: 'info@eregroup.ae',
   areaServed: 'Dubai, United Arab Emirates',
   address: {
     '@type': 'PostalAddress',

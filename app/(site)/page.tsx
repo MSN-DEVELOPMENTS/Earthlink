@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { services, stats, communities, testimonials } from '@/lib/data';
+import { services, stats, communities } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
 
 export default async function HomePage() {
@@ -16,14 +16,14 @@ export default async function HomePage() {
             </span>
             <h1 className="reveal">
               Dubai real estate,<br />
-              <span className="grad">made clear.</span>
+              <span className="grad">Made clear.</span>
             </h1>
             <p className="reveal">
               Buy, lease, or invest with advice you can trust. Ten years of local deals, and a team that
               reads the market street by street.
             </p>
             <div className="hero-btns reveal">
-              <Link href="/projects" className="btn btn-gold">Explore Properties</Link>
+              <Link href="/properties" className="btn btn-gold">Explore Properties</Link>
               <Link href="/contact" className="btn btn-glass">Talk to an Advisor</Link>
             </div>
           </div>
@@ -36,7 +36,6 @@ export default async function HomePage() {
               sizes="(max-width: 860px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}
             />
-            <span className="cap">Dubai · Est. 2015</span>
           </div>
         </div>
       </section>
@@ -113,7 +112,7 @@ export default async function HomePage() {
           </div>
           <div className="index">
             {properties.slice(0, 3).map((p, i) => (
-              <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
+              <Link href={`/properties/${p.slug}`} className="row reveal" key={p.name}>
                 <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="thumb">
                   <Image src={p.img} alt={p.name} fill sizes="78px" style={{ objectFit: 'cover' }} />
@@ -128,7 +127,7 @@ export default async function HomePage() {
             ))}
           </div>
           <div className="reveal" style={{ textAlign: 'center', marginTop: 44 }}>
-            <Link href="/projects" className="btn btn-gold">View all properties</Link>
+            <Link href="/properties" className="btn btn-gold">View all properties</Link>
           </div>
         </div>
       </section>
@@ -160,44 +159,18 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ===== TESTIMONIALS ===== */}
-      <section id="testimonials">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span className="eyebrow">Client Voices</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Trusted on every deal</h2>
-          </div>
-          <div className="grid tgrid">
-            {testimonials.map((t) => (
-              <div className="glass tcard reveal" key={t.name}>
-                <div className="stars">★★★★★</div>
-                <p>&ldquo;{t.quote}&rdquo;</p>
-                <div className="who">
-                  <div className="av">{t.initials}</div>
-                  <div>
-                    <div className="nm">{t.name}</div>
-                    <div className="rl">{t.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ===== READY TO BEGIN ===== */}
       <section id="cta">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center' }}>
-            <span className="eyebrow">Ready to Begin</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Tell us your goal</h2>
+            <h2 className="section-title">Ready to begin</h2>
             <p className="lead" style={{ margin: '14px auto 28px' }}>
               Tell us your goal, and we map the route from there. Buying, leasing, or investing, the team
               stays with you for every step.
             </p>
             <div className="hero-btns" style={{ justifyContent: 'center' }}>
               <Link href="/contact" className="btn btn-gold">Schedule a Consultation</Link>
-              <Link href="/projects" className="btn btn-glass">Browse Properties</Link>
+              <Link href="/properties" className="btn btn-glass">Browse Properties</Link>
             </div>
           </div>
         </div>

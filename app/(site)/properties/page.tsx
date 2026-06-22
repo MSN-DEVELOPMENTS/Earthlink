@@ -5,12 +5,12 @@ import { offers, matchSteps } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  alternates: { canonical: '/projects' },
+  title: 'Properties',
+  alternates: { canonical: '/properties' },
   description: 'Curated Dubai property: off-plan launches, ready homes, and commercial. New launches arrive often.',
 };
 
-export default async function ProjectsPage() {
+export default async function PropertiesPage() {
   const properties = await getProperties();
   return (
     <>
@@ -31,7 +31,7 @@ export default async function ProjectsPage() {
         <div className="wrap">
           <div className="index">
             {properties.map((p, i) => (
-              <Link href={`/projects/${p.slug}`} className="row reveal" key={p.name}>
+              <Link href={`/properties/${p.slug}`} className="row reveal" key={p.name}>
                 <span className="num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="thumb">
                   <Image src={p.img} alt={p.name} fill sizes="78px" style={{ objectFit: 'cover' }} />

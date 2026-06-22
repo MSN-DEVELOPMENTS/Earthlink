@@ -71,7 +71,7 @@ export default function InquiryForm() {
         {status === 'ok'
           ? 'Thank you — a consultant will reply within one business day.'
           : status === 'err'
-            ? 'Something went wrong. Please try again or email info@earthlink.ae.'
+            ? 'Something went wrong. Please try again or email info@eregroup.ae.'
             : 'We come back within one business day.'}
       </p>
     </form>

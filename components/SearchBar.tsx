@@ -22,7 +22,7 @@ export default function SearchBar() {
       }
     });
     const query = params.toString();
-    router.push(query ? `/projects?${query}` : '/projects');
+    router.push(query ? `/properties?${query}` : '/properties');
   };
 
   return (

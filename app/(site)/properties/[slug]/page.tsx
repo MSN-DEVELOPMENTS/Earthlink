@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: property.name,
     description: `${property.name} in ${property.location}. ${property.type}, from ${property.price}.`,
-    alternates: { canonical: `/projects/${property.slug}` },
+    alternates: { canonical: `/properties/${property.slug}` },
   };
 }
 
@@ -38,7 +38,7 @@ export default async function PropertyPage({ params }: { params: { slug: string 
       {/* ===== DETAIL ===== */}
       <section style={{ paddingTop: 44 }}>
         <div className="wrap">
-          <Link href="/projects" className="back-link">← Back to all properties</Link>
+          <Link href="/properties" className="back-link">← Back to all properties</Link>
 
           <div className="property-detail">
             <div className="detail-media reveal">
@@ -72,7 +72,7 @@ export default async function PropertyPage({ params }: { params: { slug: string 
 
               <div className="hero-btns" style={{ marginTop: 30 }}>
                 <Link href="/contact" className="btn btn-gold">Enquire about this property</Link>
-                <Link href="/projects" className="btn btn-glass">View all properties</Link>
+                <Link href="/properties" className="btn btn-glass">View all properties</Link>
               </div>
 
               <p className="table-note" style={{ marginTop: 24 }}>
