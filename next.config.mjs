@@ -13,6 +13,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.bayut.com',
+      },
     ],
   },
   async redirects() {

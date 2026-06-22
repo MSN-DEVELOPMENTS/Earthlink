@@ -1,7 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
 import type { Metadata } from 'next';
-import { blogCategories, posts } from '@/lib/data';
+import { blogCategories } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -40,35 +38,6 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* ===== LATEST POSTS ===== */}
-      <section id="posts">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span className="eyebrow">Latest</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>From the journal</h2>
-          </div>
-          <div className="blog">
-            {posts.map((post) => (
-              <Link href={`/blog/${post.slug}`} className="glass bcard reveal" key={post.slug}>
-                <div className="img">
-                  <Image
-                    src={post.img}
-                    alt={post.title}
-                    fill
-                    sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <div className="bd">
-                  <span className="cat">{post.category}</span>
-                  <h3>{post.title}</h3>
-                  <p>{post.excerpt}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -72,11 +72,21 @@ export default async function PropertyPage({ params }: { params: { slug: string 
 
               <div className="hero-btns" style={{ marginTop: 30 }}>
                 <Link href="/contact" className="btn btn-gold">Enquire about this property</Link>
+                {property.url && (
+                  <a
+                    href={property.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-glass"
+                  >
+                    View on Bayut ↗
+                  </a>
+                )}
                 <Link href="/properties" className="btn btn-glass">View all properties</Link>
               </div>
 
               <p className="table-note" style={{ marginTop: 24 }}>
-                Reference and DLD permit numbers shown are illustrative placeholders.
+                Listed by Earth Link Real Estate. Contact us for the DLD permit and full documentation.
               </p>
             </div>
           </div>
