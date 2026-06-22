@@ -20,7 +20,7 @@ Then open http://localhost:3000
 
 ## Project structure
 
-```
+```  
 Earthlink/
 ├── app/                      # Pages (App Router)
 │   ├── layout.tsx            # Root layout: fonts, Header, Footer, WhatsApp
