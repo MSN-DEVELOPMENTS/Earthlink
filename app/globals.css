@@ -83,7 +83,7 @@ h1, h2, h3, h4 {
   line-height: 1.08;
   letter-spacing: -.02em;
   color: var(--slate);
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 a {
@@ -257,6 +257,12 @@ header.nav.scrolled .nav-inner {
 nav.links {
   display: flex;
   gap: 34px;
+  align-items: center;
+}
+
+/* CTA shown only inside the mobile dropdown menu */
+.menu-cta {
+  display: none;
 }
 
 nav.links a {
@@ -345,7 +351,7 @@ nav.links a.active::after {
   line-height: 1;
   white-space: nowrap;
   letter-spacing: -.035em;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 
 .hero h1 .grad {
@@ -1529,6 +1535,7 @@ footer ul a:hover {
   .hero h1 {
     font-size: clamp(2.6rem, 8vw, 4rem);
     max-width: 18ch;
+    white-space: normal; /* let the headline wrap on phones — nowrap overflows */
   }
 
   .hero-media {
@@ -1550,21 +1557,69 @@ footer ul a:hover {
   nav.links.open {
     display: flex;
     position: absolute;
-    top: 62px;
-    left: 0;
-    right: 0;
+    top: calc(100% + 8px);
+    left: 16px;
+    right: 16px;
     flex-direction: column;
-    background: var(--paper);
-    padding: 24px 32px;
-    gap: 20px;
-    border-bottom: 1px solid var(--champagne);
-    box-shadow: 0 20px 40px rgba(21, 35, 43, .12);
+    align-items: stretch;
+    background: var(--white);
+    padding: 10px;
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 24px 48px rgba(21, 35, 43, .16);
   }
 
-  /* Larger tap targets in the menu */
+  /* Each item is a full-width row with comfortable tap area + hairline divider */
   nav.links.open a {
-    padding: 6px 0;
-    font-size: .95rem;
+    padding: 15px 14px;
+    font-size: .9rem;
+    border-radius: 9px;
+    transition: background .15s ease, color .15s ease;
+  }
+
+  nav.links.open a:not(.menu-cta) + a:not(.menu-cta) {
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+  }
+
+  nav.links.open a:not(.menu-cta):hover {
+    background: var(--paper-2);
+  }
+
+  /* Active item: tinted pill instead of the desktop underline */
+  nav.links.open a.active {
+    color: var(--champagne-ink);
+    background: var(--paper-2);
+    border-radius: 9px;
+  }
+
+  nav.links.open a.active::after {
+    display: none;
+  }
+
+  /* The CTA inside the menu */
+  nav.links.open .menu-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 15px;
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--slate);
+    border-radius: 10px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  nav.links.open .menu-cta:hover {
+    background: var(--champagne);
+    color: var(--slate);
+  }
+
+  nav.links.open .menu-cta + a {
+    border-top: 0;
   }
 
   .page-head {
@@ -1666,24 +1721,24 @@ footer ul a:hover {
     padding: 18px 4px;
   }
 
-  /* ---- Full-bleed, large imagery on phones (edge-to-edge for impact) ---- */
+  /* ---- Large imagery on phones, kept inside the gutters with soft corners ---- */
   .hero-media,
   .about-img {
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    border-radius: 0;
+    width: 100%;
+    margin-left: 0;
+    border-radius: 18px;
     aspect-ratio: 4 / 3;
   }
 
   /* ---- Communities: stop the side-scroll; stack full-width so no card is
-     ever cut off. Each tile goes edge-to-edge and large. ---- */
+     ever cut off. Each tile sits inside the gutter with rounded corners. ---- */
   #communities .comm-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 16px;
     overflow: visible;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 100%;
+    margin-left: 0;
     padding: 4px 0 0;
     scroll-snap-type: none;
   }
@@ -1692,7 +1747,7 @@ footer ul a:hover {
     flex: none;
     width: 100%;
     aspect-ratio: 4 / 3;
-    border-radius: 0;
+    border-radius: 18px;
     scroll-snap-align: none;
   }
 
