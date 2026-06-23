@@ -19,6 +19,24 @@ const FIELDS = `
 
 type SanityProperty = Omit<Property, 'img'> & { img?: SanityImageSource };
 
+/* Build a small photo gallery for the detail page. Bayut uploads a listing's
+   photos as consecutive IDs (…/thumbnails/<id>-800x600.jpeg), so we derive a
+   few neighbours of the main image. Any non-Bayut image just yields itself. */
+const BAYUT_THUMB = /(https:\/\/images\.bayut\.com\/thumbnails\/)(\d+)(-\d+x\d+\.jpe?g)/i;
+
+export function buildGallery(img: string, existing?: string[]): string[] {
+  if (existing && existing.length) return existing;
+  const m = img.match(BAYUT_THUMB);
+  if (!m) return img ? [img] : [];
+  const [, prefix, idStr, suffix] = m;
+  const id = Number(idStr);
+  return [0, 1, 2, 3].map((d) => `${prefix}${id + d}${suffix}`);
+}
+
+function withGallery(p: Property): Property {
+  return { ...p, gallery: buildGallery(p.img, p.gallery) };
+}
+
 function toProperty(doc: SanityProperty): Property {
   return {
     ...doc,
@@ -40,15 +58,19 @@ export async function getProperties(): Promise<Property[]> {
 }
 
 export async function getPropertyBySlug(slug: string): Promise<Property | undefined> {
-  if (!isSanityConfigured) return fallbackProperties.find((p) => p.slug === slug);
+  const fromFallback = () => {
+    const p = fallbackProperties.find((p) => p.slug === slug);
+    return p ? withGallery(p) : undefined;
+  };
+  if (!isSanityConfigured) return fromFallback();
   try {
     const doc = await client.fetch<SanityProperty | null>(
       `*[_type == "property" && slug.current == $slug][0]{${FIELDS}}`,
       { slug }
     );
-    return doc ? toProperty(doc) : fallbackProperties.find((p) => p.slug === slug);
+    return doc ? withGallery(toProperty(doc)) : fromFallback();
   } catch {
-    return fallbackProperties.find((p) => p.slug === slug);
+    return fromFallback();
   }
 }
 

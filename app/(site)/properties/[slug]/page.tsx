@@ -1,8 +1,8 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getPropertyBySlug, getPropertySlugs } from '@/lib/properties';
+import PropertyGallery from '@/components/PropertyGallery';
 
 export async function generateStaticParams() {
   const slugs = await getPropertySlugs();
@@ -41,16 +41,10 @@ export default async function PropertyPage({ params }: { params: { slug: string 
           <Link href="/properties" className="back-link">← Back to all properties</Link>
 
           <div className="property-detail">
-            <div className="detail-media reveal">
-              <Image
-                src={property.img}
-                alt={property.name}
-                fill
-                priority
-                sizes="(max-width: 860px) 100vw, 50vw"
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
+            <PropertyGallery
+              images={property.gallery && property.gallery.length ? property.gallery : [property.img]}
+              alt={property.name}
+            />
 
             <div className="reveal">
               <div className="prop-price">From {property.price}</div>

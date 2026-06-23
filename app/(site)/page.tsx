@@ -8,7 +8,17 @@ export default async function HomePage() {
   return (
     <>
       {/* ===== HERO ===== */}
-      <section className="hero" id="home">
+      <section className="hero hero--bg" id="home">
+        <div className="hero-bg" aria-hidden="true">
+          <Image
+            src="/home/hero-marina.jpg"
+            alt="Dubai Marina waterfront at golden hour"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <span className="pill reveal">
@@ -26,16 +36,6 @@ export default async function HomePage() {
               <Link href="/properties" className="btn btn-gold">Explore Properties</Link>
               <Link href="/contact" className="btn btn-glass">Talk to an Advisor</Link>
             </div>
-          </div>
-          <div className="hero-media reveal">
-            <Image
-              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=80"
-              alt="Dubai residential architecture"
-              fill
-              priority
-              sizes="(max-width: 860px) 100vw, 45vw"
-              style={{ objectFit: 'cover' }}
-            />
           </div>
         </div>
       </section>
@@ -68,8 +68,8 @@ export default async function HomePage() {
         <div className="wrap about-grid">
           <div className="about-img reveal">
             <Image
-              src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80"
-              alt="Earthlink advisor with clients"
+              src="/home/about-living-room.jpg"
+              alt="Luxury Dubai apartment interior with a Burj Khalifa view"
               fill
               sizes="(max-width: 860px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}

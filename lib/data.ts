@@ -113,6 +113,7 @@ export type Property = {
   ref: string;
   permit: string;
   img: string;
+  gallery?: string[]; // extra photos for the detail-page gallery
   description: string[];
   url?: string; // external listing (e.g. Bayut)
 };

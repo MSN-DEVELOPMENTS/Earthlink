@@ -28,44 +28,44 @@ const howWeWork = [
 export default function AboutPage() {
   return (
     <>
-      {/* ===== HEADER ===== */}
-      <section className="page-head">
+      {/* ===== HEADER — full-bleed Atlantis hero, copy centred on image ===== */}
+      <section className="ab-hero" id="about-hero">
+        <div className="ab-hero-bg" aria-hidden="true">
+          <Image
+            src="/about/hero-beach.jpg"
+            alt="Atlantis and the Palm Jumeirah coastline at sunset"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
         <div className="wrap">
-          <div className="ab-intro reveal">
-            <div>
-              <span className="eyebrow ab-ey">About Earthlink</span>
-              <h1>Built <span className="grad">Around You</span></h1>
-            </div>
-            <p className="ab-lead">
+          <div className="ab-hero-inner reveal">
+            <h1>Built <span className="grad">Around You</span></h1>
+            <p className="ab-hero-lead">
               Real estate works best when someone keeps your interests at the centre of every decision.
-              That is the idea Earthlink was built on. We guide families into homes and investors into
-              portfolios with the same level of care, whatever the size of the deal.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ===== SKYLINE BAND — the anchor ===== */}
-      <div className="ab-band">
-        <Image
-          src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2000&q=80"
-          alt="Dubai skyline at dusk"
-          fill
-          priority
-          sizes="100vw"
-          style={{ objectFit: 'cover' }}
-        />
-      </div>
-
       {/* ===== STORY + STATS ===== */}
       <section id="story">
         <div className="wrap">
           <div className="ab-split reveal">
-            <div className="ab-split-h">
+            <div className="ab-split-img">
+              <Image
+                src="/about/community-family.jpg"
+                alt="A family walking through a landscaped Dubai residential community"
+                fill
+                sizes="(max-width: 860px) 100vw, 46vw"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className="ab-split-text">
               <span className="eyebrow ab-ey">Backed by ERE</span>
               <h2 className="section-title">The strength behind every deal</h2>
-            </div>
-            <div className="ab-split-b">
               <p className="ab-body">
                 Behind every deal sits the strength of ERE, a wider real estate network with reach across
                 the UAE. That backing means deeper market access, stronger developer ties, and a team that
@@ -90,18 +90,11 @@ export default function AboutPage() {
       <section id="how-we-work">
         <div className="wrap">
           <div className="ab-work reveal">
-            <div className="ab-work-img">
-              <Image
-                src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=900&q=80"
-                alt="An Earthlink advisor reviewing options with clients"
-                fill
-                sizes="(max-width: 860px) 100vw, 42vw"
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <div className="ab-work-body">
+            <div className="ab-work-head">
               <span className="eyebrow ab-ey">How We Work</span>
               <h2 className="section-title">The way we look after you</h2>
+            </div>
+            <div className="ab-work-body">
               <dl className="ab-list">
                 {howWeWork.map((s) => (
                   <div className="ab-item" key={s.title}>
