@@ -15,7 +15,7 @@ Dubai real estate brokerage website, built with **Next.js (App Router)** and **T
 npm install
 npm run dev
 ```
-
+  
 Then open http://localhost:3000
 
 ## Project structure
