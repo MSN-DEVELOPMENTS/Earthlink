@@ -61,7 +61,6 @@ export default function InquiryForm() {
       <button
         type="submit"
         className="btn btn-gold"
-        style={{ width: '100%', justifyContent: 'center' }}
         disabled={status === 'sending'}
       >
         {status === 'sending' ? 'Sending…' : 'Send Message'}

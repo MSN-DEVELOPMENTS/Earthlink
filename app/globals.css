@@ -559,6 +559,13 @@ nav.links a.active::after {
   grid-template-columns: repeat(4, 1fr);
 }
 
+/* "What We Do" services grid — fluid columns so the cards reflow smoothly
+   across mobile, iPad, and desktop (1 → 2 → 3 → 4) with no hard breakpoint
+   jumps. min(100%, 240px) guarantees a single column on the narrowest phones. */
+#services .g-4 {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+
 .card {
   padding: 34px;
   position: relative;
