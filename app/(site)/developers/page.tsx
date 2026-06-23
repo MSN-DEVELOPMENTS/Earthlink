@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import type { Metadata } from 'next';
-import { getDevelopers, developersPage } from '@/lib/developers';
+import { getDevelopers, developersPage, developerStartingFrom } from '@/lib/developers';
 
 export const metadata: Metadata = {
   title: 'Developers',
@@ -26,28 +27,43 @@ export default function DevelopersPage() {
         </div>
       </section>
 
-      {/* ===== DEVELOPER CARDS ===== */}
-      <section style={{ paddingTop: 40 }}>
+      {/* ===== DEVELOPER ROWS ===== */}
+      <section id="dev-list">
         <div className="wrap">
-          <div className="grid g-4">
-            {developers.map((d, i) => (
-              <Link href={`/developers/${d.slug}`} className="glass card reveal" key={d.slug}>
-                <div className="ic">{String(i + 1).padStart(2, '0')}</div>
-                <h3>{d.name}</h3>
-                <p>{d.tagline}</p>
-                <span
-                  style={{
-                    display: 'inline-block',
-                    marginTop: 18,
-                    color: 'var(--champagne-ink)',
-                    fontWeight: 600,
-                    fontSize: '.9rem',
-                  }}
-                >
-                  View projects →
-                </span>
-              </Link>
-            ))}
+          <div className="dv-list">
+            {developers.map((d) => {
+              const from = developerStartingFrom(d);
+              return (
+                <Link href={`/developers/${d.slug}`} className="dv-row reveal" key={d.slug}>
+                  <div className="dv-media">
+                    <Image
+                      src={d.image}
+                      alt={`${d.name} — signature development`}
+                      fill
+                      sizes="(max-width: 860px) 100vw, 42vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                  <div className="dv-body">
+                    <h2 className="dv-name">{d.name}</h2>
+                    <p className="dv-tag">{d.tagline}</p>
+                    <div className="dv-meta">
+                      {from && (
+                        <span className="dv-stat">
+                          <span className="dv-stat-l">Starting from</span>
+                          {from}
+                        </span>
+                      )}
+                      <span className="dv-stat">
+                        <span className="dv-stat-l">Live projects</span>
+                        {d.projects.length}
+                      </span>
+                    </div>
+                    <span className="dv-go">View projects →</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
           <p className="table-note reveal">New launches arrive often. Ask us what fits your goals.</p>
         </div>
