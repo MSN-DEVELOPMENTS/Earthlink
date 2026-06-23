@@ -1699,13 +1699,20 @@ footer ul a:hover {
     font-size: 1.05rem;
   }
 
+  /* Phones: stack the two CTAs full-width and identical on every device
+     (iPhone Pro, Pro Max, all Androids) — no more side-by-side stretch that
+     made them look oversized and differ between screen sizes. */
   .hero-btns {
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .hero-btns .btn {
-    flex: 1;
+    width: 100%;
     justify-content: center;
+    font-size: .95rem;
+    padding: 15px 24px;
   }
 
   .about-img {
@@ -1791,15 +1798,9 @@ footer ul a:hover {
 }
 
 @media (max-width: 400px) {
-  .hero-btns {
-    flex-direction: column;
-  }
-
+  /* Smallest phones: trim the CTA padding a touch so the full-width buttons
+     stay comfortable (they already stack from the 620px rule above). */
   .hero-btns .btn {
-    width: 100%;
-  }
-
-  .btn {
-    padding: 13px 18px;
+    padding: 14px 18px;
   }
 }
