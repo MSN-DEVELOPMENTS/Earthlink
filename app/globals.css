@@ -950,80 +950,134 @@ nav.links a.active::after {
   max-width: 70ch;
 }
 
-/* 15. Contact form ------------------------------------------------------- */
+/* 15. Contact ------------------------------------------------------------ */
+#reach {
+  padding-top: 72px;
+}
+
 .c-grid {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 56px;
+  grid-template-columns: minmax(200px, .62fr) 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+/* Left: quiet contact list */
+.c-info {
+  padding-right: 64px;
 }
 
 .ib {
-  margin-bottom: 26px;
-  padding-bottom: 26px;
-  border-bottom: 1px solid var(--line);
+  margin-bottom: 30px;
+}
+
+.ib:last-child {
+  margin-bottom: 0;
 }
 
 .ib .l {
   font-size: .68rem;
-  letter-spacing: .14em;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--champagne-ink);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .ib a,
 .ib p {
-  font-size: 1.08rem;
+  font-size: 1.05rem;
   color: var(--slate);
+  transition: color .2s;
 }
 
-form {
-  padding: 0;
+.ib a:hover {
+  color: var(--champagne-ink);
+}
+
+.ib .c-fine {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Right: open, hairline-ruled form (no card) */
+.form-card {
+  border: none;
+  border-left: 1px solid var(--line);
+  border-radius: 0;
+  box-shadow: none;
+  padding: 4px 0 4px 64px;
+}
+
+.form-card .eyebrow {
+  margin-bottom: 26px;
 }
 
 .frow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: 28px;
 }
 
 .fg {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 18px;
+  gap: 7px;
+  margin-bottom: 26px;
 }
 
 .fg label {
-  font-size: .82rem;
-  font-weight: 500;
+  font-size: .66rem;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
   color: var(--muted);
 }
 
 .fg input,
 .fg select,
 .fg textarea {
-  background: var(--white);
-  border: 1px solid var(--line-2);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-2);
   color: var(--ink);
-  padding: 14px;
-  border-radius: 4px;
+  padding: 9px 0;
+  border-radius: 0;
   font-family: var(--body);
-  font-size: .96rem;
+  font-size: 1rem;
   outline: none;
   transition: border-color .2s;
+}
+
+.fg input::placeholder,
+.fg textarea::placeholder {
+  color: #a7a39a;
+}
+
+.fg select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7664' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 24px;
+  cursor: pointer;
 }
 
 .fg input:focus,
 .fg select:focus,
 .fg textarea:focus {
-  border-color: var(--champagne);
+  border-bottom-color: var(--champagne);
 }
 
 .fg textarea {
-  min-height: 110px;
+  min-height: 96px;
   resize: vertical;
+}
+
+.form-card .btn-gold {
+  margin-top: 6px;
 }
 
 /* 16. Footer ------------------------------------------------------------- */
@@ -1169,6 +1223,200 @@ footer ul a:hover {
   background: var(--white);
 }
 
+/* About — editorial spread (asymmetric rows + index-style lists) --------- */
+.ab-ey {
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* Hero: headline left, intro paragraph held in the right column */
+.ab-intro {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 56px;
+  align-items: end;
+}
+
+.ab-lead {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 46ch;
+  padding-bottom: 8px;
+}
+
+/* Anchor: full-bleed Dubai skyline band */
+.ab-band {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 44vh, 540px);
+  overflow: hidden;
+  background: var(--slate);
+}
+
+.ab-band img {
+  transform: scale(1.02);
+}
+
+.ab-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(31, 54, 67, .18), rgba(31, 54, 67, .06));
+  pointer-events: none;
+}
+
+/* Section rows: label/heading on the left, body on the right */
+#story,
+#how-we-work {
+  background: var(--white);
+}
+
+#story {
+  padding-top: 92px;
+}
+
+.ab-split {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+.ab-split-h .section-title {
+  margin-top: 14px;
+}
+
+.ab-body {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 56ch;
+}
+
+/* Stats: an open band ruled in slate — no boxes */
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 64px;
+  border-top: 2px solid var(--slate);
+}
+
+.ab-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 0 4px;
+}
+
+.ab-stat + .ab-stat {
+  padding-left: 40px;
+  border-left: 1px solid var(--line-2);
+}
+
+.ab-stat-n {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.ab-stat-l {
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--champagne-ink);
+  font-weight: 600;
+}
+
+/* How We Work: photo paired with the principles list */
+.ab-work {
+  display: grid;
+  grid-template-columns: minmax(0, .82fr) 1fr;
+  gap: 64px;
+  align-items: stretch;
+}
+
+.ab-work-img {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 420px;
+  background: var(--paper-2);
+}
+
+.ab-work-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 54, 67, .08);
+  pointer-events: none;
+}
+
+.ab-work-body .section-title {
+  margin-top: 14px;
+}
+
+.ab-work-body .ab-list {
+  margin-top: 36px;
+}
+
+/* Principles: index-style list, term + definition, hairline-ruled */
+.ab-list {
+  border-top: 2px solid var(--slate);
+}
+
+.ab-item {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.ab-item dt {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: -.01em;
+}
+
+.ab-item dd {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 52ch;
+}
+
+/* Promise: centred closing beat — no empty half */
+#promise {
+  background: var(--paper);
+  border-top: 1px solid var(--line-2);
+}
+
+.ab-promise {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ab-quote {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  color: var(--slate);
+  line-height: 1.18;
+  max-width: 20ch;
+  margin: 16px auto 0;
+  text-wrap: balance;
+}
+
+.ab-promise-sub {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 48ch;
+  margin: 22px auto 30px;
+}
+
 /* Generic prose */
 .prose {
   max-width: 760px;
@@ -1307,17 +1555,6 @@ footer ul a:hover {
   grid-template-columns: 1fr 1fr;
   gap: 28px;
   margin-top: 30px;
-}
-
-.form-card {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 30px;
-}
-
-.form-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
 }
 
 /* Floating-shadow depth applied to the blog image cards too */
@@ -1519,10 +1756,74 @@ footer ul a:hover {
 }
 
 @media (max-width: 860px) {
-  .about-grid,
-  .c-grid {
+  .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
+  }
+
+  .c-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .c-info {
+    padding-right: 0;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .form-card {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  /* About — collapse the editorial spread to one column */
+  .ab-intro,
+  .ab-split,
+  .ab-work {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .ab-work-img {
+    min-height: 280px;
+    order: -1;
+  }
+
+  .ab-work-body .ab-list {
+    margin-top: 28px;
+  }
+
+  .ab-lead,
+  .ab-body {
+    font-size: 1.05rem;
+  }
+
+  .ab-stats {
+    grid-template-columns: 1fr;
+    margin-top: 44px;
+  }
+
+  .ab-stat {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  .ab-stat + .ab-stat {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .ab-stat-n {
+    min-width: 90px;
+  }
+
+  .ab-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .g-3 {

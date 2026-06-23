@@ -19,6 +19,8 @@ export type Developer = {
   name: string;
   /** One-line tagline shown on the listing card. */
   tagline: string;
+  /** Signature project / community image for the listing tile. */
+  image: string;
   /** Developer's main brochures / launches page (opens in a new tab). */
   brochuresUrl: string;
   projects: DeveloperProject[];
@@ -39,6 +41,7 @@ export const developers: Developer[] = [
     slug: 'emaar',
     name: 'Emaar Properties',
     tagline: 'Dubai’s master-developer behind Downtown, Dubai Hills and the city’s landmark communities.',
+    image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://properties.emaar.com/en/latest-launches/',
     projects: [
       {
@@ -77,6 +80,7 @@ export const developers: Developer[] = [
     slug: 'damac',
     name: 'DAMAC Properties',
     tagline: 'Luxury living through signature branded residences and resort-style communities.',
+    image: 'https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://www.damacproperties.com/en/projects/',
     projects: [
       {
@@ -115,6 +119,7 @@ export const developers: Developer[] = [
     slug: 'sobha',
     name: 'Sobha Realty',
     tagline: 'Backward-integrated craftsmanship and waterfront communities built to last.',
+    image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://sobharealty.com/sobha-communities',
     projects: [
       {
@@ -153,6 +158,7 @@ export const developers: Developer[] = [
     slug: 'binghatti',
     name: 'Binghatti',
     tagline: 'Distinctive architecture and fast-moving branded launches across Dubai.',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://www.binghatti.com/en/projects',
     projects: [
       {
@@ -191,6 +197,26 @@ export const developers: Developer[] = [
 
 export function getDevelopers(): Developer[] {
   return developers;
+}
+
+/** Lowest published "From AED …" across a developer's projects, formatted
+    without the leading "From" (e.g. "AED 775K"). Null if all are on request. */
+export function developerStartingFrom(d: Developer): string | null {
+  const toNumber = (price: string): number | null => {
+    const m = price.match(/AED\s+([\d.]+)\s*([MK])/i);
+    if (!m) return null;
+    const value = parseFloat(m[1]);
+    return m[2].toUpperCase() === 'M' ? value * 1_000_000 : value * 1_000;
+  };
+  let lowest: { value: number; label: string } | null = null;
+  for (const p of d.projects) {
+    const value = toNumber(p.price);
+    if (value === null) continue;
+    if (!lowest || value < lowest.value) {
+      lowest = { value, label: p.price.replace(/^From\s+/i, '') };
+    }
+  }
+  return lowest ? lowest.label : null;
 }
 
 export function getDeveloperBySlug(slug: string): Developer | undefined {

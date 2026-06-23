@@ -23,37 +23,37 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===== DETAILS + FORMS ===== */}
-      <section id="reach" style={{ paddingTop: 30 }}>
+      {/* ===== DETAILS + FORM ===== */}
+      <section id="reach">
         <div className="wrap">
           <div className="c-grid">
             {/* Contact details */}
-            <div className="reveal">
+            <aside className="c-info reveal">
               <div className="ib">
-                <div className="l">Call Us</div>
+                <div className="l">Call</div>
                 <a href={contact.phoneHref}>{contact.phone}</a>
               </div>
               <div className="ib">
-                <div className="l">Email Us</div>
+                <div className="l">Email</div>
                 <a href={`mailto:${contact.email}`}>{contact.email}</a>
               </div>
               <div className="ib">
-                <div className="l">Visit Us</div>
+                <div className="l">Visit</div>
                 <p>{contact.location}</p>
               </div>
               <div className="ib">
                 <div className="l">Connect</div>
-                <p className="muted" style={{ fontSize: '.95rem' }}>{contact.socials.join(' · ')}</p>
+                <p>{contact.socials.join(' · ')}</p>
               </div>
               <div className="ib">
                 <div className="l">Licensed</div>
-                <p className="muted" style={{ fontSize: '.95rem' }}>
+                <p className="c-fine">
                   {contact.licence.regulator}
                   <br />
                   {contact.licence.orn} · {contact.licence.ded}
                 </p>
               </div>
-            </div>
+            </aside>
 
             {/* Form */}
             <div className="reveal">

@@ -24,8 +24,8 @@ export default function InquiryForm() {
   };
 
   return (
-    <form className="glass form-card" onSubmit={handleSubmit}>
-      <h3>Send Us a Message</h3>
+    <form className="form-card" onSubmit={handleSubmit}>
+      <span className="eyebrow">Send a message</span>
 
       <div className="frow">
         <div className="fg">
