@@ -1,20 +1,4 @@
 import type { Metadata } from 'next';
-<<<<<<< HEAD
-import { Montserrat } from 'next/font/google';
-=======
-<<<<<<< Updated upstream
-import { Inter } from 'next/font/google';
->>>>>>> staging
-import './globals.css';
-
-// Single typeface across the site — Montserrat, with Light (300) as the default weight.
-const montserrat = Montserrat({
-  subsets: ['latin'],
-<<<<<<< HEAD
-  weight: ['300', '400', '500', '600', '700'],
-=======
-  weight: ['300', '400', '500', '600', '700', '800'],
-=======
 import { Lato } from 'next/font/google';
 import './globals.css';
 
@@ -23,8 +7,6 @@ import './globals.css';
 const lato = Lato({
   subsets: ['latin'],
   weight: ['300', '400', '700', '900'],
->>>>>>> Stashed changes
->>>>>>> staging
   style: ['normal', 'italic'],
   variable: '--font-main',
   display: 'swap',
@@ -76,15 +58,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-<<<<<<< HEAD
-    <html lang="en" className={montserrat.variable} suppressHydrationWarning>
-=======
-<<<<<<< Updated upstream
-    <html lang="en" className={inter.variable} suppressHydrationWarning>
-=======
     <html lang="en" className={lato.variable} suppressHydrationWarning>
->>>>>>> Stashed changes
->>>>>>> staging
       <body>{children}</body>
     </html>
   );

@@ -23,18 +23,8 @@ export default function ContactPage() {
         </div>
       </section>
 
-<<<<<<< HEAD
-      {/* ===== DETAILS + FORM ===== */}
-      <section id="reach">
-=======
-<<<<<<< Updated upstream
-      {/* ===== DETAILS + FORMS ===== */}
-      <section id="reach" style={{ paddingTop: 30 }}>
-=======
       {/* ===== DETAILS + FORM ===== */}
       <section id="reach" className="section-light">
->>>>>>> Stashed changes
->>>>>>> staging
         <div className="wrap">
           <div className="c-grid">
             {/* Contact details */}

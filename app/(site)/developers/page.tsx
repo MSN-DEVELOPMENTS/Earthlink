@@ -27,18 +27,8 @@ export default function DevelopersPage() {
         </div>
       </section>
 
-<<<<<<< HEAD
-      {/* ===== DEVELOPER ROWS ===== */}
-      <section id="dev-list">
-=======
-<<<<<<< Updated upstream
-      {/* ===== DEVELOPER CARDS ===== */}
-      <section style={{ paddingTop: 40 }}>
-=======
       {/* ===== DEVELOPER ROWS ===== */}
       <section id="dev-list" className="section-light">
->>>>>>> Stashed changes
->>>>>>> staging
         <div className="wrap">
           <div className="dv-list">
             {developers.map((d) => {

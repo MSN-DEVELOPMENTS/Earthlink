@@ -28,34 +28,18 @@ const howWeWork = [
 export default function AboutPage() {
   return (
     <>
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
-      {/* ===== HEADER ===== */}
-      <section className="page-head">
-=======
->>>>>>> staging
       {/* ===== HEADER — full-bleed Atlantis hero, copy centred on image ===== */}
       <section className="ab-hero" id="about-hero">
         <div className="ab-hero-bg" aria-hidden="true">
           <Image
-<<<<<<< HEAD
-            src="/about/hero-beach.jpg"
-            alt="Atlantis and the Palm Jumeirah coastline at sunset"
-=======
             src="/about/hero-desert.jpg"
             alt="Sunset over the Dubai desert dunes"
->>>>>>> staging
             fill
             priority
             sizes="100vw"
             style={{ objectFit: 'cover' }}
           />
         </div>
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
->>>>>>> staging
         <div className="wrap">
           <div className="ab-hero-inner reveal">
             <h1>Built <span className="grad">Around You</span></h1>
@@ -67,15 +51,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== STORY + STATS ===== */}
-<<<<<<< HEAD
-      <section id="story">
-=======
-<<<<<<< Updated upstream
-      <section id="story" style={{ paddingTop: 40 }}>
-=======
       <section id="story" className="section-light">
->>>>>>> Stashed changes
->>>>>>> staging
         <div className="wrap">
           <div className="ab-split reveal">
             <div className="ab-split-img">

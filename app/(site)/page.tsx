@@ -9,26 +9,8 @@ export default async function HomePage() {
   return (
     <>
       {/* ===== HERO ===== */}
-<<<<<<< HEAD
-      <section className="hero hero--bg" id="home">
-        <div className="hero-bg" aria-hidden="true">
-          <Image
-            src="/home/hero-marina.jpg"
-            alt="Dubai Marina waterfront at golden hour"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-          />
-        </div>
-=======
-<<<<<<< Updated upstream
-      <section className="hero" id="home">
-=======
       <section className="hero hero--bg" id="home">
         <HeroSlideshow />
->>>>>>> Stashed changes
->>>>>>> staging
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <span className="pill reveal">
