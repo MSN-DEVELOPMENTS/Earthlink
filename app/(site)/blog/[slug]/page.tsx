@@ -31,7 +31,7 @@ export default function PostPage({ params }: { params: { slug: string } }) {
         </div>
       </section>
 
-      <section style={{ paddingTop: 20 }}>
+      <section className="section-light" style={{ paddingTop: 20 }}>
         <div className="wrap">
           <Link href="/blog" className="back-link">← Back to the journal</Link>
           <div className="about-img reveal" style={{ aspectRatio: '16 / 8', marginBottom: 36 }}>

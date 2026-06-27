@@ -36,7 +36,7 @@ export default async function PropertyPage({ params }: { params: { slug: string 
       </section>
 
       {/* ===== DETAIL ===== */}
-      <section style={{ paddingTop: 44 }}>
+      <section className="section-light" style={{ paddingTop: 44 }}>
         <div className="wrap">
           <Link href="/properties" className="back-link">← Back to all properties</Link>
 
