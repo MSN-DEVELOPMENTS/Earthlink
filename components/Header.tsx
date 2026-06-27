@@ -27,8 +27,8 @@ export default function Header() {
     <header className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
       <div className="wrap">
         <div className="nav-inner">
-          <Link href="/" className="logo">
-            <span className="mark">E</span>Earthlink
+          <Link href="/" className="logo" aria-label="Earthlink Real Estate — home">
+            <img src="/logo.png" alt="Earthlink Real Estate" className="logo-img" />
           </Link>
 
           <nav className={`links${open ? ' open' : ''}`} id="navlinks">

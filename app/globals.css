@@ -16,22 +16,48 @@
    ========================================================================== */
 
 /* 1. Tokens -------------------------------------------------------------- */
+/* Black & champagne-gold luxury theme. The palette is intentionally dark:
+   near-black surfaces, warm off-white text, gold used sparingly as the accent.
+   NOTE on legacy token roles — the original light theme overloaded --slate and
+   --white as BOTH text and surface. In this dark theme they carry their TEXT
+   role (now light); the few places that used them as a *surface* are given
+   explicit dark values inline. */
 :root {
-  --ink: #15232b;
-  --slate: #1f3643;
-  --slate-2: #2c4a5a;
-  --champagne: #c3a97c;
-  --champagne-ink: #8A7664;       /* accent on light */
-  --paper: #f4f1e9;
-  --paper-2: #ece6da;
-  --white: #ffffff;
-  --line: #e4ddcf;
-  --line-2: #d3c9b5;
-  --muted: #5f686d; /* AA contrast (~5:1) on paper background */
+  /* Text (light, warm off-white) */
+  --ink: #ebe5da;                 /* primary body text */
+  --slate: #f2ece1;               /* headings / strong text */
+  --slate-2: #cfc8ba;
+  --muted: #9b958b;               /* warm grey — AA on near-black */
+  --ondark: #f4f0e8;              /* explicit light for text over photos */
 
+<<<<<<< Updated upstream
   --display: var(--font-main), 'Inter', system-ui, sans-serif;
   --body: var(--font-main), 'Inter', system-ui, sans-serif;
   --mono: var(--font-main), 'Inter', system-ui, sans-serif;
+=======
+  /* Gold accent — now the star, kept scarce */
+  --champagne: #c3a97c;
+  --champagne-ink: #d9bf94;       /* brighter gold for accents on dark */
+
+  /* Surfaces (near-black → charcoal) */
+  --bg: #0c0e0f;
+  --paper: #0c0e0f;               /* page background */
+  --paper-2: #1b1f22;             /* secondary surface */
+  --white: #14171a;              /* card surface */
+  --charcoal: #14171a;
+  --black: #0c0e0f;
+
+  /* Hairlines — gold-tinted, translucent */
+  --line: rgba(195, 169, 124, .16);
+  --line-2: rgba(195, 169, 124, .30);
+
+  /* Headings — Optima (as on emaar.com) where the device has it, with a
+     humanist-sans fallback chain; Lato as the final web-safe fallback. */
+  --display: 'Optima', 'Optima nova', 'Candara', 'Gill Sans', 'Gill Sans MT', var(--font-main), 'Lato', system-ui, sans-serif;
+  /* Body / UI — Lato, matching emaar.com */
+  --body: var(--font-main), 'Lato', system-ui, sans-serif;
+  --mono: var(--font-main), 'Lato', system-ui, sans-serif;
+>>>>>>> Stashed changes
 
   --radius: 4px;
   --maxw: 1440px;
@@ -61,7 +87,7 @@ body {
 
 ::selection {
   background: var(--champagne);
-  color: var(--slate);
+  color: var(--black);
 }
 
 a:focus-visible,
@@ -79,11 +105,11 @@ summary:focus-visible {
 /* 3. Typography & layout helpers ----------------------------------------- */
 h1, h2, h3, h4 {
   font-family: var(--display);
-  font-weight: 400;
+  font-weight: 500; /* Cormorant reads best with a little body */
   line-height: 1.08;
-  letter-spacing: -.02em;
+  letter-spacing: 0;
   color: var(--slate);
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 a {
@@ -102,6 +128,27 @@ a {
 section {
   padding: 110px 0;
   position: relative;
+}
+
+/* Cream (light) section — re-maps the theme tokens locally so a content
+   section reads as warm ivory with charcoal text and white cards, while the
+   rest of the site stays black & gold. Creates the dark → cream → dark rhythm. */
+.section-light {
+  --ink: #261f18;          /* body text */
+  --slate: #211a13;        /* headings / strong text */
+  --slate-2: #3a3026;
+  --muted: #5f584f;        /* muted text (AA on cream) */
+  --champagne-ink: #8a7350;/* darker gold accent for light bg */
+  --paper: #f4f0e8;        /* the cream surface */
+  --paper-2: #ebe5d9;
+  --white: #ffffff;        /* cards become white */
+  --line: #e6ddcd;         /* warm hairlines */
+  --line-2: #d8ccb6;
+  --ondark: #211a13;
+  /* !important so this opt-in class always wins over ID-level section
+     background rules (e.g. #story, #dev-list) on inner pages. */
+  background: var(--paper) !important;
+  color: var(--ink);
 }
 
 /* Editorial label — uppercase, letterspaced, with a champagne tick */
@@ -173,13 +220,13 @@ section {
 }
 
 .btn-gold {
-  background: var(--slate);
-  color: var(--white);
+  background: var(--champagne);
+  color: var(--black);
 }
 
 .btn-gold:hover {
-  background: var(--champagne);
-  color: var(--slate);
+  background: #d8bd8e;
+  color: var(--black);
 }
 
 .btn-glass {
@@ -189,9 +236,9 @@ section {
 }
 
 .btn-glass:hover {
-  border-color: var(--slate);
-  background: var(--slate);
-  color: var(--white);
+  border-color: var(--champagne);
+  background: rgba(195, 169, 124, .12);
+  color: var(--ondark);
 }
 
 .btn:hover {
@@ -207,13 +254,16 @@ header.nav {
   z-index: 1000;
   transition: .3s;
   padding: 18px 0;
+  /* Soft top fade instead of a solid band — keeps logo/links legible over
+     bright slides while the header reads as transparent. */
+  background: linear-gradient(180deg, rgba(8, 10, 11, .55) 0%, rgba(8, 10, 11, .16) 55%, transparent 100%);
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 54px;
+  height: 72px;
   padding: 0 8px;
   border-bottom: 1px solid transparent;
   transition: .3s;
@@ -224,9 +274,9 @@ header.nav.scrolled {
 }
 
 header.nav.scrolled .nav-inner {
-  background: rgba(244, 241, 233, .9);
-  backdrop-filter: blur(12px);
-  border-bottom-color: var(--champagne);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
   padding: 0 18px;
 }
 
@@ -245,13 +295,29 @@ header.nav.scrolled .nav-inner {
   width: 34px;
   height: 34px;
   border-radius: 9px;
-  background: var(--slate);
+  background: var(--charcoal);
   display: grid;
   place-items: center;
   color: var(--champagne);
   font-weight: 700;
   font-family: var(--display);
   font-size: 1.05rem;
+}
+
+/* ERE square mark — white, sits on the dark header / footer */
+.logo-img {
+  display: block;
+  height: 72px;
+  width: auto;
+}
+
+header.nav.scrolled .logo-img {
+  height: 58px;
+  transition: height .3s ease;
+}
+
+.logo-img--footer {
+  height: 88px;
 }
 
 nav.links {
@@ -402,7 +468,7 @@ nav.links a.active::after {
   left: 24px;
   bottom: 22px;
   z-index: 3;
-  color: var(--white);
+  color: var(--ondark);
   font-size: .72rem;
   letter-spacing: .22em;
   text-transform: uppercase;
@@ -423,9 +489,118 @@ nav.links a.active::after {
   }
 }
 
+<<<<<<< Updated upstream
+=======
+/* Full-bleed background hero — Marina photo behind, copy written on top --- */
+.hero--bg {
+  position: relative;
+  background: var(--black);
+  border-bottom: none;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* The photo fills the whole section, both sides */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero-bg img {
+  object-position: 70% center; /* keep marina/skyline in view, copy sits over the calmer left */
+}
+
+/* Auto-rotating hero slideshow — slides cross-fade into one another */
+.hero-slideshow {
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s ease-in-out;
+  will-change: opacity;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero-slideshow .hero-slide img {
+  object-position: center; /* the new shots read best centred */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
+
+/* Readability scrim: darker on the left where the copy sits, image stays
+   visible on the right. A second top→bottom wash anchors the whole band. */
+.hero--bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(18, 31, 39, .82) 0%, rgba(18, 31, 39, .58) 42%, rgba(18, 31, 39, .18) 72%, rgba(18, 31, 39, .28) 100%),
+    linear-gradient(180deg, rgba(18, 31, 39, .35) 0%, transparent 28%, rgba(18, 31, 39, .45) 100%);
+}
+
+/* The copy column now sits inside the band, vertically centred */
+.hero--bg .hero-grid {
+  grid-template-columns: 1fr;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 168px;
+  padding-bottom: 96px;
+}
+
+.hero--bg .hero-copy {
+  max-width: 640px;
+}
+
+/* Light type for legibility over the photo */
+.hero--bg .pill {
+  color: var(--champagne);
+}
+
+.hero--bg h1 {
+  color: var(--ondark);
+  text-shadow: 0 2px 24px rgba(10, 18, 23, .35);
+}
+
+.hero--bg h1 .grad {
+  color: var(--champagne);
+}
+
+.hero--bg p {
+  color: rgba(255, 255, 255, .9);
+  max-width: 480px;
+}
+
+/* Glass CTA needs light text/border to read on the photo */
+.hero--bg .btn-glass {
+  border-color: rgba(255, 255, 255, .4);
+  color: var(--ondark);
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(2px);
+}
+
+.hero--bg .btn-glass:hover {
+  background: var(--champagne);
+  border-color: var(--champagne);
+  color: var(--black);
+}
+
+>>>>>>> Stashed changes
 /* 7. Property index — the signature -------------------------------------- */
 .index {
-  border-top: 2px solid var(--slate);
+  border-top: 1px solid var(--line-2);
 }
 
 .index .row {
@@ -520,6 +695,131 @@ nav.links a.active::after {
 
 .index .row:hover .go {
   transform: translateX(6px);
+}
+
+/* 7b. Property cards — featured grid ------------------------------------- */
+.pcards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.pcard {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+
+.pcard:hover {
+  transform: translateY(-6px);
+  border-color: var(--champagne);
+  box-shadow: 0 18px 40px rgba(21, 35, 43, .16);
+}
+
+.pcard-media {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.pcard-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.pcard:hover .pcard-media img {
+  transform: scale(1.05);
+}
+
+.pcard-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: rgba(31, 54, 67, .82);
+  color: var(--ondark);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  font-variant-numeric: tabular-nums;
+  backdrop-filter: blur(4px);
+}
+
+.pcard-body {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 20px 22px 22px;
+}
+
+.pcard-nm {
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: -.01em;
+  line-height: 1.25;
+  transition: color .25s ease;
+}
+
+.pcard:hover .pcard-nm {
+  color: var(--champagne-ink);
+}
+
+.pcard-place {
+  font-size: .85rem;
+  color: var(--muted);
+  letter-spacing: .01em;
+}
+
+.pcard-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.pcard-price {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.pcard-go {
+  color: var(--champagne);
+  font-size: 1.2rem;
+  transition: transform .25s ease;
+}
+
+.pcard:hover .pcard-go {
+  transform: translateX(6px);
+}
+
+@media (max-width: 1024px) {
+  .pcards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .pcards {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* 8. Cards (services) ---------------------------------------------------- */
@@ -768,7 +1068,7 @@ nav.links a.active::after {
 
 .comm h3 {
   font-size: 1.35rem;
-  color: var(--white);
+  color: var(--ondark);
 }
 
 .comm span {
@@ -885,10 +1185,10 @@ nav.links a.active::after {
   width: 42px;
   height: 42px;
   border-radius: 9px;
-  background: var(--slate);
+  background: var(--champagne);
   display: grid;
   place-items: center;
-  color: var(--champagne);
+  color: var(--black);
   font-weight: 600;
   font-size: .85rem;
 }
@@ -1029,16 +1329,129 @@ form {
 /* 16. Footer ------------------------------------------------------------- */
 footer {
   padding: 84px 0 32px;
-  background: var(--slate);
-  color: #c3ccd0;
-  border-top: 2px solid var(--champagne);
+  background: #090b0c;
+  color: #b8b1a4;
+  border-top: 1px solid var(--line-2);
 }
 
 .foot {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 52px;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 56px;
+  align-items: start;
+  margin-bottom: 48px;
+}
+
+/* Centre brand mark */
+.foot-brand {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 6px;
+}
+
+.foot-logo {
+  width: 132px;
+  height: auto;
+  display: block;
+}
+
+/* Spacing between stacked label groups in a footer column */
+.foot-h2-mt {
+  margin-top: 30px;
+}
+
+/* Social icon row */
+.foot-social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.foot-social a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  display: grid;
+  place-items: center;
+  color: #b8b1a4;
+  transition: color .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.foot-social a:hover {
+  color: var(--champagne);
+  border-color: var(--champagne);
+  background: rgba(195, 169, 124, .1);
+}
+
+.foot-social svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
+/* Newsletter — underlined field + gold submit */
+.foot-news {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 340px;
+  border-bottom: 1px solid var(--line-2);
+  padding-bottom: 9px;
+  margin: 14px 0 6px;
+}
+
+.foot-news input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: #ece6da;
+  font-family: var(--body);
+  font-size: .92rem;
+}
+
+.foot-news input::placeholder {
+  color: #6f6a62;
+}
+
+.foot-news button {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  color: var(--champagne);
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .2s ease;
+}
+
+.foot-news button:hover {
+  color: #d8bd8e;
+}
+
+/* Right-column text lines (address / contact) */
+.foot-line {
+  font-size: .92rem;
+  color: #b8b1a4;
+  margin-bottom: 6px;
+}
+
+.foot-line a {
+  color: #b8b1a4;
+  transition: color .2s ease;
+}
+
+.foot-line a:hover {
+  color: var(--champagne);
+}
+
+.foot-cta {
+  margin-top: 26px;
 }
 
 /* .muted is tuned for light backgrounds; lighten it on the dark footer. */
@@ -1047,12 +1460,12 @@ footer .muted {
 }
 
 footer .logo {
-  color: var(--white);
+  color: var(--ondark);
 }
 
 footer .logo .mark {
   background: var(--champagne);
-  color: var(--slate);
+  color: var(--black);
 }
 
 footer h2 {
@@ -1082,15 +1495,25 @@ footer ul a:hover {
 }
 
 .fbot {
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  padding-top: 26px;
+  border-top: 1px solid var(--line);
+  padding-top: 28px;
   display: flex;
-  justify-content: space-between;
-  color: #9ba7ac;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #8b857c;
   font-size: .76rem;
-  letter-spacing: .03em;
-  flex-wrap: wrap;
-  gap: 10px;
+  letter-spacing: .04em;
+  gap: 9px;
+}
+
+.fbot a {
+  color: #b8b1a4;
+  transition: color .2s ease;
+}
+
+.fbot a:hover {
+  color: var(--champagne);
 }
 
 /* 17. Floating WhatsApp button ------------------------------------------- */
@@ -1101,17 +1524,17 @@ footer ul a:hover {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: #25d366;
+  background: var(--champagne);
   display: grid;
   place-items: center;
   z-index: 1100;
-  box-shadow: 0 10px 30px rgba(37, 211, 102, .4);
+  box-shadow: 0 10px 30px rgba(195, 169, 124, .42);
 }
 
 .wa svg {
   width: 28px;
   height: 28px;
-  fill: #fff;
+  fill: var(--black);
 }
 
 /* 18. Scroll-reveal ------------------------------------------------------ */
@@ -1165,10 +1588,379 @@ footer ul a:hover {
   font-size: 1.1rem;
 }
 
-.page-head + section {
+.page-head + section:not(.section-light) {
   background: var(--white);
 }
 
+<<<<<<< Updated upstream
+=======
+/* About — editorial spread (asymmetric rows + index-style lists) --------- */
+.ab-ey {
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* About hero — full-bleed Atlantis photo, title + intro centred on top ---- */
+.ab-hero {
+  position: relative;
+  background: var(--black);
+  overflow: hidden;
+  isolation: isolate;
+  text-align: center;
+}
+
+.ab-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.ab-hero-bg img {
+  object-position: center;
+}
+
+/* Scrim so the centred copy stays readable over the sunset */
+.ab-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(18, 31, 39, .58) 0%, rgba(18, 31, 39, .30) 42%, rgba(18, 31, 39, .66) 100%);
+}
+
+.ab-hero-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 0 64px;
+  text-align: center;
+}
+
+.ab-hero h1 {
+  font-size: clamp(2.4rem, 5.4vw, 4rem);
+  font-weight: 400;
+  color: var(--ondark);
+  max-width: none;
+  letter-spacing: -.02em;
+  line-height: 1.05;
+  text-shadow: 0 2px 30px rgba(10, 18, 23, .45);
+}
+
+.ab-hero .grad {
+  color: var(--champagne);
+  font-style: normal;
+}
+
+.ab-hero-lead {
+  color: rgba(255, 255, 255, .9);
+  max-width: 600px;
+  margin: 26px auto 0;
+  font-size: 1.12rem;
+  line-height: 1.65;
+}
+
+/* Hero: headline left, intro paragraph held in the right column */
+.ab-intro {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 56px;
+  align-items: end;
+}
+
+.ab-lead {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 46ch;
+  padding-bottom: 8px;
+}
+
+/* Anchor: full-bleed Dubai skyline band */
+.ab-band {
+  position: relative;
+  width: 100%;
+  height: clamp(280px, 44vh, 540px);
+  overflow: hidden;
+  background: var(--black);
+}
+
+.ab-band img {
+  transform: scale(1.02);
+}
+
+.ab-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(31, 54, 67, .18), rgba(31, 54, 67, .06));
+  pointer-events: none;
+}
+
+/* Section rows: label/heading on the left, body on the right */
+#story,
+#how-we-work {
+  background: var(--white);
+}
+
+#story {
+  padding-top: 92px;
+}
+
+.ab-split {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left column: the community photo — rounded card that floats up + down */
+.ab-split-img {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--paper-2);
+  will-change: transform;
+  animation: float-card 6s ease-in-out infinite;
+}
+
+.ab-split-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 54, 67, .06);
+  pointer-events: none;
+}
+
+/* Right column: heading + body */
+.ab-split-text .section-title {
+  margin-top: 14px;
+}
+
+.ab-body {
+  color: var(--muted);
+  font-size: 1.12rem;
+  max-width: 56ch;
+  margin-top: 22px;
+}
+
+/* Stats: an open band ruled in slate — no boxes */
+.ab-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 64px;
+  border-top: 1px solid var(--line-2);
+}
+
+.ab-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px 0 4px;
+}
+
+.ab-stat + .ab-stat {
+  padding-left: 40px;
+  border-left: 1px solid var(--line-2);
+}
+
+.ab-stat-n {
+  font-size: clamp(2.4rem, 4vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -.04em;
+  color: var(--slate);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.ab-stat-l {
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--champagne-ink);
+  font-weight: 600;
+}
+
+/* How We Work: label/heading on the left, principles list on the right */
+.ab-work {
+  display: grid;
+  grid-template-columns: minmax(0, .72fr) 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.ab-work-head .section-title {
+  margin-top: 14px;
+}
+
+.ab-work-body .ab-list {
+  margin-top: 8px;
+}
+
+/* Principles: index-style list, term + definition, hairline-ruled */
+.ab-list {
+  border-top: 1px solid var(--line-2);
+}
+
+.ab-item {
+  display: grid;
+  grid-template-columns: minmax(0, 200px) 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.ab-item dt {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: -.01em;
+}
+
+.ab-item dd {
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 52ch;
+}
+
+/* Promise: centred closing beat — no empty half */
+#promise {
+  background: var(--paper);
+  border-top: 1px solid var(--line-2);
+}
+
+.ab-promise {
+  max-width: 740px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.ab-quote {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  font-weight: 400;
+  letter-spacing: -.03em;
+  color: var(--slate);
+  line-height: 1.18;
+  max-width: 20ch;
+  margin: 16px auto 0;
+  text-wrap: balance;
+}
+
+.ab-promise-sub {
+  color: var(--muted);
+  font-size: 1.08rem;
+  max-width: 48ch;
+  margin: 22px auto 30px;
+}
+
+/* Developers — visual editorial rows (signature image + real data) ------- */
+#dev-list {
+  background: var(--white);
+  padding-top: 84px;
+}
+
+.dv-list {
+  border-top: 1px solid var(--line-2);
+}
+
+.dv-row {
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) 1fr;
+  gap: 52px;
+  align-items: center;
+  padding: 44px 0;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.dv-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--paper-2);
+}
+
+.dv-media img {
+  transition: transform .5s ease;
+}
+
+.dv-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(31, 54, 67, .10);
+  transition: opacity .4s ease;
+}
+
+.dv-row:hover .dv-media img {
+  transform: scale(1.04);
+}
+
+.dv-row:hover .dv-media::after {
+  opacity: 0;
+}
+
+.dv-name {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  color: var(--slate);
+  transition: color .25s ease;
+}
+
+.dv-row:hover .dv-name {
+  color: var(--champagne-ink);
+}
+
+.dv-tag {
+  color: var(--muted);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-top: 12px;
+}
+
+.dv-meta {
+  display: flex;
+  gap: 48px;
+  margin-top: 26px;
+}
+
+.dv-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--slate);
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.dv-stat-l {
+  font-size: .64rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--champagne-ink);
+  font-weight: 600;
+}
+
+.dv-go {
+  display: inline-block;
+  margin-top: 26px;
+  color: var(--champagne-ink);
+  font-weight: 600;
+  font-size: .9rem;
+  transition: transform .25s ease;
+}
+
+.dv-row:hover .dv-go {
+  transform: translateX(6px);
+}
+
+>>>>>>> Stashed changes
 /* Generic prose */
 .prose {
   max-width: 760px;
@@ -1414,13 +2206,17 @@ footer ul a:hover {
   }
 }
 
-/* Dark closing band — the one strong contrast moment */
+/* Closing band — deeper charcoal with a faint gold wash for separation */
 #cta {
-  background: linear-gradient(120deg, var(--slate), var(--ink));
+  background:
+    radial-gradient(120% 140% at 0% 0%, rgba(195, 169, 124, .10), transparent 55%),
+    linear-gradient(120deg, #17191b, #0a0c0d);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 #cta .section-title {
-  color: var(--white);
+  color: var(--ondark);
 }
 
 #cta .eyebrow {
@@ -1436,14 +2232,14 @@ footer ul a:hover {
 }
 
 #cta .btn-glass {
-  border-color: rgba(255, 255, 255, .35);
-  color: var(--white);
+  border-color: var(--line-2);
+  color: var(--ondark);
 }
 
 #cta .btn-glass:hover {
-  background: var(--white);
-  border-color: var(--white);
-  color: var(--slate);
+  background: rgba(195, 169, 124, .14);
+  border-color: var(--champagne);
+  color: var(--ondark);
 }
 
 /* ==========================================================================
@@ -1522,7 +2318,107 @@ footer ul a:hover {
   .about-grid,
   .c-grid {
     grid-template-columns: 1fr;
+<<<<<<< Updated upstream
     gap: 40px;
+=======
+    gap: 48px;
+  }
+
+  .c-info {
+    padding-right: 0;
+    padding-bottom: 44px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .form-card {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  /* About — collapse the editorial spread to one column */
+  .ab-intro,
+  .ab-split,
+  .ab-work {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  /* About hero — shorter band + smaller type on tablets/phones */
+  .ab-hero-inner {
+    min-height: 100vh;
+    padding: 124px 24px 56px;
+  }
+
+  .ab-hero h1 {
+    font-size: clamp(2.4rem, 8vw, 3.6rem);
+  }
+
+  .ab-hero-lead {
+    font-size: 1.06rem;
+  }
+
+  .ab-work-img {
+    min-height: 280px;
+    order: -1;
+  }
+
+  /* Story split — writing first, photo below, on phones/tablets */
+  .ab-split-text {
+    order: 1;
+  }
+
+  .ab-split-img {
+    order: 2;
+    aspect-ratio: 4 / 3;
+    margin-top: 4px;
+  }
+
+  .ab-work-body .ab-list {
+    margin-top: 28px;
+  }
+
+  .ab-lead,
+  .ab-body {
+    font-size: 1.05rem;
+  }
+
+  .ab-stats {
+    grid-template-columns: 1fr;
+    margin-top: 44px;
+  }
+
+  .ab-stat {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 16px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line-2);
+  }
+
+  .ab-stat + .ab-stat {
+    padding-left: 0;
+    border-left: none;
+  }
+
+  .ab-stat-n {
+    min-width: 90px;
+  }
+
+  .ab-item {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* Developers — stack image over content */
+  .dv-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 32px 0;
+  }
+
+  .dv-meta {
+    gap: 36px;
+>>>>>>> Stashed changes
   }
 
   .g-3 {
@@ -1539,6 +2435,20 @@ footer ul a:hover {
     padding-bottom: 72px;
   }
 
+<<<<<<< Updated upstream
+=======
+  /* Full-bleed hero: keep the photo behind, tighten the band on tablets */
+  .hero--bg {
+    padding: 0;
+  }
+
+  .hero--bg .hero-grid {
+    min-height: 100vh;
+    padding-top: 134px;
+    padding-bottom: 64px;
+  }
+
+>>>>>>> Stashed changes
   .hero h1 {
     font-size: clamp(2.6rem, 8vw, 4rem);
     max-width: 18ch;
@@ -1613,16 +2523,16 @@ footer ul a:hover {
     padding: 15px;
     font-size: .9rem;
     font-weight: 600;
-    color: var(--white);
-    background: var(--slate);
+    color: var(--black);
+    background: var(--champagne);
     border-radius: 10px;
     text-transform: none;
     letter-spacing: 0;
   }
 
   nav.links.open .menu-cta:hover {
-    background: var(--champagne);
-    color: var(--slate);
+    background: #d8bd8e;
+    color: var(--black);
   }
 
   nav.links.open .menu-cta + a {
@@ -1687,6 +2597,29 @@ footer ul a:hover {
     padding: 120px 0 0;
   }
 
+<<<<<<< Updated upstream
+=======
+  /* Full-bleed hero on phones: shorter band, more uniform dark scrim */
+  .hero--bg {
+    padding: 0;
+  }
+
+  .hero--bg .hero-grid {
+    min-height: 100vh;
+    padding-top: 116px;
+    padding-bottom: 52px;
+  }
+
+  .hero--bg::before {
+    background:
+      linear-gradient(180deg, rgba(18, 31, 39, .55) 0%, rgba(18, 31, 39, .35) 40%, rgba(18, 31, 39, .72) 100%);
+  }
+
+  .hero--bg .hero-bg img {
+    object-position: center;
+  }
+
+>>>>>>> Stashed changes
   .hero h1 {
     font-size: clamp(2.3rem, 11vw, 3.2rem);
   }
@@ -1731,6 +2664,14 @@ footer ul a:hover {
     padding: 122px 0 46px;
   }
 
+<<<<<<< Updated upstream
+=======
+  .ab-hero-inner {
+    min-height: 100vh;
+    padding: 104px 18px 46px;
+  }
+
+>>>>>>> Stashed changes
   .index .row {
     padding: 18px 4px;
   }
@@ -1783,17 +2724,23 @@ footer ul a:hover {
   /* ---- Footer: stack the 4 cramped columns so link text never clips.
      Brand sits full-width on top, then the link columns pair up. ---- */
   .foot {
-    grid-template-columns: 1fr 1fr;
-    gap: 32px 24px;
+    grid-template-columns: 1fr;
+    gap: 38px;
+    text-align: center;
+    justify-items: center;
   }
 
-  .foot > div:first-child {
-    grid-column: 1 / -1;
+  .foot-brand {
+    order: -1; /* logo on top when stacked */
+    padding-top: 0;
   }
 
-  .fbot {
-    flex-direction: column;
-    gap: 8px;
+  .foot-social {
+    justify-content: center;
+  }
+
+  .foot-news {
+    margin-inline: auto;
   }
 }
 

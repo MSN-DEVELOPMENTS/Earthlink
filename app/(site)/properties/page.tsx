@@ -27,21 +27,29 @@ export default async function PropertiesPage() {
       </section>
 
       {/* ===== CURRENT SELECTION ===== */}
-      <section id="selection" style={{ paddingTop: 40 }}>
+      <section id="selection" className="section-light" style={{ paddingTop: 40 }}>
         <div className="wrap">
-          <div className="index">
+          <div className="pcards">
             {properties.map((p, i) => (
-              <Link href={`/properties/${p.slug}`} className="row reveal" key={p.name}>
-                <span className="num">{String(i + 1).padStart(2, '0')}</span>
-                <span className="thumb">
-                  <Image src={p.img} alt={p.name} fill sizes="78px" style={{ objectFit: 'cover' }} />
+              <Link href={`/properties/${p.slug}`} className="pcard reveal" key={p.name}>
+                <span className="pcard-media">
+                  <Image
+                    src={p.img}
+                    alt={p.name}
+                    fill
+                    sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <span className="pcard-num">{String(i + 1).padStart(2, '0')}</span>
                 </span>
-                <span className="info">
-                  <span className="nm">{p.name}</span>
-                  <span className="place">{p.location} · {p.type}</span>
+                <span className="pcard-body">
+                  <span className="pcard-nm">{p.name}</span>
+                  <span className="pcard-place">{p.location} · {p.type}</span>
+                  <span className="pcard-foot">
+                    <span className="pcard-price">{p.price}</span>
+                    <span className="pcard-go" aria-hidden="true">→</span>
+                  </span>
                 </span>
-                <span className="price">{p.price}</span>
-                <span className="go" aria-hidden="true">→</span>
               </Link>
             ))}
           </div>
@@ -69,7 +77,7 @@ export default async function PropertiesPage() {
       </section>
 
       {/* ===== HOW WE MATCH YOU ===== */}
-      <section id="match">
+      <section id="match" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">How We Match You</span>

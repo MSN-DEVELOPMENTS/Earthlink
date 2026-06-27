@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+<<<<<<< Updated upstream
 import { Inter } from 'next/font/google';
 import './globals.css';
 
@@ -6,6 +7,16 @@ import './globals.css';
 const inter = Inter({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
+=======
+import { Lato } from 'next/font/google';
+import './globals.css';
+
+// Site typeface — Lato (the same body font as emaar.com). Headings use Optima
+// where available with a humanist fallback chain (see --display in globals.css).
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['300', '400', '700', '900'],
+>>>>>>> Stashed changes
   style: ['normal', 'italic'],
   variable: '--font-main',
   display: 'swap',
@@ -57,7 +68,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
+<<<<<<< Updated upstream
     <html lang="en" className={inter.variable} suppressHydrationWarning>
+=======
+    <html lang="en" className={lato.variable} suppressHydrationWarning>
+>>>>>>> Stashed changes
       <body>{children}</body>
     </html>
   );

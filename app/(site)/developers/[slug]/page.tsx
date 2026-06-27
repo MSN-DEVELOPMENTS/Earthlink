@@ -45,7 +45,7 @@ export default function DeveloperPage({ params }: { params: { slug: string } }) 
       </section>
 
       {/* ===== PROJECTS ===== */}
-      <section style={{ paddingTop: 44 }}>
+      <section className="section-light" style={{ paddingTop: 44 }}>
         <div className="wrap">
           <Link href="/developers" className="back-link">← Back to all developers</Link>
 

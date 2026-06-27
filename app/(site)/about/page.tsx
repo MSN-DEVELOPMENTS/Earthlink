@@ -30,8 +30,23 @@ const howWeWork = [
 export default function AboutPage() {
   return (
     <>
+<<<<<<< Updated upstream
       {/* ===== HEADER ===== */}
       <section className="page-head">
+=======
+      {/* ===== HEADER — full-bleed Atlantis hero, copy centred on image ===== */}
+      <section className="ab-hero" id="about-hero">
+        <div className="ab-hero-bg" aria-hidden="true">
+          <Image
+            src="/about/hero-desert.jpg"
+            alt="Sunset over the Dubai desert dunes"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+>>>>>>> Stashed changes
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>About Earthlink</span>
           <h1 className="reveal">Built <span className="grad">Around You</span></h1>
@@ -44,7 +59,11 @@ export default function AboutPage() {
       </section>
 
       {/* ===== STORY + STATS ===== */}
+<<<<<<< Updated upstream
       <section id="story" style={{ paddingTop: 40 }}>
+=======
+      <section id="story" className="section-light">
+>>>>>>> Stashed changes
         <div className="wrap">
           <div className="reveal" style={{ maxWidth: 760 }}>
             <span className="eyebrow">Backed by ERE</span>
@@ -91,7 +110,7 @@ export default function AboutPage() {
       </section>
 
       {/* ===== OUR PROMISE ===== */}
-      <section id="promise">
+      <section id="promise" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ maxWidth: 760 }}>
             <span className="eyebrow">Our Promise</span>

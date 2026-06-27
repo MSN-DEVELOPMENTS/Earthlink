@@ -20,7 +20,7 @@ export default function BlogPage() {
       </section>
 
       {/* ===== WHAT YOU WILL FIND ===== */}
-      <section id="categories">
+      <section id="categories" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">What You Will Find</span>

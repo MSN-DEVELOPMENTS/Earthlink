@@ -26,8 +26,13 @@ export default function DevelopersPage() {
         </div>
       </section>
 
+<<<<<<< Updated upstream
       {/* ===== DEVELOPER CARDS ===== */}
       <section style={{ paddingTop: 40 }}>
+=======
+      {/* ===== DEVELOPER ROWS ===== */}
+      <section id="dev-list" className="section-light">
+>>>>>>> Stashed changes
         <div className="wrap">
           <div className="grid g-4">
             {developers.map((d, i) => (
