@@ -2034,53 +2034,12 @@ footer ul a:hover {
   }
 }
 
-.dv-row {
-  display: grid;
-  grid-template-columns: minmax(0, .92fr) 1fr;
-  gap: 52px;
-  align-items: center;
-  padding: 44px 0;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.dv-media {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--paper-2);
-}
-
-.dv-media img {
-  transition: transform .5s ease;
-}
-
-.dv-media::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(31, 54, 67, .10);
-  transition: opacity .4s ease;
-}
-
-.dv-row:hover .dv-media img {
-  transform: scale(1.04);
-}
-
-.dv-row:hover .dv-media::after {
-  opacity: 0;
-}
-
 .dv-name {
   font-size: clamp(1.7rem, 3vw, 2.3rem);
   font-weight: 400;
   letter-spacing: -.025em;
   color: var(--slate);
   transition: color .25s ease;
-}
-
-.dv-row:hover .dv-name {
-  color: var(--champagne-ink);
 }
 
 .dv-tag {
@@ -2122,10 +2081,6 @@ footer ul a:hover {
   font-weight: 600;
   font-size: .9rem;
   transition: transform .25s ease;
-}
-
-.dv-row:hover .dv-go {
-  transform: translateX(6px);
 }
 
 /* Developer detail — project image cards -------------------------------- */
@@ -2858,13 +2813,6 @@ footer ul a:hover {
     gap: 8px;
   }
 
-  /* Developers — stack image over content */
-  .dv-row {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 32px 0;
-  }
-
   .dv-meta {
     gap: 36px;
   }
@@ -2957,13 +2905,6 @@ footer ul a:hover {
   .ab-item {
     grid-template-columns: 1fr;
     gap: 8px;
-  }
-
-  /* Developers — stack image over content */
-  .dv-row {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 32px 0;
   }
 
   .dv-meta {

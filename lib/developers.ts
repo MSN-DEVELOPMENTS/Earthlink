@@ -40,10 +40,6 @@ export type DeveloperProject = {
   gallery?: string[];
 };
 
-/** Shared Unsplash params so every project thumbnail loads at a consistent size. */
-const IMG = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=900&q=70`;
-
 export type Developer = {
   slug: string;
   name: string;
