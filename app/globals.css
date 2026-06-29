@@ -1907,7 +1907,131 @@ footer ul a:hover {
 }
 
 .dv-list {
-  border-top: 1px solid var(--line-2);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Full-width developer banner with text overlaid on the image (WADAN-style) */
+.dv-banner {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--paper-2);
+  isolation: isolate;
+}
+
+.dv-banner img {
+  transition: transform .6s ease;
+}
+
+.dv-banner:hover img {
+  transform: scale(1.04);
+}
+
+/* Dark scrim so the overlaid text stays legible on any image */
+.dv-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(15, 23, 28, .25) 0%, rgba(15, 23, 28, .55) 100%),
+    radial-gradient(120% 90% at 50% 60%, rgba(15, 23, 28, .55), rgba(15, 23, 28, .15) 70%);
+  transition: opacity .4s ease;
+}
+
+.dv-banner:hover .dv-scrim {
+  opacity: .9;
+}
+
+.dv-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 14px;
+  padding: 40px;
+  color: #fff;
+}
+
+.dv-overlay .dv-name {
+  font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  color: #fff;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, .35);
+  margin: 0;
+}
+
+.dv-overlay .dv-tag {
+  color: rgba(255, 255, 255, .92);
+  font-size: clamp(.98rem, 1.5vw, 1.12rem);
+  max-width: 56ch;
+  margin: 0;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .35);
+}
+
+.dv-overlay .dv-meta {
+  display: flex;
+  gap: 44px;
+  margin-top: 6px;
+  justify-content: center;
+}
+
+.dv-overlay .dv-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .4);
+}
+
+.dv-overlay .dv-stat-l {
+  font-size: .62rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  font-weight: 600;
+}
+
+.dv-overlay .dv-go {
+  display: inline-block;
+  margin-top: 10px;
+  color: #fff;
+  font-weight: 600;
+  font-size: .92rem;
+  letter-spacing: .01em;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, .4);
+  transition: transform .25s ease;
+}
+
+.dv-banner:hover .dv-go {
+  transform: translateX(6px);
+}
+
+@media (max-width: 700px) {
+  .dv-banner {
+    aspect-ratio: 4 / 5;
+  }
+  .dv-overlay {
+    padding: 26px;
+    gap: 12px;
+  }
+  .dv-overlay .dv-meta {
+    gap: 30px;
+  }
 }
 
 .dv-row {
@@ -2002,6 +2126,116 @@ footer ul a:hover {
 
 .dv-row:hover .dv-go {
   transform: translateX(6px);
+}
+
+/* Developer detail — project image cards -------------------------------- */
+.pj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* 2 larger cards per row */
+  gap: 28px;
+}
+
+@media (max-width: 720px) {
+  .pj-grid {
+    grid-template-columns: 1fr;            /* stack on phones */
+  }
+}
+
+.pj-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;            /* override .card's 34px so the image is full-bleed */
+  overflow: hidden;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.pj-media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 11;
+  background: var(--paper-2);
+  overflow: hidden;
+}
+
+.pj-media img {
+  transition: transform .5s ease;
+}
+
+.pj-card:hover .pj-media img {
+  transform: scale(1.05);
+}
+
+.pj-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 1;
+  min-width: 34px;
+  height: 34px;
+  padding: 0 8px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .92);
+  color: var(--champagne-ink);
+  font-weight: 600;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pj-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 22px 22px;
+  flex: 1;
+}
+
+.pj-card .pj-name {
+  font-size: 1.2rem;
+  margin: 0;
+  letter-spacing: -.015em;
+  color: var(--slate);
+}
+
+.pj-card:hover .pj-name {
+  color: var(--champagne-ink);
+}
+
+.pj-card .pj-loc {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.pj-foot {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pj-price {
+  color: var(--slate);
+  font-weight: 700;
+  font-size: .95rem;
+}
+
+.pj-go {
+  color: var(--champagne-ink);
+  font-weight: 600;
+  font-size: .85rem;
+  white-space: nowrap;
+  transition: transform .25s ease;
+}
+
+.pj-card:hover .pj-go {
+  transform: translateX(4px);
 }
 
 /* Generic prose */
@@ -2278,6 +2512,149 @@ footer ul a:hover {
 
   .detail-media {
     aspect-ratio: 16 / 11;
+  }
+}
+
+/* Project detail — amenities --------------------------------------------- */
+.amenity-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 12px 28px;
+}
+
+.amenity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--slate);
+  font-size: .98rem;
+  line-height: 1.45;
+  padding: 6px 0;
+}
+
+.amenity-tick {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: rgba(195, 169, 124, .16);
+  color: var(--champagne-ink);
+  margin-top: 1px;
+}
+
+.amenity-tick svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Project detail — location --------------------------------------------- */
+.loc-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 12px 28px;
+}
+
+.loc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--slate);
+  font-size: .98rem;
+  line-height: 1.45;
+  padding: 6px 0;
+}
+
+.loc-pin {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  color: var(--champagne-ink);
+  margin-top: 1px;
+}
+
+.loc-pin svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Project detail — contact + WhatsApp block ------------------------------ */
+.contact-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  padding-top: 44px;
+  border-top: 1px solid var(--line-2);
+}
+
+/* WhatsApp call-to-action button — compact pill */
+.wa-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #06321a;
+  text-decoration: none;
+  padding: 11px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, .24);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+
+.wa-cta:hover {
+  background: #1ebe5b;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(37, 211, 102, .32);
+}
+
+.wa-cta svg {
+  width: 20px;
+  height: 20px;
+  fill: #06321a;
+  flex: 0 0 auto;
+}
+
+.wa-cta span {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.wa-cta strong {
+  font-size: .95rem;
+}
+
+.wa-cta small {
+  font-size: .72rem;
+  opacity: .78;
+  font-weight: 500;
+}
+
+@media (max-width: 860px) {
+  .contact-block {
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 }
 

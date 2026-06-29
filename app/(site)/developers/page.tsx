@@ -34,17 +34,16 @@ export default function DevelopersPage() {
             {developers.map((d) => {
               const from = developerStartingFrom(d);
               return (
-                <Link href={`/developers/${d.slug}`} className="dv-row reveal" key={d.slug}>
-                  <div className="dv-media">
-                    <Image
-                      src={d.image}
-                      alt={`${d.name} — signature development`}
-                      fill
-                      sizes="(max-width: 860px) 100vw, 42vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                  <div className="dv-body">
+                <Link href={`/developers/${d.slug}`} className="dv-banner reveal" key={d.slug}>
+                  <Image
+                    src={d.image}
+                    alt={`${d.name} — signature development`}
+                    fill
+                    sizes="(max-width: 1100px) 100vw, 1100px"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <span className="dv-scrim" aria-hidden="true" />
+                  <div className="dv-overlay">
                     <h2 className="dv-name">{d.name}</h2>
                     <p className="dv-tag">{d.tagline}</p>
                     <div className="dv-meta">
