@@ -102,7 +102,7 @@ export default function ProjectDetailPage({
           {/* ===== AMENITIES ===== */}
           {project.amenities && project.amenities.length > 0 && (
             <div className="reveal" style={{ marginTop: 56 }}>
-              <h2 className="section-title" style={{ marginBottom: 22 }}>Amenities</h2>
+              <h2 className="section-title" style={{ marginBottom: 22, textAlign: 'center' }}>Amenities</h2>
               <ul className="amenity-grid">
                 {project.amenities.map((a) => (
                   <li key={a} className="amenity-item">
@@ -119,8 +119,8 @@ export default function ProjectDetailPage({
           {/* ===== LOCATION ===== */}
           {project.location && (
             <div className="reveal" style={{ marginTop: 56 }}>
-              <h2 className="section-title" style={{ marginBottom: 8 }}>Location</h2>
-              <p className="prose" style={{ marginBottom: 18 }}>{project.location.area}</p>
+              <h2 className="section-title" style={{ marginBottom: 8, textAlign: 'center' }}>Location</h2>
+              <p className="prose" style={{ marginBottom: 18, textAlign: 'center' }}>{project.location.area}</p>
               <ul className="loc-grid">
                 {project.location.nearby.map((n) => (
                   <li key={n} className="loc-item">

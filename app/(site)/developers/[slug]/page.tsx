@@ -42,7 +42,7 @@ export default function DeveloperPage({ params }: { params: { slug: string } }) 
 
           <div
             className="reveal"
-            style={{ margin: '26px 0 30px', display: 'flex', alignItems: 'baseline', gap: 12, flexWrap: 'wrap' }}
+            style={{ margin: '26px 0 30px', display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 12, flexWrap: 'wrap' }}
           >
             <h2 className="section-title" style={{ margin: 0 }}>Current projects</h2>
             <span className="muted" style={{ fontSize: '.95rem' }}>

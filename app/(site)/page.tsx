@@ -26,7 +26,6 @@ export default async function HomePage() {
             </p>
             <div className="hero-btns reveal">
               <Link href="/properties" className="btn btn-gold">Explore Properties</Link>
-              <Link href="/contact" className="btn btn-glass">Talk to an Advisor</Link>
             </div>
           </div>
         </div>
@@ -35,7 +34,7 @@ export default async function HomePage() {
       {/* ===== WHAT WE DO ===== */}
       <section id="services" className="section-light">
         <div className="wrap">
-          <div className="reveal" style={{ marginBottom: 44 }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
             <span className="eyebrow">What We Do</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Four Services. One High Standard.</h2>
           </div>
@@ -135,10 +134,10 @@ export default async function HomePage() {
       {/* ===== COMMUNITIES ===== */}
       <section id="communities">
         <div className="wrap">
-          <div className="reveal" style={{ marginBottom: 44 }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
             <span className="eyebrow">Prime Locations &amp; Properties</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Best Addresses</h2>
-            <p className="lead" style={{ marginTop: 14 }}>
+            <p className="lead" style={{ margin: '14px auto 0' }}>
               We look for spaces that use natural materials. We prefer warm stone floors, custom light oak wood,
               and simple brass fixtures over flashy designs.
             </p>
