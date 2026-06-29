@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { stats } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -9,15 +8,22 @@ export const metadata: Metadata = {
   description: 'Built around you. A Dubai brokerage backed by ERE, with sales, leasing, and management under one roof.',
 };
 
+/* About: headline stats — labels are About-specific (the Home page uses its own). */
+const stats = [
+  { big: '10+', lbl: 'Years in market executing uncompromised transactions.' },
+  { big: '4', lbl: 'Services strictly managed under one roof.' },
+  { big: '7+', lbl: 'Core communities completely mapped and monitored.' },
+];
+
 /* About: How We Work — the three principles behind every deal. */
 const howWeWork = [
   {
     title: 'Clear numbers',
-    text: 'We track pricing, supply, and yield by community, and keep it current as the market moves.',
+    text: 'We track pricing, supply, and yield by community, and keep it current as the market moves. You trade on hard data, not speculation.',
   },
   {
     title: 'Honest advice',
-    text: 'You hear the full picture on every option, the upside and the trade-offs, before you commit.',
+    text: 'You hear the full picture on every option, including the upside and the trade-offs, before you commit. We strip away the noise.',
   },
   {
     title: 'Long-term care',
@@ -65,16 +71,20 @@ export default function AboutPage() {
             </div>
             <div className="ab-split-text">
               <span className="eyebrow ab-ey">Backed by ERE</span>
-              <h2 className="section-title">The strength behind every deal</h2>
+              <h2 className="section-title">The Strength Behind Every Deal</h2>
               <p className="ab-body">
-                Behind every deal sits the strength of ERE, a wider real estate network with reach across
-                the UAE. That backing means deeper market access, stronger developer ties, and a team that
-                handles sales, leasing, and management together rather than apart. For you, it means one
-                partner for the whole journey.
+                Behind every transaction sits the operational force of ERE, a wider real estate network with
+                reach across the UAE. That backing guarantees deeper market access and stronger developer
+                ties. We deploy a unified team that handles sales, leasing, and management together rather
+                than apart. For you, it means one partner for the entire lifecycle of the asset.
               </p>
             </div>
           </div>
 
+          <div className="reveal" style={{ marginTop: 56 }}>
+            <span className="eyebrow ab-ey">Operational Footprint</span>
+            <h2 className="section-title">Execution Standard</h2>
+          </div>
           <div className="ab-stats reveal">
             {stats.map((s) => (
               <div className="ab-stat" key={s.lbl}>
@@ -92,7 +102,7 @@ export default function AboutPage() {
           <div className="ab-work reveal">
             <div className="ab-work-head">
               <span className="eyebrow ab-ey">How We Work</span>
-              <h2 className="section-title">The way we look after you</h2>
+              <h2 className="section-title">The Way We Look After You</h2>
             </div>
             <div className="ab-work-body">
               <dl className="ab-list">
@@ -114,11 +124,11 @@ export default function AboutPage() {
           <div className="ab-promise reveal">
             <span className="eyebrow ab-ey">Our Promise</span>
             <p className="ab-quote">
-              We tell it straight — even when the honest answer is the harder one.
+              We tell it straight—even when the honest answer is the harder one.
             </p>
             <p className="ab-promise-sub">
               A broker who puts your goals first on every deal, large or small. That is the standard we
-              hold.
+              hold. We do not deal in artificial scarcity; we deal in execution.
             </p>
             <Link href="/contact" className="btn btn-gold">Contact Us</Link>
           </div>

@@ -17,12 +17,12 @@ export default async function HomePage() {
               <span className="dot"></span> Dubai Brokerage · Backed by ERE
             </span>
             <h1 className="reveal">
-              Dubai real estate,<br />
-              <span className="grad">Made clear.</span>
+              Dubai Real Estate.<br />
+              <span className="grad">Clear Focus.</span>
             </h1>
             <p className="reveal">
-              Buy, lease, or invest with advice you can trust. Ten years of local deals, and a team that
-              reads the market street by street.
+              We build real value through smart property buying and strong portfolio care. We cut through the
+              market noise to secure premium homes and profitable exit plans for a global client base.
             </p>
             <div className="hero-btns reveal">
               <Link href="/properties" className="btn btn-gold">Explore Properties</Link>
@@ -37,7 +37,7 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="reveal" style={{ marginBottom: 44 }}>
             <span className="eyebrow">What We Do</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Four services, one standard of care</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Four Services. One High Standard.</h2>
           </div>
           <div className="grid g-4">
             {services.map((s) => (
@@ -68,13 +68,13 @@ export default async function HomePage() {
             />
           </div>
           <div className="reveal">
-            <span className="eyebrow">About Earthlink</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Built around you</h2>
+            <span className="eyebrow">The Earthlink Foundation</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
             <p className="lead">
-              Real estate works best when someone keeps your interests at the centre of every decision. We
-              guide families into homes and investors into portfolios with the same care. Behind every deal
-              sits the strength of <b>ERE</b> — deeper market access, stronger developer ties, one partner
-              for the whole journey.
+              Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
+              every signed contract is the full strength of Earthlink—giving you off-market access, direct ties
+              to top builders, and one team handling your property from start to finish. Under Sharoon&apos;s
+              leadership, we bring tested standards to every transaction.
             </p>
             <div className="stats">
               {stats.map((s) => (
@@ -136,11 +136,15 @@ export default async function HomePage() {
       <section id="communities">
         <div className="wrap">
           <div className="reveal" style={{ marginBottom: 44 }}>
-            <span className="eyebrow">Communities</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s best-known addresses</h2>
+            <span className="eyebrow">Prime Locations &amp; Properties</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Best Addresses</h2>
+            <p className="lead" style={{ marginTop: 14 }}>
+              We look for spaces that use natural materials. We prefer warm stone floors, custom light oak wood,
+              and simple brass fixtures over flashy designs.
+            </p>
           </div>
           <div className="comm-grid">
-            {communities.slice(0, 6).map((c) => (
+            {communities.slice(0, 4).map((c) => (
               <div className="comm reveal" key={c.name}>
                 <Image
                   src={c.img}

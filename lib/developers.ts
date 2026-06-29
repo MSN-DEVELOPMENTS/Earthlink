@@ -30,17 +30,17 @@ export type Developer = {
    Plain editable strings so the wording can be changed without touching the
    page component. */
 export const developersPage = {
-  eyebrow: 'Developers — Dubai\'s master builders',
-  headlineLead: 'Buy where Dubai is',   // normal-weight part
-  headlineAccent: 'built',              // gradient part
-  intro: 'Early access to launches from the city\'s most trusted developers. Pick a developer to see their current projects, starting prices, and official brochures.',
+  eyebrow: 'Top Builders',
+  headlineLead: 'Buy Where Dubai is',   // normal-weight part
+  headlineAccent: 'Built',              // gradient part
+  intro: 'We get early access to new projects from the city\'s best developers. We review the design quality and the builder\'s track record before we show you anything.',
 };
 
 export const developers: Developer[] = [
   {
     slug: 'emaar',
     name: 'Emaar Properties',
-    tagline: 'Dubai’s master-developer behind Downtown, Dubai Hills and the city’s landmark communities.',
+    tagline: 'The master builder behind Downtown and Dubai Hills.',
     image: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://properties.emaar.com/en/latest-launches/',
     projects: [
@@ -79,7 +79,7 @@ export const developers: Developer[] = [
   {
     slug: 'damac',
     name: 'DAMAC Properties',
-    tagline: 'Luxury living through signature branded residences and resort-style communities.',
+    tagline: 'Known for signature branded homes and resort-style living.',
     image: 'https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://www.damacproperties.com/en/projects/',
     projects: [
@@ -118,7 +118,7 @@ export const developers: Developer[] = [
   {
     slug: 'sobha',
     name: 'Sobha Realty',
-    tagline: 'Backward-integrated craftsmanship and waterfront communities built to last.',
+    tagline: 'Unmatched focus on detail and lasting waterfront communities.',
     image: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://sobharealty.com/sobha-communities',
     projects: [
@@ -157,7 +157,7 @@ export const developers: Developer[] = [
   {
     slug: 'binghatti',
     name: 'Binghatti',
-    tagline: 'Distinctive architecture and fast-moving branded launches across Dubai.',
+    tagline: 'Fast-moving, standout modern buildings.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80',
     brochuresUrl: 'https://www.binghatti.com/en/projects',
     projects: [

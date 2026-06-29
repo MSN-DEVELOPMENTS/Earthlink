@@ -14,11 +14,12 @@ export default function ContactPage() {
       {/* ===== HEADER ===== */}
       <section className="page-head">
         <div className="wrap">
-          <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Contact</span>
-          <h1 className="reveal">Get <span className="grad">in Touch</span></h1>
+          <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Expert Advice &amp; Market Data</span>
+          <h1 className="reveal">Get <span className="grad">In Touch</span></h1>
           <p className="reveal">
-            A question about buying, leasing, or investing in Dubai? Start here, and a consultant takes it
-            from the first message.
+            Need clear market facts? Start the conversation. Tell us your buying or selling goals, and our
+            senior team will map out the best path forward. Review our full working model at{' '}
+            <a href="https://www.sharoonirfan.com" target="_blank" rel="noopener noreferrer">www.sharoonirfan.com</a>.
           </p>
         </div>
       </section>

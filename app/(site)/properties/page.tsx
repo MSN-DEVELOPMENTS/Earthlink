@@ -29,6 +29,9 @@ export default async function PropertiesPage() {
       {/* ===== CURRENT SELECTION ===== */}
       <section id="selection" className="section-light" style={{ paddingTop: 40 }}>
         <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <h2 className="section-title">Select Primary Developments</h2>
+          </div>
           <div className="pcards">
             {properties.map((p, i) => (
               <Link href={`/properties/${p.slug}`} className="pcard reveal" key={p.name}>
@@ -62,7 +65,7 @@ export default async function PropertiesPage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">What We Offer</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Three ways in</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Three Ways In</h2>
           </div>
           <div className="grid g-3">
             {offers.map((o, i) => (
@@ -81,7 +84,7 @@ export default async function PropertiesPage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">How We Match You</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Four steps, start to keys</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Four Steps to the Keys</h2>
           </div>
           <div className="grid steps">
             {matchSteps.map((s) => (

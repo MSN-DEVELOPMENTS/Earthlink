@@ -1,11 +1,23 @@
 import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
 
 // Branded social-share card, generated automatically (no static asset needed).
 export const alt = 'Earthlink Real Estate — Dubai Brokerage';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-export default function OpengraphImage() {
+// Locally bundled PT Serif (a Georgia-like screen serif) so the card never
+// depends on a network font fetch at build time.
+const fontsDir = join(process.cwd(), 'public', 'fonts');
+
+export default async function OpengraphImage() {
+  const [serifRegular, serifBold, serifBoldItalic] = await Promise.all([
+    readFile(join(fontsDir, 'PTSerif-Regular.ttf')),
+    readFile(join(fontsDir, 'PTSerif-Bold.ttf')),
+    readFile(join(fontsDir, 'PTSerif-BoldItalic.ttf')),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -17,7 +29,7 @@ export default function OpengraphImage() {
           justifyContent: 'space-between',
           padding: '72px',
           background: 'linear-gradient(135deg, #1f3643 0%, #15232b 100%)',
-          fontFamily: 'Georgia, serif',
+          fontFamily: 'PT Serif',
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -59,6 +71,13 @@ export default function OpengraphImage() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'PT Serif', data: serifRegular, weight: 400, style: 'normal' },
+        { name: 'PT Serif', data: serifBold, weight: 700, style: 'normal' },
+        { name: 'PT Serif', data: serifBoldItalic, weight: 700, style: 'italic' },
+      ],
+    }
   );
 }
