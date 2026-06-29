@@ -327,7 +327,7 @@ nav.links {
 }
 
 nav.links a {
-  font-size: .82rem;
+  font-size: .95rem;
   letter-spacing: .04em;
   text-transform: capitalize;
   color: var(--slate);
