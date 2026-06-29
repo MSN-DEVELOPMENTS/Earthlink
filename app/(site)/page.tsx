@@ -13,20 +13,9 @@ export default async function HomePage() {
         <HeroSlideshow />
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <span className="pill reveal">
-              <span className="dot"></span> Dubai Brokerage · Backed by ERE
-            </span>
             <h1 className="reveal">
-              Dubai Real Estate.<br />
-              <span className="grad">Clear Focus.</span>
+              Earthlink <span className="grad">Real Estate</span>
             </h1>
-            <p className="reveal">
-              We build real value through smart property buying and strong portfolio care. We cut through the
-              market noise to secure premium homes and profitable exit plans for a global client base.
-            </p>
-            <div className="hero-btns reveal">
-              <Link href="/properties" className="btn btn-gold">Explore Properties</Link>
-            </div>
           </div>
         </div>
       </section>

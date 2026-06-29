@@ -1399,16 +1399,16 @@ footer {
   margin-bottom: 48px;
 }
 
-/* Centre brand mark */
+/* Centre brand mark — horizontally and vertically within the footer row */
 .foot-brand {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 6px;
+  align-items: center;
+  align-self: stretch;
 }
 
 .foot-logo {
-  width: 132px;
+  width: 104px;
   height: auto;
   display: block;
 }
@@ -2953,8 +2953,9 @@ footer ul a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(2.6rem, 8vw, 4rem);
+    font-size: clamp(2rem, 8vw, 4rem);
     max-width: 18ch;
+    margin-inline: auto; /* keep the constrained headline centred */
     white-space: normal; /* let the headline wrap on phones — nowrap overflows */
   }
 
