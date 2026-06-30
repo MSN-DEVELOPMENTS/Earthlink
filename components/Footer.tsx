@@ -43,7 +43,7 @@ export default function Footer() {
               <li><Link href="/about">About</Link></li>
               <li><Link href="/properties">Properties</Link></li>
               <li><Link href="/developers">Developers</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/blog">Blogs</Link></li>
               <li><Link href="/contact">Contact</Link></li>
             </ul>
 
@@ -59,7 +59,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Middle — newsletter + contact + CTA */}
+          {/* Middle — newsletter + contact */}
           <div className="foot-col foot-right">
             <h2>Subscribe to Newsletter</h2>
             <form className="foot-news" action={`mailto:${contact.email}`} method="post" encType="text/plain">
@@ -73,11 +73,9 @@ export default function Footer() {
             <h2 className="foot-h2-mt">Contact</h2>
             <p className="foot-line"><a href={contact.phoneHref}>{contact.phone}</a></p>
             <p className="foot-line"><a href={`mailto:${contact.email}`}>{contact.email}</a></p>
-
-            <Link href="/contact" className="btn btn-glass foot-cta">Book a Consultation</Link>
           </div>
 
-          {/* Right — brand mark */}
+          {/* Right — brand mark, beside the text */}
           <div className="foot-brand">
             <Link href="/" aria-label="Earthlink Real Estate — home">
               <img src="/logo.png" alt="Earthlink Real Estate" className="foot-logo" />
@@ -87,9 +85,9 @@ export default function Footer() {
 
         <div className="fbot">
           <span>
-            <Link href="/contact">Terms of Use</Link> · <Link href="/contact">Privacy</Link>
+            <Link href="/terms">Terms of Use</Link> · <Link href="/privacy">Privacy</Link>
           </span>
-          <span>ERE</span>
+          <span>Copyright © 2026 ERE - Earth link Real Estate</span>
         </div>
       </div>
     </footer>

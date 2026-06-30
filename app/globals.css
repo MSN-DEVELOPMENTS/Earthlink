@@ -266,6 +266,12 @@ header.nav {
 
 header.nav.scrolled {
   padding: 8px 0;
+  /* Solid blurred band once scrolled so page content never shows through
+     and collides with the nav links. */
+  background: rgba(8, 10, 11, .92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .32);
 }
 
 header.nav.scrolled .nav-inner {
@@ -1314,20 +1320,20 @@ nav.links a.active::after {
 }
 
 .form-card .eyebrow {
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
 
 .frow {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 22px;
 }
 
 .fg {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-bottom: 26px;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .fg label {
@@ -1345,7 +1351,7 @@ nav.links a.active::after {
   border: none;
   border-bottom: 1px solid var(--line-2);
   color: var(--ink);
-  padding: 9px 0;
+  padding: 7px 0;
   border-radius: 0;
   font-family: var(--body);
   font-size: 1rem;
@@ -1375,12 +1381,12 @@ nav.links a.active::after {
 }
 
 .fg textarea {
-  min-height: 96px;
+  min-height: 64px;
   resize: vertical;
 }
 
 .form-card .btn-gold {
-  margin-top: 6px;
+  margin-top: 2px;
 }
 
 /* 16. Footer ------------------------------------------------------------- */
@@ -1393,24 +1399,25 @@ footer {
 
 .foot {
   display: grid;
-  grid-template-columns: 1fr 1fr 0.7fr;
+  /* Quick Links hugs the left; the newsletter + logo group sits centred,
+     with a balancing empty track on the right so nothing is shoved hard right. */
+  grid-template-columns: 2.2fr auto auto 1fr;
   gap: 56px;
   align-items: start;
   margin-bottom: 48px;
 }
 
-/* Brand mark — sits at the start of its column (inset from the page edge),
-   dropped just below the newsletter/submit row */
+/* Brand mark — sits on the right, right beside the newsletter/contact text,
+   vertically centred against it so it reads as an intentional brand anchor. */
 .foot-brand {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  align-self: start;
-  margin-top: 88px;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
 }
 
 .foot-logo {
-  width: 88px;
+  width: 132px;
   height: auto;
   display: block;
 }
@@ -1654,6 +1661,41 @@ footer ul a:hover {
 
 .page-head + section:not(.section-light) {
   background: var(--white);
+}
+
+/* Legal pages — readable single-column prose (Privacy, Terms) ------------- */
+.legal {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
+.legal p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin: 0 0 18px;
+}
+
+.legal .legal-meta {
+  font-size: .9rem;
+  letter-spacing: .02em;
+  color: var(--slate);
+  opacity: .7;
+  margin-bottom: 32px;
+}
+
+.legal .legal-h2 {
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--slate);
+  letter-spacing: -.02em;
+  margin: 40px 0 14px;
+}
+
+.legal a {
+  color: var(--champagne-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* About — editorial spread (asymmetric rows + index-style lists) --------- */
@@ -2335,6 +2377,162 @@ footer ul a:hover {
 
 .back-link:hover {
   color: var(--champagne-ink);
+}
+
+/* Blog listing — article cards ------------------------------------------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 30px;
+}
+
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--line-2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .28);
+}
+
+.blog-card-img {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: var(--paper);
+}
+
+.blog-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 26px 28px;
+}
+
+.blog-card-cat {
+  color: var(--champagne-ink);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.blog-card-body h3 {
+  color: var(--slate);
+  font-size: 1.28rem;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+}
+
+.blog-card-body p {
+  color: var(--muted);
+  font-size: .98rem;
+  line-height: 1.6;
+}
+
+.blog-card-more {
+  margin-top: auto;
+  padding-top: 8px;
+  color: var(--champagne-ink);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+/* Blog article — body typography ----------------------------------------- */
+.post-h2 {
+  color: var(--slate);
+  font-size: clamp(1.5rem, 3vw, 1.9rem);
+  font-weight: 500;
+  letter-spacing: -.02em;
+  line-height: 1.25;
+  margin: 44px 0 16px;
+}
+
+.post-ul {
+  list-style: none;
+  margin: 0 0 22px;
+  padding: 0;
+}
+
+.post-ul li {
+  position: relative;
+  color: var(--ink);
+  font-size: 1.08rem;
+  line-height: 1.7;
+  padding: 0 0 12px 26px;
+}
+
+.post-ul li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: .72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--champagne-ink);
+}
+
+.post-body strong {
+  color: var(--slate);
+  font-weight: 600;
+}
+
+.post-body a {
+  color: var(--champagne-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-quote {
+  margin: 26px 0;
+  padding-left: 20px;
+  border-left: 3px solid var(--line-2);
+  color: var(--slate);
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+/* Blog article — FAQ ----------------------------------------------------- */
+.post-faq {
+  margin-top: 52px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.faq-list {
+  margin-top: 18px;
+}
+
+.faq-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item dt {
+  color: var(--slate);
+  font-size: 1.12rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.faq-item dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Form banners */

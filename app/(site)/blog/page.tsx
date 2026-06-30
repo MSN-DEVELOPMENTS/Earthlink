@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import Image from 'next/image';
 import { blogCategories } from '@/lib/data';
+import { getPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog',
@@ -7,7 +10,9 @@ export const metadata: Metadata = {
   description: 'Clear market insight on Dubai real estate: prices, yields, neighbourhood guides, and investor notes.',
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await getPosts();
+
   return (
     <>
       {/* ===== HEADER ===== */}
@@ -18,6 +23,41 @@ export default function BlogPage() {
           <p className="reveal">The Dubai market moves quickly. Our journal keeps it simple and useful.</p>
         </div>
       </section>
+
+      {/* ===== LATEST ARTICLES ===== */}
+      {posts.length > 0 && (
+        <section id="articles">
+          <div className="wrap">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+              <span className="eyebrow">Latest Articles</span>
+              <h2 className="section-title" style={{ marginTop: 12 }}>From the journal</h2>
+            </div>
+            <div className="blog-grid">
+              {posts.map((post) => (
+                <Link href={`/blog/${post.slug}`} key={post.slug} className="blog-card reveal">
+                  <div className="blog-card-img">
+                    {post.img && (
+                      <Image
+                        src={post.img}
+                        alt={post.imageAlt || post.title}
+                        fill
+                        sizes="(max-width: 800px) 100vw, 380px"
+                        style={{ objectFit: 'cover' }}
+                      />
+                    )}
+                  </div>
+                  <div className="blog-card-body">
+                    {post.category && <span className="blog-card-cat">{post.category}</span>}
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                    <span className="blog-card-more">Read article →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===== WHAT YOU WILL FIND ===== */}
       <section id="categories" className="section-light">
