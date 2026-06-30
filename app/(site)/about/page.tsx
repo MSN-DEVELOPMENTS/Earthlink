@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { faqs } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -133,6 +134,24 @@ export default function AboutPage() {
               hold. We do not deal in artificial scarcity; we deal in execution.
             </p>
             <Link href="/contact" className="btn btn-gold">Contact Us</Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FAQ ===== */}
+      <section id="faq">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
+            <span className="eyebrow">Questions</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ</h2>
+          </div>
+          <div className="faq reveal">
+            {faqs.map((item, i) => (
+              <details key={item.q} open={i === 0}>
+                <summary>{item.q}</summary>
+                <div className="ans">{item.a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

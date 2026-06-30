@@ -25,6 +25,7 @@ export default function PropertyGallery({
           alt={alt}
           fill
           priority
+          quality={90}
           sizes="(max-width: 860px) 100vw, 50vw"
           style={{ objectFit: 'cover' }}
         />

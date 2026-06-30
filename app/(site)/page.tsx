@@ -139,7 +139,7 @@ export default async function HomePage() {
                   alt={c.name}
                   fill
                   sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ objectFit: 'cover', objectPosition: c.pos ?? 'center' }}
                 />
                 <div className="ov">
                   <h3>{c.name}</h3>

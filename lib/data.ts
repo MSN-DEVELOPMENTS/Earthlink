@@ -11,7 +11,7 @@ export const navLinks = [
   { href: '/about', label: 'About' },
   { href: '/properties', label: 'Properties' },
   { href: '/developers', label: 'Developers' },
-  { href: '/blog', label: 'Blogs' },
+  { href: '/media-center', label: 'Media Center' },
   { href: '/contact', label: 'Contact' },
 ];
 
@@ -21,7 +21,7 @@ export const contact = {
   phoneHref: 'tel:+971528701177',
   whatsapp: 'https://wa.me/971528701177',
   email: 'info@eregroup.ae',
-  location: 'Dubai, United Arab Emirates',
+  location: '403 - 17 Voco Hotel, Sheikh Zayed Road, Dubai, UAE',
   socials: ['LinkedIn', 'Facebook', 'YouTube', 'Instagram'],
   // Regulatory credentials — replace the placeholder numbers with the real ones.
   licence: {
@@ -69,11 +69,12 @@ export const stats = [
 ];
 
 /* ----- Home: Communities We Work With (7) ------------------------------- */
-export const communities = [
-  { name: 'Dubai Marina', note: 'Fast-moving waterfront homes with steady renter demand.', img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Downtown Dubai', note: 'The city centre. Highly walkable properties with direct views of the Burj.', img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Business Bay', note: 'The core of business and living. Canal-side spaces with strong rental returns.', img: 'https://images.unsplash.com/photo-1546412414-e1885259563a?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Palm Jumeirah', note: 'Prime beachfront living. Clean, modern coastal homes and private apartments.', img: 'https://images.unsplash.com/photo-1518684079-3c830dcef090?auto=format&fit=crop&w=600&q=80' },
+/* `pos` is an optional object-position for the card image crop (defaults to center). */
+export const communities: { name: string; note: string; img: string; pos?: string }[] = [
+  { name: 'Dubai Marina', note: 'Fast-moving waterfront homes with steady renter demand.', img: '/home/dubai-marina.jpg', pos: 'center top' },
+  { name: 'Downtown Dubai', note: 'The city centre. Highly walkable properties with direct views of the Burj.', img: '/home/downtown-dubai.jpg', pos: 'center top' },
+  { name: 'Business Bay', note: 'The core of business and living. Canal-side spaces with strong rental returns.', img: '/home/business-bay.jpg', pos: 'center top' },
+  { name: 'Palm Jumeirah', note: 'Prime beachfront living. Clean, modern coastal homes and private apartments.', img: '/home/palm-jumeirah.jpg' },
   { name: 'Jumeirah Village Circle', note: 'Strong value and yield', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80' },
   { name: 'DIFC', note: 'The finance address, tight supply', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80' },
   { name: 'Arabian Ranches', note: 'Villas, schools, family living', img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80' },
@@ -208,8 +209,8 @@ export const posts: Post[] = [
     seoTitle: 'Dubai Real Estate Market Report 2026: Outlook, Trends, Forecast',
     metaDescription:
       'Dubai real estate hit AED 252 billion in Q1 2026, up 31%. Get the latest market trends, price data, rental outlook, and 2026 to 2027 forecast from DLD, ValuStrat, and Knight Frank.',
-    img: 'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=2400&q=80',
-    imageAlt: 'Dubai skyline at sunset with the Burj Khalifa and Sheikh Zayed Road',
+    img: '/blog/dubai-market-report-2026.jpg',
+    imageAlt: 'Dubai Marina skyline at sunset with a vivid pink sky reflected on the water',
     publishedAt: '2026-06-30T10:00:00Z',
     body: [
       p("Dubai's real estate market entered the second half of 2026 from a position of strength. First-quarter transactions reached AED 252 billion, up 31% year-on-year, according to the Dubai Land Department. Price growth is now moderating from its 2025 peak, and most research firms expect single-digit gains for the full year."),
@@ -329,8 +330,8 @@ export const posts: Post[] = [
     seoTitle: 'Is Dubai Real Estate in a Bubble? 2026 Data & Analysis',
     metaDescription:
       'Is Dubai real estate in a bubble? UBS rates it elevated risk, not bubble territory. The data, why it is not a repeat of 2008, and the real risks for buyers in 2026.',
-    img: 'https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=2400&q=80',
-    imageAlt: 'Downtown Dubai with the Burj Khalifa and Dubai Fountain on a clear day',
+    img: '/blog/is-dubai-real-estate-in-a-bubble.jpg',
+    imageAlt: 'Dubai Marina skyline and waterfront at sunrise with the sun reflecting on the sea',
     publishedAt: '2026-06-29T10:00:00Z',
     body: [
       p('Dubai real estate is not in a 2008-style bubble, but it does carry elevated risk. The UBS Global Real Estate Bubble Index rates Dubai as “elevated risk,” not full bubble territory. Prices have run well ahead of incomes, yet the speculative leverage that drove past crashes is largely absent. A moderate correction is possible. A collapse is not the base case.'),
@@ -422,6 +423,38 @@ export const posts: Post[] = [
           'It can be, if you buy selectively and for the long term. Constrained-supply communities and quality assets offer the most protection. Buyers who can absorb a correction scenario and hold for three to five years are best positioned.',
       },
     ],
+  },
+];
+
+/* ----- Media Center: news ----------------------------------------------- */
+/* News shares the same shape as a blog Post, so the article rendering and
+   data layer can be reused. Categories differ (see newsCategories). */
+export type News = Post;
+
+export const newsCategories = [
+  { title: 'Press Release', text: 'Official announcements from Earthlink.' },
+  { title: 'Company News', text: 'Milestones, hires, and growth.' },
+  { title: 'Market Update', text: 'Fast takes on what is moving the market.' },
+  { title: 'Events', text: 'Where to find us, and what we are hosting.' },
+];
+
+/* Built-in news items. These render whenever Sanity is not connected; once it
+   is, articles written in the Studio take over (see lib/news.ts). */
+export const news: News[] = [
+  {
+    slug: 'earthlink-real-estate-launches-media-center',
+    title: 'Earthlink Real Estate Launches Its Media Center',
+    category: 'Company News',
+    excerpt:
+      'A new home for our press releases, company milestones, and fast market updates — all in one place.',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80',
+    imageAlt: 'Modern Dubai office tower against a clear sky',
+    publishedAt: '2026-06-30T09:00:00Z',
+    body: [
+      p('Earthlink Real Estate has launched a dedicated Media Center, bringing our blog and news together in one place. It is where you will find our official announcements, company milestones, and quick reads on what is moving the Dubai market.'),
+      p('Our blog remains the home for longer-form market intelligence and guides. The news feed is for timely updates — press releases, events, and company news — so you can keep up at a glance.'),
+    ],
+    faqs: [],
   },
 ];
 

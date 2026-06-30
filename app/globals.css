@@ -1264,16 +1264,21 @@ nav.links a.active::after {
   padding-top: 72px;
 }
 
+/* Info on the left · calm empty space in the middle · the message form held
+   as a contained panel on the right. Flex with space-between keeps the two
+   blocks anchored to the sides so the centre reads as deliberate whitespace. */
 .c-grid {
-  display: grid;
-  grid-template-columns: minmax(200px, .62fr) 1fr;
-  gap: 0;
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px 64px;
 }
 
 /* Left: quiet contact list */
 .c-info {
-  padding-right: 64px;
+  flex: 0 0 300px;
+  max-width: 300px;
 }
 
 .ib {
@@ -1310,17 +1315,30 @@ nav.links a.active::after {
   line-height: 1.6;
 }
 
-/* Right: open, hairline-ruled form (no card) */
+/* Right: the message form held as a contained panel, anchored to the side */
 .form-card {
-  border: none;
-  border-left: 1px solid var(--line);
-  border-radius: 0;
-  box-shadow: none;
-  padding: 4px 0 4px 64px;
+  flex: 0 0 clamp(440px, 42vw, 560px);
+  max-width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: 0 18px 44px rgba(31, 26, 19, .07);
+  padding: 36px 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* A single champagne hairline crowns the panel */
+.form-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--champagne), rgba(195, 169, 124, 0) 72%);
 }
 
 .form-card .eyebrow {
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
 .frow {
@@ -1399,32 +1417,34 @@ footer {
 
 .foot {
   display: grid;
-  /* Quick Links hugs the left; the newsletter + logo group sits centred,
-     with a balancing empty track on the right so nothing is shoved hard right. */
-  grid-template-columns: 2.2fr auto auto 1fr;
+  /* Quick Links hugs the left, the newsletter / contact block sits in the
+     right portion, and the brand mark anchors the far-right edge. */
+  grid-template-columns: 2.4fr 1.1fr auto;
   gap: 56px;
   align-items: start;
   margin-bottom: 48px;
 }
 
-/* Brand mark — sits on the right, right beside the newsletter/contact text,
-   vertically centred against it so it reads as an intentional brand anchor. */
+/* Brand mark — anchors the far-right edge, dropped to the bottom so it lines
+   up with the contact details beside it. */
 .foot-brand {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-self: end;
+  /* Visual-only nudge of the logo — transform never shifts the other columns. */
+  transform: translate(-160px, -84px);
 }
 
 .foot-logo {
-  width: 132px;
+  width: 96px;
   height: auto;
   display: block;
 }
 
 /* Spacing between stacked label groups in a footer column */
 .foot-h2-mt {
-  margin-top: 30px;
+  margin-top: 48px;
 }
 
 /* Social icon row */
@@ -1462,9 +1482,9 @@ footer {
   display: flex;
   align-items: center;
   gap: 12px;
-  max-width: 340px;
+  max-width: 440px;
   border-bottom: 1px solid var(--line-2);
-  padding-bottom: 9px;
+  padding-bottom: 11px;
   margin: 14px 0 6px;
 }
 
@@ -1502,7 +1522,7 @@ footer {
 
 /* Right-column text lines (address / contact) */
 .foot-line {
-  font-size: .92rem;
+  font-size: 1.05rem;
   color: #b8b1a4;
   margin-bottom: 6px;
 }
@@ -1535,12 +1555,13 @@ footer .logo .mark {
 }
 
 footer h2 {
-  font-size: .72rem;
-  letter-spacing: .14em;
+  font-family: var(--display);
+  font-size: 1.12rem;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--champagne);
   font-weight: 600;
-  margin-bottom: 18px;
+  margin-bottom: 28px;
 }
 
 footer ul {
@@ -1548,12 +1569,12 @@ footer ul {
 }
 
 footer li {
-  margin-bottom: 11px;
+  margin-bottom: 18px;
 }
 
 footer ul a {
   color: #aeb8bd;
-  font-size: .92rem;
+  font-size: 1rem;
 }
 
 footer ul a:hover {
@@ -2809,9 +2830,9 @@ footer ul a:hover {
 }
 
 .wa-cta svg {
-  width: 20px;
-  height: 20px;
-  fill: #06321a;
+  width: 24px;
+  height: 24px;
+  fill: #fff;
   flex: 0 0 auto;
 }
 
@@ -2954,14 +2975,15 @@ footer ul a:hover {
   }
 
   .c-info {
+    flex-basis: 100%;
+    max-width: 100%;
     padding-right: 0;
-    padding-bottom: 44px;
-    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
   }
 
   .form-card {
-    border-left: none;
-    padding-left: 0;
+    flex-basis: 100%;
+    padding: 30px 24px 32px;
   }
 
   /* About — collapse the editorial spread to one column */
@@ -3048,14 +3070,15 @@ footer ul a:hover {
   }
 
   .c-info {
+    flex-basis: 100%;
+    max-width: 100%;
     padding-right: 0;
-    padding-bottom: 44px;
-    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
   }
 
   .form-card {
-    border-left: none;
-    padding-left: 0;
+    flex-basis: 100%;
+    padding: 30px 24px 32px;
   }
 
   /* About — collapse the editorial spread to one column */
@@ -3178,6 +3201,19 @@ footer ul a:hover {
 
   .burger {
     display: flex;
+  }
+
+  /* Centre the logo on mobile while the burger stays pinned to the right */
+  .nav-inner {
+    position: relative;
+    justify-content: flex-end;
+  }
+
+  .nav-inner > .logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   header.nav .nav-inner > .btn-gold {
@@ -3442,6 +3478,7 @@ footer ul a:hover {
     margin-top: 0;
     padding-top: 0;
     justify-content: center;
+    transform: none; /* drop the desktop left/up nudge so the logo centres */
   }
 
   .foot-social {

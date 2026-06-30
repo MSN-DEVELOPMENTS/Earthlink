@@ -120,7 +120,7 @@ export default function ProjectDetailPage({
           {project.location && (
             <div className="reveal" style={{ marginTop: 56 }}>
               <h2 className="section-title" style={{ marginBottom: 8, textAlign: 'center' }}>Location</h2>
-              <p className="prose" style={{ marginBottom: 18, textAlign: 'center' }}>{project.location.area}</p>
+              <p className="prose center" style={{ marginBottom: 18 }}>{project.location.area}</p>
               <ul className="loc-grid">
                 {project.location.nearby.map((n) => (
                   <li key={n} className="loc-item">

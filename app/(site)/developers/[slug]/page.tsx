@@ -63,7 +63,8 @@ export default function DeveloperPage({ params }: { params: { slug: string } }) 
                       src={project.image}
                       alt={`${project.name} — ${project.community}`}
                       fill
-                      sizes="(max-width: 720px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                      quality={90}
+                      sizes="(max-width: 720px) 100vw, 50vw"
                       style={{ objectFit: 'cover' }}
                     />
                     <span className="pj-num">{String(i + 1).padStart(2, '0')}</span>

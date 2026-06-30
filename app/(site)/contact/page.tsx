@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { contact, faqs } from '@/lib/data';
+import { contact } from '@/lib/data';
 import InquiryForm from '@/components/InquiryForm';
 
 export const metadata: Metadata = {
@@ -59,24 +59,6 @@ export default function ContactPage() {
             <div className="reveal">
               <InquiryForm />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== FAQ ===== */}
-      <section id="faq">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
-            <span className="eyebrow">Questions</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ</h2>
-          </div>
-          <div className="faq reveal">
-            {faqs.map((item, i) => (
-              <details key={item.q} open={i === 0}>
-                <summary>{item.q}</summary>
-                <div className="ans">{item.a}</div>
-              </details>
-            ))}
           </div>
         </div>
       </section>

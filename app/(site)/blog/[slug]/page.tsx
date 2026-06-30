@@ -97,10 +97,6 @@ export default async function PostPage({ params }: { params: { slug: string } })
               </div>
             )}
           </div>
-
-          <div className="post-body" style={{ marginTop: 36, textAlign: 'center' }}>
-            <Link href="/contact" className="btn btn-gold">Talk to a Consultant</Link>
-          </div>
         </div>
       </section>
     </article>
