@@ -59,14 +59,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Center — brand mark */}
-          <div className="foot-brand">
-            <Link href="/" aria-label="Earthlink Real Estate — home">
-              <img src="/logo.png" alt="Earthlink Real Estate" className="foot-logo" />
-            </Link>
-          </div>
-
-          {/* Right — newsletter + contact + CTA */}
+          {/* Middle — newsletter + contact + CTA */}
           <div className="foot-col foot-right">
             <h2>Subscribe to Newsletter</h2>
             <form className="foot-news" action={`mailto:${contact.email}`} method="post" encType="text/plain">
@@ -83,15 +76,20 @@ export default function Footer() {
 
             <Link href="/contact" className="btn btn-glass foot-cta">Book a Consultation</Link>
           </div>
+
+          {/* Right — brand mark */}
+          <div className="foot-brand">
+            <Link href="/" aria-label="Earthlink Real Estate — home">
+              <img src="/logo.png" alt="Earthlink Real Estate" className="foot-logo" />
+            </Link>
+          </div>
         </div>
 
         <div className="fbot">
           <span>
             <Link href="/contact">Terms of Use</Link> · <Link href="/contact">Privacy</Link>
           </span>
-          <span>
-            © 2026 Earthlink Real Estate. Backed by ERE · {contact.licence.regulator} · {contact.licence.orn} · {contact.licence.ded}. All rights reserved.
-          </span>
+          <span>ERE</span>
         </div>
       </div>
     </footer>

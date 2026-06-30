@@ -232,20 +232,44 @@ export const testimonials = [
 /* ----- FAQ -------------------------------------------------------------- */
 export const faqs = [
   {
-    q: 'Can non-residents buy property here?',
-    a: 'Yes. We guide overseas buyers through approved freehold areas and handle all the required paperwork.',
+    q: 'What services does Earthlink Real Estate offer?',
+    a: 'We are a Dubai-based real estate brokerage helping buyers, sellers, investors, and tenants navigate the property market. Our services include property sales, rentals, investment advisory, and holiday home management.',
   },
   {
-    q: 'What are the exact extra costs?',
-    a: 'We give you a clear breakdown of land department fees, closing costs, and agency rates before you sign anything.',
+    q: 'Can foreigners buy property in Dubai?',
+    a: 'Yes. Dubai allows non-UAE nationals to purchase freehold properties in designated areas such as Downtown Dubai, Dubai Marina, Palm Jumeirah, Business Bay, and many more. There are no restrictions on nationality.',
   },
   {
-    q: 'Do you handle both new builds and ready homes?',
-    a: 'Yes. We find early-stage new projects and secure solid, ready-to-move properties.',
+    q: 'What is the process for buying a property in Dubai?',
+    a: 'Once you select a property, we guide you through signing the MOU (Memorandum of Understanding), paying the deposit (typically 10%), completing the NOC process, and transferring ownership at the Dubai Land Department (DLD).',
   },
   {
-    q: 'Can you manage my property after I buy?',
-    a: 'Yes. We handle everything in-house through our dedicated property management team.',
+    q: 'How much do I need for a down payment?',
+    a: 'For ready properties, UAE residents typically require a minimum 20% down payment, while non-residents require 25%. Off-plan properties often require as little as 5–10% upfront, depending on the developer’s payment plan.',
+  },
+  {
+    q: 'What fees should I budget for beyond the property price?',
+    a: 'Standard additional costs include a 4% DLD transfer fee, 2% agency commission, AED 4,000–5,000 for DLD admin and trustee fees, plus mortgage registration fees if applicable.',
+  },
+  {
+    q: 'Is Dubai real estate a good investment?',
+    a: 'Dubai consistently ranks among the top global cities for real estate ROI. With no property tax, high rental yields (typically 5–9%), strong capital appreciation, and a growing population, it remains one of the most attractive markets for investors.',
+  },
+  {
+    q: 'What is the difference between freehold and leasehold property?',
+    a: 'Freehold means you own the property and the land outright with no time limit. Leasehold means you own the property for a fixed period (usually 10–99 years) but not the land itself. Most prime areas in Dubai offer freehold ownership to all nationalities.',
+  },
+  {
+    q: 'Can I get a mortgage as a non-resident?',
+    a: 'Yes, several UAE banks offer mortgages to non-residents, though terms vary. Non-residents typically qualify for up to 75% LTV on properties under AED 5 million. We can connect you with trusted mortgage advisors.',
+  },
+  {
+    q: 'What is an off-plan property and is it safe to buy?',
+    a: 'Off-plan properties are sold before or during construction. In Dubai, off-plan purchases are regulated by RERA — developer funds are held in escrow accounts, protecting buyers. They often offer lower entry prices and flexible payment plans.',
+  },
+  {
+    q: 'How do I get started with Earthlink Real Estate?',
+    a: 'Simply reach out via our website, WhatsApp, or visit our office. One of our agents will understand your requirements and shortlist properties that match your budget, lifestyle, and investment goals — at no cost to you as a buyer.',
   },
 ];
 

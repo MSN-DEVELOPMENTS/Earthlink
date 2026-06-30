@@ -37,14 +37,16 @@ export default function AboutPage() {
       {/* ===== HEADER — full-bleed Atlantis hero, copy centred on image ===== */}
       <section className="ab-hero" id="about-hero">
         <div className="ab-hero-bg" aria-hidden="true">
-          <Image
-            src="/about/hero-desert.jpg"
-            alt="Sunset over the Dubai desert dunes"
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover' }}
-          />
+          <video
+            className="ab-hero-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/about/hero-desert.jpg"
+          >
+            <source src="/about/hero.mp4" type="video/mp4" />
+          </video>
         </div>
         <div className="wrap">
           <div className="ab-hero-inner reveal">
@@ -62,8 +64,8 @@ export default function AboutPage() {
           <div className="ab-split reveal">
             <div className="ab-split-img">
               <Image
-                src="/about/community-family.jpg"
-                alt="A family walking through a landscaped Dubai residential community"
+                src="/about/dubai-flamingos.jpg"
+                alt="Flamingos in a Dubai wetland at sunrise with the Burj Khalifa skyline beyond"
                 fill
                 sizes="(max-width: 860px) 100vw, 46vw"
                 style={{ objectFit: 'cover' }}

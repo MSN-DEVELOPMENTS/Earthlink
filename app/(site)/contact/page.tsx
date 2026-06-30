@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { contact, faqs } from '@/lib/data';
+import { faqs } from '@/lib/data';
 import InquiryForm from '@/components/InquiryForm';
 
 export const metadata: Metadata = {
@@ -24,42 +24,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ===== DETAILS + FORM ===== */}
+      {/* ===== SEND A MESSAGE ===== */}
       <section id="reach" className="section-light">
         <div className="wrap">
-          <div className="c-grid">
-            {/* Contact details */}
-            <aside className="c-info reveal">
-              <div className="ib">
-                <div className="l">Call</div>
-                <a href={contact.phoneHref}>{contact.phone}</a>
-              </div>
-              <div className="ib">
-                <div className="l">Email</div>
-                <a href={`mailto:${contact.email}`}>{contact.email}</a>
-              </div>
-              <div className="ib">
-                <div className="l">Visit</div>
-                <p>{contact.location}</p>
-              </div>
-              <div className="ib">
-                <div className="l">Connect</div>
-                <p>{contact.socials.join(' · ')}</p>
-              </div>
-              <div className="ib">
-                <div className="l">Licensed</div>
-                <p className="c-fine">
-                  {contact.licence.regulator}
-                  <br />
-                  {contact.licence.orn} · {contact.licence.ded}
-                </p>
-              </div>
-            </aside>
-
-            {/* Form */}
-            <div className="reveal">
-              <InquiryForm />
-            </div>
+          <div className="reveal" style={{ maxWidth: 640, margin: '0 auto' }}>
+            <InquiryForm />
           </div>
         </div>
       </section>
@@ -69,7 +38,7 @@ export default function ContactPage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
             <span className="eyebrow">Questions</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Good to know</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ</h2>
           </div>
           <div className="faq reveal">
             {faqs.map((item, i) => (

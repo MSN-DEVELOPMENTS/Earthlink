@@ -7,7 +7,7 @@ import { getProperties } from '@/lib/properties';
 export const metadata: Metadata = {
   title: 'Properties',
   alternates: { canonical: '/properties' },
-  description: 'Curated Dubai property: off-plan launches, ready homes, and commercial. New launches arrive often.',
+  description: 'Handpicked properties in Dubai’s most sought-after communities — explore our curated listings.',
 };
 
 export default async function PropertiesPage() {
@@ -18,11 +18,8 @@ export default async function PropertiesPage() {
       <section className="page-head">
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Properties — Curated for Dubai</span>
-          <h1 className="reveal">New launches <span className="grad">worth your time</span></h1>
-          <p className="reveal">
-            Off-plan early access from Emaar, Sobha, Binghatti and DAMAC — plus ready homes in settled
-            communities. The list updates weekly.
-          </p>
+          <h1 className="reveal">Explore <span className="grad">Listings</span></h1>
+          <p className="reveal">Handpicked properties in Dubai&apos;s most sought-after communities.</p>
         </div>
       </section>
 

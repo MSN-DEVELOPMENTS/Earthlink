@@ -48,8 +48,8 @@ export default async function HomePage() {
         <div className="wrap about-grid">
           <div className="about-img reveal">
             <Image
-              src="/home/about-living-room.jpg"
-              alt="Luxury Dubai apartment interior with a Burj Khalifa view"
+              src="/home/dubai-downtown-street.jpg"
+              alt="A quiet Dubai downtown street lined with palm trees, with the Burj Khalifa skyline beyond"
               fill
               sizes="(max-width: 860px) 100vw, 45vw"
               style={{ objectFit: 'cover' }}
