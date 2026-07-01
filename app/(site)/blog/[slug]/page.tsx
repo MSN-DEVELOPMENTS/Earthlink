@@ -6,6 +6,10 @@ import { PortableText } from 'next-sanity';
 import type { PortableTextComponents } from '@portabletext/react';
 import { getPostBySlug, getPostSlugs } from '@/lib/blog';
 
+// Rebuild each post from Sanity at most once every 60s (ISR); new posts not
+// present at build time are generated on first visit (dynamicParams default).
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const slugs = await getPostSlugs();
   return slugs.map((slug) => ({ slug }));
