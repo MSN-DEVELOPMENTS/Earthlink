@@ -66,7 +66,7 @@ export default function Footer() {
             <NewsletterForm />
 
             <h2 className="foot-h2-mt">Office</h2>
-            <p className="foot-line">Dubai, UAE</p>
+            <p className="foot-line">{contact.location}</p>
 
             <h2 className="foot-h2-mt">Contact</h2>
             <p className="foot-line"><a href={contact.phoneHref}>{contact.phone}</a></p>
