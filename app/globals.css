@@ -2633,7 +2633,10 @@ footer ul a:hover {
 /* Blog listing — article cards ------------------------------------------- */
 .blog-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  /* auto-fit (not auto-fill) collapses empty tracks so a partial last row —
+     e.g. just 2 posts — stretches to fill the whole row instead of leaving
+     dead space on the side. */
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
   gap: 30px;
 }
 

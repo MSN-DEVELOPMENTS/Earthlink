@@ -22,8 +22,8 @@ const sections = [
     eyebrow: 'Newsroom',
     title: 'News',
     text: 'Press releases, company milestones, market updates, and events from the Earth Link team.',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
-    imgAlt: 'Modern Dubai office tower against a clear sky',
+    img: '/news/news-hub.jpg',
+    imgAlt: 'Aerial view of the Dubai Marina and Palm Jumeirah skyline at dusk',
   },
 ];
 
