@@ -17,6 +17,13 @@ const FIELDS = `
   "description": coalesce(description, [])
 `;
 
+/* Sanity's `property` documents are currently placeholder/demo data and the
+   SANITY_API_TOKEN is expired, so properties are served from the curated real
+   listings in lib/data.ts (the 9 live Bayut listings, with their real photos).
+   To hand properties back to the CMS later: add the real properties in Sanity,
+   set a valid SANITY_API_TOKEN, then flip this flag to true. */
+const USE_SANITY_PROPERTIES = false;
+
 type SanityProperty = Omit<Property, 'img'> & { img?: SanityImageSource };
 
 /* Build a small photo gallery for the detail page. Bayut uploads a listing's
@@ -46,7 +53,7 @@ function toProperty(doc: SanityProperty): Property {
 }
 
 export async function getProperties(): Promise<Property[]> {
-  if (!isSanityConfigured) return fallbackProperties;
+  if (!USE_SANITY_PROPERTIES || !isSanityConfigured) return fallbackProperties;
   try {
     const docs = await client.fetch<SanityProperty[]>(
       `*[_type == "property"] | order(order asc, name asc){${FIELDS}}`
@@ -62,7 +69,7 @@ export async function getPropertyBySlug(slug: string): Promise<Property | undefi
     const p = fallbackProperties.find((p) => p.slug === slug);
     return p ? withGallery(p) : undefined;
   };
-  if (!isSanityConfigured) return fromFallback();
+  if (!USE_SANITY_PROPERTIES || !isSanityConfigured) return fromFallback();
   try {
     const doc = await client.fetch<SanityProperty | null>(
       `*[_type == "property" && slug.current == $slug][0]{${FIELDS}}`,
@@ -75,7 +82,7 @@ export async function getPropertyBySlug(slug: string): Promise<Property | undefi
 }
 
 export async function getPropertySlugs(): Promise<string[]> {
-  if (!isSanityConfigured) return fallbackProperties.map((p) => p.slug);
+  if (!USE_SANITY_PROPERTIES || !isSanityConfigured) return fallbackProperties.map((p) => p.slug);
   try {
     const slugs = await client.fetch<string[]>(
       `*[_type == "property" && defined(slug.current)].slug.current`
