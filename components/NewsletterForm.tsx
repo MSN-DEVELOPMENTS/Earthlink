@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { submitToWeb3Forms } from '@/lib/web3forms';
+import { submitMessage } from '@/lib/sendMessage';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -14,7 +14,7 @@ export default function NewsletterForm() {
     const data = Object.fromEntries(new FormData(form));
     setStatus('sending');
     try {
-      await submitToWeb3Forms(data, 'New newsletter subscriber');
+      await submitMessage(data, 'New newsletter subscriber');
       setStatus('ok');
       form.reset();
     } catch {

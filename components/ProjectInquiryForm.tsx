@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { submitToWeb3Forms } from '@/lib/web3forms';
+import { submitMessage } from '@/lib/sendMessage';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -23,7 +23,7 @@ export default function ProjectInquiryForm({
     const data = Object.fromEntries(new FormData(form));
     setStatus('sending');
     try {
-      await submitToWeb3Forms(data, `Project enquiry — ${projectName} (${data.name || 'Unknown'})`);
+      await submitMessage(data, `Project enquiry — ${projectName} (${data.name || 'Unknown'})`);
       setStatus('ok');
       form.reset();
     } catch {

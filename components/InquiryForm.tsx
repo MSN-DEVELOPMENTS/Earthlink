@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { inquiryTypes } from '@/lib/data';
-import { submitToWeb3Forms } from '@/lib/web3forms';
+import { submitMessage } from '@/lib/sendMessage';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -15,7 +15,7 @@ export default function InquiryForm() {
     const data = Object.fromEntries(new FormData(form));
     setStatus('sending');
     try {
-      await submitToWeb3Forms(data, `New website enquiry — ${data.name || 'Unknown'}`);
+      await submitMessage(data, `New website enquiry — ${data.name || 'Unknown'}`);
       setStatus('ok');
       form.reset();
     } catch {
