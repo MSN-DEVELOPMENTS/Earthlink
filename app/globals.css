@@ -2633,10 +2633,10 @@ footer ul a:hover {
 /* Blog listing — article cards ------------------------------------------- */
 .blog-grid {
   display: grid;
-  /* auto-fit (not auto-fill) collapses empty tracks so a partial last row —
-     e.g. just 2 posts — stretches to fill the whole row instead of leaving
-     dead space on the side. */
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  /* Fixed two-up layout: two cards fill a row, and a single card sits in the
+     left slot at half width (never stretched full-width) — the second slot is
+     ready for the next post/article to line up beside it. */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 30px;
 }
 
@@ -2809,7 +2809,7 @@ footer ul a:hover {
   line-height: 1.7;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 760px) {
   .blog-grid {
     grid-template-columns: 1fr;
   }
