@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Earthlink Real Estate — site content
+   Earth Link Real Estate — site content
    All page copy lives here so it is easy to edit (and later move to a CMS).
    ========================================================================== */
 
@@ -89,7 +89,7 @@ export const offers = [
 
 /* ----- Properties: Current Selection (property cards) -------------------
    ref / permit numbers below are illustrative PLACEHOLDERS — replace with
-   real Earthlink listing references and DLD Trakheesi permit numbers. */
+   real Earth Link listing references and DLD Trakheesi permit numbers. */
 export type Property = {
   slug: string;
   name: string;
@@ -540,7 +540,7 @@ export const posts: Post[] = [
 export type News = Post;
 
 export const newsCategories = [
-  { title: 'Press Release', text: 'Official announcements from Earthlink.' },
+  { title: 'Press Release', text: 'Official announcements from Earth Link.' },
   { title: 'Company News', text: 'Milestones, hires, and growth.' },
   { title: 'Market Update', text: 'Fast takes on what is moving the market.' },
   { title: 'Events', text: 'Where to find us, and what we are hosting.' },
@@ -551,7 +551,7 @@ export const newsCategories = [
 export const news: News[] = [
   {
     slug: 'earthlink-real-estate-launches-media-center',
-    title: 'Earthlink Real Estate Launches Its Media Center',
+    title: 'Earth Link Real Estate Launches Its Media Center',
     category: 'Company News',
     excerpt:
       'A new home for our press releases, company milestones, and fast market updates — all in one place.',
@@ -559,7 +559,7 @@ export const news: News[] = [
     imageAlt: 'Modern Dubai office tower against a clear sky',
     publishedAt: '2026-06-30T09:00:00Z',
     body: [
-      p('Earthlink Real Estate has launched a dedicated Media Center, bringing our blog and news together in one place. It is where you will find our official announcements, company milestones, and quick reads on what is moving the Dubai market.'),
+      p('Earth Link Real Estate has launched a dedicated Media Center, bringing our blog and news together in one place. It is where you will find our official announcements, company milestones, and quick reads on what is moving the Dubai market.'),
       p('Our blog remains the home for longer-form market intelligence and guides. The news feed is for timely updates — press releases, events, and company news — so you can keep up at a glance.'),
     ],
     faqs: [],
@@ -569,7 +569,7 @@ export const news: News[] = [
 /* ----- FAQ -------------------------------------------------------------- */
 export const faqs = [
   {
-    q: 'What services does Earthlink Real Estate offer?',
+    q: 'What services does Earth Link Real Estate offer?',
     a: 'We are a Dubai-based real estate brokerage helping buyers, sellers, investors, and tenants navigate the property market. Our services include property sales, rentals, investment advisory, and holiday home management.',
   },
   {
@@ -605,7 +605,7 @@ export const faqs = [
     a: 'Off-plan properties are sold before or during construction. In Dubai, off-plan purchases are regulated by RERA — developer funds are held in escrow accounts, protecting buyers. They often offer lower entry prices and flexible payment plans.',
   },
   {
-    q: 'How do I get started with Earthlink Real Estate?',
+    q: 'How do I get started with Earth Link Real Estate?',
     a: 'Simply reach out via our website, WhatsApp, or visit our office. One of our agents will understand your requirements and shortlist properties that match your budget, lifestyle, and investment goals — at no cost to you as a buyer.',
   },
 ];

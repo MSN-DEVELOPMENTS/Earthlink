@@ -75,8 +75,8 @@ export default function Footer() {
 
           {/* Right — brand mark, beside the text */}
           <div className="foot-brand">
-            <Link href="/" aria-label="Earthlink Real Estate — home">
-              <img src="/logo.png" alt="Earthlink Real Estate" className="foot-logo" />
+            <Link href="/" aria-label="Earth Link Real Estate — home">
+              <img src="/logo.png" alt="Earth Link Real Estate" className="foot-logo" />
             </Link>
           </div>
         </div>

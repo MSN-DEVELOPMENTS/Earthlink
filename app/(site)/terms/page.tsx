@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   alternates: { canonical: '/terms' },
   description:
-    'The terms that govern your use of the Earthlink Real Estate website.',
+    'The terms that govern your use of the Earth Link Real Estate website.',
 };
 
 export default function TermsPage() {
@@ -17,7 +17,7 @@ export default function TermsPage() {
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Legal</span>
           <h1 className="reveal">Terms <span className="grad">of Use</span></h1>
           <p className="reveal">
-            The terms that govern your use of the Earthlink Real Estate website.
+            The terms that govern your use of the Earth Link Real Estate website.
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function TermsPage() {
             <p className="legal-meta">Last updated: 30 June 2026</p>
 
             <p>
-              These Terms of Use govern your access to and use of the Earthlink Real Estate (&ldquo;ERE&rdquo;,
+              These Terms of Use govern your access to and use of the Earth Link Real Estate (&ldquo;ERE&rdquo;,
               &ldquo;we&rdquo;, &ldquo;us&rdquo;) website. By using this site, you agree to these terms. If you do
               not agree, please do not use the site.
             </p>

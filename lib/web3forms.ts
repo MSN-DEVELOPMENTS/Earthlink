@@ -15,7 +15,7 @@ export async function submitToWeb3Forms(
   if (!WEB3FORMS_KEY) {
     // Dev-time hint; users see a friendly message instead.
     console.warn(
-      '[Earthlink] NEXT_PUBLIC_WEB3FORMS_KEY is not set — form submissions will not be delivered. ' +
+      '[Earth Link] NEXT_PUBLIC_WEB3FORMS_KEY is not set — form submissions will not be delivered. ' +
         'Add your key to .env.local. See lib/web3forms.ts.'
     );
     throw new Error('FORM_NOT_CONFIGURED');
@@ -26,7 +26,7 @@ export async function submitToWeb3Forms(
     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({
       access_key: WEB3FORMS_KEY,
-      from_name: 'Earthlink Website',
+      from_name: 'Earth Link Website',
       subject,
       ...data,
     }),

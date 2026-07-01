@@ -3,11 +3,11 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import ScrollReveal from '@/components/ScrollReveal';
 
-// Structured data so Google can show Earthlink as a real-estate business.
+// Structured data so Google can show Earth Link as a real-estate business.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'RealEstateAgent',
-  name: 'Earthlink Real Estate',
+  name: 'Earth Link Real Estate',
   description: 'Dubai real estate brokerage — buying, leasing, and investing, backed by ERE.',
   url: 'https://earthlink.ae',
   telephone: '+971528701177',

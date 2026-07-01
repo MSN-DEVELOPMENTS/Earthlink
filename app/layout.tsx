@@ -18,8 +18,8 @@ const siteUrl = 'https://earthlink.ae';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Earthlink Real Estate — Dubai Brokerage',
-    template: '%s — Earthlink Real Estate',
+    default: 'Earth Link Real Estate — Dubai Brokerage',
+    template: '%s — Earth Link Real Estate',
   },
   description:
     'Dubai real estate brokerage. Buying, leasing, or investing in Dubai works best with clear advice. Backed by ERE.',
@@ -32,12 +32,12 @@ export const metadata: Metadata = {
     'rent property Dubai',
     'property investment Dubai',
   ],
-  applicationName: 'Earthlink Real Estate',
+  applicationName: 'Earth Link Real Estate',
   alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
-    siteName: 'Earthlink Real Estate',
-    title: 'Earthlink Real Estate — Dubai Brokerage',
+    siteName: 'Earth Link Real Estate',
+    title: 'Earth Link Real Estate — Dubai Brokerage',
     description:
       'Buy, lease, or invest in Dubai with advice you can trust. Ten years of local deals, backed by ERE.',
     url: siteUrl,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Earthlink Real Estate — Dubai Brokerage',
+    title: 'Earth Link Real Estate — Dubai Brokerage',
     description:
       'Buy, lease, or invest in Dubai with advice you can trust. Ten years of local deals, backed by ERE.',
   },

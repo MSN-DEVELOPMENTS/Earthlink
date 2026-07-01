@@ -7,7 +7,7 @@ import { getNews } from '@/lib/news';
 export const metadata: Metadata = {
   title: 'News',
   alternates: { canonical: '/news' },
-  description: 'The latest from Earthlink Real Estate: press releases, company news, market updates, and events.',
+  description: 'The latest from Earth Link Real Estate: press releases, company news, market updates, and events.',
 };
 
 export default async function NewsPage() {
@@ -20,7 +20,7 @@ export default async function NewsPage() {
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Media Center</span>
           <h1 className="reveal">Latest <span className="grad">News</span></h1>
-          <p className="reveal">Announcements, milestones, and quick updates from the Earthlink team.</p>
+          <p className="reveal">Announcements, milestones, and quick updates from the Earth Link team.</p>
         </div>
       </section>
 

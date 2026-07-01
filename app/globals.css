@@ -565,8 +565,10 @@ nav.links a.active::after {
   grid-template-columns: 1fr;
   align-items: center;
   min-height: 100vh;
-  padding-top: 168px;
-  padding-bottom: 96px;
+  /* Symmetric padding keeps the headline vertically centred (no dead space
+     above it) and matches the About / Properties full-screen heroes. */
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .hero--bg .hero-copy {
@@ -989,8 +991,21 @@ nav.links a.active::after {
 
 .about-cover-content {
   max-width: 640px;
-  margin-left: auto;
-  text-align: left;
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* Centre every element within the cover block */
+.about-cover-content .eyebrow {
+  justify-content: center;
+}
+
+.about-cover-content .lead {
+  margin-inline: auto;
+}
+
+.about-cover-content .stat {
+  text-align: center;
 }
 
 @media (max-width: 860px) {
@@ -1370,6 +1385,85 @@ nav.links a.active::after {
   font-size: .9rem;
   color: var(--muted);
   line-height: 1.6;
+}
+
+/* Office location map — interactive Google Maps embed */
+.c-map {
+  margin-top: 64px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .08);
+}
+
+.c-map-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 24px;
+  flex-wrap: wrap;
+  padding: 16px 22px;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+}
+
+.c-map-addr {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--slate);
+}
+
+.c-map-addr a {
+  color: var(--slate);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.c-map-addr a:hover {
+  color: var(--champagne-ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.c-map-label {
+  display: block;
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--champagne-ink);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.c-map-dir {
+  flex: none;
+  font-size: .82rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--champagne-ink);
+  white-space: nowrap;
+}
+
+.c-map-dir:hover {
+  color: var(--slate);
+}
+
+.c-map iframe {
+  display: block;
+  width: 100%;
+  height: 440px;
+  border: 0;
+}
+
+@media (max-width: 720px) {
+  .c-map {
+    margin-top: 48px;
+  }
+
+  .c-map iframe {
+    height: 320px;
+  }
 }
 
 /* Right: the message form held as a contained panel, anchored to the side */
@@ -1895,17 +1989,19 @@ footer ul a:hover {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 140px 0 64px;
+  /* Extra bottom padding biases the centred copy upward so it sits a little
+     higher in the frame rather than dead-centre. */
+  padding: 100px 0 240px;
   text-align: center;
 }
 
 .ab-hero h1 {
-  font-size: clamp(2.4rem, 5.4vw, 4rem);
+  font-size: clamp(2.7rem, 5.8vw, 4.4rem);
   font-weight: 400;
   color: var(--ondark);
   max-width: none;
   letter-spacing: -.02em;
-  line-height: 1.05;
+  line-height: 1.08;
   text-shadow: 0 2px 30px rgba(10, 18, 23, .45);
 }
 
@@ -1918,8 +2014,8 @@ footer ul a:hover {
   color: rgba(255, 255, 255, .9);
   max-width: 600px;
   margin: 26px auto 0;
-  font-size: 1.12rem;
-  line-height: 1.65;
+  font-size: 1.2rem;
+  line-height: 1.7;
 }
 
 /* Hero: headline left, intro paragraph held in the right column */
@@ -1994,7 +2090,15 @@ footer ul a:hover {
   pointer-events: none;
 }
 
-/* Right column: heading + body */
+/* Right column: heading + body — copy centred within its column */
+.ab-split-text {
+  text-align: center;
+}
+
+.ab-split-text .eyebrow {
+  justify-content: center;
+}
+
 .ab-split-text .section-title {
   margin-top: 14px;
 }
@@ -2004,6 +2108,7 @@ footer ul a:hover {
   font-size: 1.12rem;
   max-width: 56ch;
   margin-top: 22px;
+  margin-inline: auto;
 }
 
 /* Stats: an open band ruled in slate — no boxes */
@@ -3148,15 +3253,15 @@ footer ul a:hover {
   /* About hero — shorter band + smaller type on tablets/phones */
   .ab-hero-inner {
     min-height: 100vh;
-    padding: 124px 24px 56px;
+    padding: 88px 24px 200px;
   }
 
   .ab-hero h1 {
-    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-size: clamp(2.9rem, 9.5vw, 3.9rem);
   }
 
   .ab-hero-lead {
-    font-size: 1.06rem;
+    font-size: 1.16rem;
   }
 
   .ab-work-img {
@@ -3243,15 +3348,15 @@ footer ul a:hover {
   /* About hero — shorter band + smaller type on tablets/phones */
   .ab-hero-inner {
     min-height: 52vh;
-    padding: 124px 24px 56px;
+    padding: 88px 24px 160px;
   }
 
   .ab-hero h1 {
-    font-size: clamp(2.4rem, 8vw, 3.6rem);
+    font-size: clamp(2.9rem, 9.5vw, 3.9rem);
   }
 
   .ab-hero-lead {
-    font-size: 1.06rem;
+    font-size: 1.16rem;
   }
 
   .ab-work-img {
@@ -3331,8 +3436,8 @@ footer ul a:hover {
 
   .hero--bg .hero-grid {
     min-height: 100vh;
-    padding-top: 134px;
-    padding-bottom: 64px;
+    padding-top: 100px;
+    padding-bottom: 100px;
   }
 
   .hero h1 {
@@ -3504,8 +3609,8 @@ footer ul a:hover {
 
   .hero--bg .hero-grid {
     min-height: 100vh;
-    padding-top: 116px;
-    padding-bottom: 52px;
+    padding-top: 88px;
+    padding-bottom: 88px;
   }
 
   .hero--bg::before {
@@ -3563,7 +3668,7 @@ footer ul a:hover {
 
   .ab-hero-inner {
     min-height: 100vh;
-    padding: 104px 18px 46px;
+    padding: 88px 18px 200px;
   }
 
   .index .row {

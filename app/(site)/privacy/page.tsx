@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   alternates: { canonical: '/privacy' },
   description:
-    'How Earthlink Real Estate collects, uses, and protects your personal information.',
+    'How Earth Link Real Estate collects, uses, and protects your personal information.',
 };
 
 export default function PrivacyPage() {
@@ -17,7 +17,7 @@ export default function PrivacyPage() {
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Legal</span>
           <h1 className="reveal">Privacy <span className="grad">Policy</span></h1>
           <p className="reveal">
-            How we collect, use, and protect the information you share with Earthlink Real Estate.
+            How we collect, use, and protect the information you share with Earth Link Real Estate.
           </p>
         </div>
       </section>
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
             <p className="legal-meta">Last updated: 30 June 2026</p>
 
             <p>
-              Earthlink Real Estate (&ldquo;ERE&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is committed to protecting your
+              Earth Link Real Estate (&ldquo;ERE&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;) is committed to protecting your
               privacy. This policy explains what personal information we collect, why we collect it, and the
               choices you have. By using our website or services, you agree to the practices described here.
             </p>

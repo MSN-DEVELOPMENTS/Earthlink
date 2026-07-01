@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 // Branded social-share card, generated automatically (no static asset needed).
-export const alt = 'Earthlink Real Estate — Dubai Brokerage';
+export const alt = 'Earth Link Real Estate — Dubai Brokerage';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -50,7 +50,7 @@ export default async function OpengraphImage() {
             E
           </div>
           <div style={{ color: '#f4f1e9', fontSize: '34px', fontWeight: 700, letterSpacing: '-0.5px' }}>
-            Earthlink
+            Earth Link
           </div>
         </div>
 

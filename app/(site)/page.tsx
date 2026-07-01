@@ -24,7 +24,7 @@ export default async function HomePage() {
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <h1 className="reveal">
-              Earthlink <span className="grad">Real Estate</span>
+              Earth Link <span className="grad">Real Estate</span>
             </h1>
           </div>
         </div>
@@ -67,11 +67,11 @@ export default async function HomePage() {
         <div className="about-cover-overlay" aria-hidden="true" />
         <div className="wrap">
           <div className="about-cover-content reveal">
-            <span className="eyebrow">The Earthlink Foundation</span>
+            <span className="eyebrow">The Earth Link Foundation</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
             <p className="lead">
               Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
-              every signed contract is the full strength of Earthlink—giving you off-market access, direct ties
+              every signed contract is the full strength of Earth Link—giving you off-market access, direct ties
               to top builders, and one team handling your property from start to finish. Under Sharoon&apos;s
               leadership, we bring tested standards to every transaction.
             </p>

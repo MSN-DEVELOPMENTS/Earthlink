@@ -5,7 +5,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'Media Center',
   alternates: { canonical: '/media-center' },
-  description: 'The Earthlink Real Estate Media Center — our blog of market insight and guides, and the latest company news.',
+  description: 'The Earth Link Real Estate Media Center — our blog of market insight and guides, and the latest company news.',
 };
 
 const sections = [
@@ -21,7 +21,7 @@ const sections = [
     href: '/news',
     eyebrow: 'Newsroom',
     title: 'News',
-    text: 'Press releases, company milestones, market updates, and events from the Earthlink team.',
+    text: 'Press releases, company milestones, market updates, and events from the Earth Link team.',
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80',
     imgAlt: 'Modern Dubai office tower against a clear sky',
   },

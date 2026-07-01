@@ -5,7 +5,7 @@ import InquiryForm from '@/components/InquiryForm';
 export const metadata: Metadata = {
   title: 'Contact',
   alternates: { canonical: '/contact' },
-  description: 'Get in touch with Earthlink. Send a message or book a consultation with a Dubai property consultant.',
+  description: 'Get in touch with Earth Link. Send a message or book a consultation with a Dubai property consultant.',
 };
 
 export default function ContactPage() {
@@ -59,6 +59,37 @@ export default function ContactPage() {
             <div className="reveal">
               <InquiryForm />
             </div>
+          </div>
+
+          {/* Office location map */}
+          <div className="c-map reveal">
+            <div className="c-map-bar">
+              <p className="c-map-addr">
+                <span className="c-map-label">Our Office</span>
+                <a
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.location)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {contact.location}
+                </a>
+              </p>
+              <a
+                className="c-map-dir"
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(contact.location)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get directions
+              </a>
+            </div>
+            <iframe
+              title={`Earth Link office location — ${contact.location}`}
+              src={`https://www.google.com/maps?q=${encodeURIComponent(contact.location)}&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
