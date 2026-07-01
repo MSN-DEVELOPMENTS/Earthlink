@@ -14,8 +14,21 @@ export default function DevelopersPage() {
   const developers = getDevelopers();
   return (
     <>
-      {/* ===== HEADER ===== */}
-      <section className="page-head">
+      {/* ===== HERO (Dubai supertall towers aerial background video) ===== */}
+      <section className="page-head page-head--hero">
+        <video
+          className="page-head-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/developers/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="/developers/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>
             {developersPage.eyebrow}

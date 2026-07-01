@@ -14,8 +14,21 @@ export default async function PropertiesPage() {
   const properties = await getProperties();
   return (
     <>
-      {/* ===== HEADER ===== */}
-      <section className="page-head">
+      {/* ===== HERO (Dubai Frame aerial background video) ===== */}
+      <section className="page-head page-head--hero">
+        <video
+          className="page-head-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/properties/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="/properties/hero.mp4" type="video/mp4" />
+        </video>
+        <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Properties — Curated for Dubai</span>
           <h1 className="reveal">Explore <span className="grad">Listings</span></h1>

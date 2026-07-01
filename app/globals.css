@@ -1684,6 +1684,74 @@ footer ul a:hover {
   background: var(--white);
 }
 
+/* Properties hero — Dubai Frame aerial background video ------------------- */
+.page-head--hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  background: #0a121c;
+  border-bottom: none;
+}
+
+.page-head--hero .page-head-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-head--hero .page-head-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 14, 22, 0.55) 0%,
+    rgba(8, 14, 22, 0.30) 42%,
+    rgba(8, 14, 22, 0.78) 100%
+  );
+}
+
+.page-head--hero .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Force legible light text over the video in both light & dark themes */
+.page-head--hero h1 {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.page-head--hero .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-head--hero .grad {
+  color: var(--champagne-ink);
+}
+
+.page-head--hero p {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 620px) {
+  .page-head--hero {
+    min-height: 100vh;
+    min-height: 100svh;
+  }
+}
+
 /* Legal pages — readable single-column prose (Privacy, Terms) ------------- */
 .legal {
   max-width: 760px;
