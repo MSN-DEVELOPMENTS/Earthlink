@@ -16,9 +16,10 @@ export default async function HomePage() {
           loop
           playsInline
           preload="auto"
+          poster="/home/hero-poster.jpg?v=2"
           aria-hidden="true"
         >
-          <source src="/home/hero.mp4" type="video/mp4" />
+          <source src="/home/hero.mp4?v=2" type="video/mp4" />
         </video>
         <div className="wrap hero-grid">
           <div className="hero-copy">

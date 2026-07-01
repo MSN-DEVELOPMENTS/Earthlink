@@ -23,10 +23,10 @@ export default async function PropertiesPage() {
           loop
           playsInline
           preload="auto"
-          poster="/properties/hero-poster.jpg"
+          poster="/properties/hero-poster.jpg?v=2"
           aria-hidden="true"
         >
-          <source src="/properties/hero.mp4" type="video/mp4" />
+          <source src="/properties/hero.mp4?v=2" type="video/mp4" />
         </video>
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">

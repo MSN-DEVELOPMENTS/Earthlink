@@ -44,9 +44,9 @@ export default function AboutPage() {
             muted
             loop
             playsInline
-            poster="/about/hero-desert.jpg"
+            poster="/about/hero-poster.jpg?v=2"
           >
-            <source src="/about/hero.mp4" type="video/mp4" />
+            <source src="/about/hero.mp4?v=2" type="video/mp4" />
           </video>
         </div>
         <div className="wrap">

@@ -23,10 +23,10 @@ export default function DevelopersPage() {
           loop
           playsInline
           preload="auto"
-          poster="/developers/hero-poster.jpg"
+          poster="/developers/hero-poster.jpg?v=2"
           aria-hidden="true"
         >
-          <source src="/developers/hero.mp4" type="video/mp4" />
+          <source src="/developers/hero.mp4?v=2" type="video/mp4" />
         </video>
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
