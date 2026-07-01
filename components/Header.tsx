@@ -41,9 +41,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="btn btn-gold menu-cta">
-              Book a Consultation
-            </Link>
           </nav>
 
           <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 20px' }}>

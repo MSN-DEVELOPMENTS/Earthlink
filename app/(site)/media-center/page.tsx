@@ -12,7 +12,7 @@ const sections = [
   {
     href: '/blog',
     eyebrow: 'The Journal',
-    title: 'Blog',
+    title: 'Blogs',
     text: 'Clear market intelligence, neighbourhood guides, and investor notes on Dubai real estate.',
     img: '/blog/blog-hub.jpg',
     imgAlt: 'Dubai skyline silhouette at sunset reflected over the water',

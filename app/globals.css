@@ -3441,10 +3441,12 @@ footer ul a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-    max-width: 18ch;
-    margin-inline: auto; /* keep the constrained headline centred */
-    white-space: normal; /* let the headline wrap on phones — nowrap overflows */
+    /* Size the headline to the viewport width and keep it on ONE line across
+       phones and small tablets (nowrap + no width cap). */
+    font-size: clamp(1.5rem, 7vw, 4rem);
+    max-width: none;
+    margin-inline: auto; /* keep the headline centred */
+    white-space: nowrap;
   }
 
   .hero-media {
@@ -3476,72 +3478,92 @@ footer ul a:hover {
     display: none;
   }
 
+  /* Full-screen overlay menu (MSN-style): centred, spaced, uppercase items
+     with hairline dividers over a darkened brand photo. */
   nav.links.open {
     display: flex;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 16px;
-    right: 16px;
+    position: fixed;
+    inset: 0;
+    z-index: 900; /* below the fixed header (1000) so the burger→X stays tappable */
     flex-direction: column;
     align-items: stretch;
-    background: var(--white);
-    padding: 10px;
+    justify-content: center;
     gap: 0;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 24px 48px rgba(21, 35, 43, .16);
-  }
-
-  /* Each item is a full-width row with comfortable tap area + hairline divider */
-  nav.links.open a {
-    padding: 15px 14px;
-    font-size: .9rem;
-    border-radius: 9px;
-    transition: background .15s ease, color .15s ease;
-  }
-
-  nav.links.open a:not(.menu-cta) + a:not(.menu-cta) {
-    border-top: 1px solid var(--line);
+    padding: 96px 26px 48px;
+    background:
+      linear-gradient(180deg, rgba(12, 18, 22, .8), rgba(12, 18, 22, .92)),
+      url('/home/hero-poster.jpg') center / cover no-repeat;
+    border: 0;
     border-radius: 0;
+    box-shadow: none;
+    overflow-y: auto;
+    animation: menuFade .28s ease;
   }
 
-  nav.links.open a:not(.menu-cta):hover {
-    background: var(--paper-2);
+  /* Each item: full-width centred row, uppercase + letter-spacing, hairline
+     divider beneath — the last item keeps its divider like the reference. */
+  nav.links.open a {
+    padding: 22px 8px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: .26em;
+    color: rgba(244, 241, 233, .88);
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .13);
+    transition: color .15s ease;
   }
 
-  /* Active item: tinted pill instead of the desktop underline */
+  nav.links.open a:first-of-type {
+    border-top: 1px solid rgba(255, 255, 255, .13);
+  }
+
+  nav.links.open a:hover {
+    color: #fff;
+    background: transparent;
+  }
+
+  /* Active item: champagne tint instead of the desktop underline */
   nav.links.open a.active {
-    color: var(--champagne-ink);
-    background: var(--paper-2);
-    border-radius: 9px;
+    color: var(--champagne);
+    background: transparent;
+    border-radius: 0;
   }
 
   nav.links.open a.active::after {
     display: none;
   }
 
-  /* The CTA inside the menu */
-  nav.links.open .menu-cta {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    padding: 15px;
-    font-size: .9rem;
-    font-weight: 600;
-    color: var(--black);
+  /* Burger morphs into a close (X) while the overlay is open */
+  .burger span {
+    transition: transform .25s ease, opacity .2s ease, background .2s ease;
+  }
+
+  nav.links.open ~ .burger {
+    position: relative;
+    z-index: 1001;
+  }
+
+  nav.links.open ~ .burger span {
     background: var(--champagne);
-    border-radius: 10px;
-    text-transform: none;
-    letter-spacing: 0;
   }
 
-  nav.links.open .menu-cta:hover {
-    background: #d8bd8e;
-    color: var(--black);
+  nav.links.open ~ .burger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
   }
 
-  nav.links.open .menu-cta + a {
-    border-top: 0;
+  nav.links.open ~ .burger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  nav.links.open ~ .burger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  @keyframes menuFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   .page-head {
@@ -3623,7 +3645,12 @@ footer ul a:hover {
   }
 
   .hero h1 {
-    font-size: clamp(2.3rem, 11vw, 3.2rem);
+    /* Keep "Earth Link Real Estate" on a single line on phones: size it to the
+       viewport width and disable the wrap/width cap inherited from the ≤860px
+       rule so the name never breaks across two lines. */
+    font-size: clamp(1.5rem, 7.6vw, 3.2rem);
+    white-space: nowrap;
+    max-width: none;
   }
 
   .hero-media {
