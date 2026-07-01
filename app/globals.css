@@ -511,6 +511,16 @@ nav.links a.active::after {
   object-position: 70% center; /* keep marina/skyline in view, copy sits over the calmer left */
 }
 
+/* Background video — fills the hero band like the slideshow images did */
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  pointer-events: none;
+}
+
 /* Auto-rotating hero slideshow — slides cross-fade into one another */
 .hero-slideshow {
   overflow: hidden;
@@ -944,6 +954,53 @@ nav.links a.active::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Core Persona — full-section cover background */
+.about-cover {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-cover-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.about-cover-bg img {
+  object-fit: cover;
+}
+
+.about-cover-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(270deg, rgba(12, 14, 15, .94) 0%, rgba(12, 14, 15, .82) 40%, rgba(12, 14, 15, .5) 72%, rgba(12, 14, 15, .32) 100%),
+    linear-gradient(180deg, rgba(12, 14, 15, .55) 0%, rgba(12, 14, 15, .25) 40%, rgba(12, 14, 15, .6) 100%);
+  pointer-events: none;
+}
+
+.about-cover .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.about-cover-content {
+  max-width: 640px;
+  margin-left: auto;
+  text-align: left;
+}
+
+@media (max-width: 860px) {
+  .about-cover-overlay {
+    background: linear-gradient(180deg, rgba(12, 14, 15, .72) 0%, rgba(12, 14, 15, .82) 100%);
+  }
+
+  .about-cover-content {
+    max-width: 100%;
+  }
 }
 
 .stats {
@@ -2473,6 +2530,32 @@ footer ul a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   gap: 30px;
+}
+
+/* Two-card layout (e.g. Media Center) — two large columns filling the width */
+.blog-grid--duo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px;
+}
+
+@media (max-width: 720px) {
+  .blog-grid--duo {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Media Center — let the two big cards fill the wide screen and enlarge the
+   images so the section doesn't leave dead space on the sides. */
+.wrap--wide {
+  max-width: 1680px;
+}
+
+.blog-grid--duo .blog-card-img {
+  aspect-ratio: 16 / 9;
+}
+
+.blog-grid--duo .blog-card-body {
+  padding: 32px 38px 40px;
 }
 
 .blog-card {

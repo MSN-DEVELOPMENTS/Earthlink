@@ -2,7 +2,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { services, stats, communities } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
-import HeroSlideshow from '@/components/HeroSlideshow';
 
 export default async function HomePage() {
   const properties = await getProperties();
@@ -10,7 +9,17 @@ export default async function HomePage() {
     <>
       {/* ===== HERO ===== */}
       <section className="hero hero--bg" id="home">
-        <HeroSlideshow />
+        <video
+          className="hero-bg hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        >
+          <source src="/home/hero.mp4" type="video/mp4" />
+        </video>
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <h1 className="reveal">
@@ -44,18 +53,19 @@ export default async function HomePage() {
       </section>
 
       {/* ===== ABOUT TEASER ===== */}
-      <section id="about">
-        <div className="wrap about-grid">
-          <div className="about-img reveal">
-            <Image
-              src="/home/dubai-downtown-street.jpg"
-              alt="A quiet Dubai downtown street lined with palm trees, with the Burj Khalifa skyline beyond"
-              fill
-              sizes="(max-width: 860px) 100vw, 45vw"
-              style={{ objectFit: 'cover' }}
-            />
-          </div>
-          <div className="reveal">
+      <section id="about" className="about-cover">
+        <div className="about-cover-bg" aria-hidden="true">
+          <Image
+            src="/home/core-persona-villa.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </div>
+        <div className="about-cover-overlay" aria-hidden="true" />
+        <div className="wrap">
+          <div className="about-cover-content reveal">
             <span className="eyebrow">The Earthlink Foundation</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
             <p className="lead">

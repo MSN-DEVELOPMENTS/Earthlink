@@ -40,9 +40,9 @@ export default function MediaCenterPage() {
       </section>
 
       {/* ===== SECTIONS ===== */}
-      <section id="sections">
-        <div className="wrap">
-          <div className="blog-grid">
+      <section id="sections" className="media-sections">
+        <div className="wrap wrap--wide">
+          <div className="blog-grid blog-grid--duo">
             {sections.map((s) => (
               <Link href={s.href} key={s.href} className="blog-card reveal">
                 <div className="blog-card-img">
@@ -50,7 +50,7 @@ export default function MediaCenterPage() {
                     src={s.img}
                     alt={s.imgAlt}
                     fill
-                    sizes="(max-width: 800px) 100vw, 380px"
+                    sizes="(max-width: 800px) 100vw, 820px"
                     style={{ objectFit: 'cover' }}
                   />
                 </div>
