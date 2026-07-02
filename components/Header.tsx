@@ -24,7 +24,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <header className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
+    <header className={`nav${scrolled ? ' scrolled' : ''}${open ? ' menu-open' : ''}`} id="nav">
       <div className="wrap">
         <div className="nav-inner">
           <Link href="/" className="logo" aria-label="Earth Link Real Estate — home">
