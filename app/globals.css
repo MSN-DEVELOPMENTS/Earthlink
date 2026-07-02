@@ -2111,6 +2111,51 @@ footer ul a:hover {
   margin-inline: auto;
 }
 
+/* Full-width horizontal banner: image holds the whole section, copy sits on it */
+.ab-banner {
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  aspect-ratio: 16 / 7;
+  background: var(--paper-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ab-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31, 54, 67, .28) 0%, rgba(31, 54, 67, .62) 100%);
+  pointer-events: none;
+}
+
+.ab-banner-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 40px 24px;
+  max-width: 760px;
+}
+
+.ab-banner-text .eyebrow {
+  justify-content: center;
+  color: rgba(255, 255, 255, .85);
+}
+
+.ab-banner-text .section-title {
+  margin-top: 14px;
+  color: #fff;
+}
+
+.ab-banner-text .ab-body {
+  color: rgba(255, 255, 255, .9);
+}
+
 /* Stats: an open band ruled in slate — no boxes */
 .ab-stats {
   display: grid;
@@ -3283,6 +3328,11 @@ footer ul a:hover {
     margin-top: 4px;
   }
 
+  /* Story banner — taller on phones/tablets so the copy has room to breathe */
+  .ab-banner {
+    aspect-ratio: 3 / 4;
+  }
+
   .ab-work-body .ab-list {
     margin-top: 28px;
   }
@@ -3376,6 +3426,11 @@ footer ul a:hover {
     order: 2;
     aspect-ratio: 4 / 3;
     margin-top: 4px;
+  }
+
+  /* Story banner — taller on phones/tablets so the copy has room to breathe */
+  .ab-banner {
+    aspect-ratio: 3 / 4;
   }
 
   .ab-work-body .ab-list {

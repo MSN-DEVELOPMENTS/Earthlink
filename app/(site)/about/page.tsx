@@ -62,17 +62,15 @@ export default function AboutPage() {
       {/* ===== STORY + STATS ===== */}
       <section id="story" className="section-light">
         <div className="wrap">
-          <div className="ab-split reveal">
-            <div className="ab-split-img">
-              <Image
-                src="/about/dubai-flamingos.jpg"
-                alt="Flamingos in a Dubai wetland at sunrise with the Burj Khalifa skyline beyond"
-                fill
-                sizes="(max-width: 860px) 100vw, 46vw"
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <div className="ab-split-text">
+          <div className="ab-banner reveal">
+            <Image
+              src="/about/dubai-frame.jpg"
+              alt="Aerial view of the Dubai Frame with the city skyline and park beyond"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
+            />
+            <div className="ab-banner-text">
               <span className="eyebrow ab-ey">Backed by ERE</span>
               <h2 className="section-title">The Strength Behind Every Deal</h2>
               <p className="ab-body">
