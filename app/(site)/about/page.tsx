@@ -16,6 +16,19 @@ const stats = [
   { big: '7+', lbl: 'Core communities completely mapped and monitored.' },
 ];
 
+/* About: leadership & team. Photos live under /public/about/team and are added
+   as they arrive; until a photo is set, the card shows the member's initials. */
+const team: { name: string; role: string; img?: string }[] = [
+  { name: 'Zeeshan Naqvi', role: 'CEO', img: '/about/team/zeeshan-naqvi.jpg' },
+  { name: 'Saeed Anwar', role: 'Website Developer', img: '/about/team/saeed-anwar.jpg?v=2' },
+  { name: 'Sharoon Irfan Khan', role: 'Marketing Head', img: '/about/team/sharoon-irfan-khan.jpg?v=2' },
+  { name: 'Naveed Anjum', role: 'Content Manager', img: '/about/team/naveed-anjum.jpg' },
+  { name: 'Safia Sehar', role: 'Social Media Manager', img: '/about/team/safia-sehar.jpg?v=2' },
+  { name: 'Hamad Zaheer', role: 'Sales Executive', img: '/about/team/hamad-zaheer.jpg' },
+  { name: 'Natasha Hall', role: 'Sales Manager' },
+  { name: 'Zain Khalid', role: 'Sales Executive' },
+];
+
 /* About: How We Work — the three principles behind every deal. */
 const howWeWork = [
   {
@@ -115,6 +128,41 @@ export default function AboutPage() {
                 ))}
               </dl>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TEAM ===== */}
+      <section id="team" className="section-light">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
+            <span className="eyebrow ab-ey">Our Team</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>The People Behind Every Deal</h2>
+          </div>
+          <div className="ab-team reveal">
+            {team.map((m) => (
+              <figure className="ab-team-card" key={m.name}>
+                <div className="ab-team-photo">
+                  {m.img ? (
+                    <Image
+                      src={m.img}
+                      alt={m.name}
+                      fill
+                      sizes="(max-width: 640px) 50vw, (max-width: 980px) 33vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <span className="ab-team-initials" aria-hidden="true">
+                      {m.name.split(' ').map((w) => w[0]).slice(0, 2).join('')}
+                    </span>
+                  )}
+                </div>
+                <figcaption>
+                  <span className="ab-team-name">{m.name}</span>
+                  <span className="ab-team-role">{m.role}</span>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
