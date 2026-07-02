@@ -22,11 +22,11 @@ const team: { name: string; role: string; img?: string }[] = [
   { name: 'Zeeshan Naqvi', role: 'CEO', img: '/about/team/zeeshan-naqvi.jpg' },
   { name: 'Natasha Hall', role: 'Sales Manager' },
   { name: 'Sharoon Irfan Khan', role: 'Marketing Head', img: '/about/team/sharoon-irfan-khan.jpg?v=2' },
-  { name: 'Zain Khalid', role: 'Sales Executive' },
+  { name: 'Naveed Anjum', role: 'Content Manager', img: '/about/team/naveed-anjum.jpg' },
   { name: 'Safia Sehar', role: 'Social Media Manager', img: '/about/team/safia-sehar.jpg?v=2' },
   { name: 'Hamad Zaheer', role: 'Sales Executive', img: '/about/team/hamad-zaheer.jpg' },
   { name: 'Saeed Anwar', role: 'Website Developer', img: '/about/team/saeed-anwar.jpg?v=2' },
-  { name: 'Naveed Anjum', role: 'Content Manager', img: '/about/team/naveed-anjum.jpg' },
+  { name: 'Zain Khalid', role: 'Sales Executive' },
 ];
 
 /* About: How We Work — the three principles behind every deal. */
