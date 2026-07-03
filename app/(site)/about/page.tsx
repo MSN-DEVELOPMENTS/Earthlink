@@ -2,12 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { faqs } from '@/lib/data';
+import { seoMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About',
-  alternates: { canonical: '/about' },
-  description: 'Built around you. A Dubai brokerage backed by ERE, with sales, leasing, and management under one roof.',
-};
+export const metadata: Metadata = seoMetadata('/about');
 
 /* About: headline stats — labels are About-specific (the Home page uses its own). */
 const stats = [

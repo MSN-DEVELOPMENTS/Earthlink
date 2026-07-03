@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { contact } from '@/lib/data';
+import { seoMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Terms of Use',
-  alternates: { canonical: '/terms' },
-  description:
-    'The terms that govern your use of the Earth Link Real Estate website.',
-};
+export const metadata: Metadata = seoMetadata('/terms');
 
 export default function TermsPage() {
   return (

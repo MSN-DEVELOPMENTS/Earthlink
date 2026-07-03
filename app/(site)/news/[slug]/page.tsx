@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { PortableText } from 'next-sanity';
 import type { PortableTextComponents } from '@portabletext/react';
 import { getNewsBySlug, getNewsSlugs } from '@/lib/news';
+import { dynamicSeoMetadata } from '@/lib/seo';
 
 export async function generateStaticParams() {
   const slugs = await getNewsSlugs();
@@ -16,11 +17,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const item = await getNewsBySlug(params.slug);
   if (!item) return { title: 'News' };
-  return {
+  return dynamicSeoMetadata(`/news/${item.slug}`, {
     title: item.seoTitle || item.title,
     description: item.metaDescription || item.excerpt,
-    alternates: { canonical: `/news/${item.slug}` },
-  };
+  });
 }
 
 /* Render the Portable Text body with the site's own elements/classes. */

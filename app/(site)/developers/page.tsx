@@ -2,13 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getDevelopers, developersPage, developerStartingFrom } from '@/lib/developers';
+import { seoMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Developers',
-  alternates: { canonical: '/developers' },
-  description:
-    'Dubai’s leading developers — Emaar, DAMAC, Sobha and Binghatti — with their latest launches and starting prices.',
-};
+export const metadata: Metadata = seoMetadata('/developers');
 
 export default function DevelopersPage() {
   const developers = getDevelopers();

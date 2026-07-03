@@ -1,14 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { seoMetadata } from '@/lib/seo';
 import { offers, matchSteps } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
 
-export const metadata: Metadata = {
-  title: 'Properties',
-  alternates: { canonical: '/properties' },
-  description: 'Handpicked properties in Dubai’s most sought-after communities — explore our curated listings.',
-};
+export const metadata: Metadata = seoMetadata('/properties');
 
 export default async function PropertiesPage() {
   const properties = await getProperties();

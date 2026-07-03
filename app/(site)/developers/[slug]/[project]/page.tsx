@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getProject, getProjectParams } from '@/lib/developers';
+import { dynamicSeoMetadata } from '@/lib/seo';
 import PropertyGallery from '@/components/PropertyGallery';
 import ProjectWhatsApp from '@/components/ProjectWhatsApp';
 import ProjectInquiryForm from '@/components/ProjectInquiryForm';
@@ -18,13 +19,12 @@ export async function generateMetadata({
   const found = getProject(params.slug, params.project);
   if (!found) return { title: 'Project' };
   const { project, developer } = found;
-  return {
+  return dynamicSeoMetadata(`/developers/${developer.slug}/${project.slug}`, {
     title: `${project.name} — ${developer.name}`,
     description:
       project.tagline ??
       `${project.name} by ${developer.name} in ${project.community}. From ${project.price}.`,
-    alternates: { canonical: `/developers/${developer.slug}/${project.slug}` },
-  };
+  });
 }
 
 export default function ProjectDetailPage({

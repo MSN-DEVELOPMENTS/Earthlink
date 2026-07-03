@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getDeveloperBySlug, getDeveloperSlugs } from '@/lib/developers';
+import { dynamicSeoMetadata } from '@/lib/seo';
 
 export function generateStaticParams() {
   return getDeveloperSlugs().map((slug) => ({ slug }));
@@ -11,11 +12,10 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const developer = getDeveloperBySlug(params.slug);
   if (!developer) return { title: 'Developer' };
-  return {
+  return dynamicSeoMetadata(`/developers/${developer.slug}`, {
     title: developer.name,
     description: `${developer.name} in Dubai — current launches, communities, and starting prices.`,
-    alternates: { canonical: `/developers/${developer.slug}` },
-  };
+  });
 }
 
 export default function DeveloperPage({ params }: { params: { slug: string } }) {

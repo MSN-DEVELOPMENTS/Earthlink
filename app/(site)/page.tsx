@@ -1,7 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import { services, stats, communities } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
+import { seoMetadata } from '@/lib/seo';
+
+export const metadata: Metadata = seoMetadata('/');
 
 export default async function HomePage() {
   const properties = await getProperties();

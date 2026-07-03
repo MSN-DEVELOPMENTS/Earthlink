@@ -2,16 +2,17 @@ import type { MetadataRoute } from 'next';
 
 const siteUrl = 'https://www.eregroup.ae';
 
-// Keeps crawlers (and SEO audit tools) focused on real pages. The bulk of the
-// "extra" URLs a crawl reports are Next.js image-optimizer requests under
-// /_next/image — resources, not pages — so we disallow them here. /_next/static
-// stays crawlable because Googlebot needs the JS/CSS to render the pages.
+// This is a real-estate site, so we deliberately let Google crawl the Next.js
+// image optimizer (/_next/image) — that keeps property, area, and team photos
+// eligible for Google Images. /_next/static stays crawlable too so Googlebot can
+// render pages. Only the API and the Sanity Studio admin are disallowed.
+// (To keep images OUT of search instead, add '/_next/image' to disallow.)
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: {
       userAgent: '*',
-      allow: '/',
-      disallow: ['/_next/image', '/studio', '/api/'],
+      allow: ['/', '/_next/image', '/_next/static'],
+      disallow: ['/api/', '/studio'],
     },
     sitemap: `${siteUrl}/sitemap.xml`,
     host: siteUrl,

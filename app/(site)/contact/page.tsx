@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
+import { seoMetadata } from '@/lib/seo';
 import { contact } from '@/lib/data';
 import InquiryForm from '@/components/InquiryForm';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  alternates: { canonical: '/contact' },
-  description: 'Get in touch with Earth Link. Send a message or book a consultation with a Dubai property consultant.',
-};
+export const metadata: Metadata = seoMetadata('/contact');
 
 export default function ContactPage() {
   return (

@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
+import { seoMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { newsCategories } from '@/lib/data';
 import { getNews } from '@/lib/news';
 
-export const metadata: Metadata = {
-  title: 'News',
-  alternates: { canonical: '/news' },
-  description: 'The latest from Earth Link Real Estate: press releases, company news, market updates, and events.',
-};
+export const metadata: Metadata = seoMetadata('/news');
 
 export default async function NewsPage() {
   const items = await getNews();

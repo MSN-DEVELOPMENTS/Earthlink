@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { PortableText } from 'next-sanity';
 import type { PortableTextComponents } from '@portabletext/react';
 import { getPostBySlug, getPostSlugs } from '@/lib/blog';
+import { dynamicSeoMetadata } from '@/lib/seo';
 
 // Rebuild each post from Sanity at most once every 60s (ISR); new posts not
 // present at build time are generated on first visit (dynamicParams default).
@@ -20,11 +21,10 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
   if (!post) return { title: 'Post' };
-  return {
+  return dynamicSeoMetadata(`/blog/${post.slug}`, {
     title: post.seoTitle || post.title,
     description: post.metaDescription || post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
-  };
+  });
 }
 
 /* Render the Portable Text body with the site's own elements/classes. */

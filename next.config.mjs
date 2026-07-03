@@ -23,6 +23,12 @@ const nextConfig = {
     return [
       { source: '/projects', destination: '/properties', permanent: true },
       { source: '/projects/:slug', destination: '/properties/:slug', permanent: true },
+      // Legacy URLs from the old eregroup.ae build (still held in Google's index).
+      // 301 them to the live equivalents so old link equity transfers and stale
+      // results drop out. Extend as SEO confirms more mappings from Search Console.
+      { source: '/contactus', destination: '/contact', permanent: true },
+      { source: '/privacy-policy', destination: '/privacy', permanent: true },
+      { source: '/home-with-map', destination: '/', permanent: true },
     ];
   },
   async headers() {

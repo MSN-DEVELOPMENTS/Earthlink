@@ -1,12 +1,8 @@
 import type { Metadata } from 'next';
 import { contact } from '@/lib/data';
+import { seoMetadata } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy',
-  alternates: { canonical: '/privacy' },
-  description:
-    'How Earth Link Real Estate collects, uses, and protects your personal information.',
-};
+export const metadata: Metadata = seoMetadata('/privacy');
 
 export default function PrivacyPage() {
   return (

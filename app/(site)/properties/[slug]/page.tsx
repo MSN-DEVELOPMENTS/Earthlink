@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { getPropertyBySlug, getPropertySlugs } from '@/lib/properties';
+import { dynamicSeoMetadata } from '@/lib/seo';
 import PropertyGallery from '@/components/PropertyGallery';
 
 export async function generateStaticParams() {
@@ -12,11 +13,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const property = await getPropertyBySlug(params.slug);
   if (!property) return { title: 'Property' };
-  return {
+  return dynamicSeoMetadata(`/properties/${property.slug}`, {
     title: property.name,
     description: `${property.name} in ${property.location}. ${property.type}, from ${property.price}.`,
-    alternates: { canonical: `/properties/${property.slug}` },
-  };
+  });
 }
 
 export default async function PropertyPage({ params }: { params: { slug: string } }) {

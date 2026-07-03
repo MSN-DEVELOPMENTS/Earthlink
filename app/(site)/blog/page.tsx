@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { seoMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 import { blogCategories } from '@/lib/data';
@@ -8,11 +9,7 @@ import { getPosts } from '@/lib/blog';
 // published posts appear on the live site without a manual redeploy.
 export const revalidate = 60;
 
-export const metadata: Metadata = {
-  title: 'Blog',
-  alternates: { canonical: '/blog' },
-  description: 'Clear market insight on Dubai real estate: prices, yields, neighbourhood guides, and investor notes.',
-};
+export const metadata: Metadata = seoMetadata('/blog');
 
 export default async function BlogPage() {
   const posts = await getPosts();

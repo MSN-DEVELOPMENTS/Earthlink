@@ -1,12 +1,9 @@
 import type { Metadata } from 'next';
+import { seoMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: 'Media Center',
-  alternates: { canonical: '/media-center' },
-  description: 'The Earth Link Real Estate Media Center — our blog of market insight and guides, and the latest company news.',
-};
+export const metadata: Metadata = seoMetadata('/media-center');
 
 const sections = [
   {
