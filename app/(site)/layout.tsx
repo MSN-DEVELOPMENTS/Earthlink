@@ -9,7 +9,7 @@ const jsonLd = {
   '@type': 'RealEstateAgent',
   name: 'Earth Link Real Estate',
   description: 'Dubai real estate brokerage — buying, leasing, and investing, backed by ERE.',
-  url: 'https://earthlink.ae',
+  url: 'https://www.eregroup.ae',
   telephone: '+971528701177',
   email: 'info@eregroup.ae',
   areaServed: 'Dubai, United Arab Emirates',

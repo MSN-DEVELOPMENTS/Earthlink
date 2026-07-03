@@ -12,8 +12,8 @@ const lato = Lato({
   display: 'swap',
 });
 
-// NOTE: update siteUrl to the real production domain before launch.
-const siteUrl = 'https://earthlink.ae';
+// Production domain — the live site is served here.
+const siteUrl = 'https://www.eregroup.ae';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

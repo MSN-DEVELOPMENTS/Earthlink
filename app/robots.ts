@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const siteUrl = 'https://earthlink.ae';
+const siteUrl = 'https://www.eregroup.ae';
 
 // Keeps crawlers (and SEO audit tools) focused on real pages. The bulk of the
 // "extra" URLs a crawl reports are Next.js image-optimizer requests under
