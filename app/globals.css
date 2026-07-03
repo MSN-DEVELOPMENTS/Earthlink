@@ -1784,6 +1784,213 @@ footer ul a:hover {
   fill: var(--black);
 }
 
+/* 17b. Floating chat widget --------------------------------------------- */
+.chat-bubble {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  border-radius: 50%;
+  background: var(--champagne);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 1100;
+  box-shadow: 0 10px 30px rgba(195, 169, 124, .42);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.chat-bubble:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(195, 169, 124, .55);
+}
+
+.chat-bubble svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chat-panel {
+  position: fixed;
+  bottom: 92px;   /* above the chat bubble (24 + 56 + 12) */
+  right: 24px;
+  width: 360px;
+  max-width: calc(100vw - 48px);
+  height: 480px;
+  max-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  background: var(--black);
+  border: 1px solid rgba(195, 169, 124, .28);
+  border-radius: 18px;
+  overflow: hidden;
+  z-index: 1100;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+  animation: chat-rise .22s ease;
+}
+
+@keyframes chat-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  background: var(--champagne);
+  color: var(--black);
+}
+
+.chat-header strong {
+  display: block;
+  font-size: 15px;
+  letter-spacing: .01em;
+}
+
+.chat-header small {
+  display: block;
+  font-size: 12px;
+  opacity: .75;
+  margin-top: 2px;
+}
+
+.chat-close {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  display: grid;
+  place-items: center;
+  line-height: 0;
+}
+
+.chat-close svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-msg {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 14px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.chat-msg--bot {
+  align-self: flex-start;
+  background: var(--white);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-msg--user {
+  align-self: flex-end;
+  background: var(--champagne);
+  color: var(--black);
+  border-bottom-right-radius: 4px;
+}
+
+.chat-typing {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.chat-typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--champagne);
+  opacity: .5;
+  animation: chat-dot 1s infinite ease-in-out;
+}
+
+.chat-typing span:nth-child(2) { animation-delay: .2s; }
+.chat-typing span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes chat-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: .5; }
+  30%           { transform: translateY(-4px); opacity: 1; }
+}
+
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid rgba(195, 169, 124, .18);
+}
+
+.chat-input input {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid rgba(195, 169, 124, .22);
+  border-radius: 22px;
+  padding: 11px 16px;
+  color: var(--ink);
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.chat-input input:focus {
+  outline: none;
+  border-color: var(--champagne);
+}
+
+.chat-input button {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: var(--champagne);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: opacity .2s ease;
+}
+
+.chat-input button:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.chat-input button svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--black);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* 18. Scroll-reveal ------------------------------------------------------ */
 /* Default = visible, so content never disappears if JS is slow or blocked. */
 .reveal {
@@ -3884,6 +4091,31 @@ footer ul a:hover {
   .wa svg {
     width: 23px;
     height: 23px;
+  }
+
+  /* ---- Chat widget: smaller bubble tucked into the corner.
+     Panel goes near-fullscreen. ---- */
+  .chat-bubble {
+    width: 48px;
+    height: 48px;
+    bottom: 16px;
+    right: 16px;
+    border: 2px solid var(--paper);
+  }
+
+  .chat-bubble svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .chat-panel {
+    bottom: 76px;   /* above the mobile bubble (16 + 48 + 12) */
+    right: 16px;
+    left: 16px;
+    width: auto;
+    max-width: none;
+    height: auto;
+    max-height: calc(100vh - 160px);
   }
 
   /* ---- Footer: stack the 4 cramped columns so link text never clips.
