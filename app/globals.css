@@ -4082,3 +4082,118 @@ footer ul a:hover {
     gap: 12px 20px;
   }
 }
+
+/* 22. Coming Soon (gated launch) --------------------------------------------
+   Standalone full-viewport holding page shown to the public while the site is
+   being finished. Same black + champagne identity and plot-grid signature as
+   the 404, so the pre-launch face already reads as Earth Link. */
+.cs {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+  background: var(--paper);
+}
+
+.cs::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, #000 0%, transparent 78%);
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 42%, #000 0%, transparent 78%);
+  pointer-events: none;
+}
+
+.cs-inner {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 640px;
+}
+
+.cs-logo {
+  width: 74px;
+  height: auto;
+  margin-bottom: 34px;
+}
+
+.cs-eyebrow {
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.cs-title {
+  font-family: var(--display);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.03em;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  color: var(--slate);
+}
+
+.cs-accent {
+  color: var(--champagne-ink);
+  font-style: italic;
+}
+
+.cs-lead {
+  color: var(--muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 24px auto 0;
+}
+
+.cs-contact {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cs-chip {
+  color: var(--slate-2);
+  font-size: .95rem;
+  transition: color .2s ease;
+}
+
+.cs-chip:hover {
+  color: var(--champagne-ink);
+}
+
+.cs-dot {
+  color: var(--muted);
+}
+
+.cs-wa {
+  margin-top: 30px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .cs-inner > * {
+    animation: nf-rise .7s cubic-bezier(.22, 1, .36, 1) both;
+  }
+  .cs-title { animation-delay: .08s; }
+  .cs-lead { animation-delay: .16s; }
+  .cs-contact { animation-delay: .24s; }
+  .cs-wa { animation-delay: .3s; }
+}
+
+@media (max-width: 460px) {
+  .cs-contact {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .cs-dot { display: none; }
+}
