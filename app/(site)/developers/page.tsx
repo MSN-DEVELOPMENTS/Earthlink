@@ -26,13 +26,9 @@ export default function DevelopersPage() {
         </video>
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
-          <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>
-            {developersPage.eyebrow}
-          </span>
           <h1 className="reveal">
             {developersPage.headlineLead} <span className="grad">{developersPage.headlineAccent}</span>
           </h1>
-          <p className="reveal">{developersPage.intro}</p>
         </div>
       </section>
 

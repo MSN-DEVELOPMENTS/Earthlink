@@ -79,12 +79,6 @@ export default function AboutPage() {
             <div className="ab-banner-text">
               <span className="eyebrow ab-ey">Backed by ERE</span>
               <h2 className="section-title">The Strength Behind Every Deal</h2>
-              <p className="ab-body">
-                Behind every transaction sits the operational force of ERE, a wider real estate network with
-                reach across the UAE. That backing guarantees deeper market access and stronger developer
-                ties. We deploy a unified team that handles sales, leasing, and management together rather
-                than apart. For you, it means one partner for the entire lifecycle of the asset.
-              </p>
             </div>
           </div>
 

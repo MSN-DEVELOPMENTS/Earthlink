@@ -70,11 +70,18 @@ export default async function HomePage() {
         <div className="about-cover-overlay" aria-hidden="true" />
         <div className="wrap">
           <div className="about-cover-content reveal">
+            <span className="eyebrow">The Earth Link Foundation</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
+            <p className="lead">
+              Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
+              every signed contract is the full strength of Earth Link—giving you off-market access, direct ties
+              to top builders, and one team handling your property from start to finish. Under Sharoon&apos;s
+              leadership, we bring tested standards to every transaction.
+            </p>
             <div className="stats">
               {stats.map((s) => (
                 <div className="glass stat" key={s.lbl}>
                   <div className="big">{s.big}</div>
-                  <div className="lbl">{s.lbl}</div>
                 </div>
               ))}
             </div>
