@@ -3071,6 +3071,60 @@ footer ul a:hover {
   margin-bottom: 26px;
 }
 
+/* Price + share control share one row; the button hugs the right edge. */
+.prop-price-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.prop-price-row .prop-price {
+  margin-bottom: 26px;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 8px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--slate-2);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  cursor: pointer;
+  transition: border-color .18s ease, color .18s ease, background .18s ease;
+}
+
+.share-btn:hover {
+  border-color: var(--champagne-ink);
+  color: var(--champagne-ink);
+}
+
+.share-btn svg {
+  display: block;
+}
+
+.share-btn:focus-visible {
+  outline: 2px solid var(--champagne-ink);
+  outline-offset: 2px;
+}
+
+@media (max-width: 420px) {
+  .share-btn-label {
+    display: none;
+  }
+  .share-btn {
+    padding: 9px;
+    border-radius: 50%;
+  }
+}
+
 .detail-spec {
   border-top: 1px solid var(--line-2);
   margin-bottom: 28px;
