@@ -27,9 +27,7 @@ export default async function PropertiesPage() {
         </video>
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
-          <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Properties — Curated for Dubai</span>
           <h1 className="reveal">Explore <span className="grad">Listings</span></h1>
-          <p className="reveal">Handpicked properties in Dubai&apos;s most sought-after communities.</p>
         </div>
       </section>
 

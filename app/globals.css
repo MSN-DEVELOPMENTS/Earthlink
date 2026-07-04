@@ -219,6 +219,11 @@ section {
   color: var(--black);
 }
 
+/* Pill variant — rounded shape matching the WhatsApp CTA, normal size */
+.btn.btn-pill {
+  border-radius: 999px;
+}
+
 .btn-gold:hover {
   background: #d8bd8e;
   color: var(--black);
@@ -971,6 +976,9 @@ nav.links a.active::after {
 .about-cover {
   position: relative;
   overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
 }
 
 .about-cover-bg {
@@ -996,6 +1004,7 @@ nav.links a.active::after {
 .about-cover .wrap {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .about-cover-content {
@@ -3197,11 +3206,11 @@ footer ul a:hover {
 .wa-cta {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #25d366;
   color: #06321a;
   text-decoration: none;
-  padding: 11px 20px;
+  padding: 8px 15px;
   border-radius: 999px;
   font-weight: 600;
   box-shadow: 0 8px 20px rgba(37, 211, 102, .24);
@@ -3215,8 +3224,8 @@ footer ul a:hover {
 }
 
 .wa-cta svg {
-  width: 24px;
-  height: 24px;
+  width: 18px;
+  height: 18px;
   fill: #fff;
   flex: 0 0 auto;
 }
@@ -3228,13 +3237,7 @@ footer ul a:hover {
 }
 
 .wa-cta strong {
-  font-size: .95rem;
-}
-
-.wa-cta small {
-  font-size: .72rem;
-  opacity: .78;
-  font-weight: 500;
+  font-size: .85rem;
 }
 
 @media (max-width: 860px) {

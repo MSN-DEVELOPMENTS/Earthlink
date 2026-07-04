@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { faqs } from '@/lib/data';
 import { seoMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = seoMetadata('/about');
@@ -62,9 +61,6 @@ export default function AboutPage() {
         <div className="wrap">
           <div className="ab-hero-inner reveal">
             <h1>Built <span className="grad">Around You</span></h1>
-            <p className="ab-hero-lead">
-              Real estate works best when someone keeps your interests at the centre of every decision.
-            </p>
           </div>
         </div>
       </section>
@@ -94,7 +90,7 @@ export default function AboutPage() {
 
           <div className="reveal" style={{ marginTop: 56 }}>
             <span className="eyebrow ab-ey">Operational Footprint</span>
-            <h2 className="section-title">Execution Standard</h2>
+            <h2 className="section-title">Result. Integrity. Discipline.</h2>
           </div>
           <div className="ab-stats reveal">
             {stats.map((s) => (
@@ -170,7 +166,7 @@ export default function AboutPage() {
           <div className="ab-promise reveal">
             <span className="eyebrow ab-ey">Our Promise</span>
             <p className="ab-quote">
-              We tell it straight—even when the honest answer is the harder one.
+              We value honesty over ease.
             </p>
             <p className="ab-promise-sub">
               A broker who puts your goals first on every deal, large or small. That is the standard we
@@ -181,23 +177,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ===== FAQ ===== */}
-      <section id="faq">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
-            <span className="eyebrow">Questions</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ</h2>
-          </div>
-          <div className="faq reveal">
-            {faqs.map((item, i) => (
-              <details key={item.q} open={i === 0}>
-                <summary>{item.q}</summary>
-                <div className="ans">{item.a}</div>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

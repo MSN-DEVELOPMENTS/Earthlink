@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { seoMetadata } from '@/lib/seo';
-import { contact } from '@/lib/data';
+import { contact, faqs } from '@/lib/data';
 import InquiryForm from '@/components/InquiryForm';
 
 export const metadata: Metadata = seoMetadata('/contact');
@@ -87,6 +87,24 @@ export default function ContactPage() {
               referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
             />
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FAQ ===== */}
+      <section id="faq">
+        <div className="wrap">
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
+            <span className="eyebrow">Questions</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ&apos;s</h2>
+          </div>
+          <div className="faq reveal">
+            {faqs.map((item, i) => (
+              <details key={item.q} open={i === 0}>
+                <summary>{item.q}</summary>
+                <div className="ans">{item.a}</div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

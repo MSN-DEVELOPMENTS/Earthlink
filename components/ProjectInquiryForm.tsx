@@ -63,7 +63,7 @@ export default function ProjectInquiryForm({
         />
       </div>
 
-      <button type="submit" className="btn btn-gold" disabled={status === 'sending'}>
+      <button type="submit" className="btn btn-gold btn-pill" disabled={status === 'sending'}>
         {status === 'sending' ? 'Sending…' : 'Send enquiry'}
       </button>
 

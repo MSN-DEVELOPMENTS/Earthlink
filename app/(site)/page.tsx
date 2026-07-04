@@ -38,8 +38,7 @@ export default async function HomePage() {
       <section id="services" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
-            <span className="eyebrow">What We Do</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Four Services. One High Standard.</h2>
+            <h2 className="section-title">What We Do</h2>
           </div>
           <div className="grid g-4">
             {services.map((s) => (
@@ -71,14 +70,6 @@ export default async function HomePage() {
         <div className="about-cover-overlay" aria-hidden="true" />
         <div className="wrap">
           <div className="about-cover-content reveal">
-            <span className="eyebrow">The Earth Link Foundation</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
-            <p className="lead">
-              Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
-              every signed contract is the full strength of Earth Link—giving you off-market access, direct ties
-              to top builders, and one team handling your property from start to finish. Under Sharoon&apos;s
-              leadership, we bring tested standards to every transaction.
-            </p>
             <div className="stats">
               {stats.map((s) => (
                 <div className="glass stat" key={s.lbl}>
@@ -99,7 +90,7 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">Properties — Curated for Dubai</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>New launches worth your time</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Off-Plan Properties</h2>
             <p className="lead" style={{ margin: '14px auto 0' }}>
               Off-plan early access from Emaar, Sobha, Binghatti and DAMAC — plus ready homes in settled
               communities. The list updates weekly.
@@ -139,26 +130,22 @@ export default async function HomePage() {
       <section id="communities">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
-            <span className="eyebrow">Prime Locations &amp; Properties</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Best Addresses</h2>
-            <p className="lead" style={{ margin: '14px auto 0' }}>
-              We look for spaces that use natural materials. We prefer warm stone floors, custom light oak wood,
-              and simple brass fixtures over flashy designs.
-            </p>
+            <span className="eyebrow">Live the Dubai Lifestyle</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Finest Neighborhoods</h2>
           </div>
           <div className="comm-grid">
-            {communities.slice(0, 4).map((c) => (
+            {communities.slice(0, 8).map((c) => (
               <div className="comm reveal" key={c.name}>
                 <Image
                   src={c.img}
                   alt={c.name}
                   fill
+                  loading="eager"
                   sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   style={{ objectFit: 'cover', objectPosition: c.pos ?? 'center' }}
                 />
                 <div className="ov">
                   <h3>{c.name}</h3>
-                  <span>{c.note}</span>
                 </div>
               </div>
             ))}
@@ -166,22 +153,6 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ===== READY TO BEGIN ===== */}
-      <section id="cta">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center' }}>
-            <h2 className="section-title">Ready to begin</h2>
-            <p className="lead" style={{ margin: '14px auto 28px' }}>
-              Tell us your goal, and we map the route from there. Buying, leasing, or investing, the team
-              stays with you for every step.
-            </p>
-            <div className="hero-btns" style={{ justifyContent: 'center' }}>
-              <Link href="/contact" className="btn btn-gold">Schedule a Consultation</Link>
-              <Link href="/properties" className="btn btn-glass">Browse Properties</Link>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

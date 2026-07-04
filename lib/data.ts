@@ -71,13 +71,14 @@ export const stats = [
 /* ----- Home: Communities We Work With (7) ------------------------------- */
 /* `pos` is an optional object-position for the card image crop (defaults to center). */
 export const communities: { name: string; note: string; img: string; pos?: string }[] = [
-  { name: 'Dubai Marina', note: 'Fast-moving waterfront homes with steady renter demand.', img: '/home/dubai-marina.jpg', pos: 'center top' },
-  { name: 'Downtown Dubai', note: 'The city centre. Highly walkable properties with direct views of the Burj.', img: '/home/downtown-dubai.jpg', pos: 'center top' },
-  { name: 'Business Bay', note: 'The core of business and living. Canal-side spaces with strong rental returns.', img: '/home/business-bay.jpg', pos: 'center top' },
-  { name: 'Palm Jumeirah', note: 'Prime beachfront living. Clean, modern coastal homes and private apartments.', img: '/home/palm-jumeirah.jpg' },
-  { name: 'Jumeirah Village Circle', note: 'Strong value and yield', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=600&q=80' },
-  { name: 'DIFC', note: 'The finance address, tight supply', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80' },
-  { name: 'Arabian Ranches', note: 'Villas, schools, family living', img: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=600&q=80' },
+  { name: 'Dubai Islands', note: 'Fast-moving waterfront homes with steady renter demand.', img: '/home/dubai-islands.jpg', pos: 'center top' },
+  { name: 'Palm Jebel Ali', note: 'The city centre. Highly walkable properties with direct views of the Burj.', img: '/home/downtown-dubai.jpg', pos: 'center top' },
+  { name: 'The Oasis', note: 'The core of business and living. Canal-side spaces with strong rental returns.', img: '/home/business-bay.jpg', pos: 'center top' },
+  { name: 'Rashid Yachts & Marina', note: 'Prime beachfront living. Clean, modern coastal homes and private apartments.', img: '/home/rashid-yachts-marina.jpg', pos: 'center top' },
+  { name: 'Business Bay', note: 'The core of business and living. Canal-side spaces with strong rental returns.', img: '/home/business-bay-skyline.jpg', pos: 'center top' },
+  { name: 'Dubai South', note: 'Villas, schools, family living', img: '/home/dubai-south.jpg', pos: 'center top' },
+  { name: 'Dubai Creek Harbour', note: 'The finance address, tight supply', img: '/home/dubai-creek-harbour.jpg', pos: 'center top' },
+  { name: 'Jumeirah Village Circle (JVC)', note: 'Strong value and yield', img: '/home/jvc.jpg', pos: 'center top' },
 ];
 
 /* ----- Properties: What We Offer (3) ------------------------------------ */

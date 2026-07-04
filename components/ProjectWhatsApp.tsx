@@ -21,7 +21,6 @@ export default function ProjectWhatsApp({ projectName }: { projectName: string }
       </svg>
       <span>
         <strong>Chat on WhatsApp</strong>
-        <small>Ask about {projectName} — we reply in minutes</small>
       </span>
     </a>
   );
