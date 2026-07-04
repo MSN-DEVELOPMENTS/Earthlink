@@ -38,7 +38,7 @@ export default async function PropertiesPage() {
             <h2 className="section-title">Select Primary Developments</h2>
           </div>
           <div className="pcards">
-            {properties.map((p, i) => (
+            {properties.map((p) => (
               <Link href={`/properties/${p.slug}`} className="pcard reveal" key={p.name}>
                 <span className="pcard-media">
                   <Image
@@ -48,7 +48,6 @@ export default async function PropertiesPage() {
                     sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }}
                   />
-                  <span className="pcard-num">{String(i + 1).padStart(2, '0')}</span>
                 </span>
                 <span className="pcard-body">
                   <span className="pcard-nm">{p.name}</span>

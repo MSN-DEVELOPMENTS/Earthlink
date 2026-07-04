@@ -104,7 +104,7 @@ export default async function HomePage() {
             </p>
           </div>
           <div className="pcards">
-            {properties.slice(0, 3).map((p, i) => (
+            {properties.slice(0, 3).map((p) => (
               <Link href={`/properties/${p.slug}`} className="pcard reveal" key={p.name}>
                 <span className="pcard-media">
                   <Image
@@ -114,7 +114,6 @@ export default async function HomePage() {
                     sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     style={{ objectFit: 'cover' }}
                   />
-                  <span className="pcard-num">{String(i + 1).padStart(2, '0')}</span>
                 </span>
                 <span className="pcard-body">
                   <span className="pcard-nm">{p.name}</span>
