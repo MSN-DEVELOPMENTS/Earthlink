@@ -51,7 +51,7 @@ export default function DeveloperPage({ params }: { params: { slug: string } }) 
           </div>
 
           <ul className="pj-grid" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {developer.projects.map((project, i) => (
+            {developer.projects.map((project) => (
               <li className="reveal" key={project.slug}>
                 <Link
                   href={`/developers/${developer.slug}/${project.slug}`}
@@ -67,7 +67,6 @@ export default function DeveloperPage({ params }: { params: { slug: string } }) 
                       sizes="(max-width: 720px) 100vw, 50vw"
                       style={{ objectFit: 'cover' }}
                     />
-                    <span className="pj-num">{String(i + 1).padStart(2, '0')}</span>
                   </span>
                   <span className="pj-body">
                     <h3 className="pj-name">{project.name}</h3>
