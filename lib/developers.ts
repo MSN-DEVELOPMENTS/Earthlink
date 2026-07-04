@@ -897,7 +897,7 @@ export const developers: Developer[] = [
         community: 'Dubai Design District (d3)',
         price: 'From AED 1.75M',
         image: '/projects/design-quarter/hero.jpg',
-        gallery: ['/projects/design-quarter/g1.png', '/projects/design-quarter/g2.png', '/projects/design-quarter/g3.png'],
+        gallery: ['/projects/design-quarter/g1.jpg', '/projects/design-quarter/g2.jpg', '/projects/design-quarter/g3.jpg'],
         url: 'https://meraas.com/en/project/designquarter-at-d3',
         tagline: 'A vibrant creative residence in the heart of Dubai Design District.',
         description: [
@@ -953,8 +953,8 @@ export const developers: Developer[] = [
         name: 'Samana Greenfield',
         community: 'Al Warsan (International City Phase 2)',
         price: 'From AED 849K',
-        image: '/projects/samana-greenfield/hero.png',
-        gallery: ['/projects/samana-greenfield/g1.png', '/projects/samana-greenfield/g2.png', '/projects/samana-greenfield/g3.png'],
+        image: '/projects/samana-greenfield/hero.jpg',
+        gallery: ['/projects/samana-greenfield/g1.jpg', '/projects/samana-greenfield/g2.jpg', '/projects/samana-greenfield/g3.jpg'],
         url: 'https://www.samanadevelopers.com/projects/samana-greenfield',
         tagline: 'Smart, flexible high-rise living with private pools in Warsan.',
         description: [
@@ -1695,7 +1695,7 @@ export const developers: Developer[] = [
     slug: 'deyaar',
     name: 'Deyaar Development',
     tagline: 'A pioneering Dubai developer of branded waterfront and city homes since 2002.',
-    image: '/developers/deyaar.png',
+    image: '/developers/deyaar.jpg',
     brochuresUrl: 'https://www.deyaar.ae/en/property-lists/',
     projects: [
       {
@@ -1726,8 +1726,8 @@ export const developers: Developer[] = [
         name: 'AYA Beachfront Residences',
         community: 'Umm Al Quwain',
         price: 'On request',
-        image: '/projects/deyaar-aya/hero.png',
-        gallery: ['/projects/deyaar-aya/g1.png', '/projects/deyaar-aya/g2.png', '/projects/deyaar-aya/g3.png'],
+        image: '/projects/deyaar-aya/hero.jpg',
+        gallery: ['/projects/deyaar-aya/g1.jpg', '/projects/deyaar-aya/g2.jpg', '/projects/deyaar-aya/g3.jpg'],
         url: 'https://www.deyaar.ae/en/properties/aya-beachfront-residences/',
         tagline: 'Beachfront residences on the Arabian Gulf in Umm Al Quwain.',
         description: [
@@ -1773,7 +1773,7 @@ export const developers: Developer[] = [
         community: 'Al Furjan',
         price: 'On request',
         image: '/projects/deyaar-talia/hero.jpg',
-        gallery: ['/projects/deyaar-talia/g1.png', '/projects/deyaar-talia/g2.png', '/projects/deyaar-talia/g3.png'],
+        gallery: ['/projects/deyaar-talia/g1.jpg', '/projects/deyaar-talia/g2.jpg', '/projects/deyaar-talia/g3.jpg'],
         url: 'https://www.deyaar.ae/en/properties/talia/',
         tagline: 'Branded, fully furnished serviced living in Al Furjan.',
         description: [
@@ -2077,7 +2077,7 @@ export const developers: Developer[] = [
     slug: 'hh',
     name: 'H&H Development',
     tagline: 'A Dubai developer of design-led, architect-branded luxury residences.',
-    image: '/developers/hh.png',
+    image: '/developers/hh.jpg',
     brochuresUrl: 'https://www.h-h.ae/development',
     projects: [
       {
@@ -2085,8 +2085,8 @@ export const developers: Developer[] = [
         name: 'Eden House Za\'abeel',
         community: 'Za\'abeel (next to DIFC)',
         price: 'On request',
-        image: '/projects/hh-eden-house-zaabeel/hero.png',
-        gallery: ['/projects/hh-eden-house-zaabeel/g1.jpg', '/projects/hh-eden-house-zaabeel/g2.png', '/projects/hh-eden-house-zaabeel/g3.png'],
+        image: '/projects/hh-eden-house-zaabeel/hero.jpg',
+        gallery: ['/projects/hh-eden-house-zaabeel/g1.jpg', '/projects/hh-eden-house-zaabeel/g2.jpg', '/projects/hh-eden-house-zaabeel/g3.jpg'],
         url: 'https://www.h-h.ae/development/eden-house-zaabeel',
         tagline: 'Design-led residences between DIFC\'s energy and Za\'abeel\'s calm.',
         description: [
