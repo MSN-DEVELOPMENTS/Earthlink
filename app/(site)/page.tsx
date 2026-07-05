@@ -147,7 +147,7 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
             <span className="eyebrow">Live the Dubai Lifestyle</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Finest Neighborhoods</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Finest Neighbourhoods</h2>
           </div>
           <div className="comm-grid">
             {communities.slice(0, 8).map((c) => (

@@ -96,7 +96,7 @@ export default function ContactPage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 42 }}>
             <span className="eyebrow">Questions</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>FAQ&apos;s</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>FAQs</h2>
           </div>
           <div className="faq reveal">
             {faqs.map((item, i) => (

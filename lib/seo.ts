@@ -10,23 +10,23 @@ export type SeoEntry = { title: string; description: string };
 export const seoMeta: Record<string, SeoEntry> = {
   "/": {
     "title": "Real Estate Brokers in Dubai | Earth Link Real Estate",
-    "description": "Earth Link Real Estate (ERE Group) is a licensed Dubai brokerage helping you buy, sell and rent property across the UAE, from off plan launches to ready homes."
+    "description": "Earth Link Real Estate (ERE Group) is a licensed Dubai brokerage helping you buy, sell and rent property across the UAE, from off-plan launches to ready homes."
   },
   "/about": {
     "title": "About ERE Group: Licensed Dubai Real Estate Brokerage",
-    "description": "Learn about Earth Link Real Estate, a Dubai based brokerage connecting buyers and investors with ready and off plan property across the UAE."
+    "description": "Learn about Earth Link Real Estate, a Dubai-based brokerage connecting buyers and investors with ready and off-plan property across the UAE."
   },
   "/blog": {
     "title": "Dubai Property Market Insights and Guides | ERE Group Blog",
-    "description": "Guides and analysis on the Dubai property market, from buying and selling to off plan investment, written by the brokers at Earth Link Real Estate."
+    "description": "Guides and analysis on the Dubai property market, from buying and selling to off-plan investment, written by the brokers at Earth Link Real Estate."
   },
   "/contact": {
     "title": "Contact ERE Group: Property Consultants in Dubai",
-    "description": "Speak to a licensed property consultant in Dubai. Contact Earth Link Real Estate for buying, selling, renting and off plan investment support."
+    "description": "Speak to a licensed property consultant in Dubai. Contact Earth Link Real Estate for buying, selling, renting and off-plan investment support."
   },
   "/developers": {
     "title": "Property Developers in Dubai: Latest Projects | ERE Group",
-    "description": "Compare leading property developers in Dubai including Emaar, Damac, Sobha, Nakheel and Meraas, and explore their latest off plan projects with ERE Group."
+    "description": "Compare leading property developers in Dubai including Emaar, Damac, Sobha, Nakheel and Meraas, and explore their latest off-plan projects with ERE Group."
   },
   "/media-center": {
     "title": "Media Center: News and Press | Earth Link Real Estate",
@@ -37,8 +37,8 @@ export const seoMeta: Record<string, SeoEntry> = {
     "description": "The latest Dubai property news and market updates, covering transactions, new launches and investor trends, curated by Earth Link Real Estate."
   },
   "/properties": {
-    "title": "Property for Sale in Dubai: Ready and Off Plan | ERE Group",
-    "description": "Browse apartments, villas and townhouses for sale in Dubai. Compare ready properties and off plan launches with payment plans, guided by ERE Group brokers."
+    "title": "Property for Sale in Dubai: Ready and Off-Plan | ERE Group",
+    "description": "Browse apartments, villas and townhouses for sale in Dubai. Compare ready properties and off-plan launches with payment plans, guided by ERE Group brokers."
   },
   "/privacy": {
     "title": "Privacy Policy | Earth Link Real Estate",
@@ -50,7 +50,7 @@ export const seoMeta: Record<string, SeoEntry> = {
   },
   "/blog/dubai-real-estate-market-report-2026": {
     "title": "Dubai Real Estate Market Report 2026: Trends and Forecast",
-    "description": "A data led look at the Dubai property market in 2026, covering prices, transaction volumes and the forecast for buyers and investors."
+    "description": "A data-led look at the Dubai property market in 2026, covering prices, transaction volumes and the forecast for buyers and investors."
   },
   "/blog/is-dubai-real-estate-in-a-bubble": {
     "title": "Is Dubai Real Estate in a Bubble? Crash Risk Explained",
@@ -58,75 +58,75 @@ export const seoMeta: Record<string, SeoEntry> = {
   },
   "/news/dubai-property-market-mature-phase-2026-investor-confidence": {
     "title": "Dubai Property Market Enters Mature Phase in 2026 | ERE",
-    "description": "Dubai property enters a more mature phase in 2026 as investor confidence holds. Read what the shift means for buyers, sellers and off plan investors."
+    "description": "Dubai property enters a more mature phase in 2026 as investor confidence holds. Read what the shift means for buyers, sellers and off-plan investors."
   },
   "/developers/aldar": {
-    "title": "Aldar New Projects in the UAE: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Aldar in the UAE. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Aldar New Projects in the UAE: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Aldar in the UAE. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/azizi": {
-    "title": "Azizi New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Azizi in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Azizi New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Azizi in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/binghatti": {
-    "title": "Binghatti New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Binghatti in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Binghatti New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Binghatti in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/damac": {
-    "title": "Damac New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Damac in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Damac New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Damac in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/deyaar": {
-    "title": "Deyaar New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Deyaar in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Deyaar New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Deyaar in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/dubai-properties": {
-    "title": "Dubai Properties New Projects in Dubai: Off Plan | ERE",
-    "description": "Explore new and off plan projects by Dubai Properties in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Dubai Properties New Projects in Dubai: Off-Plan | ERE",
+    "description": "Explore new and off-plan projects by Dubai Properties in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/ellington": {
-    "title": "Ellington New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Ellington in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Ellington New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Ellington in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/emaar": {
-    "title": "Emaar New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Emaar in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Emaar New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Emaar in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/green": {
-    "title": "Green Group New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Green Group in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Green Group New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Green Group in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/hh": {
-    "title": "H&H Development New Projects in Dubai: Off Plan | ERE",
-    "description": "Explore new and off plan projects by H&H Development in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "H&H Development New Projects in Dubai: Off-Plan | ERE",
+    "description": "Explore new and off-plan projects by H&H Development in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/mag": {
-    "title": "MAG New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by MAG in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "MAG New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by MAG in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/meraas": {
-    "title": "Meraas New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Meraas in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Meraas New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Meraas in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/nakheel": {
-    "title": "Nakheel New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Nakheel in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Nakheel New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Nakheel in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/omniyat": {
-    "title": "Omniyat New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Omniyat in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Omniyat New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Omniyat in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/samana": {
-    "title": "Samana New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Samana in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Samana New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Samana in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/select-group": {
-    "title": "Select Group New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Select Group in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Select Group New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Select Group in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/sobha": {
-    "title": "Sobha New Projects in Dubai: Off Plan Launches | ERE",
-    "description": "Explore new and off plan projects by Sobha in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
+    "title": "Sobha New Projects in Dubai: Off-Plan Launches | ERE",
+    "description": "Explore new and off-plan projects by Sobha in Dubai. Compare prices, payment plans and handover timelines with guidance from ERE Group brokers."
   },
   "/developers/aldar/athlon": {
     "title": "Athlon: Prices, Payment Plan and Floor Plans | ERE",
