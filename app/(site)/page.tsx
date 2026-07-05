@@ -83,7 +83,6 @@ export default async function HomePage() {
               {stats.map((s) => (
                 <div className="glass stat" key={s.lbl}>
                   <div className="big">{s.big}</div>
-                  <div className="lbl">{s.lbl}</div>
                 </div>
               ))}
             </div>
