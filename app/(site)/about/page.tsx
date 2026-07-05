@@ -77,11 +77,7 @@ export default function AboutPage() {
               style={{ objectFit: 'cover' }}
             />
             <div className="ab-banner-text">
-              <span className="eyebrow ab-ey">Track Record</span>
               <h2 className="section-title">The Strength Behind Every Deal</h2>
-              <p className="ab-body">
-                A decade of results across four services and seven of Dubai&rsquo;s prime areas.
-              </p>
             </div>
           </div>
 
