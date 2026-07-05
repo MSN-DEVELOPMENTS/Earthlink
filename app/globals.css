@@ -1002,6 +1002,8 @@ nav.links a.active::after {
 
 .about-cover-content .lead {
   margin-inline: auto;
+  /* Lighter than the default muted grey so the copy stays crisp over the photo. */
+  color: rgba(255, 255, 255, .82);
 }
 
 .about-cover-content .stat {

@@ -27,9 +27,17 @@ export default async function HomePage() {
         </video>
         <div className="wrap hero-grid">
           <div className="hero-copy">
+            <span className="pill reveal"><span className="dot" />Licensed Dubai Brokerage</span>
             <h1 className="reveal">
               Earth Link <span className="grad">Real Estate</span>
             </h1>
+            <p className="reveal">
+              Buy, lease, and invest in Dubai — with advice you can trust.
+            </p>
+            <div className="hero-btns reveal">
+              <Link href="/properties" className="btn btn-gold">View Properties</Link>
+              <Link href="/contact" className="btn btn-glass">Book a Consultation</Link>
+            </div>
           </div>
         </div>
       </section>
@@ -38,7 +46,8 @@ export default async function HomePage() {
       <section id="services" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
-            <h2 className="section-title">What We Do</h2>
+            <span className="eyebrow">Our Services</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>What We Do</h2>
           </div>
           <div className="grid g-4">
             {services.map((s) => (
@@ -70,8 +79,8 @@ export default async function HomePage() {
         <div className="about-cover-overlay" aria-hidden="true" />
         <div className="wrap">
           <div className="about-cover-content reveal">
-            <span className="eyebrow">The Earth Link Foundation</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Core Persona</h2>
+            <span className="eyebrow">Who We Are</span>
+            <h2 className="section-title" style={{ marginTop: 12 }}>The Earth Link Difference</h2>
             <p className="lead">
               Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
               every signed contract is the full strength of Earth Link—giving you off-market access, direct ties
@@ -82,6 +91,7 @@ export default async function HomePage() {
               {stats.map((s) => (
                 <div className="glass stat" key={s.lbl}>
                   <div className="big">{s.big}</div>
+                  <div className="lbl">{s.lbl}</div>
                 </div>
               ))}
             </div>
