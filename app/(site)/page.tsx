@@ -34,10 +34,6 @@ export default async function HomePage() {
             <p className="reveal">
               Buy, lease, and invest in Dubai — with advice you can trust.
             </p>
-            <div className="hero-btns reveal">
-              <Link href="/properties" className="btn btn-gold">View Properties</Link>
-              <Link href="/contact" className="btn btn-glass">Book a Consultation</Link>
-            </div>
           </div>
         </div>
       </section>
