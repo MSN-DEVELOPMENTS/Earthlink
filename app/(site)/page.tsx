@@ -27,13 +27,9 @@ export default async function HomePage() {
         </video>
         <div className="wrap hero-grid">
           <div className="hero-copy">
-            <span className="pill reveal"><span className="dot" />Licensed Dubai Brokerage</span>
             <h1 className="reveal">
               Earth Link <span className="grad">Real Estate</span>
             </h1>
-            <p className="reveal">
-              Buy, lease, and invest in Dubai — with advice you can trust.
-            </p>
           </div>
         </div>
       </section>
