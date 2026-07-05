@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { services, stats, communities } from '@/lib/data';
+import { services, stats } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
 import { seoMetadata } from '@/lib/seo';
 
@@ -138,33 +138,6 @@ export default async function HomePage() {
           </div>
           <div className="reveal" style={{ textAlign: 'center', marginTop: 44 }}>
             <Link href="/properties" className="btn btn-gold">View all properties</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== COMMUNITIES ===== */}
-      <section id="communities">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 44 }}>
-            <span className="eyebrow">Live the Dubai Lifestyle</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Dubai&apos;s Finest Neighbourhoods</h2>
-          </div>
-          <div className="comm-grid">
-            {communities.slice(0, 8).map((c) => (
-              <div className="comm reveal" key={c.name}>
-                <Image
-                  src={c.img}
-                  alt={c.name}
-                  fill
-                  loading="eager"
-                  sizes="(max-width: 620px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  style={{ objectFit: 'cover', objectPosition: c.pos ?? 'center' }}
-                />
-                <div className="ov">
-                  <h3>{c.name}</h3>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
