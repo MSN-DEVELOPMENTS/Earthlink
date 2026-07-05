@@ -1883,6 +1883,9 @@ footer ul a:hover {
 .page-head--hero h1 {
   color: #fff;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+  /* Drop the narrow 18ch cap so the hero headline sits on one line on desktop
+     (it still wraps naturally on small screens). */
+  max-width: none;
 }
 
 .page-head--hero .eyebrow {
