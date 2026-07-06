@@ -64,11 +64,13 @@ export default function ChatWidget() {
     if (!vv) return;
     const root = document.documentElement;
     const update = () => {
-      // Size + position of the visible area (above the keyboard). On mobile the
-      // full-screen panel uses these so it always exactly fits the visible area,
-      // even as the keyboard opens/closes.
+      // Exact size + position of the visible area (above the keyboard, and
+      // ignoring any horizontal page overflow/scroll). The mobile full-screen
+      // panel uses these so it always overlays the visible area precisely.
       root.style.setProperty('--chat-vvh', `${vv.height}px`);
       root.style.setProperty('--chat-vtop', `${vv.offsetTop}px`);
+      root.style.setProperty('--chat-vvw', `${vv.width}px`);
+      root.style.setProperty('--chat-vleft', `${vv.offsetLeft}px`);
     };
     update();
     vv.addEventListener('resize', update);
