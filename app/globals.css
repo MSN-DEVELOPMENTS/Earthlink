@@ -2179,12 +2179,22 @@ footer ul a:hover {
   max-width: none;
 }
 
-/* Keep the Developers hero headline ("Buy Where Dubai is Built") on ONE line on
-   small screens — scale the font down to fit instead of wrapping. */
-@media (max-width: 600px) {
-  .dev-hero-title {
+/* Match every other page's hero headline to the HOME hero title size on mobile,
+   on one line (same clamps the home hero uses at each breakpoint). Selectors are
+   specific enough to win over the per-page mobile rules. */
+@media (max-width: 860px) {
+  .page-head--hero h1,
+  .ab-hero h1.ab-hero-title {
     white-space: nowrap;
-    font-size: clamp(1.35rem, 6.6vw, 2.4rem);
+    font-size: clamp(1.5rem, 7vw, 4rem);
+  }
+}
+
+@media (max-width: 620px) {
+  .page-head--hero h1,
+  .ab-hero h1.ab-hero-title {
+    white-space: nowrap;
+    font-size: clamp(1.5rem, 7.6vw, 3.2rem);
   }
 }
 

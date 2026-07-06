@@ -60,7 +60,7 @@ export default function AboutPage() {
         </div>
         <div className="wrap">
           <div className="ab-hero-inner reveal">
-            <h1>Built <span className="grad">Around You</span></h1>
+            <h1 className="ab-hero-title">Built <span className="grad">Around You</span></h1>
           </div>
         </div>
       </section>
