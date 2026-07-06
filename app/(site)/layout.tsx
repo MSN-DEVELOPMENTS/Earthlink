@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import ChatWidget from '@/components/ChatWidget';
 import ScrollReveal from '@/components/ScrollReveal';
 
 // Structured data so Google can show Earth Link as a real-estate business.
@@ -42,6 +43,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <main>{children}</main>
       <Footer />
       <WhatsAppButton />
+      <ChatWidget />
       <ScrollReveal />
     </>
   );
