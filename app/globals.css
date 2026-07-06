@@ -2037,16 +2037,19 @@ footer ul a:hover {
      when the keyboard opens the panel shrinks to fit and the input stays visible.
      Falls back to 100dvh where the visual viewport isn't available. */
   .chat-panel {
-    top: 10px;
+    top: auto;
     left: 10px;
     right: 10px;
-    bottom: auto;
+    /* Anchored to the bottom, above the keyboard: --chat-kb is the keyboard
+       height (set in JS), so the card rises to sit right on top of the keyboard
+       instead of being covered — no gap, no jump. */
+    bottom: calc(var(--chat-kb, 0px) + 12px);
     width: auto;
     max-width: none;
-    /* Compact card at rest (capped height), but never taller than the space
-       above the keyboard — so it shrinks to fit when the keyboard opens. */
-    height: min(66vh, calc(var(--chat-vvh, 100dvh) - 20px));
+    /* Compact card, but never taller than the space above the keyboard. */
+    height: min(64vh, calc(var(--chat-vvh, 100dvh) - 24px));
     max-height: none;
+    transition: bottom .15s ease-out;
   }
 
   /* Hide the floating launcher + WhatsApp button while the panel is open so they

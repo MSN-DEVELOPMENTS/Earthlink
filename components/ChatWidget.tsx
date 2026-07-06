@@ -63,7 +63,12 @@ export default function ChatWidget() {
     const vv = typeof window !== 'undefined' ? window.visualViewport : null;
     if (!vv) return;
     const root = document.documentElement;
-    const update = () => root.style.setProperty('--chat-vvh', `${vv.height}px`);
+    const update = () => {
+      // Height of the visible area (above the keyboard) and the keyboard's height.
+      root.style.setProperty('--chat-vvh', `${vv.height}px`);
+      const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
+      root.style.setProperty('--chat-kb', `${kb}px`);
+    };
     update();
     vv.addEventListener('resize', update);
     vv.addEventListener('scroll', update);
