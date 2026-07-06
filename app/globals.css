@@ -2037,20 +2037,24 @@ footer ul a:hover {
      top and its height tracks the visible viewport (--chat-vvh, set in JS), so
      when the keyboard opens the panel shrinks to fit and the input stays visible.
      Falls back to 100dvh where the visual viewport isn't available. */
-  /* Full-screen chat on phones, fitted to the visible viewport. --chat-vtop and
-     --chat-vvh (set in JS from visualViewport) mean the panel always exactly
-     covers the area above the keyboard — no gap, no jump, input always visible. */
+  /* Compact bottom-sheet on phones. It's capped in height (so it doesn't fill
+     the screen) and anchored to the BOTTOM of the visible viewport using the
+     visualViewport vars — so it stays small AND rises above the keyboard when
+     it opens (no gap, no cutoff, input always visible). */
   .chat-panel {
-    top: var(--chat-vtop, 0px);
-    left: var(--chat-vleft, 0px);
+    --chat-cardh: min(440px, calc(var(--chat-vvh, 100dvh) - 24px));
+    /* Small floating card near the bottom, with a 12px margin all round. Anchored
+       to the bottom of the visible viewport so it still rises above the keyboard. */
+    top: calc(var(--chat-vtop, 0px) + var(--chat-vvh, 100dvh) - var(--chat-cardh) - 12px);
+    left: calc(var(--chat-vleft, 0px) + 12px);
     right: auto;
     bottom: auto;
-    width: var(--chat-vvw, 100vw);
-    max-width: 100vw;
-    height: var(--chat-vvh, 100dvh);
+    width: calc(var(--chat-vvw, 100vw) - 24px);
+    max-width: none;
+    height: var(--chat-cardh);
     max-height: none;
-    border: none;
-    border-radius: 0;
+    border: 1px solid var(--line);
+    border-radius: 16px;
   }
 
   /* Hide the floating launcher while the full-screen panel is open. */
