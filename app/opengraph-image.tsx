@@ -2,7 +2,8 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-// Branded social-share card, generated automatically (no static asset needed).
+// Branded social-share card built over the homepage hero photo (the desert
+// dune), so link previews match what visitors first see on the site.
 export const alt = 'Earth Link Real Estate — Dubai Brokerage';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -12,11 +13,16 @@ export const contentType = 'image/png';
 const fontsDir = join(process.cwd(), 'public', 'fonts');
 
 export default async function OpengraphImage() {
-  const [serifRegular, serifBold, serifBoldItalic] = await Promise.all([
+  const [serifRegular, serifBold, serifBoldItalic, heroPoster] = await Promise.all([
     readFile(join(fontsDir, 'PTSerif-Regular.ttf')),
     readFile(join(fontsDir, 'PTSerif-Bold.ttf')),
     readFile(join(fontsDir, 'PTSerif-BoldItalic.ttf')),
+    // Read the hero image from disk and inline it as a data URI. Fetching it by
+    // URL would fail on protection-gated preview deployments.
+    readFile(join(process.cwd(), 'public', 'home', 'hero-poster.jpg')),
   ]);
+
+  const heroSrc = `data:image/jpeg;base64,${heroPoster.toString('base64')}`;
 
   return new ImageResponse(
     (
@@ -28,10 +34,28 @@ export default async function OpengraphImage() {
           flexDirection: 'column',
           justifyContent: 'space-between',
           padding: '72px',
-          background: 'linear-gradient(135deg, #1f3643 0%, #15232b 100%)',
+          background: '#15232b',
           fontFamily: 'PT Serif',
         }}
       >
+        {/* Hero photo, full-bleed */}
+        <img
+          src={heroSrc}
+          width={size.width}
+          height={size.height}
+          style={{ position: 'absolute', top: 0, left: 0, width: `${size.width}px`, height: `${size.height}px`, objectFit: 'cover' }}
+        />
+        {/* Dark scrim so the branding stays legible over the photo */}
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: `${size.width}px`,
+            height: `${size.height}px`,
+            background: 'linear-gradient(135deg, rgba(21,35,43,0.82) 0%, rgba(21,35,43,0.45) 55%, rgba(21,35,43,0.75) 100%)',
+          }}
+        />
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
           <div
             style={{
