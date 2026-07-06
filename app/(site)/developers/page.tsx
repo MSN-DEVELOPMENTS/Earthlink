@@ -26,7 +26,7 @@ export default function DevelopersPage() {
         </video>
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
-          <h1 className="reveal">
+          <h1 className="reveal dev-hero-title">
             {developersPage.headlineLead} <span className="grad">{developersPage.headlineAccent}</span>
           </h1>
         </div>

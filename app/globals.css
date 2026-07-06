@@ -2179,6 +2179,15 @@ footer ul a:hover {
   max-width: none;
 }
 
+/* Keep the Developers hero headline ("Buy Where Dubai is Built") on ONE line on
+   small screens — scale the font down to fit instead of wrapping. */
+@media (max-width: 600px) {
+  .dev-hero-title {
+    white-space: nowrap;
+    font-size: clamp(1.35rem, 6.6vw, 2.4rem);
+  }
+}
+
 .page-head--hero .eyebrow {
   color: rgba(255, 255, 255, 0.9);
 }
