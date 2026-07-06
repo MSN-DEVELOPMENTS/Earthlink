@@ -2036,27 +2036,30 @@ footer ul a:hover {
      top and its height tracks the visible viewport (--chat-vvh, set in JS), so
      when the keyboard opens the panel shrinks to fit and the input stays visible.
      Falls back to 100dvh where the visual viewport isn't available. */
+  /* Full-screen chat on phones, fitted to the visible viewport. --chat-vtop and
+     --chat-vvh (set in JS from visualViewport) mean the panel always exactly
+     covers the area above the keyboard — no gap, no jump, input always visible. */
   .chat-panel {
-    top: auto;
-    left: 10px;
-    right: 10px;
-    /* Anchored to the bottom, above the keyboard: --chat-kb is the keyboard
-       height (set in JS), so the card rises to sit right on top of the keyboard
-       instead of being covered — no gap, no jump. */
-    bottom: calc(var(--chat-kb, 0px) + 12px);
+    top: var(--chat-vtop, 0px);
+    left: 0;
+    right: 0;
+    bottom: auto;
     width: auto;
     max-width: none;
-    /* Compact card, but never taller than the space above the keyboard. */
-    height: min(64vh, calc(var(--chat-vvh, 100dvh) - 24px));
+    height: var(--chat-vvh, 100dvh);
     max-height: none;
-    transition: bottom .15s ease-out;
+    border: none;
+    border-radius: 0;
   }
 
-  /* Hide the floating launcher + WhatsApp button while the panel is open so they
-     don't sit on top of the keyboard / panel. The header × closes the chat. */
-  body:has(.chat-panel) .chat-bubble,
-  body:has(.chat-panel) .wa {
+  /* Hide the floating launcher while the full-screen panel is open. */
+  body:has(.chat-panel) .chat-bubble {
     display: none;
+  }
+
+  /* Lock the page behind the full-screen chat so the site can't pan/drift. */
+  body.chat-open {
+    overflow: hidden;
   }
 }
 

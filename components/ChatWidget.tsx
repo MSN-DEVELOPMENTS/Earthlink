@@ -64,10 +64,11 @@ export default function ChatWidget() {
     if (!vv) return;
     const root = document.documentElement;
     const update = () => {
-      // Height of the visible area (above the keyboard) and the keyboard's height.
+      // Size + position of the visible area (above the keyboard). On mobile the
+      // full-screen panel uses these so it always exactly fits the visible area,
+      // even as the keyboard opens/closes.
       root.style.setProperty('--chat-vvh', `${vv.height}px`);
-      const kb = Math.max(0, window.innerHeight - vv.height - vv.offsetTop);
-      root.style.setProperty('--chat-kb', `${kb}px`);
+      root.style.setProperty('--chat-vtop', `${vv.offsetTop}px`);
     };
     update();
     vv.addEventListener('resize', update);
@@ -77,6 +78,14 @@ export default function ChatWidget() {
       vv.removeEventListener('scroll', update);
     };
   }, []);
+
+  // Lock the page behind the chat while it's open (prevents the site drifting/
+  // panning sideways under a full-screen mobile panel).
+  useEffect(() => {
+    if (open) document.body.classList.add('chat-open');
+    else document.body.classList.remove('chat-open');
+    return () => document.body.classList.remove('chat-open');
+  }, [open]);
 
   // Escape closes the panel.
   useEffect(() => {
