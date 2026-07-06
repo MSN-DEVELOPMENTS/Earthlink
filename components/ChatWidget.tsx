@@ -56,6 +56,23 @@ export default function ChatWidget() {
     logRef.current?.scrollTo({ top: logRef.current.scrollHeight });
   }, [messages, status]);
 
+  // Keep the panel sized to the area above the on-screen keyboard on mobile.
+  // visualViewport.height shrinks when the keyboard opens, so the input stays
+  // visible instead of being covered.
+  useEffect(() => {
+    const vv = typeof window !== 'undefined' ? window.visualViewport : null;
+    if (!vv) return;
+    const root = document.documentElement;
+    const update = () => root.style.setProperty('--chat-vvh', `${vv.height}px`);
+    update();
+    vv.addEventListener('resize', update);
+    vv.addEventListener('scroll', update);
+    return () => {
+      vv.removeEventListener('resize', update);
+      vv.removeEventListener('scroll', update);
+    };
+  }, []);
+
   // Escape closes the panel.
   useEffect(() => {
     if (!open) return;

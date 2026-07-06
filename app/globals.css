@@ -1781,7 +1781,7 @@ footer ul a:hover {
 /* Gold launcher, stacked above the WhatsApp button (same visual language). */
 .chat-bubble {
   position: fixed;
-  bottom: 92px; /* 24 (wa bottom) + 56 (wa height) + 12 gap */
+  bottom: 24px;
   right: 24px;
   width: 56px;
   height: 56px;
@@ -1808,7 +1808,7 @@ footer ul a:hover {
 
 .chat-panel {
   position: fixed;
-  bottom: 160px; /* clears the bubble (92 + 56 + 12) */
+  bottom: 92px; /* clears the bubble (24 + 56 + 12) */
   right: 24px;
   width: 360px;
   max-width: calc(100vw - 32px);
@@ -2021,7 +2021,7 @@ footer ul a:hover {
 
 @media (max-width: 640px) {
   .chat-bubble {
-    bottom: 72px; /* above the smaller mobile WhatsApp button */
+    bottom: 16px;
     right: 16px;
     width: 48px;
     height: 48px;
@@ -2032,17 +2032,28 @@ footer ul a:hover {
     height: 23px;
   }
 
-  /* Compact floating chat on phones (not full-screen) — stays clear of the
-     launcher bubble and leaves the page visible around it. */
+  /* On phones the panel fills the space ABOVE the keyboard. It's anchored to the
+     top and its height tracks the visible viewport (--chat-vvh, set in JS), so
+     when the keyboard opens the panel shrinks to fit and the input stays visible.
+     Falls back to 100dvh where the visual viewport isn't available. */
   .chat-panel {
-    right: 12px;
-    left: auto;
-    top: auto;
-    bottom: 132px; /* above the mobile bubble (72 + 48 + 12) */
-    width: min(80vw, 320px);
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: auto;
+    width: auto;
     max-width: none;
-    height: min(58vh, 420px);
+    /* Compact card at rest (capped height), but never taller than the space
+       above the keyboard — so it shrinks to fit when the keyboard opens. */
+    height: min(66vh, calc(var(--chat-vvh, 100dvh) - 20px));
     max-height: none;
+  }
+
+  /* Hide the floating launcher + WhatsApp button while the panel is open so they
+     don't sit on top of the keyboard / panel. The header × closes the chat. */
+  body:has(.chat-panel) .chat-bubble,
+  body:has(.chat-panel) .wa {
+    display: none;
   }
 }
 
