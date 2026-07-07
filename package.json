@@ -11,15 +11,20 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@ai-sdk/openai": "^4.0.8",
+    "@ai-sdk/react": "^4.0.16",
     "@sanity/image-url": "^1.2.0",
     "@sanity/vision": "^3.99.0",
+    "ai": "^7.0.15",
     "next": "~14.2",
     "next-sanity": "^9.12.3",
     "nodemailer": "^9.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
+    "react-markdown": "^10.1.0",
     "sanity": "^3.99.0",
-    "styled-components": "^6.4.2"
+    "styled-components": "^6.4.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "20.14.10",

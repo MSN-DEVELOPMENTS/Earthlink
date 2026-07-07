@@ -12,8 +12,16 @@ const lato = Lato({
   display: 'swap',
 });
 
-// Production domain — the live site is served here.
-const siteUrl = 'https://www.eregroup.ae';
+// Base URL for canonical + Open Graph. Production uses the real domain; on a
+// Vercel preview/staging deployment we use that deployment's own URL so a shared
+// link (WhatsApp, etc.) resolves the OG image on the same deployment. Locally it
+// falls back to localhost.
+const siteUrl =
+  process.env.VERCEL_ENV === 'production'
+    ? 'https://www.eregroup.ae'
+    : process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : 'http://localhost:3000';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
