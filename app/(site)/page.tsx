@@ -2,13 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { services, stats } from '@/lib/data';
-import { getProperties } from '@/lib/properties';
+// import { getProperties } from '@/lib/properties'; // temporarily unused (featured properties section hidden)
 import { seoMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = seoMetadata('/');
 
 export default async function HomePage() {
-  const properties = await getProperties();
+  // const properties = await getProperties(); // temporarily unused (featured properties section hidden)
   return (
     <>
       {/* ===== HERO ===== */}
@@ -93,7 +93,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* ===== FEATURED PROPERTIES ===== */}
+      {/* ===== FEATURED PROPERTIES (temporarily hidden) ===== */}
+      {/*
       <section id="properties" className="section-light">
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
@@ -132,6 +133,7 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      */}
 
     </>
   );
