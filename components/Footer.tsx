@@ -42,7 +42,8 @@ export default function Footer() {
             <ul>
               <li><Link href="/">Home</Link></li>
               <li><Link href="/about">About</Link></li>
-              <li><Link href="/properties">Properties</Link></li>
+              {/* Temporarily hidden — un-hide by uncommenting the line below. */}
+              {/* <li><Link href="/properties">Properties</Link></li> */}
               <li><Link href="/developers">Developers</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>

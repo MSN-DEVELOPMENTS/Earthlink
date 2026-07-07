@@ -9,7 +9,8 @@ import { p, h2, li, liLead, pLink, type Block } from '@/lib/portable';
 export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/properties', label: 'Properties' },
+  // Temporarily hidden — un-hide by uncommenting the line below.
+  // { href: '/properties', label: 'Properties' },
   { href: '/developers', label: 'Developers' },
   { href: '/media-center', label: 'Media Center' },
   { href: '/contact', label: 'Contact' },
