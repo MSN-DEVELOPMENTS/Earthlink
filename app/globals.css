@@ -1869,6 +1869,10 @@ footer ul a:hover {
 .chat-log {
   flex: 1;
   overflow-y: auto;
+  /* Keep scroll momentum inside the chat log so flicking it doesn't scroll the
+     page behind the panel (replaces the old body overflow-lock, which caused an
+     iOS Safari viewport shift when the panel closed). */
+  overscroll-behavior: contain;
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -2057,15 +2061,17 @@ footer ul a:hover {
     border-radius: 16px;
   }
 
-  /* Hide the floating launcher while the full-screen panel is open. */
+  /* Hide the floating launcher while the compact panel is open. */
   body.chat-open .chat-bubble {
     display: none;
   }
 
-  /* Lock the page behind the full-screen chat so the site can't pan/drift. */
-  body.chat-open {
-    overflow: hidden;
-  }
+  /* NOTE: no page-level overflow-lock here. Toggling `overflow: hidden` on
+     <body> desyncs the visual/layout viewport on iOS Safari, which left the
+     page shifted slightly after the panel closed (only a pinch-zoom reset it).
+     The panel is a small bottom-sheet card, so the page behind can stay
+     scrollable; scroll is kept inside the panel via `.chat-log`'s
+     overscroll-behavior: contain. */
 }
 
 /* 18. Scroll-reveal ------------------------------------------------------ */
