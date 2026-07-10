@@ -72,17 +72,16 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="about-cover-content reveal">
             <span className="eyebrow">Who We Are</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>The Earth Link Difference</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Built on Ten Years</h2>
             <p className="lead">
-              Real estate demands an open-book policy. We keep your goals at the center of every deal. Behind
-              every signed contract is the full strength of Earth Link—giving you off-market access, direct ties
-              to top builders, and one team handling your property from start to finish. Under Sharoon&apos;s
-              leadership, we bring tested standards to every transaction.
+              Ten years in the market. Four services in one place. Seven and more areas mapped in detail. This
+              is the base every client decision stands on.
             </p>
             <div className="stats">
               {stats.map((s) => (
                 <div className="glass stat" key={s.lbl}>
                   <div className="big">{s.big}</div>
+                  <div className="lbl">{s.lbl}</div>
                 </div>
               ))}
             </div>
