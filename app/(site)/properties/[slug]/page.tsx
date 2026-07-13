@@ -5,6 +5,7 @@ import { getPropertyBySlug, getPropertySlugs } from '@/lib/properties';
 import { dynamicSeoMetadata } from '@/lib/seo';
 import PropertyGallery from '@/components/PropertyGallery';
 import ShareButton from '@/components/ShareButton';
+import PropertyQr from '@/components/PropertyQr';
 
 export async function generateStaticParams() {
   const slugs = await getPropertySlugs();
@@ -110,6 +111,13 @@ export default async function PropertyPage({ params }: { params: { slug: string 
                 <Link href="/contact" className="btn btn-gold">Enquire about this property</Link>
                 <Link href="/properties" className="btn btn-glass">View all properties</Link>
               </div>
+
+              {property.url && (
+                <div style={{ marginTop: 30 }}>
+                  <PropertyQr url={property.url} />
+                  <p className="table-note" style={{ marginTop: 12 }}>Scan to view on Bayut</p>
+                </div>
+              )}
 
               <p className="table-note" style={{ marginTop: 24 }}>
                 Listed by Earth Link Real Estate. Contact us for the DLD permit and full documentation.
