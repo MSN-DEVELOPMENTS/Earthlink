@@ -2114,6 +2114,17 @@ footer ul a:hover {
   letter-spacing: -.035em;
 }
 
+/* Listing titles are proper names, not prose, so they read as one line rather
+   than wrapping to the 18ch measure the editorial heads use. Names range from
+   ~10 to ~45 chars, so the size is derived from --title-len (set per page) to
+   fit the longest ones; 0.4 is a conservative avg glyph width in em for this
+   face. The rem cap keeps desktop level with the other page heads. */
+.page-head--listing h1 {
+  max-width: none;
+  white-space: nowrap;
+  font-size: min((100vw - 64px) / (0.4 * var(--title-len, 31)), 4.6rem);
+}
+
 .page-head .eyebrow {
   justify-content: center;
 }
@@ -3349,11 +3360,12 @@ footer ul a:hover {
 }
 
 .prop-price {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6.5vw, 2rem);
   font-weight: 700;
   color: var(--champagne-ink);
   font-variant-numeric: tabular-nums;
   margin-bottom: 26px;
+  white-space: nowrap;
 }
 
 /* Price + share control share one row; the button hugs the right edge. */
@@ -3364,8 +3376,11 @@ footer ul a:hover {
   gap: 16px;
 }
 
+/* The share button eats into the row, so the price scales harder than a
+   standalone one before it would collide. */
 .prop-price-row .prop-price {
   margin-bottom: 26px;
+  font-size: clamp(1.25rem, 5.4vw, 2rem);
 }
 
 .share-btn {

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import type { CSSProperties } from 'react';
 import type { Metadata } from 'next';
 import { getPropertyBySlug, getPropertySlugs } from '@/lib/properties';
 import { dynamicSeoMetadata } from '@/lib/seo';
@@ -63,12 +64,14 @@ export default async function PropertyPage({ params }: { params: { slug: string 
   return (
     <article>
       {/* ===== HEADER ===== */}
-      <section className="page-head">
+      <section className="page-head page-head--listing">
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>
             {property.tag} · {property.location}
           </span>
-          <h1 className="reveal">{property.name}</h1>
+          <h1 className="reveal" style={{ '--title-len': property.name.length } as CSSProperties}>
+            {property.name}
+          </h1>
         </div>
       </section>
 
