@@ -13,16 +13,18 @@ export const contentType = 'image/png';
 const fontsDir = join(process.cwd(), 'public', 'fonts');
 
 export default async function OpengraphImage() {
-  const [serifRegular, serifBold, serifBoldItalic, heroPoster] = await Promise.all([
+  const [serifRegular, serifBold, serifBoldItalic, heroPoster, logo] = await Promise.all([
     readFile(join(fontsDir, 'PTSerif-Regular.ttf')),
     readFile(join(fontsDir, 'PTSerif-Bold.ttf')),
     readFile(join(fontsDir, 'PTSerif-BoldItalic.ttf')),
     // Read the hero image from disk and inline it as a data URI. Fetching it by
     // URL would fail on protection-gated preview deployments.
     readFile(join(process.cwd(), 'public', 'home', 'hero-poster.jpg')),
+    readFile(join(process.cwd(), 'public', 'logo.png')),
   ]);
 
   const heroSrc = `data:image/jpeg;base64,${heroPoster.toString('base64')}`;
+  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`;
 
   return new ImageResponse(
     (
@@ -56,23 +58,15 @@ export default async function OpengraphImage() {
             background: 'linear-gradient(135deg, rgba(21,35,43,0.82) 0%, rgba(21,35,43,0.45) 55%, rgba(21,35,43,0.75) 100%)',
           }}
         />
+        {/* The ERE monogram is gold on transparent, so it sits directly on the
+            scrim rather than in a filled badge, which would swallow it. */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <div
-            style={{
-              width: '64px',
-              height: '64px',
-              borderRadius: '14px',
-              background: '#c3a97c',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#1f3643',
-              fontSize: '38px',
-              fontWeight: 700,
-            }}
-          >
-            E
-          </div>
+          <img
+            src={logoSrc}
+            width={72}
+            height={72}
+            style={{ width: '72px', height: '72px', objectFit: 'contain' }}
+          />
           <div style={{ color: '#f4f1e9', fontSize: '34px', fontWeight: 700, letterSpacing: '-0.5px' }}>
             Earth Link
           </div>
