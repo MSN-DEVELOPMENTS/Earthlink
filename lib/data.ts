@@ -106,6 +106,7 @@ export type Property = {
   gallery?: string[]; // extra photos for the detail-page gallery
   description: string[];
   url?: string; // external listing (e.g. Bayut)
+  permitUrl?: string; // DLD Trakheesi permit validation URL (encoded in the property QR)
 };
 
 export const properties: Property[] = [
@@ -119,13 +120,14 @@ export const properties: Property[] = [
     area: '815 sqft',
     price: 'AED 85,000 / yr',
     ref: 'Bayut 100146-8CgvWb',
-    permit: 'On request',
+    permit: '71236848097',
     img: 'https://images.bayut.com/thumbnails/846246546-800x600.jpeg',
     description: [
       'A fully furnished, upgraded one-bedroom apartment of 815 sqft at Belgravia Square, JVC District 14, Jumeirah Village Circle.',
       'Leased at AED 85,000 yearly and listed exclusively by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15541164.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=vmhohzzpk3yj74imx8o31tf2k6fsb0c6eeefxrkehatfzjvcv',
   },
   {
     slug: 'expo-golf-villas-parkside-2',
@@ -137,13 +139,14 @@ export const properties: Property[] = [
     area: '2,552 sqft',
     price: 'AED 155,000 / yr',
     ref: 'Bayut #15646436',
-    permit: 'On request',
+    permit: '69234394963',
     img: 'https://images.bayut.com/thumbnails/848441706-800x600.jpeg',
     description: [
       'A bright and spacious four-bedroom villa of 2,552 sqft built-up on a 2,736 sqft plot at Expo Golf Villas 2 (Parkside 2), Emaar South.',
       'Available at AED 155,000 yearly and listed by Earth Link Real Estate. Contact us for the floor plan, community amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15646436.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=oz3nnvof7wumtp4chmxzzp2q7a45ti6b3msmoltjtjzbcgvia',
   },
   {
     slug: 'd1-tower-culture-village',
@@ -155,13 +158,14 @@ export const properties: Property[] = [
     area: '1,038 sqft',
     price: 'AED 1,800,000',
     ref: 'Bayut #15626304',
-    permit: 'On request',
+    permit: '7117527736',
     img: 'https://images.bayut.com/thumbnails/848040673-800x600.jpeg',
     description: [
       'A luxury one-bedroom apartment of 1,038 sqft on the highest floor of D1 Tower, Culture Village (Jaddaf Waterfront), with a full Dubai Creek view.',
       'For sale at AED 1,800,000 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15626304.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=cxkeypyn191gatqjujljkfmmjz65nn1aq18jxrcvnadflrrkk',
   },
   {
     slug: 'azizi-plaza-al-furjan',
@@ -173,13 +177,14 @@ export const properties: Property[] = [
     area: '1,070 sqft',
     price: 'AED 85,000 / yr',
     ref: 'Bayut #15623358',
-    permit: 'On request',
+    permit: '7136350948',
     img: 'https://images.bayut.com/thumbnails/848040728-800x600.jpeg',
     description: [
       'A spacious two-bedroom, ready-to-move apartment of 1,070 sqft on a high floor at Azizi Plaza, Al Furjan, with an open city view.',
       'Available at AED 85,000 yearly and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15623358.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=sptcdfh4yi2t9ooz3rscx21wcigw664wfjzefqrmwitkbwxae',
   },
   {
     slug: 'rosehill-dubai-hills-estate',
@@ -191,13 +196,14 @@ export const properties: Property[] = [
     area: '767 sqft',
     price: 'AED 1,707,888',
     ref: 'Bayut #15632517',
-    permit: 'On request',
+    permit: '71774343387',
     img: 'https://images.bayut.com/thumbnails/848128323-800x600.jpeg',
     description: [
       'A luxury one-bedroom apartment of 767 sqft with a spacious layout at Rosehill, Dubai Hills Estate — a premium, family-focused community.',
       'For sale at AED 1,707,888 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15632517.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=n4m2owwuo1urbg35acarn6cr7q6077yfqq35mzefhjlhbyklt',
   },
   {
     slug: 'creek-views-2-azizi',
@@ -209,13 +215,14 @@ export const properties: Property[] = [
     area: '618 sqft',
     price: 'AED 75,000 / yr',
     ref: 'Bayut 100146-M5DAWa',
-    permit: 'On request',
+    permit: '71227265981',
     img: 'https://images.bayut.com/thumbnails/846678357-800x600.jpeg',
     description: [
       'An upgraded, fully furnished one-bedroom apartment of 618 sqft at Creek Views II by Azizi (Azizi Fawad Residence), Dubai Healthcare City Phase 2, Al Jaddaf.',
       'Available at AED 75,000 yearly and listed exclusively by Earth Link Real Estate. Ask us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15564104.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=yojyzguwwle6vi0q4hwwqdlnsk57zjjjb5cibbbfbcwnolisr',
   },
   {
     slug: 'downtown-views-2-tower-3',
@@ -227,13 +234,14 @@ export const properties: Property[] = [
     area: '774 sqft',
     price: 'AED 130,000 / yr',
     ref: 'Bayut 100146-QgzRsP',
-    permit: 'On request',
+    permit: '7180684414',
     img: 'https://images.bayut.com/thumbnails/846846129-800x600.jpeg',
     description: [
       'A fully furnished one-bedroom apartment of 774 sqft in Downtown Views II, Tower 3 (Za’abeel) — moments from the Burj Khalifa, Dubai Mall, and the fountain.',
       'Move-in ready and leased at AED 130,000 yearly. Listed exclusively by Earth Link Real Estate — contact us to arrange a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15568554.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=f15e8fje68k9wmmz1cz1h1i0et6zlqv81lmjbbejvzcpksstf',
   },
   {
     slug: 'azizi-riviera-29-meydan',
@@ -245,13 +253,14 @@ export const properties: Property[] = [
     area: '362 sqft',
     price: 'AED 48,000 / yr',
     ref: 'Bayut #15596003',
-    permit: 'On request',
+    permit: '71228955245',
     img: 'https://images.bayut.com/thumbnails/848040714-800x600.jpeg',
     description: [
       'A fully furnished, ready-to-move studio of 362 sqft with a pool view at Azizi Riviera 29, Meydan One, Meydan.',
       'Available at AED 48,000 yearly and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15596003.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=qp8zcdze07qibo1ej7dxdnmpimnn74og7bhzpxnpouzvassyp',
   },
   {
     slug: 'azizi-riviera-26-meydan',
@@ -263,13 +272,14 @@ export const properties: Property[] = [
     area: '322 sqft',
     price: 'AED 600,000',
     ref: 'Bayut 100146-sFs5NZ',
-    permit: 'On request',
+    permit: '71235280749',
     img: 'https://images.bayut.com/thumbnails/848964430-800x600.jpeg',
     description: [
       'A premium furnished studio of 322 sqft with a balcony at Azizi Riviera 26, Meydan One, Meydan.',
       'For sale at AED 600,000 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15671768.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=8wfx85s4h34mz70iwp8yt3wdpyvgflkmpqihyqtkbozcdmwjk',
   },
   {
     slug: 'the-autograph-i-series-jvc',
@@ -281,13 +291,14 @@ export const properties: Property[] = [
     area: '824 sqft',
     price: 'AED 1,500,000',
     ref: 'Bayut 100146-S0DUt1',
-    permit: 'On request',
+    permit: '71680438129',
     img: 'https://images.bayut.com/thumbnails/850500091-800x600.jpeg',
     description: [
       'A furnished luxury penthouse of 824 sqft at The Autograph I Series, JVC District 13, Jumeirah Village Circle — contemporary architecture with premium finishes, an open-plan living space, and a private terrace.',
       'For sale at AED 1,500,000 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15746544.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=afdstjshtgat30jpzjbzuamey36qsrbfoqwtjwrevzwfjulbt',
   },
   {
     slug: 'damac-riverside-sage',
@@ -299,13 +310,14 @@ export const properties: Property[] = [
     area: '1,566 sqft',
     price: 'AED 2,950,000',
     ref: 'Bayut 100146-mj0kG0',
-    permit: 'On request',
+    permit: '69631397685',
     img: 'https://images.bayut.com/thumbnails/850500012-800x600.jpeg',
     description: [
       'A modern four-bedroom family villa of 1,566 sqft at SAGE, DAMAC Riverside, Dubai Investments Park 2 (DIP) — spacious interiors, high-quality finishes, and a private garden within a resort-style community.',
       'For sale at AED 2,950,000 and listed by Earth Link Real Estate. Contact us for the floor plan, community amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15744724.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=btp64aivgien24txisbytsvf1txlp5jkrip6bpsezxinohmrl',
   },
   {
     slug: 'damac-riverside-ivy',
@@ -317,13 +329,14 @@ export const properties: Property[] = [
     area: '1,550 sqft',
     price: 'AED 2,742,000',
     ref: 'Bayut 100146-9BRIrD',
-    permit: 'On request',
+    permit: '69631245553',
     img: 'https://images.bayut.com/thumbnails/850191416-800x600.jpeg',
     description: [
       'An elegant four-bedroom villa of 1,550 sqft at Ivy, DAMAC Riverside, Dubai Investments Park (DIP) — contemporary architecture with an open-plan kitchen, floor-to-ceiling windows, and a private garden in a waterfront community.',
       'For sale at AED 2,742,000 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
     ],
     url: 'https://www.bayut.com/property/details-15736977.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=1brjz59hpk98pdn3d3su4nd4slgv4so5891vnwgawtsmhvzkv',
   },
   {
     slug: 'damac-islands-tahiti-2',
@@ -335,13 +348,14 @@ export const properties: Property[] = [
     area: '1,550 sqft',
     price: 'AED 2,800,000',
     ref: 'Bayut 100146-IFD4eA',
-    permit: 'On request',
+    permit: '65697006990',
     img: 'https://images.bayut.com/thumbnails/850500060-800x600.jpeg',
     description: [
       'A premium residential villa plot of 1,550 sqft at Tahiti 2, DAMAC Islands Phase 2 — a gated waterfront community with crystal lagoons, resort-style landscaping, and freehold ownership.',
       'For sale at AED 2,800,000 and listed by Earth Link Real Estate. Contact us for the master plan, amenities, and full documentation.',
     ],
     url: 'https://www.bayut.com/property/details-15746998.html',
+    permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=035uum30xwwclukn0k59p6mobru9hef484u5ibtmyhdnypzbb',
   },
 ];
 

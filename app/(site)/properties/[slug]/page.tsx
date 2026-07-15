@@ -112,10 +112,12 @@ export default async function PropertyPage({ params }: { params: { slug: string 
                 <Link href="/properties" className="btn btn-glass">View all properties</Link>
               </div>
 
-              {property.url && (
+              {property.permitUrl && (
                 <div style={{ marginTop: 30 }}>
-                  <PropertyQr url={property.url} />
-                  <p className="table-note" style={{ marginTop: 12 }}>Scan to view on Bayut</p>
+                  <PropertyQr url={property.permitUrl} />
+                  <p className="table-note" style={{ marginTop: 12 }}>
+                    Trakheesi Permit — scan to verify with the Dubai Land Department
+                  </p>
                 </div>
               )}
 
