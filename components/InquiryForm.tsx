@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { inquiryTypes } from '@/lib/data';
 import { submitMessage } from '@/lib/sendMessage';
+import { trackLead } from '@/lib/analytics';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -16,6 +17,7 @@ export default function InquiryForm() {
     setStatus('sending');
     try {
       await submitMessage(data, `New website enquiry — ${data.name || 'Unknown'}`);
+      trackLead('contact');
       setStatus('ok');
       form.reset();
     } catch {

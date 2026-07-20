@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { submitMessage } from '@/lib/sendMessage';
+import { trackLead } from '@/lib/analytics';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -24,6 +25,7 @@ export default function ProjectInquiryForm({
     setStatus('sending');
     try {
       await submitMessage(data, `Project enquiry — ${projectName} (${data.name || 'Unknown'})`);
+      trackLead('project_inquiry');
       setStatus('ok');
       form.reset();
     } catch {

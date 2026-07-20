@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { submitMessage } from '@/lib/sendMessage';
+import { trackNewsletterSignup } from '@/lib/analytics';
 
 type Status = 'idle' | 'sending' | 'ok' | 'err';
 
@@ -15,6 +16,7 @@ export default function NewsletterForm() {
     setStatus('sending');
     try {
       await submitMessage(data, 'New newsletter subscriber');
+      trackNewsletterSignup();
       setStatus('ok');
       form.reset();
     } catch {
