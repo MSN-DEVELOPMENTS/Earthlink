@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 import './globals.css';
 
 // Site typeface — Lato (the same body font as emaar.com). Headings use Optima
@@ -64,9 +65,16 @@ export const metadata: Metadata = {
   },
 };
 
+// Google Tag Manager container ID (e.g. GTM-XXXXXXX). Set in Vercel env vars.
+// GA4 and any future tags (Meta Pixel, Google Ads) are configured inside the
+// GTM dashboard, so no code change is needed to add them later. When the ID is
+// unset (local dev without the var) we skip the script entirely.
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={lato.variable} suppressHydrationWarning>
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
       <body>{children}</body>
     </html>
   );
