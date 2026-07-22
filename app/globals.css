@@ -3982,20 +3982,50 @@ footer ul a:hover {
     display: flex;
     position: fixed;
     inset: 0;
+    /* `inset: 0` on a fixed element resolves against iOS Safari's LARGE viewport
+       — the height as if the browser chrome were hidden. Inside an in-app
+       browser (WhatsApp, Instagram) that chrome is always there, so the menu was
+       taller than the space actually visible and the last items sat underneath
+       it. `dvh` tracks the real, current viewport instead. Where dvh is not
+       supported the inset above still applies, so nothing regresses. */
+    height: 100dvh;
+    max-height: 100dvh;
     z-index: 900; /* below the fixed header (1000) so the burger→X stays tappable */
     flex-direction: column;
     align-items: stretch;
-    justify-content: center;
+    /* Deliberately NOT `justify-content: center`. Centring a flex column that
+       overflows clips it at BOTH ends and the overflowing top cannot be scrolled
+       back to — which is why HOME kept disappearing while the lower items showed.
+       The auto-margin pseudo-elements below centre the list when there is spare
+       room and collapse to zero when there is not, so every item stays reachable. */
+    justify-content: flex-start;
     gap: 0;
     padding: 96px 26px 48px;
+    padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px));
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background:
       linear-gradient(180deg, rgba(12, 18, 22, .8), rgba(12, 18, 22, .92)),
-      url('/home/hero-poster.jpg') center / cover no-repeat;
+      /* Keep ?v= in step with ASSET_VERSION in components/HeroVideo.tsx. Posters
+         are served with a 30-day cache, so without a version bump this overlay
+         keeps showing the previous hero image long after the hero itself has
+         changed — which is exactly what happened when the hero video was
+         swapped. */
+      url('/home/hero-poster.jpg?v=4') center / cover no-repeat;
     border: 0;
     border-radius: 0;
     box-shadow: none;
     overflow-y: auto;
     animation: menuFade .28s ease;
+  }
+
+  /* Absorb the spare space above and below the list so it looks centred, but
+     collapse automatically once the items need the full height. */
+  nav.links.open::before,
+  nav.links.open::after {
+    content: '';
+    margin: auto;
+    flex: 0 0 auto;
   }
 
   /* Each item: full-width centred row, uppercase + letter-spacing, hairline
@@ -4835,14 +4865,38 @@ footer ul a:hover {
   text-transform: uppercase;
 }
 
-@media (max-width: 560px) {
+/* On a phone the three pills were wider than the viewport, so "For Rent"
+   dropped onto a second row. Making them equal-width flex items that share the
+   available space guarantees a single row at any width, without a scrollbar. */
+@media (max-width: 620px) {
   .ptabs {
+    flex-wrap: nowrap;
     gap: 8px;
   }
 
   .ptab {
-    padding: 10px 16px;
-    font-size: .74rem;
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 11px 6px;
+    font-size: .68rem;
+    letter-spacing: .04em;
+    gap: 6px;
+  }
+
+  .ptab-count {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    font-size: .64rem;
+  }
+}
+
+/* Below ~400px the labels alone need the room, so the counts step aside. */
+@media (max-width: 400px) {
+  .ptab-count {
+    display: none;
   }
 }
 
