@@ -2,29 +2,26 @@ import { ImageResponse } from 'next/og';
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-// Branded social-share card built over the homepage hero photo (the desert
-// dune), so link previews match what visitors first see on the site.
+// Social-share card. Deliberately a plain reproduction of the homepage hero —
+// the hero photo with the site title over it, nothing else. No eyebrow, no
+// tagline, no logo badge: a shared link should look like the page it opens.
 export const alt = 'Earth Link Real Estate — Dubai Brokerage';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
-// Locally bundled PT Serif (a Georgia-like screen serif) so the card never
-// depends on a network font fetch at build time.
+// Locally bundled PT Serif so the card never depends on a network font fetch at
+// build time.
 const fontsDir = join(process.cwd(), 'public', 'fonts');
 
 export default async function OpengraphImage() {
-  const [serifRegular, serifBold, serifBoldItalic, heroPoster, logo] = await Promise.all([
+  const [serifRegular, heroPoster] = await Promise.all([
     readFile(join(fontsDir, 'PTSerif-Regular.ttf')),
-    readFile(join(fontsDir, 'PTSerif-Bold.ttf')),
-    readFile(join(fontsDir, 'PTSerif-BoldItalic.ttf')),
     // Read the hero image from disk and inline it as a data URI. Fetching it by
     // URL would fail on protection-gated preview deployments.
     readFile(join(process.cwd(), 'public', 'home', 'hero-poster.jpg')),
-    readFile(join(process.cwd(), 'public', 'logo.png')),
   ]);
 
   const heroSrc = `data:image/jpeg;base64,${heroPoster.toString('base64')}`;
-  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`;
 
   return new ImageResponse(
     (
@@ -33,10 +30,9 @@ export default async function OpengraphImage() {
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          padding: '72px',
-          background: '#15232b',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: '#0c0e0f',
           fontFamily: 'PT Serif',
         }}
       >
@@ -45,9 +41,18 @@ export default async function OpengraphImage() {
           src={heroSrc}
           width={size.width}
           height={size.height}
-          style={{ position: 'absolute', top: 0, left: 0, width: `${size.width}px`, height: `${size.height}px`, objectFit: 'cover' }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: `${size.width}px`,
+            height: `${size.height}px`,
+            objectFit: 'cover',
+          }}
         />
-        {/* Dark scrim so the branding stays legible over the photo */}
+
+        {/* The same light scrim the hero uses, so the title stays readable over
+            the bright part of the sky without dimming the photo. */}
         <div
           style={{
             position: 'absolute',
@@ -55,47 +60,32 @@ export default async function OpengraphImage() {
             left: 0,
             width: `${size.width}px`,
             height: `${size.height}px`,
-            background: 'linear-gradient(135deg, rgba(21,35,43,0.82) 0%, rgba(21,35,43,0.45) 55%, rgba(21,35,43,0.75) 100%)',
+            background:
+              'linear-gradient(180deg, rgba(12,14,15,0.30) 0%, rgba(12,14,15,0.12) 45%, rgba(12,14,15,0.38) 100%)',
           }}
         />
-        {/* The ERE monogram is gold on transparent, so it sits directly on the
-            scrim rather than in a filled badge, which would swallow it. */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-          <img
-            src={logoSrc}
-            width={72}
-            height={72}
-            style={{ width: '72px', height: '72px', objectFit: 'contain' }}
-          />
-          <div style={{ color: '#f4f1e9', fontSize: '34px', fontWeight: 700, letterSpacing: '-0.5px' }}>
-            Earth Link
-          </div>
-        </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
-          <div style={{ color: '#c3a97c', fontSize: '24px', letterSpacing: '4px', textTransform: 'uppercase' }}>
-            Dubai Brokerage · Backed by ERE
-          </div>
-          <div style={{ color: '#f4f1e9', fontSize: '76px', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-2px' }}>
-            Dubai real estate,
-          </div>
-          <div style={{ color: '#c3a97c', fontSize: '76px', fontWeight: 700, fontStyle: 'italic', lineHeight: 1.05, letterSpacing: '-2px' }}>
-            made clear.
-          </div>
-        </div>
-
-        <div style={{ color: '#9fb0b8', fontSize: '26px', display: 'flex' }}>
-          Buy, lease, or invest with advice you can trust.
+        {/* Title, centred — matching the hero: white lead, champagne accent. */}
+        {/* The word gap comes from flex `gap`, not a trailing space — Satori
+            collapses trailing whitespace inside a span, which ran the two halves
+            of the title together. */}
+        <div
+          style={{
+            display: 'flex',
+            gap: '26px',
+            fontSize: '96px',
+            letterSpacing: '-1px',
+            textShadow: '0 2px 28px rgba(10,18,23,0.45)',
+          }}
+        >
+          <span style={{ color: '#f4f0e8' }}>Earth Link</span>
+          <span style={{ color: '#c3a97c' }}>Real Estate</span>
         </div>
       </div>
     ),
     {
       ...size,
-      fonts: [
-        { name: 'PT Serif', data: serifRegular, weight: 400, style: 'normal' },
-        { name: 'PT Serif', data: serifBold, weight: 700, style: 'normal' },
-        { name: 'PT Serif', data: serifBoldItalic, weight: 700, style: 'italic' },
-      ],
+      fonts: [{ name: 'PT Serif', data: serifRegular, weight: 400, style: 'normal' }],
     }
   );
 }
