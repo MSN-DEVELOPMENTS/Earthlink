@@ -2117,12 +2117,27 @@ footer ul a:hover {
 /* Listing titles are proper names, not prose, so they read as one line rather
    than wrapping to the 18ch measure the editorial heads use. Names range from
    ~10 to ~45 chars, so the size is derived from --title-len (set per page) to
-   fit the longest ones; 0.4 is a conservative avg glyph width in em for this
-   face. The rem cap keeps desktop level with the other page heads. */
+   fit the longest ones; 0.46 is the avg glyph width in em for this face at
+   these caps (incl. letter-spacing). The rem cap keeps desktop level with the
+   other page heads. */
 .page-head--listing h1 {
   max-width: none;
   white-space: nowrap;
-  font-size: min((100vw - 64px) / (0.4 * var(--title-len, 31)), 4.6rem);
+  font-size: min((100vw - 64px) / (0.46 * var(--title-len, 31)), 4.6rem);
+}
+
+/* Phones: one line would shrink long names to unreadable sizes (and the nowrap
+   measure has no margin for error across the 320–480px range), so wrap instead
+   and keep a legible floor. Names break on spaces and on the em dash. */
+@media (max-width: 700px) {
+  .page-head--listing h1 {
+    white-space: normal;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    font-size: clamp(1.7rem, 7.4vw, 2.6rem);
+    line-height: 1.14;
+    max-width: 100%;
+  }
 }
 
 .page-head .eyebrow {
@@ -3308,12 +3323,29 @@ footer ul a:hover {
   position: relative;
   will-change: transform;
   animation: float-card 7s ease-in-out infinite;
+  /* Warm paper tint under the photo so the frame never reads as a white hole
+     while the image is still on the wire. Cleared once the first shot paints. */
+  background: linear-gradient(135deg, var(--paper-2), var(--paper));
+}
+
+.detail-media.is-ready {
+  background: none;
 }
 
 .detail-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Stacked shots — only the active one is visible, so switching is instant. */
+.detail-media .prop-shot {
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.detail-media .prop-shot.is-active {
+  opacity: 1;
 }
 
 /* Detail gallery — large active image + thumbnail strip */
