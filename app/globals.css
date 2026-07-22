@@ -4586,3 +4586,269 @@ footer ul a:hover {
     touch-action: manipulation;
   }
 }
+
+/* ==========================================================================
+   15. Touch devices of any size — phones, tablets, iPad Pro
+   Section 14 above is keyed to max-width: 860px, which misses a real case: an
+   iPad Pro in portrait is 1024px wide and an iPad in landscape is wider still,
+   so both fall through to the desktop rules while still being driven by a
+   thumb. `pointer: coarse` asks the right question — "is the primary input
+   imprecise?" — rather than guessing from screen width, so it covers every
+   tablet and phone regardless of size and leaves mouse-driven desktops alone.
+   ========================================================================== */
+@media (pointer: coarse) {
+  /* Header nav links were 25px tall. The bar keeps its height; the links just
+     claim the vertical space either side of the text as hit area. */
+  .nav .links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  /* Footer link lists were the worst offenders at 19px. */
+  .foot-col li a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  /* Terms / Privacy sit inline inside a sentence, separated by a "·", so they
+     cannot become flex boxes without breaking that line. Vertical padding on an
+     inline element grows the clickable area without affecting layout flow. */
+  .fbot a {
+    padding: 13px 3px;
+  }
+
+  /* The footer phone number and email are the most valuable links on the page —
+     tapping the number places a call. They sit inline inside a paragraph, so
+     like the links above they get padding rather than a min-height, which grows
+     the touch area without disturbing the line. */
+  .foot-line a {
+    padding: 10px 2px;
+  }
+
+  /* Social icons. */
+  .foot-social a {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Form fields and the burger, at every width rather than only under 860px. */
+  .burger {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 14px 10px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fg input,
+  .fg select {
+    min-height: 44px;
+  }
+
+  .fg textarea {
+    min-height: 88px;
+  }
+
+  /* 16px is the threshold below which iOS Safari zooms the page on focus. */
+  .fg input,
+  .fg select,
+  .fg textarea,
+  .foot-news input {
+    font-size: 1rem;
+  }
+
+  .foot-news input,
+  .foot-news button {
+    min-height: 40px;
+  }
+
+  /* Cards and buttons: kill the 300ms tap delay and the sticky hover state that
+     touch browsers otherwise leave behind after a tap. */
+  a,
+  button,
+  .btn,
+  .pcard,
+  .chat-bubble {
+    touch-action: manipulation;
+  }
+}
+
+/* Hover effects are meaningless on touch and often stick after a tap, so they
+   are limited to devices that can actually hover. */
+@media (hover: none) {
+  .pcard:hover,
+  .dev-card:hover {
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   16. Homepage journal section + blog card affordance
+   ========================================================================== */
+
+/* No size overrides here on purpose. The homepage journal cards deliberately
+   inherit .blog-grid and .blog-card-img untouched, so they render at exactly the
+   same width and aspect ratio as the cards on /blog. */
+
+/* --- Clickable affordance -------------------------------------------------
+   The whole card is already a single <a>, but it did not look interactive
+   beyond a small lift. These make that obvious: the photo pushes in slightly,
+   the border warms to gold, and the arrow travels. */
+.blog-card {
+  cursor: pointer;
+}
+
+.blog-card .blog-card-img img {
+  transition: transform .55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.blog-card:hover .blog-card-img img {
+  transform: scale(1.04);
+}
+
+.blog-card:hover {
+  border-color: var(--champagne);
+}
+
+.blog-card-more {
+  transition: color .25s ease, letter-spacing .25s ease;
+}
+
+.blog-card:hover .blog-card-more {
+  color: var(--champagne);
+  letter-spacing: .02em;
+}
+
+/* Keyboard users get the same signal as mouse users. */
+.blog-card:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+/* Touch devices cannot hover, so the zoom would stick after a tap. */
+@media (hover: none) {
+  .blog-card:hover .blog-card-img img {
+    transform: none;
+  }
+}
+
+/* Reduced-motion users keep the colour cues, not the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .blog-card .blog-card-img img,
+  .blog-card:hover .blog-card-img img {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   17. Properties — sale / rent tabs
+   ========================================================================== */
+.ptabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 40px;
+}
+
+.ptab {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 11px 22px;
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--slate-2);
+  font-family: var(--body);
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color .25s ease, border-color .25s ease, background-color .25s ease;
+}
+
+.ptab:hover {
+  color: var(--ondark);
+  border-color: var(--champagne);
+}
+
+.ptab.is-active {
+  background: var(--champagne);
+  border-color: var(--champagne);
+  color: #14171a;
+}
+
+/* The count sits in a pill inside the button. */
+.ptab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 21px;
+  height: 21px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(195, 169, 124, .16);
+  color: var(--champagne-ink);
+  font-size: .72rem;
+  letter-spacing: 0;
+}
+
+.ptab.is-active .ptab-count {
+  background: rgba(20, 23, 26, .18);
+  color: #14171a;
+}
+
+.ptab:focus-visible {
+  outline: 2px solid var(--champagne);
+  outline-offset: 3px;
+}
+
+/* Sale/rent badge on each card, so the type is readable inside a mixed list. */
+.pcard-media {
+  position: relative;
+}
+
+.pcard-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(12, 14, 15, .74);
+  border: 1px solid rgba(195, 169, 124, .38);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: var(--champagne-ink);
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 560px) {
+  .ptabs {
+    gap: 8px;
+  }
+
+  .ptab {
+    padding: 10px 16px;
+    font-size: .74rem;
+  }
+}
+
+/* Touch devices: keep the tabs comfortably tappable. */
+@media (pointer: coarse) {
+  .ptab {
+    min-height: 44px;
+  }
+}

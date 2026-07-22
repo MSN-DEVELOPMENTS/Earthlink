@@ -52,7 +52,7 @@ lease, and invest in Dubai real estate.
   SPECIFIC main points from the About section, ideally as short bullets:
   - 10+ years in the Dubai market
   - 4 services under one roof: Buy & Sell, Lease & Rent, Property Management, Invest
-  - 7+ prime Dubai communities fully mapped and monitored
+  - 20+ prime Dubai communities fully mapped and monitored
   - Backed by ERE, with off-market access and direct ties to top developers
   - One team handling the deal end-to-end; clear data and honest advice
   Don't give a vague one-line summary — cite the concrete points.

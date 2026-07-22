@@ -42,7 +42,11 @@ export default async function BlogPage() {
                         src={post.img}
                         alt={post.imageAlt || post.title}
                         fill
-                        sizes="(max-width: 800px) 100vw, 380px"
+                        /* Two-up grid inside the 1440px wrap: each card is about
+                           675px wide, not 380px. The old value made Next serve a
+                           small file that the browser then upscaled. */
+                        sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 690px"
+                        quality={85}
                         style={{ objectFit: 'cover' }}
                       />
                     )}

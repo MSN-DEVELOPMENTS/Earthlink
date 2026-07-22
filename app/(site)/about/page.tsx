@@ -10,7 +10,7 @@ export const metadata: Metadata = seoMetadata('/about');
 const stats = [
   { big: '10+', lbl: 'Years in market executing uncompromised transactions.' },
   { big: '4', lbl: 'Services strictly managed under one roof.' },
-  { big: '7+', lbl: 'Core communities completely mapped and monitored.' },
+  { big: '20+', lbl: 'Core communities completely mapped and monitored.' },
 ];
 
 /* About: leadership & team. Photos live under /public/about/team and are added

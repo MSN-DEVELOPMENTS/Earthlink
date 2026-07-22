@@ -4,12 +4,17 @@ import type { Metadata } from 'next';
 import HeroVideo from '@/components/HeroVideo';
 import { services, stats } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
+import { getPosts } from '@/lib/blog';
 import { seoMetadata } from '@/lib/seo';
+
+// Match the blog listing page: refresh from Sanity at most once a minute so a
+// newly published post reaches the homepage without a redeploy.
+export const revalidate = 60;
 
 export const metadata: Metadata = seoMetadata('/');
 
 export default async function HomePage() {
-  const properties = await getProperties();
+  const [properties, posts] = await Promise.all([getProperties(), getPosts()]);
   return (
     <>
       {/* ===== HERO ===== */}
@@ -64,7 +69,7 @@ export default async function HomePage() {
             <span className="eyebrow">Who We Are</span>
             <h2 className="section-title" style={{ marginTop: 12 }}>Built on Ten Years</h2>
             <p className="lead">
-              Ten years in the market. Four services in one place. Seven and more areas mapped in detail. This
+              Ten years in the market. Four services in one place. Twenty and more areas mapped in detail. This
               is the base every client decision stands on.
             </p>
             <div className="stats">
@@ -121,6 +126,52 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===== FROM THE JOURNAL ===== */}
+      {posts.length > 0 && (
+        <section id="journal">
+          <div className="wrap">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+              <span className="eyebrow">The Journal</span>
+              <h2 className="section-title" style={{ marginTop: 12 }}>Market Insight</h2>
+              <p className="lead" style={{ margin: '14px auto 0' }}>
+                Reports and analysis on the Dubai market, written by our brokers.
+              </p>
+            </div>
+            <div className="blog-grid">
+              {posts.slice(0, 3).map((post) => (
+                <Link href={`/blog/${post.slug}`} key={post.slug} className="blog-card reveal">
+                  <div className="blog-card-img">
+                    {post.img && (
+                      <Image
+                        src={post.img}
+                        alt={post.imageAlt || post.title}
+                        fill
+                        /* .blog-grid is two-up inside the 1440px wrap, so each card
+                           renders about 675px wide on a desktop. Understating this
+                           made Next serve a small file that the browser upscaled,
+                           which is what made the photos look soft. */
+                        sizes="(max-width: 760px) 100vw, (max-width: 1200px) 50vw, 690px"
+                        quality={85}
+                        style={{ objectFit: 'cover' }}
+                      />
+                    )}
+                  </div>
+                  <div className="blog-card-body">
+                    {post.category && <span className="blog-card-cat">{post.category}</span>}
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                    <span className="blog-card-more">Read article →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="reveal" style={{ textAlign: 'center', marginTop: 44 }}>
+              <Link href="/blog" className="btn btn-gold">View all articles</Link>
+            </div>
+          </div>
+        </section>
+      )}
 
     </>
   );

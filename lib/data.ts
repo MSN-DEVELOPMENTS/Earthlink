@@ -45,7 +45,7 @@ export const services = [
 export const stats = [
   { big: '10+', lbl: 'Years of proven results' },
   { big: '4', lbl: 'Complete services under one roof' },
-  { big: '7+', lbl: 'Prime Dubai areas fully mapped' },
+  { big: '20+', lbl: 'Prime Dubai areas fully mapped' },
 ];
 
 /* ----- Home: Communities We Work With (7) ------------------------------- */

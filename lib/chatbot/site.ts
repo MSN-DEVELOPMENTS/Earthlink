@@ -6,7 +6,7 @@ export const ABOUT_TEXT = `Earth Link Real Estate is a Dubai property brokerage,
 years in the market. Tagline: "Built Around You."
 
 Track record: 10+ years executing transactions; 4 services managed under one
-roof (Buy & Sell, Lease & Rent, Property Management, Invest); 7+ core Dubai
+roof (Buy & Sell, Lease & Rent, Property Management, Invest); 20+ core Dubai
 communities fully mapped and monitored.
 
 How we work:

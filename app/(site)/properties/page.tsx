@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import HeroVideo from '@/components/HeroVideo';
+import PropertyTabs from '@/components/PropertyTabs';
 import { seoMetadata } from '@/lib/seo';
 import { offers, matchSteps } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
@@ -27,29 +28,7 @@ export default async function PropertiesPage() {
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <h2 className="section-title">Featured Properties</h2>
           </div>
-          <div className="pcards">
-            {properties.map((p) => (
-              <Link href={`/properties/${p.slug}`} className="pcard reveal" key={p.name}>
-                <span className="pcard-media">
-                  <Image
-                    src={p.img}
-                    alt={p.name}
-                    fill
-                    sizes="(max-width: 720px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </span>
-                <span className="pcard-body">
-                  <span className="pcard-nm">{p.name}</span>
-                  <span className="pcard-place">{p.location} · {p.type}</span>
-                  <span className="pcard-foot">
-                    <span className="pcard-price">{p.price}</span>
-                    <span className="pcard-go" aria-hidden="true">→</span>
-                  </span>
-                </span>
-              </Link>
-            ))}
-          </div>
+          <PropertyTabs properties={properties} />
           <p className="table-note reveal">The selection updates weekly. Ask us what fits.</p>
         </div>
       </section>
