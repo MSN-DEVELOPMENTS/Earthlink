@@ -4657,6 +4657,18 @@ footer ul a:hover {
     padding: 10px 2px;
   }
 
+  /* Same reasoning on the Contact page itself, where the phone and email are the
+     whole point of the page and were still only 20px tall. */
+  .c-info .ib a {
+    padding: 10px 2px;
+  }
+
+  .c-map-dir {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
   /* Social icons. */
   .foot-social a {
     min-width: 44px;
