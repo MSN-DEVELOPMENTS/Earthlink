@@ -1,4 +1,4 @@
-import { contact } from '@/lib/data';
+import { contact } from '@/lib/site-config';
 
 /* Project-aware WhatsApp call-to-action. Builds a wa.me deep link with a
    pre-filled message naming the project the visitor is viewing, so every

@@ -1,4 +1,9 @@
-import { createClient } from 'next-sanity';
+// Imported from @sanity/client rather than next-sanity on purpose. The
+// next-sanity entry point pulls in the visual-editing client components, which
+// dragged ~180KB of Sanity runtime (buffer/base64/uuid polyfills included) into
+// the browser bundle of every page that reads content. This is the same
+// createClient, without the client-component baggage.
+import { createClient } from '@sanity/client';
 import { apiVersion, dataset, projectId } from '../env';
 
 // `projectId` falls back to a valid placeholder so this module never throws at

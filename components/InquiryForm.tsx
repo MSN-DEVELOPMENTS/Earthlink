@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { inquiryTypes } from '@/lib/data';
+import { inquiryTypes } from '@/lib/site-config';
 import { submitMessage } from '@/lib/sendMessage';
 import { trackLead } from '@/lib/analytics';
 

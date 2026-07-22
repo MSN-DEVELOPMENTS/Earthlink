@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import HeroVideo from '@/components/HeroVideo';
 import { getDevelopers, developersPage, developerStartingFrom } from '@/lib/developers';
 import { seoMetadata } from '@/lib/seo';
 
@@ -12,18 +13,7 @@ export default function DevelopersPage() {
     <>
       {/* ===== HERO (Dubai supertall towers aerial background video) ===== */}
       <section className="page-head page-head--hero">
-        <video
-          className="page-head-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/developers/hero-poster.jpg?v=2"
-          aria-hidden="true"
-        >
-          <source src="/developers/hero.mp4?v=2" type="video/mp4" />
-        </video>
+        <HeroVideo className="page-head-video" src="/developers/hero.mp4" poster="/developers/hero-poster.jpg" />
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
           <h1 className="reveal dev-hero-title">

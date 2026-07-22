@@ -4533,3 +4533,56 @@ footer ul a:hover {
   }
   .cs-dot { display: none; }
 }
+
+/* ==========================================================================
+   14. Touch targets — small-screen ergonomics
+   Audited at 320/375/768/1024px. The layout already reflows without any
+   horizontal overflow; what needed fixing was how small some controls are to
+   actually hit with a thumb. WCAG 2.5.8 asks for 24x24 CSS px minimum and the
+   platform guidelines for ~44x44, so these bring the interactive elements up
+   without changing how anything looks.
+   ========================================================================== */
+@media (max-width: 860px) {
+  /* The burger was a 24x16 hit area — the primary mobile nav control. The bars
+     stay exactly as they were; only the padded hit box around them grows. */
+  .burger {
+    padding: 14px 10px;
+    margin-right: -10px;
+    min-width: 44px;
+    min-height: 44px;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Form fields sat at 34px tall. Taller rows are easier to hit and read. */
+  .fg input,
+  .fg select {
+    min-height: 44px;
+    padding: 10px 0;
+  }
+
+  .fg textarea {
+    min-height: 88px;
+    padding: 10px 0;
+  }
+
+  /* iOS Safari zooms the page whenever a focused field is under 16px. The
+     newsletter input was 14.7px, so tapping it jerked the footer around. */
+  .foot-news input {
+    font-size: 1rem;
+    min-height: 40px;
+  }
+
+  .foot-news button {
+    min-height: 40px;
+    padding: 0 4px;
+  }
+
+  /* Submit/CTA buttons and the chat launcher. */
+  .form-card .btn,
+  .foot-news button,
+  .chat-bubble {
+    touch-action: manipulation;
+  }
+}

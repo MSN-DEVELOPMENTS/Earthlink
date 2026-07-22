@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { contact } from '@/lib/data';
+import { contact } from '@/lib/site-config';
 import NewsletterForm from '@/components/NewsletterForm';
 
 // Social links — replace the "#" placeholders with the real profile URLs.

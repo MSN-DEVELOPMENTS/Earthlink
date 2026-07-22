@@ -5,31 +5,11 @@
 
 import { p, h2, li, liLead, pLink, type Block } from '@/lib/portable';
 
-/* ----- Navigation ------------------------------------------------------- */
-export const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/properties', label: 'Properties' },
-  { href: '/developers', label: 'Developers' },
-  { href: '/media-center', label: 'Media Center' },
-  { href: '/contact', label: 'Contact' },
-];
-
-/* ----- Contact details -------------------------------------------------- */
-export const contact = {
-  phone: '+971 52 870 1177',
-  phoneHref: 'tel:+971528701177',
-  whatsapp: 'https://wa.me/971528701177',
-  email: 'info@eregroup.ae',
-  location: '403 - 17 Voco Hotel, Sheikh Zayed Road, Dubai, UAE',
-  socials: ['LinkedIn', 'Facebook', 'YouTube', 'Instagram'],
-  // Regulatory credentials — replace the placeholder numbers with the real ones.
-  licence: {
-    regulator: 'Licensed by the Dubai Land Department · RERA',
-    orn: 'RERA ORN 00000', // ← real Office Registration Number
-    ded: 'DED Licence 000000', // ← real DED trade licence
-  },
-};
+/* ----- Navigation and contact details ------------------------------------
+   These now live in lib/site-config.ts so client components can import them
+   without pulling this whole module (article bodies included) into the browser
+   bundle. Re-exported here so existing server-side imports keep working. */
+export { navLinks, contact, inquiryTypes } from '@/lib/site-config';
 
 /* ----- Hero search bar options ------------------------------------------ */
 /* ----- Home: What We Do (4 services) ------------------------------------ */
@@ -697,6 +677,6 @@ export const faqs = [
   },
 ];
 
-/* ----- Form options ----------------------------------------------------- */
-export const inquiryTypes = ['Buy', 'Sell', 'Lease', 'Manage', 'Invest', 'Book a consultation'];
-export const consultants = ['No preference', 'Sales Consultant', 'Leasing Consultant', 'Investment Advisor'];
+/* ----- Form options ------------------------------------------------------
+   inquiryTypes and consultants are re-exported from lib/site-config at the top
+   of this file. */

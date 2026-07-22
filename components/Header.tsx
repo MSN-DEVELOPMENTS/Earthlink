@@ -3,18 +3,28 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { navLinks } from '@/lib/data';
+import { navLinks } from '@/lib/site-config';
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  // Add a shadow/blur to the nav once the page is scrolled.
+  // Add a shadow/blur to the nav once the page is scrolled. The listener is
+  // passive so it never blocks scrolling, and the work is coalesced into one
+  // frame instead of running on every scroll event.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        setScrolled(window.scrollY > 30);
+      });
+    };
     onScroll();
-    window.addEventListener('scroll', onScroll);
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 

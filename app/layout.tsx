@@ -5,10 +5,12 @@ import './globals.css';
 
 // Site typeface — Lato (the same body font as emaar.com). Headings use Optima
 // where available with a humanist fallback chain (see --display in globals.css).
+// Only the weights globals.css actually asks for are loaded. 900 was never used
+// and the handful of italic rules synthesise fine, so dropping them removes five
+// of the eight font files the browser used to preload on every page.
 const lato = Lato({
   subsets: ['latin'],
-  weight: ['300', '400', '700', '900'],
-  style: ['normal', 'italic'],
+  weight: ['300', '400', '700'],
   variable: '--font-main',
   display: 'swap',
 });

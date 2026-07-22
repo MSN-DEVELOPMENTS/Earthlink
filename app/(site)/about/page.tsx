@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import HeroVideo from '@/components/HeroVideo';
 import { seoMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = seoMetadata('/about');
@@ -47,16 +48,7 @@ export default function AboutPage() {
       {/* ===== HEADER — full-bleed Atlantis hero, copy centred on image ===== */}
       <section className="ab-hero" id="about-hero">
         <div className="ab-hero-bg" aria-hidden="true">
-          <video
-            className="ab-hero-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/about/hero-poster.jpg?v=2"
-          >
-            <source src="/about/hero.mp4?v=2" type="video/mp4" />
-          </video>
+          <HeroVideo className="ab-hero-video" src="/about/hero.mp4" poster="/about/hero-poster.jpg" />
         </div>
         <div className="wrap">
           <div className="ab-hero-inner reveal">

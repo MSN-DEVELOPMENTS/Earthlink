@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import HeroVideo from '@/components/HeroVideo';
 import { services, stats } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
 import { seoMetadata } from '@/lib/seo';
@@ -13,18 +14,7 @@ export default async function HomePage() {
     <>
       {/* ===== HERO ===== */}
       <section className="hero hero--bg" id="home">
-        <video
-          className="hero-bg hero-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/home/hero-poster.jpg?v=2"
-          aria-hidden="true"
-        >
-          <source src="/home/hero.mp4?v=2" type="video/mp4" />
-        </video>
+        <HeroVideo src="/home/hero.mp4" poster="/home/hero-poster.jpg" />
         <div className="wrap hero-grid">
           <div className="hero-copy">
             <h1 className="reveal">
@@ -97,10 +87,10 @@ export default async function HomePage() {
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
             <span className="eyebrow">Properties — Curated for Dubai</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Off-Plan Properties</h2>
+            <h2 className="section-title" style={{ marginTop: 12 }}>Featured Properties</h2>
             <p className="lead" style={{ margin: '14px auto 0' }}>
-              Off-plan early access from Emaar, Sobha, Binghatti and DAMAC — plus ready homes in settled
-              communities. The list updates weekly.
+              Ready homes to rent and buy across Dubai&apos;s settled communities, listed by our brokers.
+              The list updates weekly.
             </p>
           </div>
           <div className="pcards">

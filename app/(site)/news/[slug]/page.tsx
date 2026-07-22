@@ -2,7 +2,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { PortableText } from 'next-sanity';
+// PortableText from @portabletext/react directly: the next-sanity entry pulls
+// its visual-editing client components into the browser bundle.
+import { PortableText } from '@portabletext/react';
 import type { PortableTextComponents } from '@portabletext/react';
 import { getNewsBySlug, getNewsSlugs } from '@/lib/news';
 import { dynamicSeoMetadata } from '@/lib/seo';

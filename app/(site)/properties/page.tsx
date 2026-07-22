@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import HeroVideo from '@/components/HeroVideo';
 import { seoMetadata } from '@/lib/seo';
 import { offers, matchSteps } from '@/lib/data';
 import { getProperties } from '@/lib/properties';
@@ -13,18 +14,7 @@ export default async function PropertiesPage() {
     <>
       {/* ===== HERO (Dubai Frame aerial background video) ===== */}
       <section className="page-head page-head--hero">
-        <video
-          className="page-head-video"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/properties/hero-poster.jpg?v=2"
-          aria-hidden="true"
-        >
-          <source src="/properties/hero.mp4?v=2" type="video/mp4" />
-        </video>
+        <HeroVideo className="page-head-video" src="/properties/hero.mp4" poster="/properties/hero-poster.jpg" />
         <div className="page-head-overlay" aria-hidden="true" />
         <div className="wrap">
           <h1 className="reveal">Explore <span className="grad">Listings</span></h1>
@@ -35,7 +25,7 @@ export default async function PropertiesPage() {
       <section id="selection" className="section-light" style={{ paddingTop: 40 }}>
         <div className="wrap">
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 className="section-title">Select Primary Developments</h2>
+            <h2 className="section-title">Featured Properties</h2>
           </div>
           <div className="pcards">
             {properties.map((p) => (
