@@ -10,10 +10,15 @@ import { posts as fallbackPosts, type Post } from '@/lib/data';
    always renders. Sanity docs are mapped to the existing Post shape, with the
    cover image resolved to a URL string. */
 
+/* `category` tolerates both shapes: a migrated reference resolves through
+   ->title, while a not-yet-migrated plain string falls through the select().
+   The _ref guard stops a dangling reference returning a raw object to React.
+   (GROQ has no block comments, so this cannot live inside the query.) */
 const FIELDS = `
   "slug": slug.current,
   title,
-  category,
+  "category": coalesce(category->title, select(!defined(category._ref) => category)),
+  "categorySlug": category->slug.current,
   excerpt,
   seoTitle,
   metaDescription,

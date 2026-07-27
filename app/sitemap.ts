@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getPropertySlugs } from '@/lib/properties';
 import { getPostSlugs } from '@/lib/blog';
 import { getNewsSlugs } from '@/lib/news';
+import { getCategorySlugs } from '@/lib/categories';
 import { getDeveloperSlugs, getProjectParams } from '@/lib/developers';
 
 const siteUrl = 'https://www.eregroup.ae';
@@ -21,10 +22,13 @@ const staticPaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [propertySlugs, postSlugs, newsSlugs] = await Promise.all([
+  // getCategorySlugs() returns only categories that have at least one article —
+  // an empty archive page is not worth submitting for indexing.
+  const [propertySlugs, postSlugs, newsSlugs, categorySlugs] = await Promise.all([
     getPropertySlugs(),
     getPostSlugs(),
     getNewsSlugs(),
+    getCategorySlugs(),
   ]);
   const developerSlugs = getDeveloperSlugs();
   const projectParams = getProjectParams();
@@ -40,5 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...projectParams.map(({ dev, project }) => url(`/developers/${dev}/${project}`)),
     ...postSlugs.map((slug) => url(`/blog/${slug}`)),
     ...newsSlugs.map((slug) => url(`/news/${slug}`)),
+    ...categorySlugs.map((slug) => url(`/category/${slug}`)),
   ];
 }

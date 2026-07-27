@@ -20,20 +20,6 @@ export const news = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: 'category',
-      title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          'Press Release',
-          'Company News',
-          'Market Update',
-          'Awards & Recognition',
-          'Events',
-        ],
-      },
-    }),
-    defineField({
       name: 'excerpt',
       title: 'Excerpt',
       type: 'text',
@@ -108,6 +94,6 @@ export const news = defineType({
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'category', media: 'coverImage' },
+    select: { title: 'title', subtitle: 'excerpt', media: 'coverImage' },
   },
 });

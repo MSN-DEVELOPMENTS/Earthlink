@@ -348,11 +348,39 @@ export const matchSteps = [
 ];
 
 /* ----- Blog: categories (What You Will Find) ---------------------------- */
-export const blogCategories = [
-  { title: 'Market Intelligence', text: 'Prices, yields, and demand, explained.' },
-  { title: 'Neighbourhood Guides', text: 'Schools, commutes, and lifestyle by area.' },
-  { title: 'Investor Notes', text: 'Yield, strategy, and the costs that matter.' },
-  { title: 'Buyer & Tenant Guides', text: 'Each step, in plain order.' },
+/* ----- Shared categories ------------------------------------------------ */
+/* One taxonomy for both the Blog and the News room. This array is the
+   *fallback* only — the live list lives in Sanity as `category` documents
+   (see lib/categories.ts), which is what the team edits. Keep the slugs here
+   in sync with Sanity so the site still renders if the API is unreachable. */
+export type Category = { title: string; slug: string; description: string };
+
+export const categories: Category[] = [
+  {
+    title: 'Buying in Dubai and the UAE',
+    slug: 'buying-in-dubai-and-the-uae',
+    description: 'Every step of buying a home in Dubai and the wider UAE, in plain order.',
+  },
+  {
+    title: 'UAE Property Market',
+    slug: 'uae-property-market',
+    description: 'Prices, yields, and demand across Dubai and the UAE, explained simply.',
+  },
+  {
+    title: 'Real Estate Investment in the UAE',
+    slug: 'real-estate-investment-in-the-uae',
+    description: 'Yield, strategy, and the costs that decide a return.',
+  },
+  {
+    title: 'Commercial Real Estate Renting in Dubai',
+    slug: 'commercial-real-estate-renting-in-dubai',
+    description: 'Office, retail, and warehouse space, and what leasing one involves.',
+  },
+  {
+    title: 'Renting in Dubai',
+    slug: 'renting-in-dubai',
+    description: 'What tenants need to know, from budgets and contracts to renewals.',
+  },
 ];
 
 /* ----- Blog: posts ------------------------------------------------------ */
@@ -361,7 +389,10 @@ export type Faq = { question: string; answer: string };
 export type Post = {
   slug: string;
   title: string;
-  category: string;
+  /* Blog posts only — news articles carry no category, so both are optional.
+     `category` is the display title, `categorySlug` links to /category/<slug>. */
+  category?: string;
+  categorySlug?: string;
   excerpt: string;
   seoTitle?: string;
   metaDescription?: string;
@@ -378,7 +409,8 @@ export const posts: Post[] = [
   {
     slug: 'dubai-real-estate-market-report-2026',
     title: 'Dubai Real Estate Market Report 2026: Outlook, Trends and Forecast',
-    category: 'Market Intelligence',
+    category: 'UAE Property Market',
+    categorySlug: 'uae-property-market',
     excerpt:
       'Dubai real estate hit AED 252 billion in Q1 2026, up 31%. The latest market trends, price data, rental outlook, and 2026–2027 forecast from DLD, ValuStrat, and Knight Frank.',
     seoTitle: 'Dubai Real Estate Market Report 2026: Outlook, Trends, Forecast',
@@ -499,7 +531,8 @@ export const posts: Post[] = [
   {
     slug: 'is-dubai-real-estate-in-a-bubble',
     title: 'Is Dubai Real Estate in a Bubble?',
-    category: 'Market Intelligence',
+    category: 'UAE Property Market',
+    categorySlug: 'uae-property-market',
     excerpt:
       'Is Dubai real estate in a bubble in 2026? UBS rates it elevated risk, not bubble territory. What the data shows, why it is not 2008, and the risks worth watching.',
     seoTitle: 'Is Dubai Real Estate in a Bubble? 2026 Data & Analysis',
@@ -603,15 +636,8 @@ export const posts: Post[] = [
 
 /* ----- Media Center: news ----------------------------------------------- */
 /* News shares the same shape as a blog Post, so the article rendering and
-   data layer can be reused. Categories differ (see newsCategories). */
+   data layer can be reused. Both draw from the same `categories` list above. */
 export type News = Post;
-
-export const newsCategories = [
-  { title: 'Press Release', text: 'Official announcements from Earth Link.' },
-  { title: 'Company News', text: 'Milestones, hires, and growth.' },
-  { title: 'Market Update', text: 'Fast takes on what is moving the market.' },
-  { title: 'Events', text: 'Where to find us, and what we are hosting.' },
-];
 
 /* Built-in news items. These render whenever Sanity is not connected; once it
    is, articles written in the Studio take over (see lib/news.ts). */
@@ -619,7 +645,6 @@ export const news: News[] = [
   {
     slug: 'earthlink-real-estate-launches-media-center',
     title: 'Earth Link Real Estate Launches Its Media Center',
-    category: 'Company News',
     excerpt:
       'A new home for our press releases, company milestones, and fast market updates — all in one place.',
     img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=80',

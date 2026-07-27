@@ -2,8 +2,11 @@ import type { Metadata } from 'next';
 import { seoMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import Image from 'next/image';
-import { newsCategories } from '@/lib/data';
 import { getNews } from '@/lib/news';
+
+// Rebuild from Sanity at most once every 60s (ISR), matching /blog, so newly
+// published articles appear on the live site without a manual redeploy.
+export const revalidate = 60;
 
 export const metadata: Metadata = seoMetadata('/news');
 
@@ -22,6 +25,7 @@ export default async function NewsPage() {
       </section>
 
       {/* ===== LATEST NEWS ===== */}
+      {/* No category chips here: categories are blog-only (see lib/news.ts). */}
       {items.length > 0 && (
         <section id="articles">
           <div className="wrap">
@@ -44,7 +48,6 @@ export default async function NewsPage() {
                     )}
                   </div>
                   <div className="blog-card-body">
-                    {item.category && <span className="blog-card-cat">{item.category}</span>}
                     <h3>{item.title}</h3>
                     <p>{item.excerpt}</p>
                     <span className="blog-card-more">Read article →</span>
@@ -55,25 +58,6 @@ export default async function NewsPage() {
           </div>
         </section>
       )}
-
-      {/* ===== WHAT YOU WILL FIND ===== */}
-      <section id="categories" className="section-light">
-        <div className="wrap">
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-            <span className="eyebrow">What You Will Find</span>
-            <h2 className="section-title" style={{ marginTop: 12 }}>Kinds of updates</h2>
-          </div>
-          <div className="grid g-4">
-            {newsCategories.map((c, i) => (
-              <div className="glass card reveal" key={c.title}>
-                <div className="ic">{String(i + 1).padStart(2, '0')}</div>
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
     </>
   );
 }

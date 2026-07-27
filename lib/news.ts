@@ -10,10 +10,12 @@ import { news as fallbackNews, type News } from '@/lib/data';
    section always renders. Sanity docs are mapped to the existing News shape,
    with the cover image resolved to a URL string. */
 
+/* Categories are blog-only: the five the team defined are all property topics,
+   none of which fit a company announcement. News articles carry no category,
+   so there is nothing to project here and no chips on /news. */
 const FIELDS = `
   "slug": slug.current,
   title,
-  category,
   excerpt,
   seoTitle,
   metaDescription,

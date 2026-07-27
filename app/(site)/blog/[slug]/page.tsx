@@ -64,7 +64,17 @@ export default async function PostPage({ params }: { params: { slug: string } })
     <article>
       <section className="page-head">
         <div className="wrap">
-          {post.category && <p className="post-meta reveal">{post.category}</p>}
+          {post.category && (
+            <p className="post-meta reveal">
+              {post.categorySlug ? (
+                <Link href={`/category/${post.categorySlug}`} className="post-meta-link">
+                  {post.category}
+                </Link>
+              ) : (
+                post.category
+              )}
+            </p>
+          )}
           <h1 className="reveal" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>{post.title}</h1>
         </div>
       </section>

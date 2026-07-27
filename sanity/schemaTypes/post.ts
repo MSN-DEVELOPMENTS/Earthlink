@@ -22,15 +22,9 @@ export const post = defineType({
     defineField({
       name: 'category',
       title: 'Category',
-      type: 'string',
-      options: {
-        list: [
-          'Market Intelligence',
-          'Neighbourhood Guides',
-          'Investor Notes',
-          'Buyer & Tenant Guides',
-        ],
-      },
+      type: 'reference',
+      to: [{ type: 'category' }],
+      description: 'Pick a category. To add or rename one, edit the Category documents in the sidebar.',
     }),
     defineField({
       name: 'excerpt',
@@ -107,6 +101,6 @@ export const post = defineType({
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'category', media: 'coverImage' },
+    select: { title: 'title', subtitle: 'category.title', media: 'coverImage' },
   },
 });
