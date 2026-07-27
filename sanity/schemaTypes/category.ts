@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { TagIcon } from '@sanity/icons';
 
 /* Shared taxonomy for both Blog Posts and News articles. Previously each of
    those schemas carried its own hardcoded `list:` of category strings, so
@@ -10,6 +11,7 @@ export const category = defineType({
   name: 'category',
   title: 'Category',
   type: 'document',
+  icon: TagIcon,
   fields: [
     defineField({
       name: 'title',

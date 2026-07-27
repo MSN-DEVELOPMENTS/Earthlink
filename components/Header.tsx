@@ -5,10 +5,15 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { navLinks } from '@/lib/site-config';
 
-export default function Header() {
+type NavCategory = { title: string; slug: string };
+
+export default function Header({ categories = [] }: { categories?: NavCategory[] }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  // Media Center dropdown, and the Blogs flyout nested inside it.
+  const [mediaOpen, setMediaOpen] = useState(false);
+  const [blogsOpen, setBlogsOpen] = useState(false);
 
   // Add a shadow/blur to the nav once the page is scrolled. The listener is
   // passive so it never blocks scrolling, and the work is coalesced into one
@@ -28,10 +33,24 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Close the mobile menu whenever the route changes.
+  // Close the mobile menu and both dropdowns whenever the route changes.
   useEffect(() => {
     setOpen(false);
+    setMediaOpen(false);
+    setBlogsOpen(false);
   }, [pathname]);
+
+  const closeMedia = () => {
+    setMediaOpen(false);
+    setBlogsOpen(false);
+  };
+
+  // Media Center stays highlighted across everything it contains.
+  const inMediaCenter =
+    pathname.startsWith('/media-center') ||
+    pathname.startsWith('/news') ||
+    pathname.startsWith('/blog') ||
+    pathname.startsWith('/category');
 
   return (
     <header className={`nav${scrolled ? ' scrolled' : ''}${open ? ' menu-open' : ''}`} id="nav">
@@ -42,15 +61,66 @@ export default function Header() {
           </Link>
 
           <nav className={`links${open ? ' open' : ''}`} id="navlinks">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={pathname === link.href ? 'active' : ''}
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.href === '/media-center' ? (
+                /* Media Center → News / Blogs → the blog categories.
+                   Hover opens it on desktop; tap toggles it on touch. */
+                <div
+                  key={link.href}
+                  className={`nav-drop${mediaOpen ? ' is-open' : ''}`}
+                  onMouseEnter={() => setMediaOpen(true)}
+                  onMouseLeave={closeMedia}
+                >
+                  <button
+                    type="button"
+                    className={`nav-drop-btn${inMediaCenter ? ' active' : ''}`}
+                    aria-expanded={mediaOpen}
+                    onClick={() => setMediaOpen((v) => !v)}
+                  >
+                    {link.label}
+                    <span className="nav-caret" aria-hidden="true" />
+                  </button>
+
+                  <div className="nav-panel">
+                    <Link href="/media-center">Overview</Link>
+                    <Link href="/news">News</Link>
+
+                    <div
+                      className={`nav-sub${blogsOpen ? ' is-open' : ''}`}
+                      onMouseEnter={() => setBlogsOpen(true)}
+                      onMouseLeave={() => setBlogsOpen(false)}
+                    >
+                      <button
+                        type="button"
+                        className="nav-sub-btn"
+                        aria-expanded={blogsOpen}
+                        onClick={() => setBlogsOpen((v) => !v)}
+                      >
+                        Blogs
+                        <span className="nav-chevron" aria-hidden="true" />
+                      </button>
+
+                      <div className="nav-sub-panel">
+                        <Link href="/blog">All Blogs</Link>
+                        {categories.map((c) => (
+                          <Link key={c.slug} href={`/category/${c.slug}`}>
+                            {c.title}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={pathname === link.href ? 'active' : ''}
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
           </nav>
 
           <Link href="/contact" className="btn btn-gold" style={{ padding: '10px 20px' }}>

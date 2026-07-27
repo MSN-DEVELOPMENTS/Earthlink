@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import ScrollReveal from '@/components/ScrollReveal';
+import { getCategories } from '@/lib/categories';
 
 // Structured data so Google can show Earth Link as a real-estate business.
 const jsonLd = {
@@ -20,7 +21,10 @@ const jsonLd = {
   },
 };
 
-export default function SiteLayout({ children }: { children: React.ReactNode }) {
+export default async function SiteLayout({ children }: { children: React.ReactNode }) {
+  // Blog categories drive the Media Center → Blogs submenu in the header.
+  const categories = await getCategories();
+
   return (
     <>
       <script
@@ -38,7 +42,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
             "}catch(_){}})();",
         }}
       />
-      <Header />
+      <Header categories={categories.map((c) => ({ title: c.title, slug: c.slug }))} />
       <main>{children}</main>
       <Footer />
       <ChatWidget />

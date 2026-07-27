@@ -375,6 +375,142 @@ nav.links a.active::after {
   background: var(--champagne);
 }
 
+/* Media Center dropdown: News / Blogs, with the blog categories nested under
+   Blogs. Hover opens it on desktop; the same React state handles taps. On
+   mobile (<= 860px) the panels flatten into the full-screen menu — see the
+   overrides in the responsive section. */
+.nav-drop {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-drop-btn,
+.nav-sub-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--body);
+  font-size: .95rem;
+  letter-spacing: .04em;
+  text-transform: capitalize;
+  color: var(--slate);
+  font-weight: 500;
+  transition: color .2s ease;
+}
+
+.nav-drop-btn:hover,
+.nav-sub-btn:hover,
+.nav-drop-btn.active {
+  color: var(--champagne-ink);
+}
+
+/* Caret and chevron drawn in CSS so the nav pulls in no icon dependency. */
+.nav-caret,
+.nav-chevron {
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform .2s ease;
+  flex: 0 0 auto;
+}
+
+.nav-drop.is-open .nav-caret {
+  transform: rotate(-135deg);
+}
+
+.nav-chevron {
+  transform: rotate(-45deg);
+  margin-left: auto;
+}
+
+.nav-panel,
+.nav-sub-panel {
+  position: absolute;
+  min-width: 232px;
+  padding: 10px 0;
+  background: #14171a;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .18s ease, transform .18s ease, visibility .18s;
+  z-index: 20;
+}
+
+.nav-panel {
+  top: 100%;
+  left: 50%;
+  margin-left: -116px;
+  margin-top: 18px;
+}
+
+/* Bridges the gap between the trigger and the panel so moving the pointer
+   down does not close the menu mid-travel. */
+.nav-panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -18px;
+  height: 18px;
+}
+
+.nav-drop.is-open > .nav-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-sub {
+  position: relative;
+}
+
+.nav-sub-panel {
+  top: -10px;
+  left: 100%;
+}
+
+.nav-sub.is-open > .nav-sub-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+nav.links .nav-panel a,
+nav.links .nav-sub-panel a,
+.nav-sub-btn {
+  display: flex;
+  width: 100%;
+  padding: 10px 20px;
+  font-size: .86rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--slate-2);
+  white-space: nowrap;
+}
+
+nav.links .nav-panel a:hover,
+nav.links .nav-sub-panel a:hover,
+.nav-sub-btn:hover {
+  background: rgba(195, 169, 124, .10);
+  color: var(--champagne-ink);
+}
+
+/* The underline on .active links would look wrong inside a panel. */
+nav.links .nav-panel a.active::after,
+nav.links .nav-sub-panel a.active::after {
+  display: none;
+}
+
 .burger {
   display: none;
   flex-direction: column;
@@ -4136,6 +4272,80 @@ footer ul a:hover {
 
   nav.links.open a:first-of-type {
     border-top: 1px solid rgba(255, 255, 255, .13);
+  }
+
+  /* Media Center dropdown inside the full-screen mobile menu: the flyout
+     panels become inline accordions so everything stays reachable by tap and
+     nothing is positioned off-screen. */
+  nav.links.open .nav-drop {
+    display: block;
+    width: 100%;
+  }
+
+  nav.links.open .nav-drop-btn {
+    justify-content: center;
+    width: 100%;
+    padding: 22px 8px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: .26em;
+    color: rgba(244, 241, 233, .88);
+    border-bottom: 1px solid rgba(255, 255, 255, .13);
+  }
+
+  nav.links.open .nav-panel,
+  nav.links.open .nav-sub-panel {
+    position: static;
+    min-width: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: rgba(255, 255, 255, .03);
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    /* Collapsed by height rather than display:none so it animates open and
+       the links stay in the DOM for the reveal/observer logic. */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: max-height .25s ease;
+  }
+
+  nav.links.open .nav-panel::before {
+    display: none;
+  }
+
+  nav.links.open .nav-drop.is-open > .nav-panel,
+  nav.links.open .nav-sub.is-open > .nav-sub-panel {
+    max-height: 640px;
+  }
+
+  nav.links.open .nav-panel a,
+  nav.links.open .nav-sub-panel a,
+  nav.links.open .nav-sub-btn {
+    justify-content: center;
+    padding: 16px 8px;
+    font-size: .82rem;
+    letter-spacing: .18em;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+  }
+
+  nav.links.open .nav-sub-btn {
+    width: 100%;
+  }
+
+  /* Indent the category level so the hierarchy still reads on a small screen. */
+  nav.links.open .nav-sub-panel a {
+    font-size: .76rem;
+    color: rgba(244, 241, 233, .68);
+    background: rgba(255, 255, 255, .03);
+  }
+
+  nav.links.open .nav-chevron {
+    margin-left: 10px;
   }
 
   nav.links.open a:hover {
