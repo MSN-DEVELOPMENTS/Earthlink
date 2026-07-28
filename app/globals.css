@@ -2386,6 +2386,63 @@ footer ul a:hover {
   }
 }
 
+/* Category archive with a cover image ------------------------------------
+   Same treatment as the property hero — photo behind, gradient over it, light
+   text on top — but sized as a banner rather than a full-height hero, so the
+   article grid still starts near the fold. Applied only when the category
+   actually has a cover set in Studio; without one the plain .page-head runs. */
+.page-head--cover {
+  position: relative;
+  overflow: hidden;
+  padding: 190px 0 74px;
+  background: #0a121c;
+  border-bottom: none;
+}
+
+.page-head--cover .page-head-img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-head--cover .page-head-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 14, 22, 0.62) 0%,
+    rgba(8, 14, 22, 0.42) 45%,
+    rgba(8, 14, 22, 0.80) 100%
+  );
+}
+
+.page-head--cover .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+/* Force legible light text over the photo in both light & dark themes. */
+.page-head--cover h1 {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+
+.page-head--cover .eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.page-head--cover p {
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 700px) {
+  .page-head--cover {
+    padding: 140px 0 54px;
+  }
+}
+
 /* Legal pages — readable single-column prose (Privacy, Terms) ------------- */
 .legal {
   max-width: 760px;
@@ -4318,9 +4375,20 @@ footer ul a:hover {
     display: none;
   }
 
-  nav.links.open .nav-drop.is-open > .nav-panel,
-  nav.links.open .nav-sub.is-open > .nav-sub-panel {
+  nav.links.open .nav-drop.is-open > .nav-panel {
     max-height: 640px;
+  }
+
+  /* Tapping Blogs navigates to the listing on mobile, so it can no longer act
+     as an accordion toggle — the categories under it stay expanded instead. */
+  nav.links.open .nav-sub > .nav-sub-panel {
+    max-height: 640px;
+  }
+
+  /* The Blogs row is an anchor now; it must not pick up the top border that
+     opens each group, or it doubles up with the row above it. */
+  nav.links.open .nav-sub > a.nav-sub-btn {
+    border-top: 0;
   }
 
   nav.links.open .nav-panel a,

@@ -353,7 +353,17 @@ export const matchSteps = [
    *fallback* only — the live list lives in Sanity as `category` documents
    (see lib/categories.ts), which is what the team edits. Keep the slugs here
    in sync with Sanity so the site still renders if the API is unreachable. */
-export type Category = { title: string; slug: string; description: string };
+/* `img` and the SEO overrides only ever come from Sanity — the fallback list
+   below leaves them unset, which is why they are optional. */
+export type Category = {
+  title: string;
+  slug: string;
+  description: string;
+  img?: string;
+  imageAlt?: string;
+  seoTitle?: string;
+  metaDescription?: string;
+};
 
 export const categories: Category[] = [
   {

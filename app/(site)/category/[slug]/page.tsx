@@ -24,8 +24,9 @@ export async function generateMetadata(
   const category = await getCategoryBySlug(params.slug);
   if (!category) return { title: 'Category' };
   return dynamicSeoMetadata(`/category/${category.slug}`, {
-    title: `${category.title} — Earth Link Real Estate`,
+    title: category.seoTitle || `${category.title} — Earth Link Real Estate`,
     description:
+      category.metaDescription ||
       category.description ||
       `Articles and updates from Earth Link Real Estate filed under ${category.title}.`,
   });
@@ -39,8 +40,25 @@ export default async function CategoryPage({ params }: { params: { slug: string 
 
   return (
     <>
-      {/* ===== HEADER ===== */}
-      <section className="page-head">
+      {/* ===== HEADER — cover photo behind the title when the category has
+           one in Studio, otherwise the plain paper head. ===== */}
+      <section className={`page-head${category.img ? ' page-head--cover' : ''}`}>
+        {category.img && (
+          <>
+            <div className="page-head-img" aria-hidden="true">
+              <Image
+                src={category.img}
+                alt={category.imageAlt || ''}
+                fill
+                sizes="100vw"
+                priority
+                quality={85}
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+            <div className="page-head-overlay" aria-hidden="true" />
+          </>
+        )}
         <div className="wrap">
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>Category</span>
           <h1 className="reveal">{category.title}</h1>

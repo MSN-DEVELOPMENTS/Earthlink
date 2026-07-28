@@ -90,18 +90,14 @@ export default function Header({ categories = [] }: { categories?: NavCategory[]
                       onMouseEnter={() => setBlogsOpen(true)}
                       onMouseLeave={() => setBlogsOpen(false)}
                     >
-                      <button
-                        type="button"
-                        className="nav-sub-btn"
-                        aria-expanded={blogsOpen}
-                        onClick={() => setBlogsOpen((v) => !v)}
-                      >
+                      {/* Blogs itself goes to the full blog listing; the flyout
+                          beside it narrows that listing down to one category. */}
+                      <Link href="/blog" className="nav-sub-btn" aria-expanded={blogsOpen}>
                         Blogs
                         <span className="nav-chevron" aria-hidden="true" />
-                      </button>
+                      </Link>
 
                       <div className="nav-sub-panel">
-                        <Link href="/blog">All Blogs</Link>
                         {categories.map((c) => (
                           <Link key={c.slug} href={`/category/${c.slug}`}>
                             {c.title}

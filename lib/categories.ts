@@ -1,4 +1,6 @@
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { client } from '@/sanity/lib/client';
+import { urlFor } from '@/sanity/lib/image';
 import { isSanityConfigured } from '@/sanity/env';
 import { categories as fallbackCategories, type Category, type Post } from '@/lib/data';
 import { getPosts } from '@/lib/blog';
@@ -19,19 +21,34 @@ import { getPosts } from '@/lib/blog';
 const FIELDS = `
   title,
   "slug": slug.current,
-  "description": coalesce(description, "")
+  "description": coalesce(description, ""),
+  "imageAlt": coverImage.alt,
+  "cover": coverImage,
+  seoTitle,
+  metaDescription
 `;
 
 // Categories without an explicit `order` sort last, then alphabetically.
 const ORDER = `order(coalesce(order, 9999) asc, title asc)`;
 
+type SanityCategory = Omit<Category, 'img'> & { cover?: SanityImageSource };
+
+// The cover is resolved to a URL here so nothing downstream needs to know the
+// category came from Sanity (same split as toPost in lib/blog.ts).
+function toCategory(doc: SanityCategory): Category {
+  return {
+    ...doc,
+    img: doc.cover ? urlFor(doc.cover).width(2400).quality(80).url() : '',
+  };
+}
+
 export async function getCategories(): Promise<Category[]> {
   if (!isSanityConfigured) return fallbackCategories;
   try {
-    const docs = await client.fetch<Category[]>(
+    const docs = await client.fetch<SanityCategory[]>(
       `*[_type == "category" && defined(slug.current)] | ${ORDER}{${FIELDS}}`
     );
-    return docs.length ? docs : fallbackCategories;
+    return docs.length ? docs.map(toCategory) : fallbackCategories;
   } catch {
     return fallbackCategories;
   }

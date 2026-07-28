@@ -29,6 +29,11 @@ const nextConfig = {
       { source: '/contactus', destination: '/contact', permanent: true },
       { source: '/privacy-policy', destination: '/privacy', permanent: true },
       { source: '/home-with-map', destination: '/', permanent: true },
+      // "All Blogs" is gone from the nav — Blogs is the listing itself now, so
+      // anything still pointing at the plural/all- variants lands on /blog.
+      { source: '/blogs', destination: '/blog', permanent: true },
+      { source: '/blogs/:slug', destination: '/blog/:slug', permanent: true },
+      { source: '/all-blogs', destination: '/blog', permanent: true },
     ];
   },
   async headers() {

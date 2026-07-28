@@ -37,10 +37,38 @@ export const category = defineType({
       validation: (r) => r.max(300),
     }),
     defineField({
+      name: 'coverImage',
+      title: 'Cover image',
+      type: 'image',
+      description: 'Optional. Shown as the banner across the top of the category archive page. Upload a wide landscape photo (ideally 2400px+).',
+      options: { hotspot: true },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt text',
+          type: 'string',
+          description: 'Describe the image for accessibility and SEO.',
+        }),
+      ],
+    }),
+    defineField({
       name: 'order',
       title: 'Order',
       type: 'number',
       description: 'Optional. Controls the left-to-right order of the filter chips — lower numbers come first. Categories without a number are listed alphabetically after the rest.',
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO title',
+      type: 'string',
+      description: 'Optional. Overrides the browser-tab and search-result title for the archive page. Aim for under 60 characters.',
+    }),
+    defineField({
+      name: 'metaDescription',
+      title: 'Meta description',
+      type: 'text',
+      rows: 2,
+      description: 'Optional. The search-result description. Falls back to the Description above. Aim for under 160 characters.',
     }),
   ],
   orderings: [
@@ -54,6 +82,6 @@ export const category = defineType({
     },
   ],
   preview: {
-    select: { title: 'title', subtitle: 'description' },
+    select: { title: 'title', subtitle: 'description', media: 'coverImage' },
   },
 });
