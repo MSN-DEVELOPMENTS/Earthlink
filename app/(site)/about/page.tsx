@@ -16,7 +16,7 @@ const stats = [
 /* About: leadership & team. Photos live under /public/about/team and are added
    as they arrive; until a photo is set, the card shows the member's initials. */
 const team: { name: string; role: string; img?: string }[] = [
-  { name: 'Zeeshan Naqvi', role: 'CEO', img: '/about/team/zeeshan-naqvi.jpg' },
+  { name: 'Zeeshan Malik', role: 'CEO', img: '/about/team/zeeshan-naqvi.jpg' },
   { name: 'Natasha Hall', role: 'Sales Manager' },
   { name: 'Sharoon Irfan Khan', role: 'Marketing Head', img: '/about/team/sharoon-irfan-khan.jpg?v=2' },
   { name: 'Naveed Anjum', role: 'Content Manager', img: '/about/team/naveed-anjum.jpg' },

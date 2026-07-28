@@ -90,9 +90,22 @@ export default function Header({ categories = [] }: { categories?: NavCategory[]
                       onMouseEnter={() => setBlogsOpen(true)}
                       onMouseLeave={() => setBlogsOpen(false)}
                     >
-                      {/* Blogs itself goes to the full blog listing; the flyout
-                          beside it narrows that listing down to one category. */}
-                      <Link href="/blog" className="nav-sub-btn" aria-expanded={blogsOpen}>
+                      {/* Blogs goes to the full blog listing; the flyout beside
+                          it narrows that listing down to one category. On a
+                          phone there is no hover, so the row works as an
+                          accordion instead: the first tap opens the category
+                          list and the next one folds it away again. */}
+                      <Link
+                        href="/blog"
+                        className="nav-sub-btn"
+                        aria-expanded={blogsOpen}
+                        onClick={(e) => {
+                          if (window.matchMedia('(max-width: 860px)').matches) {
+                            e.preventDefault();
+                            setBlogsOpen((v) => !v);
+                          }
+                        }}
+                      >
                         Blogs
                         <span className="nav-chevron" aria-hidden="true" />
                       </Link>

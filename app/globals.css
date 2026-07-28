@@ -4318,6 +4318,12 @@ footer ul a:hover {
     padding: 22px 8px;
     font-size: 1.1rem;
     font-weight: 500;
+    /* These rows are flex containers, so `text-align` alone never moved the
+       label — the text sat at flex-start while MEDIA CENTER and the panel rows
+       (which do set justify-content) were centred, leaving the menu visibly
+       ragged. Both properties are set so the row centres whichever box it
+       resolves to. */
+    justify-content: center;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: .26em;
@@ -4379,9 +4385,9 @@ footer ul a:hover {
     max-height: 640px;
   }
 
-  /* Tapping Blogs navigates to the listing on mobile, so it can no longer act
-     as an accordion toggle — the categories under it stay expanded instead. */
-  nav.links.open .nav-sub > .nav-sub-panel {
+  /* Collapsed until Blogs is tapped, so the five categories fold away again
+     instead of padding out the menu (see the tap handler in Header.tsx). */
+  nav.links.open .nav-sub.is-open > .nav-sub-panel {
     max-height: 640px;
   }
 
@@ -4412,6 +4418,8 @@ footer ul a:hover {
     background: rgba(255, 255, 255, .03);
   }
 
+  /* The caret/chevron rides beside its label inside the centred row, so the
+     label + icon centre as one group. */
   nav.links.open .nav-chevron {
     margin-left: 10px;
   }

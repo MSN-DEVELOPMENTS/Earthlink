@@ -20,7 +20,7 @@ How we work:
 Our promise: "We value honesty over ease." A broker who puts your goals first on
 every deal, large or small — execution over artificial scarcity.
 
-Leadership & team: Zeeshan Naqvi (CEO), Natasha Hall (Sales Manager), Sharoon
+Leadership & team: Zeeshan Malik (CEO), Natasha Hall (Sales Manager), Sharoon
 Irfan Khan (Marketing Head), Naveed Anjum (Content Manager), Safia Sehar (Social
 Media Manager), Hamad Zaheer (Sales Executive), Saeed Anwar (Website Developer),
 Zain Khalid (Sales Executive).`;
