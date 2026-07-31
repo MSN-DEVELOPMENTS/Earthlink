@@ -23,13 +23,30 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const category = await getCategoryBySlug(params.slug);
   if (!category) return { title: 'Category' };
-  return dynamicSeoMetadata(`/category/${category.slug}`, {
-    title: category.seoTitle || `${category.title} — Earth Link Real Estate`,
+  const path = `/category/${category.slug}`;
+  const base = dynamicSeoMetadata(path, {
+    title: withBrand(category.seoTitle || category.title),
     description:
       category.metaDescription ||
       category.description ||
       `Articles and updates from Earth Link Real Estate filed under ${category.title}.`,
   });
+  return {
+    ...base,
+    // Fallback titles come back as plain strings, which the site-wide
+    // "%s — Earth Link Real Estate" template would append the brand to a
+    // second time. Ours already carries it, so mark it absolute. Titles from
+    // the SEO sheet are already absolute and pass through untouched.
+    title: typeof base.title === 'string' ? { absolute: base.title } : base.title,
+  };
+}
+
+const BRAND = 'Earth Link Real Estate';
+
+/* Editors may or may not type the brand into the Studio SEO title field, so
+   append it only when it isn't there already. */
+function withBrand(title: string): string {
+  return title.includes(BRAND) ? title : `${title} | ${BRAND}`;
 }
 
 export default async function CategoryPage({ params }: { params: { slug: string } }) {
