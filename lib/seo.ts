@@ -40,6 +40,17 @@ export const seoMeta: Record<string, SeoEntry> = {
     "title": "Property for Sale in Dubai: Ready and Off-Plan | ERE Group",
     "description": "Browse apartments, villas and townhouses for sale in Dubai. Compare ready properties and off-plan launches with payment plans, guided by ERE Group brokers."
   },
+  // Not from the 122-URL sheet: the sale/rent views used to live at
+  // /properties?type=sale|rent, which search engines read as duplicates of
+  // /properties. They are real routes now, so they need titles of their own.
+  "/properties/for-sale": {
+    "title": "Property for Sale in Dubai | Earth Link Real Estate",
+    "description": "Apartments, villas and townhouses for sale in Dubai, from ready homes to off-plan launches with payment plans. Compare current listings with ERE Group."
+  },
+  "/properties/for-rent": {
+    "title": "Property for Rent in Dubai | Earth Link Real Estate",
+    "description": "Apartments, villas and townhouses for rent in Dubai. Compare current rental listings, annual prices and locations with the brokers at ERE Group."
+  },
   "/privacy": {
     "title": "Privacy Policy | Earth Link Real Estate",
     "description": "Read the Earth Link Real Estate privacy policy to understand how ERE Group collects, uses and protects your personal information."

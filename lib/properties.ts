@@ -52,6 +52,17 @@ function toProperty(doc: SanityProperty): Property {
   };
 }
 
+/* Which listing view a page shows. Each one is a route of its own:
+   /properties, /properties/for-sale, /properties/for-rent. */
+export type ListingFilter = 'all' | 'sale' | 'rent';
+
+/** Tags are free text ("For Sale", "For Rent"), so match loosely on the word. */
+export function matchesListingType(p: Property, filter: ListingFilter): boolean {
+  if (filter === 'all') return true;
+  const tag = (p.tag || '').toLowerCase();
+  return filter === 'sale' ? tag.includes('sale') : tag.includes('rent');
+}
+
 export async function getProperties(): Promise<Property[]> {
   if (!USE_SANITY_PROPERTIES || !isSanityConfigured) return fallbackProperties;
   try {

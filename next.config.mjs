@@ -23,6 +23,10 @@ const nextConfig = {
     return [
       { source: '/projects', destination: '/properties', permanent: true },
       { source: '/projects/:slug', destination: '/properties/:slug', permanent: true },
+      // /properties?type=sale|rent is handled in middleware.ts, not here:
+      // redirects() copies the incoming query onto the destination, which would
+      // land visitors on /properties/for-sale?type=sale — the duplicate URL
+      // this is meant to remove.
       // Legacy URLs from the old eregroup.ae build (still held in Google's index).
       // 301 them to the live equivalents so old link equity transfers and stale
       // results drop out. Extend as SEO confirms more mappings from Search Console.
