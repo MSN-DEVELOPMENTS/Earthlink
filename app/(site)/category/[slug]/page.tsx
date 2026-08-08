@@ -23,6 +23,13 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const category = await getCategoryBySlug(params.slug);
   if (!category) return { title: 'Category' };
+
+  /* An archive with no articles is a thin page — keep it out of the index
+     until it has something to show, but keep following its links so the
+     journal link still passes through. It flips back to indexable by itself
+     once the first article is filed. */
+  const isEmpty = (await getPostsByCategory(params.slug)).length === 0;
+
   const path = `/category/${category.slug}`;
   const base = dynamicSeoMetadata(path, {
     title: withBrand(category.seoTitle || category.title),
@@ -33,6 +40,7 @@ export async function generateMetadata(
   });
   return {
     ...base,
+    ...(isEmpty && { robots: { index: false, follow: true } }),
     // Fallback titles come back as plain strings, which the site-wide
     // "%s — Earth Link Real Estate" template would append the brand to a
     // second time. Ours already carries it, so mark it absolute. Titles from

@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ChatWidget from '@/components/ChatWidget';
 import ScrollReveal from '@/components/ScrollReveal';
-import { getCategories } from '@/lib/categories';
+import { getCategoriesInUse } from '@/lib/categories';
 
 // Structured data so Google can show Earth Link as a real-estate business.
 const jsonLd = {
@@ -22,8 +22,13 @@ const jsonLd = {
 };
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
-  // Blog categories drive the Media Center → Blogs submenu in the header.
-  const categories = await getCategories();
+  /* Blog categories drive the Media Center → Blogs submenu in the header.
+     Only categories that actually hold an article — an empty archive linked
+     from every page on the site is ~500 internal links pointing at a page with
+     nothing on it, which spends crawl budget and dilutes the links that matter.
+     Same rule the /blog filter chips and the sitemap already use; a category
+     rejoins the menu on its own once its first article is filed. */
+  const categories = await getCategoriesInUse();
 
   return (
     <>

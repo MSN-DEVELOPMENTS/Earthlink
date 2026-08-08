@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { seoMetadata } from '@/lib/seo';
 import ArticleFilter from '@/components/ArticleFilter';
 import { getPosts } from '@/lib/blog';
-import { getCategories } from '@/lib/categories';
+import { getCategoriesInUse } from '@/lib/categories';
 
 // Rebuild this page from Sanity at most once every 60s (ISR) so newly
 // published posts appear on the live site without a manual redeploy.
@@ -11,7 +11,9 @@ export const revalidate = 60;
 export const metadata: Metadata = seoMetadata('/blog');
 
 export default async function BlogPage() {
-  const [posts, categories] = await Promise.all([getPosts(), getCategories()]);
+  // Only categories holding an article: a filter chip that resolves to an
+  // empty archive is a dead end for readers and a thin page for crawlers.
+  const [posts, categories] = await Promise.all([getPosts(), getCategoriesInUse()]);
 
   return (
     <>
