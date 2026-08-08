@@ -38,6 +38,23 @@ const nextConfig = {
       { source: '/blogs', destination: '/blog', permanent: true },
       { source: '/blogs/:slug', destination: '/blog/:slug', permanent: true },
       { source: '/all-blogs', destination: '/blog', permanent: true },
+      // Three blog categories were renamed; their slugs moved with the titles.
+      // 301 the old archive URLs so indexed pages and existing links survive.
+      {
+        source: '/category/buying-in-dubai-and-the-uae',
+        destination: '/category/dubai-community',
+        permanent: true,
+      },
+      {
+        source: '/category/real-estate-investment-in-the-uae',
+        destination: '/category/real-estate-investment',
+        permanent: true,
+      },
+      {
+        source: '/category/commercial-real-estate-renting-in-dubai',
+        destination: '/category/selling-in-dubai',
+        permanent: true,
+      },
     ];
   },
   async headers() {

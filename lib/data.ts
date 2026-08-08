@@ -367,9 +367,9 @@ export type Category = {
 
 export const categories: Category[] = [
   {
-    title: 'Buying in Dubai and the UAE',
-    slug: 'buying-in-dubai-and-the-uae',
-    description: 'Every step of buying a home in Dubai and the wider UAE, in plain order.',
+    title: 'Dubai Community',
+    slug: 'dubai-community',
+    description: 'Neighbourhoods across Dubai, and what living in each one is actually like.',
   },
   {
     title: 'UAE Property Market',
@@ -377,14 +377,14 @@ export const categories: Category[] = [
     description: 'Prices, yields, and demand across Dubai and the UAE, explained simply.',
   },
   {
-    title: 'Real Estate Investment in the UAE',
-    slug: 'real-estate-investment-in-the-uae',
+    title: 'Real Estate Investment',
+    slug: 'real-estate-investment',
     description: 'Yield, strategy, and the costs that decide a return.',
   },
   {
-    title: 'Commercial Real Estate Renting in Dubai',
-    slug: 'commercial-real-estate-renting-in-dubai',
-    description: 'Office, retail, and warehouse space, and what leasing one involves.',
+    title: 'Selling in Dubai',
+    slug: 'selling-in-dubai',
+    description: 'Pricing, listing, and closing a sale, and what each stage involves.',
   },
   {
     title: 'Renting in Dubai',

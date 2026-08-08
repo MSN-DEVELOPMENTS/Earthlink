@@ -17,8 +17,12 @@
 import { getCliClient } from 'sanity/cli';
 
 /* Deliberately inlined rather than imported from lib/data.ts: that module
-   imports through the `@/` path alias, which bare Node cannot resolve. Keep
-   these in step with the `categories` fallback array in lib/data.ts. */
+   imports through the `@/` path alias, which bare Node cannot resolve.
+
+   SUPERSEDED — three of these were later renamed (see
+   scripts/rename-categories.ts), so this list is the historical seed, not the
+   current one; lib/data.ts holds the live titles and slugs. Do not re-run this
+   script: createOrReplace on the same ids would revert the rename. */
 const categories = [
   {
     title: 'Buying in Dubai and the UAE',
