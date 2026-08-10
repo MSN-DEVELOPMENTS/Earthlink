@@ -66,13 +66,26 @@ export default async function PropertyPage({ params }: { params: { slug: string 
   // title sits on a single line (it wraps below 700px, per globals.css).
   const heading = property.heading || property.name;
 
+  // Gold line under the H1, e.g. "4 Bedroom Villa For Rent". The count comes off
+  // the front of `beds` ('4 Bed · 4 Bath'); studios and plots carry no count
+  // there, so they read as "Studio For Rent" / "Residential Plot For Sale".
+  const bedCount = property.beds.match(/^(\d+)\s*Bed/i)?.[1];
+  const subhead = `${bedCount ? `${bedCount} Bedroom ` : ''}${property.type} ${property.tag}`;
+
+  // Both gold lines size themselves from their own character count so each
+  // holds a single row on phones (see .page-head--listing .eyebrow).
+  const eyebrow = `${property.tag} · ${property.location}`;
+
   return (
     <article>
       {/* ===== HEADER ===== */}
       <section className="page-head page-head--listing">
         <div className="wrap">
-          <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>
-            {property.tag} · {property.location}
+          <span
+            className="eyebrow reveal"
+            style={{ display: 'block', marginBottom: 14, '--eyebrow-len': eyebrow.length } as CSSProperties}
+          >
+            {eyebrow}
           </span>
           <h1
             className={`reveal${property.heading ? ' h1-seo' : ''}`}
@@ -80,6 +93,12 @@ export default async function PropertyPage({ params }: { params: { slug: string 
           >
             {heading}
           </h1>
+          <span
+            className="eyebrow reveal"
+            style={{ display: 'block', marginTop: 14, '--eyebrow-len': subhead.length } as CSSProperties}
+          >
+            {subhead}
+          </span>
         </div>
       </section>
 

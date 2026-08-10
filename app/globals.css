@@ -2283,7 +2283,19 @@ footer ul a:hover {
      instead, targeting two balanced rows: each holds about half the title,
      and 0.42 is the avg glyph width in em for this face at these caps. */
   .page-head--listing h1.h1-seo {
-    font-size: clamp(1.05rem, (100vw - 64px) * 2 / (0.42 * var(--title-len, 31)), 2.6rem);
+    font-size: clamp(1.05rem, (100vw - 64px) * 2 / (0.44 * var(--title-len, 31)), 2.1rem);
+  }
+
+  /* The upper eyebrow carries the location, so it is long enough to wrap to a
+     second row here. Tighten the tracking and size it from its character count
+     the way the title is, so each label holds one row; 0.72 is the avg advance
+     in em for this face at these caps (incl. the .14em letter-spacing), and 80px
+     covers the .wrap padding, a desktop scrollbar and margin for error. min()
+     keeps the .72rem base for the shorter labels that already fit. */
+  .page-head--listing .eyebrow {
+    white-space: nowrap;
+    letter-spacing: .14em;
+    font-size: min(.72rem, (100vw - 80px) / (0.72 * var(--eyebrow-len, 34)));
   }
 }
 

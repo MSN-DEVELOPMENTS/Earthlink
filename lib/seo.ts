@@ -492,8 +492,8 @@ export const seoMeta: Record<string, SeoEntry> = {
     "description": "View Azizi Creek Views 2 listings with ERE Group. Check prices, unit types and availability, then speak to a licensed Dubai broker to arrange a viewing."
   },
   "/properties/d1-tower-culture-village": {
-    "title": "D1 Tower Culture Village: Property for Sale | ERE Group",
-    "description": "View D1 Tower Culture Village listings with ERE Group. Check prices, unit types and availability, then speak to a licensed Dubai broker to arrange a viewing."
+    "title": "D1 Tower Apartments for Sale | 1 Bedroom | Jaddaf Waterfront",
+    "description": "1 bedroom D1 Tower apartment for sale in Jaddaf Waterfront, Culture Village. 1,038 sqft luxury apartment with Dubai Creek views, priced at AED 1.8M."
   },
   "/properties/downtown-views-2-tower-3": {
     "title": "Downtown Views 2 Tower 3: Property for Sale | ERE Group",

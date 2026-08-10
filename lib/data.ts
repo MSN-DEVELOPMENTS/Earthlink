@@ -116,7 +116,7 @@ export const properties: Property[] = [
   {
     slug: 'expo-golf-villas-parkside-2',
     name: 'Expo Golf Villas 2 — Parkside 2',
-    heading: '4 Bedroom Villa for Rent in Expo Golf Villas 2 (Parkside 2), Emaar South',
+    heading: 'Expo Golf Villas 2 (Parkside 2) — Emaar South',
     tag: 'For Rent',
     location: 'Emaar South, Dubai South',
     type: 'Villa',
@@ -138,6 +138,7 @@ export const properties: Property[] = [
   {
     slug: 'd1-tower-culture-village',
     name: 'D1 Tower — Culture Village',
+    heading: 'D1 Tower Apartment — Jaddaf Waterfront',
     tag: 'For Sale',
     location: 'Culture Village (Jaddaf Waterfront)',
     type: 'Apartment',
@@ -147,9 +148,10 @@ export const properties: Property[] = [
     ref: 'Bayut #15626304',
     permit: '7117527736',
     img: 'https://images.bayut.com/thumbnails/848040673-800x600.jpeg',
+    descriptionHeading: 'D1 Tower Apartment for Sale in Jaddaf Waterfront',
     description: [
-      'A luxury one-bedroom apartment of 1,038 sqft on the highest floor of D1 Tower, Culture Village (Jaddaf Waterfront), with a full Dubai Creek view.',
-      'For sale at AED 1,800,000 and listed by Earth Link Real Estate. Contact us for the floor plan, amenities, and a viewing.',
+      'This 1-bedroom apartment for sale in D1 Tower is located in Culture Village (Jaddaf Waterfront), Dubai. The luxury apartment offers 1,038 sqft of living space on one of the highest floors of D1 Tower, with panoramic views of Dubai Creek.',
+      'Priced at AED 1,800,000, the property is suited to buyers looking for a luxury apartment in Culture Village with a waterfront location and convenient access to central Dubai. The apartment includes 1 bedroom and 1 bathroom and is available for viewing through Earth Link Real Estate.',
     ],
     url: 'https://www.bayut.com/property/details-15626304.html',
     permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=cxkeypyn191gatqjujljkfmmjz65nn1aq18jxrcvnadflrrkk',
