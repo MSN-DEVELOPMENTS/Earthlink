@@ -500,8 +500,8 @@ export const seoMeta: Record<string, SeoEntry> = {
     "description": "View Downtown Views 2 Tower 3 listings with ERE Group. Check prices, unit types and availability, then speak to a licensed Dubai broker to arrange a viewing."
   },
   "/properties/expo-golf-villas-parkside-2": {
-    "title": "Expo Golf Villas Parkside 2: Villas for Sale | ERE Group",
-    "description": "View Expo Golf Villas Parkside 2 listings with ERE Group. Check prices, unit types and availability, then speak to a licensed Dubai broker to arrange a viewing."
+    "title": "Expo Golf Villas 2 Parkside 2 for Rent | Emaar South",
+    "description": "4 bedroom villa for rent in Expo Golf Villas 2 (Parkside 2), Emaar South, Dubai South. 2,552 sqft villa on a 2,736 sqft plot, available for AED 155,000/year."
   },
   "/properties/rosehill-dubai-hills-estate": {
     "title": "Rosehill Dubai Hills Estate: Property for Sale | ERE Group",

@@ -2259,7 +2259,10 @@ footer ul a:hover {
 .page-head--listing h1 {
   max-width: none;
   white-space: nowrap;
-  font-size: min((100vw - 64px) / (0.46 * var(--title-len, 31)), 4.6rem);
+  /* Size against the .wrap content box — min(100vw, --maxw) minus its 32px
+     side padding — not the raw viewport, or titles long enough to fall under
+     the 4.6rem cap overflow the measure on screens wider than --maxw. */
+  font-size: min((min(100vw, var(--maxw)) - 64px) / (0.46 * var(--title-len, 31)), 4.6rem);
 }
 
 /* Phones: one line would shrink long names to unreadable sizes (and the nowrap
@@ -2273,6 +2276,14 @@ footer ul a:hover {
     font-size: clamp(1.7rem, 7.4vw, 2.6rem);
     line-height: 1.14;
     max-width: 100%;
+  }
+
+  /* Keyword-led SEO headings are sentence-length, so the shared mobile size
+     would run them to three or more lines. Size from the character count
+     instead, targeting two balanced rows: each holds about half the title,
+     and 0.42 is the avg glyph width in em for this face at these caps. */
+  .page-head--listing h1.h1-seo {
+    font-size: clamp(1.05rem, (100vw - 64px) * 2 / (0.42 * var(--title-len, 31)), 2.6rem);
   }
 }
 

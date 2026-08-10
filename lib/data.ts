@@ -74,6 +74,9 @@ export const offers = [
 export type Property = {
   slug: string;
   name: string;
+  /* Optional SEO H1 for the detail page, when marketing wants a keyword-led
+     heading that differs from the short name used on the listing cards. */
+  heading?: string;
   tag: string;
   location: string;
   type: string;
@@ -84,6 +87,7 @@ export type Property = {
   permit: string;
   img: string;
   gallery?: string[]; // extra photos for the detail-page gallery
+  descriptionHeading?: string; // optional H2 above the description copy
   description: string[];
   url?: string; // external listing (e.g. Bayut)
   permitUrl?: string; // DLD Trakheesi permit validation URL (encoded in the property QR)
@@ -112,6 +116,7 @@ export const properties: Property[] = [
   {
     slug: 'expo-golf-villas-parkside-2',
     name: 'Expo Golf Villas 2 — Parkside 2',
+    heading: '4 Bedroom Villa for Rent in Expo Golf Villas 2 (Parkside 2), Emaar South',
     tag: 'For Rent',
     location: 'Emaar South, Dubai South',
     type: 'Villa',
@@ -121,9 +126,11 @@ export const properties: Property[] = [
     ref: 'Bayut #15646436',
     permit: '69234394963',
     img: 'https://images.bayut.com/thumbnails/848441706-800x600.jpeg',
+    descriptionHeading: 'Expo Golf Villas 2 Villa for Rent in Emaar South',
     description: [
-      'A bright and spacious four-bedroom villa of 2,552 sqft built-up on a 2,736 sqft plot at Expo Golf Villas 2 (Parkside 2), Emaar South.',
-      'Available at AED 155,000 yearly and listed by Earth Link Real Estate. Contact us for the floor plan, community amenities, and a viewing.',
+      'This spacious 4 bedroom villa for rent in Expo Golf Villas 2 (Parkside 2) is located in Emaar South, Dubai South. The villa offers 2,552 sqft of built-up area on a 2,736 sqft plot and is available to rent for AED 155,000 per year.',
+      'Expo Golf Villas 2 is a residential villa community in Emaar South, offering residents access to community amenities and a convenient location within Dubai South. This property is suitable for families looking for a spacious villa for rent in Emaar South.',
+      'Contact Earth Link Real Estate for the current rental availability, floor plan, viewing arrangements and property documentation.',
     ],
     url: 'https://www.bayut.com/property/details-15646436.html',
     permitUrl: 'https://trakheesi.dubailand.gov.ae/rev/madmoun/listing/validation?khevJujtDig=oz3nnvof7wumtp4chmxzzp2q7a45ti6b3msmoltjtjzbcgvia',

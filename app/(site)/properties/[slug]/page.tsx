@@ -61,6 +61,11 @@ export default async function PropertyPage({ params }: { params: { slug: string 
   const property = await getPropertyBySlug(params.slug);
   if (!property) notFound();
 
+  // Marketing can supply a keyword-led H1 that differs from the short card name.
+  // Either way the listing head sizes itself from the character count so the
+  // title sits on a single line (it wraps below 700px, per globals.css).
+  const heading = property.heading || property.name;
+
   return (
     <article>
       {/* ===== HEADER ===== */}
@@ -69,8 +74,11 @@ export default async function PropertyPage({ params }: { params: { slug: string 
           <span className="eyebrow reveal" style={{ display: 'block', marginBottom: 14 }}>
             {property.tag} · {property.location}
           </span>
-          <h1 className="reveal" style={{ '--title-len': property.name.length } as CSSProperties}>
-            {property.name}
+          <h1
+            className={`reveal${property.heading ? ' h1-seo' : ''}`}
+            style={{ '--title-len': heading.length } as CSSProperties}
+          >
+            {heading}
           </h1>
         </div>
       </section>
@@ -103,6 +111,20 @@ export default async function PropertyPage({ params }: { params: { slug: string 
                 <div><dt>Reference</dt><dd>{property.ref}</dd></div>
                 <div><dt>DLD Permit</dt><dd>{property.permit}</dd></div>
               </dl>
+
+              {property.descriptionHeading && (
+                <h2
+                  style={{
+                    fontSize: 'clamp(1.15rem, 3.4vw, 1.4rem)',
+                    fontWeight: 700,
+                    lineHeight: 1.3,
+                    color: 'var(--champagne-ink)',
+                    marginBottom: 14,
+                  }}
+                >
+                  {property.descriptionHeading}
+                </h2>
+              )}
 
               {property.description.map((paragraph, i) => (
                 <p className="prose" key={i} style={{ marginBottom: 16 }}>
