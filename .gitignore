@@ -10,6 +10,9 @@
 # production
 /build
 
+# sanity studio build output (`sanity build` / `sanity deploy`)
+/dist
+
 # misc
 .DS_Store
 *.pem
