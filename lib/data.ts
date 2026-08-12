@@ -3,7 +3,7 @@
    All page copy lives here so it is easy to edit (and later move to a CMS).
    ========================================================================== */
 
-import { p, h2, li, liLead, pLink, type Block } from '@/lib/portable';
+import { p, h2, li, liLead, pLink, type BodyBlock, type TableBlock } from '@/lib/portable';
 
 /* ----- Navigation and contact details ------------------------------------
    These now live in lib/site-config.ts so client components can import them
@@ -89,6 +89,7 @@ export type Property = {
   gallery?: string[]; // extra photos for the detail-page gallery
   descriptionHeading?: string; // optional H2 above the description copy
   description: string[];
+  tables?: TableBlock[]; // optional data tables shown under the description
   url?: string; // external listing (e.g. Bayut)
   permitUrl?: string; // DLD Trakheesi permit validation URL (encoded in the property QR)
 };
@@ -418,7 +419,7 @@ export type Post = {
   img: string;            // cover image URL
   imageAlt?: string;
   publishedAt?: string;   // ISO date
-  body: Block[];          // Portable Text (same shape Sanity produces)
+  body: BodyBlock[];      // Portable Text (same shape Sanity produces), plus tables
   faqs?: Faq[];
 };
 

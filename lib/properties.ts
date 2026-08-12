@@ -14,7 +14,8 @@ const FIELDS = `
   "slug": slug.current,
   name, tag, location, type, beds, area, price, ref, permit,
   "img": image,
-  "description": coalesce(description, [])
+  "description": coalesce(description, []),
+  "tables": coalesce(tables, [])
 `;
 
 /* Sanity's `property` documents are currently placeholder/demo data and the
@@ -48,6 +49,7 @@ function toProperty(doc: SanityProperty): Property {
   return {
     ...doc,
     description: doc.description ?? [],
+    tables: doc.tables ?? [],
     img: doc.img ? urlFor(doc.img).width(1100).quality(80).url() : '',
   };
 }

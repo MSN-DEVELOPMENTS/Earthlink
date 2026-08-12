@@ -19,6 +19,24 @@ export type Block = {
   level?: number;
 };
 
+/* A data table authored in the Studio (sanity/schemaTypes/contentTable.ts).
+   Sits alongside Block inside a body array; rendered by components/ContentTable. */
+export type TableRowValue = {
+  _key?: string;
+  cells?: (string | null)[];
+};
+
+export type TableBlock = {
+  _type: 'contentTable';
+  _key?: string;
+  caption?: string;
+  hasHeaderRow?: boolean;
+  rows?: TableRowValue[];
+};
+
+/* Anything that can appear in an article body. */
+export type BodyBlock = Block | TableBlock;
+
 const span = (text: string, marks: string[] = []): Span => ({
   _type: 'span',
   _key: key(),

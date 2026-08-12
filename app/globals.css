@@ -3500,6 +3500,72 @@ footer ul a:hover {
   font-style: italic;
 }
 
+/* Data tables (Sanity `contentTable`) ------------------------------------ */
+.content-table-figure {
+  margin: 30px 0;
+}
+
+/* Wide tables scroll inside their own box rather than widening the article. */
+.content-table-scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.content-table th,
+.content-table td {
+  padding: 11px 16px;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.content-table thead th {
+  color: var(--champagne-ink);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-bottom: 1px solid var(--line-2);
+  background: rgba(195, 169, 124, 0.06);
+}
+
+.content-table tbody td {
+  color: var(--ink);
+}
+
+.content-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.content-table tbody tr:nth-child(even) td {
+  background: rgba(195, 169, 124, 0.03);
+}
+
+.content-table-caption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+  .content-table {
+    font-size: 0.88rem;
+  }
+
+  .content-table th,
+  .content-table td {
+    padding: 9px 12px;
+  }
+}
+
 /* Blog article — FAQ ----------------------------------------------------- */
 .post-faq {
   margin-top: 52px;

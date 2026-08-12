@@ -7,6 +7,7 @@ import { dynamicSeoMetadata } from '@/lib/seo';
 import PropertyGallery from '@/components/PropertyGallery';
 import ShareButton from '@/components/ShareButton';
 import PropertyQr from '@/components/PropertyQr';
+import ContentTable from '@/components/ContentTable';
 
 export async function generateStaticParams() {
   const slugs = await getPropertySlugs();
@@ -149,6 +150,10 @@ export default async function PropertyPage({ params }: { params: { slug: string 
                 <p className="prose" key={i} style={{ marginBottom: 16 }}>
                   {paragraph}
                 </p>
+              ))}
+
+              {property.tables?.map((table, i) => (
+                <ContentTable key={table._key ?? i} value={table} />
               ))}
 
               <div className="hero-btns" style={{ marginTop: 30 }}>

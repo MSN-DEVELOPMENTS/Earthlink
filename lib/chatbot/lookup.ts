@@ -7,14 +7,25 @@ import { developers, type DeveloperProject } from '@/lib/developers';
 import { getPosts } from '@/lib/blog';
 import { getNews } from '@/lib/news';
 import type { Post } from '@/lib/data';
-import type { Block } from '@/lib/portable';
+import type { BodyBlock, TableBlock } from '@/lib/portable';
 
 const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
+/* Render a table as pipe-separated rows so its figures stay readable to the model. */
+function tableToText(table: TableBlock): string {
+  const rows = (table.rows ?? [])
+    .map((row) => (row?.cells ?? []).map((cell) => (cell ?? '').trim()))
+    .filter((cells) => cells.some(Boolean))
+    .map((cells) => cells.join(' | '));
+  if (!rows.length) return '';
+  return [table.caption, ...rows].filter(Boolean).join('\n');
+}
+
 /* Flatten Portable Text blocks to plain text for the model to read. */
-function portableToText(blocks: Block[] = []): string {
+function portableToText(blocks: BodyBlock[] = []): string {
   return blocks
     .map((b) => {
+      if (b._type === 'contentTable') return tableToText(b);
       const text = (b.children || []).map((c) => c.text).join('');
       if (!text) return '';
       if (b.listItem) return `- ${text}`;

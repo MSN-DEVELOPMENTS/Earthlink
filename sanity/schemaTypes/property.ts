@@ -55,6 +55,14 @@ export const property = defineType({
       description: 'One paragraph per item.',
     }),
     defineField({
+      name: 'tables',
+      title: 'Tables',
+      type: 'array',
+      description:
+        'Optional data tables shown under the description, e.g. a unit or payment-plan breakdown.',
+      of: [{ type: 'contentTable' }],
+    }),
+    defineField({
       name: 'order',
       title: 'Sort order',
       type: 'number',

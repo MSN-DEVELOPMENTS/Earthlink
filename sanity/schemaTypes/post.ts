@@ -59,8 +59,12 @@ export const post = defineType({
       name: 'body',
       title: 'Body',
       type: 'array',
-      description: 'The article. Use Normal text for paragraphs, H2 for section headings, and the bullet-list button for lists.',
-      of: [{ type: 'block' }, { type: 'image', options: { hotspot: true } }],
+      description: 'The article. Use Normal text for paragraphs, H2 for section headings, and the bullet-list button for lists. Use Table to insert a data table.',
+      of: [
+        { type: 'block' },
+        { type: 'image', options: { hotspot: true } },
+        { type: 'contentTable' },
+      ],
     }),
     defineField({
       name: 'faqs',

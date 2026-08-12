@@ -8,6 +8,7 @@ import { PortableText } from '@portabletext/react';
 import type { PortableTextComponents } from '@portabletext/react';
 import { getNewsBySlug, getNewsSlugs } from '@/lib/news';
 import { dynamicSeoMetadata } from '@/lib/seo';
+import ContentTable, { type ContentTableValue } from '@/components/ContentTable';
 
 export async function generateStaticParams() {
   const slugs = await getNewsSlugs();
@@ -27,6 +28,9 @@ export async function generateMetadata(
 
 /* Render the Portable Text body with the site's own elements/classes. */
 const components: PortableTextComponents = {
+  types: {
+    contentTable: ({ value }) => <ContentTable value={value as ContentTableValue} />,
+  },
   block: {
     normal: ({ children }) => <p>{children}</p>,
     h2: ({ children }) => <h2 className="post-h2">{children}</h2>,
