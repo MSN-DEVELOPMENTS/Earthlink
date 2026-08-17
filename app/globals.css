@@ -2728,8 +2728,10 @@ footer ul a:hover {
 /* About: team grid — portrait, name, role. Sits inside a .section-light band. */
 .ab-team {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px 26px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 34px 30px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .ab-team-card {
@@ -2776,12 +2778,6 @@ footer ul a:hover {
 .ab-team-role {
   font-size: .9rem;
   color: var(--muted);
-}
-
-@media (max-width: 980px) {
-  .ab-team {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 @media (max-width: 640px) {

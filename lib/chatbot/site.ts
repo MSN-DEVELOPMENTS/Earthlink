@@ -20,10 +20,9 @@ How we work:
 Our promise: "We value honesty over ease." A broker who puts your goals first on
 every deal, large or small — execution over artificial scarcity.
 
-Leadership & team: Zeeshan Malik (CEO), Natasha Hall (Sales Manager), Sharoon
-Irfan Khan (Marketing Head), Naveed Anjum (Content Manager), Safia Sehar (Social
-Media Manager), Hamad Zaheer (Sales Executive), Saeed Anwar (Website Developer),
-Zain Khalid (Sales Executive).`;
+Leadership & team: Zeeshan Malik (CEO), Natasha Hall (Sales Manager), Naveed
+Anjum (Content Manager), Hamad Zaheer (Sales Executive), Saeed Anwar (Website
+Developer), Zain Khalid (Sales Executive).`;
 
 export const SITE_PAGES_TEXT = `Main pages on the website (link to these when guiding a visitor):
 - Home (/): overview of Earth Link, services, featured communities and listings.
